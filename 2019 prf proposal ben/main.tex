@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage[all]{xy}
+\input{mydefs}
+\newcommand{\lmod}{\setminus}
+ \setlength{\parskip}{0cm}
+%\usepackage{titlesec}
+%
+%\titleformat{\section}
+%  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+%\titleformat{\subsection}
+%  {\normalfont\Large\bfseries}{\thesubsection}{1em}{}[{}]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newcommand{\E}{\mathcal{E}}
+\title{An Effective Spectral Chebotarev Density Theorem }
+\author{Justin Katz}
+\begin{document}
+\maketitle
+\section{Introduction}
+
+The interplay of number theory and geometry has a long history of producing incisive results in both fields. For example, the heuristic analogy between collection of primes numbers and the length spectrum of a compact hyperbolic surface is reflected in Margulis'  \cite{Margulis1969} prime geodesic theorem, which posits that the number of primitive closed geodesics of length less than $x$ is asymptotically  $x/\log x$. The striking similarity with the prime number theorem, which provides the same asymptotic for the prime counting function, extends even to the ingredients to their respective proofs. Just as the prime number theorem is proven by analyzing the poles and zeroes of the Riemann zeta function, the prime geodesic theorem is proven by analyzing analyzing those of the Selberg zeta function, which is an Euler product wherein lengths of geodesics play the role of primes. 
+
+To study the splitting of primes in extensions of number fields, one looks at the $L$ functions associated to representations of the Galois group. By producing a geometric analogue of these $L$ functions attached to representations of the isometry group of a closed Riemann surface, Sarnak \cite{sarnak1982} established a Chebotarev theorem for decomposition types of geodesics in lifts to covers. 
+While we have only discussed this analogy in the context of the length spectrum, this proposal is primarily concerned with the properties of the \emph{eigenvalue spectrum}. This is the collection of eigenvalues, counted with multiplicty, of the Laplace--Beltrami operator on a closed Riemannian manifold. These two invariants are closely related, with the relationship manifested by the Selberg trace formula.
+ 
+The primary aim of the proposed project is to establish a spectral analogue to a result of Lagarias \cite{lagarias1979}, which provides an effective bound for the smallest prime in a number field exibiting a prescribed splitting type in a given extension. We note that the nonzero densities exhibited by Chebotarev imply that such a prime exists. The analogous problem, which is formulated more precisely in the following section, is to find a smallest Laplace eigenvalue on a closed Riemannian manifold such that its eigenspace contains a given irreducible representation of the isometry group. 
+
+A primary motivation for this effective result is in an effort to prove that a certain class of closed Riemannian manifolds are \emph{spectrally rigid}, i.e. are determined up to isometry by their eigenvalue spectrum. The existence of isospectral manifolds (i.e. manifolds with the same eigenvalue spectrum) which are not isometric has been known since 1964 \cite{milnor1964}. Further examples were produced in 1980 by Vigneras \cite{vigneras1980}, but it wasn't until Sunada's pioneering work in 1985 \cite{Sunada1985} that there was a systematic method for constructing them. Sunada observed that the number theoretic analogue of isospectrality is the notion of \emph{arithmetic equivalence} of number fields, i.e. fields with identical Dedekind zeta functions. Pairs of such fields was shown by Gassman \cite{gassmann1926} in 1926 to be  equivalent to a group theoretic condition on the Galois group of the normal closure of the pair. Passing this condition back through the analogy, Sunada obtained a criteria on the isometry groups of a pair of manifolds that admit a common cover which implies isospectrality. A key step in his argument relies on the reinterpretation of Gassman's group theoretic condition as a representation theoretic one.  
+
+The technique for proving spectral rigidity for sufficiently symmetric manifolds is outside of the scope of this proposal. Nonetheless, we note for the sake of motivation, that it will make essential use of the effective bound discussed above. 
+\\
+\subsection{Setup and Proposed questions}
+
+Let $X$ be a closed Riemannian manifold with Laplace--Beltrami operator $\Delta_X$. Applying the spectral theorem to the resolvent of the unique selfadjoint extension of $\Delta_X$, we obtain the eigenspace decomposition
+\begin{equation}L^2(X) = \bigoplus_{j=0}^\infty E(\lambda_j,X). \label{eqn:decomp} \end{equation}
+By compactness, the eigenvalues form a discrete subset of $(-\infty,0]$ and their multiplicities  
+\[ m(\Delta_X,\lambda_j)=\dim (E(\lambda_j,X),\] are all finite.
+
+Let $G$ denote the isometry group of $X$.  The action of $G$ on $X$ gives rise to a unitary representation $R$ on $L^2(X)$ via translation. Since $\Delta_X$ commutes with isometries,$G$ stabilizes its eigenspaces. Thus the decomposition in Equation \ref{eqn:decomp} direct in the sense of representations.     
+
+By the Myers--Steenrod theorem, $G$ is a compact Lie group, so we may apply Peter--Weyl to decompose each eigenspace into a finite direct sum of irreducible (hence finite dimensional) representations
+\begin{align}E(\lambda_j,X)&= \bigoplus_{\rho \in \hat{G}} E(\lambda_j, X)^\rho\\
+ &\approx \bigoplus_{\rho \in \hat{G}}\rho^{m(\lambda_j,\rho)},\end{align}
+  where  $E(\lambda_j,X)^\rho$ is the $\rho$ isotypoic component of $E(\lambda_j,X)$ and $m(\lambda_j,\rho)$ is its dimension.
+  
+ In general, explicitly computing the spectrum of $\Delta_X$ is an intractable problem. Instead, one looks to compute the asymptotic distribution of eigenvalues by analyzing the counting functions 
+ \begin{align}
+	 N(t)=\sum_{\lambda_j\leq t} m(\lambda_j,X)\\
+	 N_\rho(t)=\sum_{\lambda_j\leq t} m(\lambda_j,\rho).
+	 \end{align}
+A classical result, known as early as 1911 for bounded euclidean domains with Dirichlet Boundary conditions \cite{weyl1911}, is Weyl's law: 
+\begin{align}
+N(t)\sim \frac{(4\pi)^{-\dim X/2}\vol(X)}{\Gamma(\dim X/2+1)} t^{\dim X/2}.
+\end{align}
+The spectral Chebotarev density theorem was proved by Donnelly \cite{Donnelly1978}:  
+\begin{align}
+ N(t,\rho)\sim \frac{\dim \rho}{\vol(X/G)}\frac{(4\pi)^{-\dim X/2}\vol(X)}{\Gamma(\dim X/2+1)} t^{\dim X/2} \label{eq:1}.
+\end{align}
+His proof makes use of the thermodynamic formalism by analyzing the Minakshisundaram--Pleijel \cite{MP1949} asymptotic expansion of the heat kernel on a tubular neighborhood of the fixed point set of an isometry. Upon taking its trace, he obtains a geometric analog of a theta function, the inverse Mellin transform of an $L$ function. His result then follows by applying a Tauberian theorem.
+
+Equation 7 implies that every irreducible representation does occur in some eigenspace. The primary objective of the proposed project is to solve the following 
+\begin{problem}
+	For a particular representation $\rho$, establish an effective constant $C$, depending only on $\rho$ and the geometry of $X$ such that $\rho$ will occur in a $E(\lambda_j,X)$ for some $\lambda_j\leq C$. 
+\end{problem} We approach this question by introducing a vector bundle over $G\lmod X$ twisted by $\rho$ whose sections encode the embeddings of $\rho$ into $L^2(X)$. 
+
+Set $M=G\lmod X$. For a unitary representation $\rho:G\to U(V)$ on a Hilbert space $V$, we define a bundle $X_\rho$ over $M$ in the following way: let $G$ act on the product $X\times V$ via $g(x,v)=(gx,\rho(g)v)$, and set $X_\rho=G\lmod (X\times V)$. Letting $[x,v]=G(x,v)$ denote the $G$-orbit of $(x,v)$ the map $[x,v]\mapsto x$ yields a bundle projection $X_\rho \to M$ with fibers isomorphic to $V$. Using a $G$ invariant hermitian inner product $\ip{\cdot}{\cdot}_V$ on $V$ we equip $X_\rho$ with the (flat) metric $\ip{[x,v]}{[x,u]}=\ip{v}{u}_V$. With respect to this metric, we define the \emph{twisted Laplacian} $\Delta_\rho$ acting on smooth sections $C^\infty(X_\rho)$, viewed as a dense subspace of the square integrable sections $L^2(X_\rho)$.
+
+To bring the spectral theory of twisted Laplacians to bear on Problem 1, we need the following \cite{Heintze1978}
+\begin{lemma}
+	There is a natural isomorphism 
+	\begin{align*}
+		\phi: L^2(X_\rho) \to \hom_G(\rho,L^2(X))
+	\end{align*}
+	such that if $s$ is an eigensection of $\Delta_\rho$ with eigenvalue $\lambda$, then $\phi(s) \in \hom_G(\rho,E(\lambda, X))$.
+\end{lemma} 
+Thus, to determine an upper bound on the first eigenvalue of $\Delta_X$ whose eigenspace contains $\rho$, it suffices to bound the first eigenvalue of $\Delta_\rho$.
+
+To this end, we apply the following theorem of Sunada \cite{sunada1989}
+\begin{thm}
+	Pick a generating set $A$ of $G$ and define for any unitary representation $\rho$ of $G$ on a vectorspace $V$ the number
+	\begin{align*}
+		\delta(\rho,1)=\inf_{|v|=1} \sup _{g\in A} |\rho(g)v-v|.
+	\end{align*} Then there exist constants $c,C$ depending only on $A$ and $M$ such that the first eigenvalue $\lambda_0(\rho)$ of $\Delta_\rho$ satisfies
+		\begin{align*}
+			c \delta(\rho,1)^2\leq \lambda_0(\rho)\leq C\delta(\rho,1)^2, 
+		\end{align*} 
+\end{thm}
+The constants $\delta(\rho,1)$ appearing in this theorem are the \emph{Kazhdan distance 
+	of $\rho$ to the trivial representation}. They are well studied in the general context of amenable groups and groups satisfying Kazhdan's property (T), but have been explicitly computed in only a few special cases. 
+
+We remark that this theorem implies that a solution of Problem 1 for a particular $X$ will follow from a computation of the Kazhdan distances $\delta(\rho,1)$ for all of the irreducible representations of the isometry group of $X$.
+
+
+ Now suppose $X$ is a compact Riemann surface of genus $g\geq 2$. In this case, $X$ admits a unique metric of constant $-1$ curvature. By Hurwitz's theorem, the isometry group $G$ of $X$ must be a finite, with order at most $84(g-1)$. A surface  of genus $g$ with isometry group of order attaining this upper bound is called a \emph{Hurwitz surface}. Its isometry group is called a \emph{Hurwitz group}.
+ 
+ Viewing genus as measurement of complexity of a surface, the Hurwitz surfaces will present the most representation theoretic phenomena for a given level of complexity. For this reason, the first stage in our project is
+\begin{problem}
+	Compute the Kazhdan constants for the irreducible representations of Hurwitz groups.
+\end{problem}
+We note that a positive solution to Problem 2 will have a direct application to proving spectral rigidity of the $(2,3,7)$-orbifold, which  is covered by all Hurwitz surfaces.  
+
+
+\bibliography{references}{}
+\bibliographystyle{plain}
+
+
+%\begin{itemize}
+%	\item The failure of spectral rigidity for general manifolds gave rise to two industries:
+%	\begin{itemize}
+%	\item Spectral flexibility: understanding the failure  define for any unitary representation $\rho$ of $G$ on a vectorspace $V$ the number
+%		\begin{itemize}
+%		\item systematically construct families of isospectral nonisometric manifolds
+%			\begin{itemize}
+%				\item Sunada, Us, .... 
+%			\end{itemize}
+%		\item refine the failure of spectral rigidity by determining additional shared invariants which do not imply isometry
+%			\begin{itemize}
+%			\item Equivariant spectrum (Sutton), isospectrality on forms (find ref), natural isomorphism of cohomology (us)
+%			\end{itemize}
+%		\item quantify failure by determining the size of the 'spectral class'
+%		\end{itemize}
+%	\item Recovering spectral rigidity:
+%		\begin{itemize}
+%		\item enhance the eigenvalue spectrum with additional geometric data
+%		\item restrict the scope to recover rigidity within classes
+%		\item determine invariants which \emph{are} determined by the spectrum 
+%		\end{itemize}
+%	\end{itemize}
+%\end{itemize}
+%
+
+\end{document}

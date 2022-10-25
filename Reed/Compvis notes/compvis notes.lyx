@@ -1,0 +1,1803 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Compvis Observations
+\end_layout
+
+\begin_layout Standard
+Let
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M=\begin{bmatrix}1 & 0 & 0 & 0 & x_{1} & 0 & 0\\
+0 & 1 & 0 & 0 & y_{1} & 0 & 0\\
+0 & 0 & 1 & 0 & z_{1} & 0 & 0\\
+1 & 0 & 0 & a_{1} & 0 & x_{2} & 0\\
+0 & 1 & 0 & b_{1} & 0 & y_{2} & 0\\
+0 & 0 & 1 & c_{1} & 0 & z_{2} & 0\\
+1 & 0 & 0 & a_{2} & 0 & 0 & x_{3}\\
+0 & 1 & 0 & b_{2} & 0 & 0 & y_{3}\\
+0 & 0 & 1 & c_{2} & 0 & 0 & z_{3}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First thing to note, we have a closed form expression for what we call 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $I_{bt}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\tilde{I}_{b} & = & (b_{1,2},b_{1,3},b_{2,3})\\
+ & = & (a_{2}\begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}-b_{2}\begin{vmatrix}x_{1} & x_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}+c_{2}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix},\\
+ &  & (c_{1}-c_{2})\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}+(a_{1}-a_{2})\begin{vmatrix}y_{2} & y_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}+(b_{1}+c_{1})\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix},\\
+ &  & a_{1}\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}-b_{1}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}+c_{1}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We are trying to prove in general that coloning 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+ by 
+\begin_inset Formula $w:=\prod_{0<i<m-2}\begin{vmatrix}x_{i} & x_{i+1} & x_{i+2}\\
+y_{i} & y_{i+1} & y_{i+2}\\
+z_{i} & z_{i+1} & z_{i+2}
+\end{vmatrix}$
+\end_inset
+
+ gives us 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula 
+\[
+\tilde{I}_{b}:w=I_{t}.
+\]
+
+\end_inset
+
+ To find a pattern, we are first examing the case where 
+\begin_inset Formula $m=3$
+\end_inset
+
+, hoping that the 
+\begin_inset Formula $m-$
+\end_inset
+
+linear case will fall out of the trilinear.
+ A first course of action:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Figure out how the things that are in 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+, but not in 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+ get shifted into 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+ upon multiplication by 
+\begin_inset Formula $w$
+\end_inset
+
+.
+ To do this, we compute the coefficients of the generators of 
+\begin_inset Formula $w\cdot(I_{t}/\tilde{I}_{b}):=\{w\cdot x:x\in I_{t}/\tilde{I}_{b}\}$
+\end_inset
+
+ upon division by 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It turns out that these coeficients are products of pairs of determinants
+ of 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ submatrices of 
+\begin_inset Formula $\begin{bmatrix}x_{1} & x_{2} & x_{3}\\
+y_{1} & y_{2} & y_{3}\\
+z_{1} & z_{2} & z_{3}
+\end{bmatrix}$
+\end_inset
+
+.
+ For example, one generator of 
+\begin_inset Formula $w\cdot(I_{t}/\tilde{I}_{b})$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{eqnarray*}
+w\cdot\left((a_{1}y_{2}-b_{1}x_{2})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}-(a_{2}y_{3}-b_{2}x_{3})\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\right) & = & \begin{vmatrix}x_{3} & x_{2}\\
+y_{3} & y_{2}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\cdot b_{1,2}\\
+ &  & +\begin{vmatrix}x_{3} & x_{1}\\
+y_{3} & y_{1}
+\end{vmatrix}\cdot\begin{vmatrix}x_{2} & x_{1}\\
+y_{2} & y_{1}
+\end{vmatrix}\cdot b_{1,3}\\
+ &  & +\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\cdot b_{2,3}.
+\end{eqnarray*}
+
+\end_inset
+
+where the right hand side is written as an 
+\begin_inset Formula $R$
+\end_inset
+
+ linear combination of the generators of 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+When 
+\begin_inset Formula $m=4$
+\end_inset
+
+, the generators of 
+\begin_inset Formula $\tilde{I_{b}}$
+\end_inset
+
+ are
+\begin_inset Formula 
+\begin{eqnarray*}
+\tilde{I}_{b} & = & (-a_{1}\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}+\,\,\,\,\,\,\,\,\,\,\, a_{2}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}-\,\,\,\,\,\,\,\,\,\,\,\,\, a_{3}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix},\\
+ &  & (a_{1}-a_{4})\begin{vmatrix}y_{2} & y_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}+(a_{5}-a_{2})\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}+(a_{3}-a_{6})\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix},\\
+ &  & (a_{4}-a_{7})\begin{vmatrix}y_{3} & y_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}+(a_{8}-a_{5})\begin{vmatrix}x_{3} & x_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}+(a_{6}-a_{9})\begin{vmatrix}x_{3} & x_{4}\\
+y_{3} & y_{4}
+\end{vmatrix},\\
+ &  & -\,\,\,\,\,\,\, a_{4}\begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}+\,\,\,\,\,\,\,\,\, a_{5}\begin{vmatrix}x_{1} & x_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}-\,\,\,\,\,\,\,\,\,\, a_{6}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix},\\
+ &  & (a_{1}-a_{7})\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}+(a_{8}-a_{2})\begin{vmatrix}x_{2} & x_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}+(a_{3}-a_{9})\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is a general fact that three noncolinear points define a unique plane
+ in projective space.
+ If the three distinct points are 
+\begin_inset Formula $X_{1},X_{2},X_{3}$
+\end_inset
+
+, then the generated plane is given by 
+\begin_inset Formula 
+\[
+\pi=\begin{pmatrix}(X_{1}-X_{3})\times(X_{2}-X_{3})\\
+-X_{3}^{\top}(X_{1}\times X_{2})
+\end{pmatrix},
+\]
+
+\end_inset
+
+ a length four vector who's null space is the plane defined by the tree
+ points.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We can use this to determine the trifocal planes:
+\begin_inset Formula 
+\begin{eqnarray*}
+T_{1,2,3} & = & \begin{pmatrix}a_{2}a_{6}-a_{3}a_{5}\\
+a_{3}a_{4}-a_{1}a_{6}\\
+a_{1}a_{5}-a_{2}a_{4}\\
+0
+\end{pmatrix}\\
+T_{1,3,4} & = & \begin{pmatrix}a_{5}a_{9}-a_{6}a_{8}\\
+a_{6}a_{7}-a_{4}a_{9}\\
+a_{4}a_{8}-a_{5}a_{7}\\
+0
+\end{pmatrix}\\
+T_{2,3,4} & = & \begin{pmatrix}-a_{3}a_{5}+a_{2}a_{6}+a_{3}a_{8}-a_{6}a_{8}-a_{2}a_{9}+a_{5}a_{9}\\
+a_{3}a_{4}-a_{1}a_{6}-a_{3}a_{7}+a_{6}a_{7}+a_{1}a_{9}-a_{4}a_{9},\\
+-a_{2}a_{4}+a_{1}a_{5}+a_{2}a_{7}-a_{5}a_{7}-a_{1}a_{8}+a_{4}a_{8}\\
+(-a_{3}a_{5}+a_{2}a_{6})a_{7}+(a_{3}a_{4}-a_{1}a_{6})a_{8}+(-a_{2}a_{4}+a_{1}a_{5})a_{9}
+\end{pmatrix}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A general formula for 
+\begin_inset Formula $b_{i,j}$
+\end_inset
+
+, obtained by subtracting each row of the first camera from the corresponding
+ row of the second camera, and expanding along the diagonal identity in
+ the first.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{i,j}(x_{i},y_{i},z_{i},x_{j},y_{j},z_{j}) & = & \begin{vmatrix}a_{i}-a_{j} & -x_{j} & x_{i}\\
+b_{i}-b_{j} & -y_{j} & y_{i}\\
+c_{i}-c_{j} & -z_{j} & z_{i}
+\end{vmatrix}\\
+ & = & (a_{i}-a_{j})\begin{vmatrix}y_{j} & y_{i}\\
+z_{j} & z_{i}
+\end{vmatrix}-\left(b_{i}-b_{j}\right)\begin{vmatrix}x_{j} & x_{i}\\
+z_{j} & z_{i}
+\end{vmatrix}+\left(c_{i}-c_{j}\right)\begin{vmatrix}x_{j} & x_{i}\\
+y_{j} & y_{i}
+\end{vmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+In the case of 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+, we will be looking at 
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{i,i+1} & = & (a_{i}-a_{i+1})\begin{vmatrix}y_{i+1} & y_{i}\\
+z_{i+1} & z_{i}
+\end{vmatrix}-\left(b_{i}-b_{i+1}\right)\begin{vmatrix}x_{i+1} & x_{i}\\
+z_{i+1} & z_{i}
+\end{vmatrix}+\left(c_{i}-c_{i+1}\right)\begin{vmatrix}x_{i+1} & x_{i}\\
+y_{i+1} & y_{i}
+\end{vmatrix}\\
+ & = & (a_{i}-a_{i+1})M_{i,i+1}^{\sim x}-\left(b_{i}-b_{i+1}\right)M_{i,i+1}^{\sim y}+\left(c_{i}-c_{i+1}\right)M_{i,i+1}^{\sim z}
+\end{eqnarray*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{i,i+2} & = & (a_{i}-a_{i+2})\begin{vmatrix}y_{i+2} & y_{i}\\
+z_{i+2} & z_{i}
+\end{vmatrix}-\left(b_{i}-b_{i+2}\right)\begin{vmatrix}x_{i+2} & x_{i}\\
+z_{i+2} & z_{i}
+\end{vmatrix}+\left(c_{i}-c_{i+2}\right)\begin{vmatrix}x_{i+2} & x_{i}\\
+y_{i+2} & y_{i}
+\end{vmatrix}\\
+ & = & (a_{i}-a_{i+2})M_{i,i+2}^{\sim x}-\left(b_{i}-b_{i+2}\right)M_{i,i+2}^{\sim y}+\left(c_{i}-c_{i+2}\right)M_{i,i+2}^{\sim z}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then 
+\begin_inset Formula 
+\begin{eqnarray*}
+\tilde{I}_{b} & = & (b_{i,i+1},b_{i,i+2})\\
+ & = & \{\sum_{i=1}^{m-1}r_{i}\left((a_{i}-a_{i+1})\begin{vmatrix}y_{i+1} & y_{i}\\
+z_{i+1} & z_{i}
+\end{vmatrix}-\left(b_{i}-b_{i+1}\right)\begin{vmatrix}x_{i+1} & x_{i}\\
+z_{i+1} & z_{i}
+\end{vmatrix}+\left(c_{i}-c_{i+1}\right)\begin{vmatrix}x_{i+1} & x_{i}\\
+y_{i+1} & y_{i}
+\end{vmatrix}\right)+\sum_{i=1}^{m-2}t_{i}\left((a_{i}-a_{i+2})\begin{vmatrix}y_{i+2} & y_{i}\\
+z_{i+2} & z_{i}
+\end{vmatrix}-\left(b_{i}-b_{i+2}\right)\begin{vmatrix}x_{i+2} & x_{i}\\
+z_{i+2} & z_{i}
+\end{vmatrix}+\left(c_{i}-c_{i+2}\right)\begin{vmatrix}x_{i+2} & x_{i}\\
+y_{i+2} & y_{i}
+\end{vmatrix}\right):r_{i},t_{i}\in R\}\\
+ & = & \{\sum_{i=1}^{m-1}\left(\left(r_{i}(a_{i}-a_{i+1})+t_{i}(a_{i}-a_{i+2})\right)\begin{vmatrix}y_{i+1}+y_{i+2} & y_{i}\\
+z_{i+1}+z_{i+2} & z_{i}
+\end{vmatrix}-\left(r_{i}\left(b_{i}-b_{i+1}\right)+t_{i}\left(b_{i}-b_{i+2}\right)\right)\begin{vmatrix}x_{i+1}+x_{i+2} & x_{i}\\
+z_{i+1}+z_{i+2} & z_{i}
+\end{vmatrix}+\left(r_{i}\left(c_{i}-c_{i+1}\right)+t_{i}\left(c_{i}-c_{i+2}\right)\right)\begin{vmatrix}x_{i+1}+x_{i+2} & x_{i}\\
+y_{i+1}+y_{i+2} & y_{i}
+\end{vmatrix}\right)r_{i},t_{i}\in R\}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A general form for 
+\begin_inset Formula $T_{ijk}$
+\end_inset
+
+ can be derived as follows.
+ Take cameras 
+\begin_inset Formula $k,i,j$
+\end_inset
+
+, and keep rows 
+\begin_inset Formula $p_{i},q_{i}\in\{1,2,3\}$
+\end_inset
+
+ from camera 
+\begin_inset Formula $i$
+\end_inset
+
+, and rows 
+\begin_inset Formula $p_{j},q_{j}\in\{1,2,3\}$
+\end_inset
+
+ from camera 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ We then look at the determinant
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+T_{ki^{p_{i}q_{i}}j^{p_{j}q_{j}}} & = & \begin{vmatrix}1 & 0 & 0 & a_{k} & x_{k} & 0 & 0\\
+0 & 1 & 0 & b_{k} & y_{k} & 0 & 0\\
+0 & 0 & 1 & c_{k} & z_{k} & 0 & 0\\
+0 & 0 & 0 & \vec{a}_{i}^{p_{i}}-\vec{a}_{k}^{p_{i}} & -\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}} & 0\\
+0 & 0 & 0 & \vec{a}_{i}^{q_{i}}-\vec{a}_{k}^{q_{i}} & -\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}} & 0\\
+0 & 0 & 0 & \vec{a}_{j}^{p_{j}}-\vec{a}_{k}^{p_{j}} & -\vec{x}_{k}^{p_{j}} & 0 & \vec{x}_{j}^{p_{j}}\\
+0 & 0 & 0 & \vec{a}_{j}^{q_{j}}-\vec{a}_{k}^{q_{j}} & -\vec{x}_{k}^{q_{j}} & 0 & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\\
+ & = & \begin{vmatrix}\vec{a}_{i}^{p_{i}}-\vec{a}_{k}^{p_{i}} & -\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}} & 0\\
+\vec{a}_{i}^{q_{i}}-\vec{a}_{k}^{q_{i}} & -\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}} & 0\\
+\vec{a}_{j}^{p_{j}}-\vec{a}_{k}^{p_{j}} & -\vec{x}_{k}^{p_{j}} & 0 & \vec{x}_{j}^{p_{j}}\\
+\vec{a}_{j}^{q_{j}}-\vec{a}_{k}^{q_{j}} & -\vec{x}_{k}^{q_{j}} & 0 & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\\
+ & = & (\vec{a}_{i}^{p_{i}}-\vec{a}_{k}^{p_{i}})\begin{vmatrix}\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}} & 0\\
+\vec{x}_{k}^{p_{j}} & 0 & \vec{x}_{j}^{p_{j}}\\
+\vec{x}_{k}^{q_{j}} & 0 & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-(\vec{a}_{i}^{q_{i}}-\vec{a}_{k}^{q_{i}})\begin{vmatrix}\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}} & 0\\
+\vec{x}_{k}^{p_{j}} & 0 & \vec{x}_{j}^{p_{j}}\\
+\vec{x}_{k}^{q_{j}} & 0 & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\\
+ &  & +(\vec{a}_{j}^{p_{j}}-\vec{a}_{k}^{p_{j}})\begin{vmatrix}\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}} & 0\\
+\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}} & 0\\
+\vec{x}_{k}^{q_{j}} & 0 & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-(\vec{a}_{j}^{q_{j}}-\vec{a}_{k}^{q_{j}})\begin{vmatrix}\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}} & 0\\
+\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}} & 0\\
+\vec{x}_{k}^{p_{j}} & 0 & \vec{x}_{j}^{p_{j}}
+\end{vmatrix}\\
+ & = & -(\vec{a}_{i}^{p_{i}}-\vec{a}_{k}^{p_{i}})\vec{x}_{i}^{q_{i}}\begin{vmatrix}\vec{x}_{k}^{p_{j}} & \vec{x}_{j}^{p_{j}}\\
+\vec{x}_{k}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}+(\vec{a}_{i}^{q_{i}}-\vec{a}_{k}^{q_{i}})\vec{x}_{i}^{p_{i}}\begin{vmatrix}\vec{x}_{k}^{p_{j}} & \vec{x}_{j}^{p_{j}}\\
+\vec{x}_{k}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\\
+ &  & +(\vec{a}_{j}^{p_{j}}-\vec{a}_{k}^{p_{j}})\vec{x}_{j}^{q_{j}}\begin{vmatrix}\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}}\\
+\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-(\vec{a}_{j}^{q_{j}}-\vec{a}_{k}^{q_{j}})\vec{x}_{j}^{p_{j}}\begin{vmatrix}\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}}\\
+\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\\
+ & = & \left(-(\vec{a}_{i}^{p_{i}}-\vec{a}_{k}^{p_{i}})\vec{x}_{i}^{q_{i}}+(\vec{a}_{i}^{q_{i}}-\vec{a}_{k}^{q_{i}})\vec{x}_{i}^{p_{i}}\right)\begin{vmatrix}\vec{x}_{k}^{p_{j}} & \vec{x}_{j}^{p_{j}}\\
+\vec{x}_{k}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}+\left((\vec{a}_{j}^{p_{j}}-\vec{a}_{k}^{p_{j}})\vec{x}_{j}^{q_{j}}-(\vec{a}_{j}^{q_{j}}-\vec{a}_{k}^{q_{j}})\vec{x}_{j}^{p_{j}}\right)\begin{vmatrix}\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}}\\
+\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\\
+ & = & -\vec{a}_{i}^{p_{i}}\vec{x}_{i}^{q_{i}}\vec{x}_{k}^{p_{j}}\vec{x}_{j}^{q_{j}}+\vec{a}_{i}^{p_{i}}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{p_{j}}\vec{x}_{k}^{q_{j}}+\vec{a}_{k}^{p_{i}}\vec{x}_{i}^{q_{i}}\vec{x}_{k}^{p_{j}}\vec{x}_{j}^{q_{j}}-\vec{a}_{k}^{p_{i}}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{p_{j}}\vec{x}_{k}^{q_{j}}\\
+ &  & +\vec{a}_{i}^{q_{i}}\vec{x}_{i}^{p_{i}}\vec{x}_{k}^{p_{j}}\vec{x}_{j}^{q_{j}}-\vec{a}_{i}^{q_{i}}\vec{x}_{i}^{p_{i}}\vec{x}_{j}^{p_{j}}\vec{x}_{k}^{q_{j}}-\vec{a}_{k}^{q_{i}}\vec{x}_{i}^{p_{i}}\vec{x}_{k}^{p_{j}}\vec{x}_{j}^{q_{j}}+\vec{a}_{k}^{q_{i}}\vec{x}_{i}^{p_{i}}\vec{x}_{j}^{p_{j}}\vec{x}_{k}^{q_{j}}\\
+ &  & +\vec{a}_{j}^{p_{j}}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p_{i}}\vec{x}_{i}^{q_{i}}-\vec{a}_{j}^{p_{j}}\vec{x}_{j}^{q_{j}}\vec{x}_{i}^{p_{i}}\vec{x}_{k}^{q_{i}}-\vec{a}_{k}^{p_{j}}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p_{i}}\vec{x}_{i}^{q_{i}}+\vec{a}_{k}^{p_{j}}\vec{x}_{j}^{q_{j}}\vec{x}_{i}^{p_{i}}\vec{x}_{k}^{q_{i}}\\
+ &  & -\vec{a}_{j}^{q_{j}}\vec{x}_{j}^{p_{j}}\vec{x}_{k}^{p_{i}}\vec{x}_{i}^{q_{i}}+\vec{a}_{j}^{q_{j}}\vec{x}_{j}^{p_{j}}\vec{x}_{i}^{p_{i}}\vec{x}_{k}^{q_{i}}+\vec{a}_{k}^{q_{j}}\vec{x}_{j}^{p_{j}}\vec{x}_{k}^{p_{i}}\vec{x}_{i}^{q_{i}}-\vec{a}_{k}^{q_{j}}\vec{x}_{j}^{p_{j}}\vec{x}_{i}^{p_{i}}\vec{x}_{k}^{q_{i}}\\
+ & = & T_{ki^{p_{i},q_{i}}j^{p_{j},q_{j}}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(HERE!)Notice that any choice of 
+\begin_inset Formula $p_{i},q_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{j},q_{j}\in\left[3\right]$
+\end_inset
+
+ will have at least one overlap.
+ Wlog set 
+\begin_inset Formula $p_{i}=p_{j}=p$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+T_{ki^{p,q_{i}}j^{p,q_{j}}} & = & -\vec{a}_{i}^{p}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}+\vec{a}_{i}^{p}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}\underline{+\vec{a}_{k}^{p}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}}-\vec{a}_{k}^{p}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}\\
+ &  & +\vec{a}_{i}^{q_{i}}\vec{x}_{i}^{p}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}-\vec{a}_{i}^{q_{i}}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}-\vec{a}_{k}^{q_{i}}\vec{x}_{i}^{p}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}+\vec{a}_{k}^{q_{i}}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}\\
+ &  & +\vec{a}_{j}^{p}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}-\vec{a}_{j}^{p}\vec{x}_{i}^{p}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{q_{i}}\underline{-\vec{a}_{k}^{p}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}}+\vec{a}_{k}^{p}\vec{x}_{i}^{p}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{q_{i}}\\
+ &  & -\vec{a}_{j}^{q_{j}}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{p}\vec{x}_{k}^{p}+\vec{a}_{j}^{q_{j}}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q_{i}}+\vec{a}_{k}^{q_{j}}\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{p}\vec{x}_{k}^{p}-\vec{a}_{k}^{q_{j}}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q_{i}}\\
+ & = & -\vec{a}_{i}^{p}\vec{x}_{i}^{q_{i}}\left(\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}-\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}\right)\\
+ &  & +\vec{a}_{i}^{q_{i}}\vec{x}_{i}^{p}\left(\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}-\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}\right)\\
+ &  & -\vec{a}_{k}^{q_{i}}\vec{x}_{i}^{p}\left(\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{p}-\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}\right)\\
+ &  & +\vec{a}_{j}^{p}\vec{x}_{j}^{q_{j}}\left(\vec{x}_{i}^{q_{i}}\vec{x}_{k}^{p}-\vec{x}_{i}^{p}\vec{x}_{k}^{q_{i}}\right)\\
+ &  & -\vec{a}_{j}^{q_{j}}\vec{x}_{j}^{p}\left(\vec{x}_{i}^{q_{i}}\vec{x}_{k}^{p}+\vec{x}_{i}^{p}\vec{x}_{k}^{q_{i}}\right)\\
+ &  & +\vec{a}_{k}^{p}\left(\vec{x}_{i}^{p}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{q_{i}}-\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}\right)\\
+ &  & +\vec{a}_{k}^{q_{j}}\vec{x}_{j}^{p}\left(\vec{x}_{i}^{q_{i}}\vec{x}_{k}^{p}-\vec{x}_{i}^{p}\vec{x}_{k}^{q_{i}}\right)\\
+ & = & -\left(\vec{a}_{i}^{q_{i}}\vec{x}_{i}^{p}-\vec{a}_{k}^{q_{i}}\vec{x}_{i}^{p}\right)\begin{vmatrix}x_{k}^{p} & x_{j}^{p}\\
+x_{k}^{q_{j}} & x_{j}^{q_{j}}
+\end{vmatrix}\\
+ &  & +\vec{a}_{i}^{p}\left(\vec{x}_{i}^{q_{i}}x_{j}^{q_{j}}x_{k}^{p}-\vec{x}_{i}^{q_{i}}x_{j}^{p}x_{k}^{q_{j}}\right)+\vec{a}_{j}^{p}\left(x_{i}^{q_{i}}\vec{x}_{j}^{q_{j}}x_{k}^{p}-x_{i}^{p}\vec{x}_{j}^{q_{j}}x_{k}^{q_{i}}\right)+\vec{a}_{k}^{p}\left(\vec{x}_{i}^{p}\vec{x}_{j}^{q_{j}}\vec{x}_{k}^{q_{i}}-\vec{x}_{i}^{q_{i}}\vec{x}_{j}^{p}\vec{x}_{k}^{q_{j}}\right)\\
+ &  & +\left(-\vec{a}_{j}^{q_{j}}\vec{x}_{j}^{p}+\vec{a}_{k}^{q_{j}}\vec{x}_{j}^{p}\right)\begin{vmatrix}x_{k}^{p} & x_{i}^{p}\\
+x_{k}^{q_{i}} & x_{i}^{q_{i}}
+\end{vmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In this case, when 
+\begin_inset Formula $q_{i}\neq q_{j}$
+\end_inset
+
+, we can find the distinguished camera 
+\begin_inset Formula $k$
+\end_inset
+
+, by counting which subscript appears on 
+\begin_inset Formula $3$
+\end_inset
+
+ distinct 
+\begin_inset Formula $a$
+\end_inset
+
+ components.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(HERE!) Suppose 
+\begin_inset Formula $q_{i}=q_{j}=q$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{i}=p_{j}=p$
+\end_inset
+
+ Then we have a further simplification 
+\begin_inset Formula 
+\begin{eqnarray*}
+T_{ki^{p,q}j^{p,q}} & = & -\vec{a}_{i}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{q}\vec{x}_{k}^{p}+\vec{a}_{i}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{q}\underline{+\vec{a}_{k}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{q}\vec{x}_{k}^{p}}-\vec{a}_{k}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{q}\\
+ &  & +\vec{a}_{i}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{p}-\vec{a}_{i}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q}-\vec{a}_{k}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{p}\underbrace{+\vec{a}_{k}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q}}\\
+ &  & +\vec{a}_{j}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{q}\vec{x}_{k}^{p}-\vec{a}_{j}^{p}\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{q}\underline{-\vec{a}_{k}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{q}\vec{x}_{k}^{p}}+\vec{a}_{k}^{p}\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{q}\\
+ &  & -\vec{a}_{j}^{q}\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{p}+\vec{a}_{j}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q}+\vec{a}_{k}^{q}\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{p}\underbrace{-\vec{a}_{k}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q}}\\
+ & = & -\vec{a}_{i}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{q}\vec{x}_{k}^{p}+\vec{a}_{i}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{q}-\vec{a}_{k}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{q}\\
+ &  & +\vec{a}_{i}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{p}-\vec{a}_{i}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q}-\vec{a}_{k}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{p}\\
+ &  & +\vec{a}_{j}^{p}\vec{x}_{i}^{q}\vec{x}_{j}^{q}\vec{x}_{k}^{p}-\vec{a}_{j}^{p}\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{q}+\vec{a}_{k}^{p}\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{q}\\
+ &  & -\vec{a}_{j}^{q}\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{p}+\vec{a}_{j}^{q}\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q}+\vec{a}_{k}^{q}\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{p}\\
+ & = & (\vec{a}_{j}^{p}-\vec{a}_{i}^{p})\vec{x}_{i}^{q}\vec{x}_{j}^{q}\vec{x}_{k}^{p}\\
+ &  & +(\vec{a}_{i}^{p}-\vec{a}_{k}^{p})\vec{x}_{i}^{q}\vec{x}_{j}^{p}\vec{x}_{k}^{q}\\
+ &  & +(\vec{a}_{i}^{q}-\vec{a}_{k}^{q})\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{p}\\
+ &  & +(\vec{a}_{j}^{q}-\vec{a}_{i}^{q})\vec{x}_{i}^{p}\vec{x}_{j}^{p}\vec{x}_{k}^{q}\\
+ &  & +(\vec{a}_{j}^{q}-\vec{a}_{i}^{q})\vec{x}_{i}^{p}\vec{x}_{j}^{q}\vec{x}_{k}^{q}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Notice that the above expression is invariant under permutation of 
+\begin_inset Formula $i,j,k$
+\end_inset
+
+.
+ Thus, when the same two rows are picked from the the two auxilliary cameras,
+ there is not distinction between the three.
+ That is 
+\begin_inset Formula 
+\[
+T_{ij^{pq}k^{pq}}=T_{ji^{pq}k^{pq}}=T_{ki^{pq}j^{pq}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Let's try to break down 
+\begin_inset Formula $w$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+w & = & \prod_{i=1}^{m-2}\begin{vmatrix}x_{i} & x_{i+1} & x_{i+2}\\
+y_{i} & y_{i+1} & y_{i+2}\\
+z_{i} & z_{i+1} & z_{i+2}
+\end{vmatrix}\\
+ & = & \prod_{i=1}^{m-2}\left(x_{i+2}\begin{vmatrix}y_{i} & y_{i+1}\\
+z_{i} & z_{i+1}
+\end{vmatrix}-y_{i+2}\begin{vmatrix}x_{i} & x_{i+1}\\
+z_{i} & z_{i+1}
+\end{vmatrix}+z_{i+2}\begin{vmatrix}x_{i} & x_{i+1}\\
+y_{i} & y_{i+1}
+\end{vmatrix}\right)\\
+ & = & \prod_{i=1}^{m-2}\left(\sum_{s=1}^{3}(-1)^{s+1}\vec{x}_{i+2}^{s}M_{s}^{\sim x_{i+2}^{s}}\right)\\
+ & = & \sum_{p_{1},...,p_{m-2}\in\{1,2,3\}}\left(\prod_{s=1}^{m-2}(-1)^{\sum p_{i}+1}\vec{x}_{s}^{p_{s}}M_{s}^{\sim\vec{x}_{s}^{p_{s}}}\right)
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $M_{s}^{\sim\vec{x}_{s}^{p_{s}}}$
+\end_inset
+
+is the determinant of 
+\begin_inset Formula $\begin{vmatrix}x_{s} & x_{s+1} & x_{s+2}\\
+y_{s} & y_{s+1} & y_{s+2}\\
+z_{s} & z_{s+1} & z_{s+2}
+\end{vmatrix}$
+\end_inset
+
+ with the row and column containing 
+\begin_inset Formula $\vec{x}_{s}^{p_{s}}$
+\end_inset
+
+ removed.
+\end_layout
+
+\begin_layout Itemize
+(Don't worry about this)Now, multiply 
+\begin_inset Formula $w$
+\end_inset
+
+ by 
+\begin_inset Formula $T_{ijk}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+also
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{123}\cdot T_{12^{12}3^{12}} & = & -\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}b_{12}-\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}b_{23}+\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}b_{13}\\
+ & = & -\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\left((a_{2}-a_{1})\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}-\left(b_{2}-b_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}+\left(c_{2}-c_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\right)\\
+ &  & -\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\left((a_{3}-a_{2})\begin{vmatrix}y_{2} & y_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}-\left(b_{3}-b_{2}\right)\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}+\left(c_{3}-c_{2}\right)\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\right)\\
+ &  & +\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\left((a_{3}-a_{1})\begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}-\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}+\left(c_{3}-c_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\right)\\
+ & = & -(a_{2}-a_{1})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}+\left(b_{2}-b_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}-\left(c_{2}-c_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\\
+ &  & -(a_{3}-a_{2})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}y_{2} & y_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}+\left(b_{3}-b_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}-\left(c_{3}-c_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\\
+ &  & +(a_{3}-a_{1})\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}-\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}+\left(c_{3}-c_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\\
+ & = & -(a_{2}-a_{1})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}+\left(b_{2}-b_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\\
+ &  & -(a_{3}-a_{2})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}y_{2} & y_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}+\left(b_{3}-b_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}\\
+ &  & +(a_{3}-a_{1})\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}-\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\\
+ & = & -(a_{2}-a_{1})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\left(y_{1}z_{2}-y_{2}z_{1}\right)+\left(b_{2}-b_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\left(x_{1}z_{2}-x_{2}z_{1}\right)\\
+ &  & -(a_{3}-a_{2})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\left(y_{2}z_{3}-y_{3}z_{2}\right)+\left(b_{3}-b_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\left(x_{2}z_{3}-x_{3}z_{2}\right)\\
+ &  & +(a_{3}-a_{1})\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\left(y_{1}z_{3}-y_{3}z_{1}\right)-\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\left(x_{1}z_{3}-x_{3}z_{1}\right)\\
+ & = & -(a_{2}-a_{1})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}y_{2}z_{1}-\left(b_{2}-b_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}x_{2}z_{1}+\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}x_{3}z_{1}-(a_{3}-a_{1})\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}y_{3}z_{1}\\
+ &  & -(a_{2}-a_{1})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}y_{1}z_{2}+\left(b_{2}-b_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}x_{1}z_{2}+(a_{3}-a_{2})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}y_{3}z_{2}-\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}x_{3}z_{2}\\
+ &  & +(a_{3}-a_{2})\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}y_{1}z_{3}+\left(b_{3}-b_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}x_{2}z_{3}-(a_{3}-a_{1})\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}y_{1}z_{3}-\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}x_{1}z_{3}\\
+ & = & z_{1}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\left(\left((a_{2}-a_{1})y_{2}-\left(b_{2}-b_{1}\right)x_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}+\left(\left(b_{3}-b_{1}\right)x_{3}-(a_{3}-a_{1})y_{3}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\right)\\
+ &  & -z_{2}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\left(\left((a_{2}-a_{1})y_{1}-\left(b_{2}-b_{1}\right)x_{1}\right)\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}+\left(-(a_{3}-a_{2})y_{3}+\left(b_{3}-b_{2}\right)x_{3}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\right)\\
+ &  & +z_{3}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\left(\left((a_{3}-a_{2})y_{2}-\left(b_{3}-b_{2}\right)x_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}+\left(-(a_{3}-a_{1})y_{1}-\left(b_{3}-b_{1}\right)x_{1}\right)\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\right)\\
+ & = & \,\,\, z_{1}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\left(\left((a_{2}-a_{1})y_{2}-\left(b_{2}-b_{1}\right)x_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}+\left(\left(b_{3}-b_{1}\right)x_{3}-(a_{3}-a_{1})y_{3}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\right)\\
+ &  & -z_{2}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\left(\left((a_{2}-a_{1})y_{1}-\left(b_{2}-b_{1}\right)x_{1}\right)\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}+\left(\left(b_{3}-b_{2}\right)x_{3}-(a_{3}-a_{2})y_{3}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\right)\\
+ &  & +z_{3}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\left(\left((a_{3}-a_{1})y_{1}-\left(b_{3}-b_{1}\right)x_{1}\right)\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}+\left(\left(b_{3}-b_{2}\right)x_{2}-(a_{3}-a_{2})y_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\right)\\
+ & = & \begin{vmatrix}x_{1} & x_{2} & x_{3}\\
+y_{1} & y_{2} & y_{3}\\
+z_{1} & z_{2} & z_{3}
+\end{vmatrix}\cdot T_{12^{12}3^{12}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Now try=
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{123}\cdot T_{12^{13}3^{12}} & = & -\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}b_{12}-\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}b_{23}+\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}b_{13}\\
+ & = & -\left(a_{2}-a_{1}\right)\left(y_{1}z_{2}-y_{2}z_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}+\left(b_{2}-b_{1}\right)\left(x_{1}z_{2}-x_{2}z_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}-\left(c_{2}-c_{1}\right)\left(x_{1}y_{2}-x_{2}y_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}\\
+ &  & -\left(a_{3}-a_{2}\right)\left(y_{2}z_{3}-y_{3}z_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}+\left(b_{3}-b_{2}\right)\left(x_{2}z_{3}-x_{3}z_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}-\left(c_{3}-c_{2}\right)\left(x_{2}y_{3}-x_{3}y_{2}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\\
+ &  & +\left(a_{3}-a_{1}\right)\left(y_{1}z_{3}-y_{3}z_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}-\left(b_{3}-b_{1}\right)\left(x_{1}z_{3}-x_{3}z_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}+\left(c_{3}-c_{1}\right)\left(x_{1}y_{3}-x_{3}y_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\\
+ & = & -\left(a_{2}-a_{1}\right)\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}-\left(c_{2}-c_{1}\right)\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}\\
+ &  & -\left(a_{3}-a_{2}\right)\begin{vmatrix}y_{2} & y_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}+\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{2} & x_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\\
+ &  & +\left(a_{3}-a_{1}\right)\begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}-\left(b_{3}-b_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}+\left(c_{2}-c_{1}\right)\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3}\\
+y_{2} & y_{3}
+\end{vmatrix}\\
+ & =\\
+\\
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider 
+\begin_inset Formula 
+\begin{eqnarray*}
+T_{kij} & = & \sum_{s=k}^{i-1}\left(\left((\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\vec{x}_{i}^{p}-(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{i}^{q_{i}}\right)\begin{vmatrix}\vec{x}_{k}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{k}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\\
+ &  & +\sum_{t=k}^{j-1}\left(\left((\vec{a}_{t+1}^{p}-\vec{a}_{t}^{p})\vec{x}_{j}^{q_{j}}-(\vec{a}_{t+1}^{q_{j}}-\vec{a}_{t}^{q_{j}})\vec{x}_{j}^{p}\right)\begin{vmatrix}\vec{x}_{k}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\\
+w_{l,l+1,l+2}\cdot T_{kij} & = & \begin{vmatrix}x_{l}^{p} & x_{l+1}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{i}} & x_{l+1}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+1}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\cdot\left(\sum_{s=k}^{i-1}\left(\left((\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\vec{x}_{i}^{p}-(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{i}^{q_{i}}\right)\begin{vmatrix}\vec{x}_{k}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{k}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\right.\\
+ &  & \left.+\sum_{t=k}^{j-1}\left(\left((\vec{a}_{t+1}^{p}-\vec{a}_{t}^{p})\vec{x}_{j}^{q_{j}}-(\vec{a}_{t+1}^{q_{j}}-\vec{a}_{t}^{q_{j}})\vec{x}_{j}^{p}\right)\begin{vmatrix}\vec{x}_{k}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\right)\\
+ & = & \sum_{s=k}^{i-1}\left((\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\vec{x}_{i}^{p}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\left(x_{l}^{p}\begin{vmatrix}x_{l+1}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l+1}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}-x_{l+1}^{p}\begin{vmatrix}x_{l}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}+x_{l+2}^{p}\begin{vmatrix}x_{l}^{q_{i}} & x_{l+1}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+1}^{q_{j}}
+\end{vmatrix}\right)\right.\\
+ &  & -(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{i}^{q_{i}}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\left(-x_{l}^{q_{i}}\begin{vmatrix}x_{l+1}^{p} & x_{l+2}^{p}\\
+x_{l+1}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}+x_{l+1}^{q_{i}}\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}-x_{l+2}^{q_{i}}\begin{vmatrix}x_{l}^{p} & x_{l+1}^{p}\\
+x_{l}^{q_{j}} & x_{l+1}^{q_{j}}
+\end{vmatrix}\right)\\
+ &  & +(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{j}^{q_{j}}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\left(x_{l}^{q_{j}}\begin{vmatrix}x_{l+1}^{p} & x_{l+2}^{p}\\
+x_{l+1}^{q_{i}} & x_{l+2}^{q_{i}}
+\end{vmatrix}-x_{l+1}^{q_{j}}\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{i}} & x_{l+2}^{q_{i}}
+\end{vmatrix}+x_{l+2}^{q_{j}}\begin{vmatrix}x_{l}^{p} & x_{l+1}^{p}\\
+x_{l}^{q_{i}} & x_{l+1}^{q_{i}}
+\end{vmatrix}\right)\\
+ &  & \left.-(\vec{a}_{s+1}^{q_{j}}-\vec{a}_{s}^{q_{j}})\vec{x}_{j}^{p}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\left(x_{l}^{q_{j}}\begin{vmatrix}x_{l+1}^{p} & x_{l+2}^{p}\\
+x_{l+1}^{q_{i}} & x_{l+2}^{q_{i}}
+\end{vmatrix}-x_{l+1}^{q_{j}}\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{i}} & x_{l+2}^{q_{i}}
+\end{vmatrix}+x_{l+2}^{q_{j}}\begin{vmatrix}x_{l}^{p} & x_{l+1}^{p}\\
+x_{l}^{q_{i}} & x_{l+1}^{q_{i}}
+\end{vmatrix}\right)\right)\\
+ & = & \sum_{s=k}^{i-1}\left(\left(x_{l}^{p}(\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\vec{x}_{i}^{p}\begin{vmatrix}x_{l+1}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l+1}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\underline{-x_{l+1}^{p}(\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)}\vec{x}_{i}^{p}\begin{vmatrix}x_{l}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}+x_{l+2}^{p}(\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\vec{x}_{i}^{p}\begin{vmatrix}x_{l}^{q_{i}} & x_{l+1}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+1}^{q_{j}}
+\end{vmatrix}\right)\right.\\
+ &  & +\left(x_{l}^{q_{i}}(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\vec{x}_{i}^{q_{i}}\begin{vmatrix}x_{l+1}^{p} & x_{l+2}^{p}\\
+x_{l+1}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\underline{-x_{l+1}^{q_{i}}(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)}\vec{x}_{i}^{q_{i}}\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}+x_{l+2}^{q_{i}}(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\vec{x}_{i}^{q_{i}}\begin{vmatrix}x_{l}^{p} & x_{l+1}^{p}\\
+x_{l}^{q_{j}} & x_{l+1}^{q_{j}}
+\end{vmatrix}\right)\\
+ &  & +\left(x_{l}^{q_{j}}(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\vec{x}_{j}^{q_{j}}\begin{vmatrix}x_{l+1}^{p} & x_{l+2}^{p}\\
+x_{l+1}^{q_{i}} & x_{l+2}^{q_{i}}
+\end{vmatrix}\underline{-x_{l+1}^{q_{j}}(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)}\vec{x}_{j}^{q_{j}}\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{i}} & x_{l+2}^{q_{i}}
+\end{vmatrix}+x_{l+2}^{q_{j}}(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\vec{x}_{j}^{q_{j}}\begin{vmatrix}x_{l}^{p} & x_{l+1}^{p}\\
+x_{l}^{q_{i}} & x_{l+1}^{q_{i}}
+\end{vmatrix}\right)\\
+ &  & \left.-\left(x_{l}^{p}(\vec{a}_{s+1}^{q_{j}}-\vec{a}_{s}^{q_{j}})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\vec{x}_{j}^{p}\begin{vmatrix}x_{l+1}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l+1}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\underline{-x_{l+1}^{p}(\vec{a}_{s+1}^{q_{j}}-\vec{a}_{s}^{q_{j}})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)}\vec{x}_{j}^{p}\begin{vmatrix}x_{l}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}+x_{l+2}^{p}(\vec{a}_{s+1}^{q_{j}}-\vec{a}_{s}^{q_{j}})\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\vec{x}_{j}^{p}\begin{vmatrix}x_{l}^{q_{i}} & x_{l+1}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+1}^{q_{j}}
+\end{vmatrix}\right)\right)\\
+ & =\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+ &  & \sum_{s=k}^{i-1}\left(x_{l+1}^{p}\left((\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\vec{x}_{i}^{p}-(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{i}^{q_{i}}\right)\begin{vmatrix}x_{l}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)-x_{l+1}^{q_{i}}\left((\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{j}^{q_{j}}-(\vec{a}_{s+1}^{q_{j}}-\vec{a}_{s}^{q_{j}})\vec{x}_{j}^{p}\right)\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)-x_{l+1}^{q_{i}}\left((\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\vec{x}_{i}^{p}-(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{i}^{q_{i}}\right)\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)\right.\\
+ &  & \left.+x_{l+1}^{p}\left((\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{j}^{q_{j}}-(\vec{a}_{s+1}^{q_{j}}-\vec{a}_{s}^{q_{j}})\vec{x}_{j}^{p}\right)\begin{vmatrix}x_{l}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)+x_{l+1}^{q_{j}}\left((\vec{a}_{s+1}^{q_{i}}-\vec{a}_{s}^{q_{i}})\vec{x}_{i}^{p}-(\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{i}^{q_{i}}\right)\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{i}} & x_{l+2}^{q_{i}}
+\end{vmatrix}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s+1}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{j}^{p}\\
+\vec{x}_{s}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}\right)+x_{l+1}^{q_{j}}\left((\vec{a}_{s+1}^{p}-\vec{a}_{s}^{p})\vec{x}_{j}^{q_{j}}-(\vec{a}_{s+1}^{q_{j}}-\vec{a}_{s}^{q_{j}})\vec{x}_{j}^{p}\right)\begin{vmatrix}x_{l}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{i}} & x_{l+2}^{q_{i}}
+\end{vmatrix}\left(\begin{vmatrix}\vec{x}_{s+1}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s+1}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}-\begin{vmatrix}\vec{x}_{s}^{p} & \vec{x}_{i}^{p}\\
+\vec{x}_{s}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}\right)\right)\\
+\\
+\\
+ &  & \begin{vmatrix}x_{l}^{p} & x_{l+1}^{p} & x_{l+2}^{p}\\
+x_{l}^{q_{i}} & x_{l+1}^{q_{i}} & x_{l+2}^{q_{i}}\\
+x_{l}^{q_{j}} & x_{l+1}^{q_{j}} & x_{l+2}^{q_{j}}
+\end{vmatrix}\\
+ &  & \left((\vec{a}_{i}^{q_{i}}-\vec{a}_{k}^{q_{i}})\vec{x}_{i}^{p_{i}}-(\vec{a}_{i}^{p_{i}}-\vec{a}_{k}^{p_{i}})\vec{x}_{i}^{q_{i}}\right)\begin{vmatrix}\vec{x}_{k}^{p_{j}} & \vec{x}_{j}^{p_{j}}\\
+\vec{x}_{k}^{q_{j}} & \vec{x}_{j}^{q_{j}}
+\end{vmatrix}+\left((\vec{a}_{j}^{p_{j}}-\vec{a}_{k}^{p_{j}})\vec{x}_{j}^{q_{j}}-(\vec{a}_{j}^{q_{j}}-\vec{a}_{k}^{q_{j}})\vec{x}_{j}^{p_{j}}\right)\begin{vmatrix}\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}}\\
+\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}}
+\end{vmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lets look at the trilinearity with 
+\begin_inset Formula $ijk=i,i+1,i+2$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{eqnarray*}
+T_{i,i+1,i+2} & = & \left(-(\vec{a}_{i+1}^{p}-\vec{a}_{i}^{p})\vec{x}_{i+1}^{q_{i+1}}+(\vec{a}_{i+1}^{q_{i+1}}-\vec{a}_{i}^{q_{i+1}})\vec{x}_{i+1}^{p}-(a_{i+1}^{q_{i+2}}-a_{i}^{q_{i+2}})x_{i+1}^{q_{i+2}}\right)\begin{vmatrix}\vec{x}_{i}^{p} & \vec{x}_{i+2}^{p}\\
+\vec{x}_{i}^{q_{i+2}} & \vec{x}_{i+2}^{q_{i+2}}
+\end{vmatrix}+\left((\vec{a}_{i+2}^{p}-\vec{a}_{i}^{p})\vec{x}_{i+2}^{q_{i+2}}-(\vec{a}_{i+2}^{q_{i+2}}-\vec{a}_{i}^{q_{i+2}})\vec{x}_{i+2}^{p}+(a_{i+2}^{q_{i+1}}-a_{i}^{q_{i+1}})x_{i+2}^{q_{i+1}}\right)\begin{vmatrix}\vec{x}_{i}^{p} & \vec{x}_{i+1}^{p}\\
+\vec{x}_{i}^{q_{i+1}} & \vec{x}_{i+1}^{q_{i+1}}
+\end{vmatrix}\\
+ &  & +(a_{i+1}^{q_{i+2}}-a_{i}^{q_{i+2}})x_{i+1}^{q_{i+2}}\begin{vmatrix}\vec{x}_{i}^{p} & \vec{x}_{i+2}^{p}\\
+\vec{x}_{i}^{q_{i+2}} & \vec{x}_{i+2}^{q_{i+2}}
+\end{vmatrix}-(a_{i+2}^{q_{i+1}}-a_{i}^{q_{i+1}})x_{i+2}^{q_{i+1}}\begin{vmatrix}\vec{x}_{i}^{p} & \vec{x}_{i+1}^{p}\\
+\vec{x}_{i}^{q_{i+1}} & \vec{x}_{i+1}^{q_{i+1}}
+\end{vmatrix}\\
+\\
+\\
+stuff &  & \begin{vmatrix}a_{12}^{p} & x_{2}^{p} & 0\\
+a_{12}^{q} & x_{2}^{q} & 0\\
+a_{12}^{s} & x_{2}^{s} & 1
+\end{vmatrix}\cdot\begin{vmatrix}x_{1}^{p} & x_{3}^{p} & 0\\
+x_{1}^{q} & x_{3}^{q} & 0\\
+x_{1}^{s} & x_{3}^{s} & 1
+\end{vmatrix}\cdot\begin{vmatrix}x_{1}^{p} & x_{1}^{q} & x_{1}^{s}\\
+x_{2}^{p} & x_{2}^{q} & x_{2}^{s}\\
+x_{3}^{p} & x_{3}^{q} & x_{3}^{s}
+\end{vmatrix}\\
+ & = & \begin{vmatrix}a_{12}\cdot x_{1} & x_{1}\cdot x_{2} & x_{1}^{s}\\
+a_{12}\cdot x_{2} & x_{2}\cdot x_{2} & x_{2}^{s}\\
+a_{12}\cdot x_{3} & x_{3}\cdot x_{2} & x_{3}^{s}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1}^{p} & x_{3}^{p} & 0\\
+x_{1}^{q} & x_{3}^{q} & 0\\
+x_{1}^{s} & x_{3}^{s} & 1
+\end{vmatrix}\\
+ & = & \sum_{i}a_{12}^{i}\left(\begin{vmatrix}x_{1}^{i} & x_{1}\cdot x_{2} & x_{1}^{s}\\
+x_{2}^{i} & x_{2}\cdot x_{2} & x_{2}^{s}\\
+x_{3}^{i} & x_{3}\cdot x_{2} & x_{3}^{s}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1}^{p} & x_{3}^{p} & 0\\
+x_{1}^{q} & x_{3}^{q} & 0\\
+x_{1}^{s} & x_{3}^{s} & 1
+\end{vmatrix}\right)\\
+ & = & \sum_{\substack{i\in\{p,q\}\\
+j\in\{p,q\}\\
+i\neq j
+}
+}a_{12}^{i}x_{2}^{j}\begin{vmatrix}x_{1}^{i} & x_{1}^{j} & x_{1}^{s}\\
+x_{2}^{i} & x_{2}^{j} & x_{2}^{s}\\
+x_{3}^{i} & x_{3}^{j} & x_{3}^{s}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1}^{p} & x_{3}^{p} & 0\\
+x_{1}^{q} & x_{3}^{q} & 0\\
+x_{1}^{s} & x_{3}^{s} & 1
+\end{vmatrix}\\
+ & = & \sum_{\substack{i\in\{p,q\}\\
+j\in\{p,q\}\\
+i\neq j
+}
+}a_{12}^{i}x_{2}^{j}\left(\left(x_{3}^{i}\begin{vmatrix}x_{1}^{j} & x_{1}^{s}\\
+x_{2}^{j} & x_{2}^{s}
+\end{vmatrix}-x_{3}^{j}\begin{vmatrix}x_{1}^{i} & x_{1}^{s}\\
+x_{2}^{i} & x_{2}^{s}
+\end{vmatrix}+x_{3}^{s}\begin{vmatrix}x_{1}^{i} & x_{1}^{j}\\
+x_{2}^{i} & x_{2}^{j}
+\end{vmatrix}\right)\cdot\begin{vmatrix}x_{1}^{p} & x_{3}^{p}\\
+x_{1}^{q} & x_{3}^{q}
+\end{vmatrix}\right)\\
+ & = & a_{12}^{p}x_{2}^{q}\left(\left(x_{3}^{p}\begin{vmatrix}x_{1}^{q} & x_{1}^{s}\\
+x_{2}^{q} & x_{2}^{s}
+\end{vmatrix}-x_{3}^{q}\begin{vmatrix}x_{1}^{p} & x_{1}^{s}\\
+x_{2}^{p} & x_{2}^{s}
+\end{vmatrix}+x_{3}^{s}\begin{vmatrix}x_{1}^{p} & x_{1}^{q}\\
+x_{2}^{p} & x_{2}^{q}
+\end{vmatrix}\right)\cdot\begin{vmatrix}x_{1}^{p} & x_{3}^{p}\\
+x_{1}^{q} & x_{3}^{q}
+\end{vmatrix}\right)\\
+ &  & +a_{12}^{q}x_{2}^{p}\left(\left(x_{3}^{q}\begin{vmatrix}x_{1}^{p} & x_{1}^{s}\\
+x_{2}^{p} & x_{2}^{s}
+\end{vmatrix}-x_{3}^{p}\begin{vmatrix}x_{1}^{q} & x_{1}^{s}\\
+x_{2}^{q} & x_{2}^{s}
+\end{vmatrix}+x_{3}^{s}\begin{vmatrix}x_{1}^{q} & x_{1}^{p}\\
+x_{2}^{q} & x_{2}^{p}
+\end{vmatrix}\right)\cdot\begin{vmatrix}x_{1}^{p} & x_{3}^{p}\\
+x_{1}^{q} & x_{3}^{q}
+\end{vmatrix}\right)
+\end{eqnarray*}
+
+\end_inset
+
+Don't know where that's going.
+\end_layout
+
+\begin_layout Itemize
+Look at 
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{123}\cdot w_{234}\cdot T_{2,1^{23},4^{12}} & = & \begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3} & x_{4}\\
+y_{2} & y_{3} & y_{4}\\
+z_{2} & z_{3} & z_{4}
+\end{vmatrix}b_{12}\\
+ &  & +\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3} & x_{4}\\
+y_{1} & y_{3} & y_{4}\\
+z_{1} & z_{3} & z_{4}
+\end{vmatrix}b_{23}\\
+ &  & -\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2} & x_{3}\\
+y_{1} & y_{2} & y_{3}\\
+z_{1} & z_{2} & z_{3}
+\end{vmatrix}b_{34}\\
+ &  & +\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3} & x_{4}\\
+y_{2} & y_{3} & y_{4}\\
+z_{2} & z_{3} & z_{4}
+\end{vmatrix}b_{13}\\
+ &  & -\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{3} & x_{4}\\
+y_{3} & y_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2} & x_{3}\\
+y_{1} & y_{2} & y_{3}\\
+z_{1} & z_{2} & z_{3}
+\end{vmatrix}b_{24}\\
+\end{eqnarray*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{123}\cdot w_{234}\cdot T_{21^{23}4^{13}} & = & \begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3} & x_{4}\\
+y_{2} & y_{3} & y_{4}\\
+z_{2} & z_{3} & z_{4}
+\end{vmatrix}b_{12}\\
+ &  & +\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3} & x_{4}\\
+y_{1} & y_{3} & y_{4}\\
+z_{1} & z_{3} & z_{4}
+\end{vmatrix}b_{23}\\
+ &  & +\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2} & x_{3}\\
+y_{1} & y_{2} & y_{3}\\
+z_{1} & z_{2} & z_{3}
+\end{vmatrix}b_{34}\\
+ &  & +\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3} & x_{4}\\
+y_{2} & y_{3} & y_{4}\\
+z_{2} & z_{3} & z_{4}
+\end{vmatrix}b_{13}\\
+ &  & -\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{3} & x_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2} & x_{3}\\
+y_{1} & y_{2} & y_{3}\\
+z_{1} & z_{2} & z_{3}
+\end{vmatrix}b_{24}
+\end{eqnarray*}
+
+\end_inset
+
+also 
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{123}\cdot w_{234}\cdot T_{12^{12}4^{23}} & = & \left(x_{1}y_{2}\begin{vmatrix}y_{3} & y_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}-x_{3}y_{2}\begin{vmatrix}y_{1} & y_{4}\\
+z_{1} & z_{4}
+\end{vmatrix}+x_{2}y_{4}\begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\right)\begin{vmatrix}x_{2} & x_{3} & x_{4}\\
+y_{2} & y_{3} & y_{4}\\
+z_{2} & z_{3} & z_{4}
+\end{vmatrix}b_{12}\\
+ &  & +\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{3} & x_{4}\\
+y_{1} & y_{3} & y_{4}\\
+z_{1} & z_{3} & z_{4}
+\end{vmatrix}b_{23}\\
+ &  & +\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2} & x_{3}\\
+y_{1} & y_{2} & y_{3}\\
+z_{1} & z_{2} & z_{3}
+\end{vmatrix}b_{34}\\
+ &  & +\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{3} & x_{4}\\
+y_{2} & y_{3} & y_{4}\\
+z_{2} & z_{3} & z_{4}
+\end{vmatrix}b_{13}\\
+ &  & -\begin{vmatrix}y_{3} & y_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2} & x_{3}\\
+y_{1} & y_{2} & y_{3}\\
+z_{1} & z_{2} & z_{3}
+\end{vmatrix}b_{24}\\
+\end{eqnarray*}
+
+\end_inset
+
+sdfg 
+\begin_inset Formula 
+\begin{eqnarray*}
+w\cdot T_{12^{pq_{2}}3^{pq_{3}}} & = & \sim x_{1}^{q_{3}}\sim x_{2}^{q_{2}}\left(a_{21}^{q_{2}}\sim x_{3}^{q_{2}}-a_{21}^{q_{3}}\sim x_{3}^{q_{3}}+a_{21}^{p}\sim x_{3}^{p}\right)\\
+ &  & +\sim x_{2}^{q_{2}}\sim x_{3}^{q_{3}}\left(a_{32}^{q_{2}}\sim x_{1}^{q_{2}}-a_{32}^{q_{3}}\sim x_{1}^{q_{3}}+a_{32}^{p}\sim x_{1}^{p}\right)\\
+ &  & -\sim x_{1}^{q_{2}}\sim x_{3}^{q_{3}}\left(a_{31}^{q_{2}}\sim x_{2}^{q_{2}}-a_{31}^{q_{3}}\sim x_{2}^{q_{3}}+a_{31}^{p}\sim x_{2}^{p}\right)\\
+ & = & a_{21}^{q_{2}}\sim x_{1}^{q_{3}}\sim x_{2}^{q_{2}}\sim x_{3}^{q_{2}}\\
+ &  & -a_{21}^{q_{3}}\sim x_{3}^{q_{3}}\sim x_{1}^{q_{3}}\sim x_{2}^{q_{2}}\\
+ &  & +a_{21}^{p}\sim x_{3}^{p}\sim x_{1}^{q_{3}}\sim x_{2}^{q_{2}}\\
+ &  & +a_{32}^{q_{2}}\sim x_{1}^{q_{2}}\sim x_{2}^{q_{2}}\sim x_{3}^{q_{3}}\\
+ &  & -a_{32}^{q_{3}}\sim x_{1}^{q_{3}}\sim x_{2}^{q_{2}}\sim x_{3}^{q_{3}}\\
+ &  & +a_{32}^{p}\sim x_{1}^{p}\sim x_{2}^{q_{2}}\sim x_{3}^{q_{3}}\\
+ &  & -a_{31}^{q_{2}}\sim x_{1}^{q_{2}}\sim x_{3}^{q_{3}}\sim x_{2}^{q_{2}}\\
+ &  & +a_{31}^{q_{3}}\sim x_{1}^{q_{2}}\sim x_{3}^{q_{3}}\sim x_{2}^{q_{3}}\\
+ &  & -a_{31}^{p}\sim x_{1}^{q_{2}}\sim x_{3}^{q_{3}}\sim x_{2}^{p}\\
+ & = & a_{21}^{q_{2}}\sim x_{2}^{q_{2}}\left(\sim x_{1}^{q_{3}}\sim x_{3}^{q_{2}}-\sim x_{1}^{q_{2}}\sim x_{3}^{q_{3}}\right)\\
+ &  & -a_{21}^{q_{3}}\sim x_{3}^{q_{3}}\left(\sim x_{1}^{q_{3}}\sim x_{2}^{q_{2}}-\sim x_{1}^{q_{2}}\sim x_{2}^{q_{3}}\right)\\
+ &  & +a_{21}^{p}\left(\sim x_{3}^{p}\sim x_{1}^{q_{3}}\sim x_{2}^{q_{2}}-\sim x_{1}^{q_{2}}\sim x_{3}^{q_{3}}\sim x_{2}^{p}\right)\\
+ &  & +a_{32}^{q_{2}}\sim x_{1}^{q_{2}}\cdot0\\
+ &  & -a_{32}^{q_{3}}\sim x_{3}^{q_{3}}\left(\sim x_{1}^{q_{3}}\sim x_{2}^{q_{2}}-\sim x_{1}^{q_{2}}\sim x_{2}^{q_{3}}\right)\\
+ &  & +a_{32}^{p}\sim x_{3}^{q_{3}}\left(\sim x_{1}^{p}\sim x_{2}^{q_{2}}-\sim x_{1}^{q_{2}}\sim x_{2}^{p}\right)\\
+ & = & -a_{21}^{q_{2}}x_{2}^{p}\sim x_{2}^{q_{2}}w_{123}\\
+ &  & +a_{21}^{q_{3}}x_{3}^{p}\sim x_{3}^{q_{3}}w_{123}\\
+ &  & -a_{21}^{p}\left(x_{1}^{q_{2}}x_{3}^{q_{3}}x_{2}^{p}-x_{2}^{q_{2}}x_{1}^{q_{3}}x_{3}^{p}\right)w_{123}\\
+ &  & +a_{32}^{q_{2}}\sim x_{1}^{q_{2}}\cdot0\\
+ &  & +a_{32}^{q_{3}}x_{3}^{p}\sim x_{3}^{q_{3}}w_{123}\\
+ &  & +a_{32}^{p}x_{3}^{q_{3}}\sim x_{3}^{q_{3}}w_{123}\\
+ & = & -a_{21}^{q_{2}}x_{2}^{p}\sim x_{2}^{q_{2}}w_{123}\\
+ &  & +a_{31}^{q_{3}}x_{3}^{p}\sim x_{3}^{q_{3}}w_{123}\\
+ &  & -a_{21}^{p}\left(x_{1}^{q_{2}}x_{3}^{q_{3}}x_{2}^{p}-x_{2}^{q_{2}}x_{1}^{p}x_{3}^{q_{3}}+x_{2}^{q_{2}}x_{1}^{p}x_{3}^{q_{3}}-x_{2}^{q_{2}}x_{1}^{q_{3}}x_{3}^{p}\right)w_{123}\\
+ &  & +a_{32}^{p}x_{3}^{q_{3}}\sim x_{3}^{q_{3}}w_{123}\\
+ & = & w_{123}\cdot\left(\left(a_{21}^{q_{2}}x_{2}^{p}-a_{21}^{p}x_{2}^{q_{2}}\right)\sim x_{2}^{q_{2}}+\left(a_{31}^{q_{3}}x_{3}^{p}-a_{31}^{p}x_{3}^{q_{3}}\right)\sim x_{3}^{q_{3}}\right)\\
+ & = & w_{123}T_{12^{pq_{2}}3^{pq_{3}}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+a new method 
+\begin_inset Formula 
+\begin{eqnarray*}
+\begin{vmatrix}1 & 0 & 0 & a_{k} & x_{k} & 0 & 0\\
+0 & 1 & 0 & b_{k} & y_{k} & 0 & 0\\
+0 & 0 & 1 & c_{k} & z_{k} & 0 & 0\\
+0 & 0 & 0 & \vec{a}_{i}^{p_{i}}-\vec{a}_{k}^{p_{i}} & -\vec{x}_{k}^{p_{i}} & \vec{x}_{i}^{p_{i}} & 0\\
+0 & 0 & 0 & \vec{a}_{i}^{q_{i}}-\vec{a}_{k}^{q_{i}} & -\vec{x}_{k}^{q_{i}} & \vec{x}_{i}^{q_{i}} & 0\\
+0 & 0 & 0 & \vec{a}_{j}^{p_{j}}-\vec{a}_{k}^{p_{j}} & -\vec{x}_{k}^{p_{j}} & 0 & \vec{x}_{j}^{p_{j}}\\
+0 & 0 & 0 & \vec{a}_{j}^{q_{j}}-\vec{a}_{k}^{q_{j}} & -\vec{x}_{k}^{q_{j}} & 0 & \vec{x}_{j}^{q_{j}}
+\end{vmatrix} & = & \begin{vmatrix}a_{ik}^{p} & -x_{k}^{p} & x_{i}^{p} & 0\\
+a_{ik}^{q_{i}} & -x_{k}^{q_{i}} & x_{i}^{q_{i}} & 0\\
+a_{jk}^{p} & -x_{k}^{p} & 0 & x_{j}^{p}\\
+a_{jk}^{q_{j}} & -x_{k}^{q_{j}} & 0 & x_{j}^{q_{j}}
+\end{vmatrix}\\
+ & = & x_{k}^{p}\begin{vmatrix}a_{ik}^{q_{i}} & x_{i}^{q_{i}} & 0\\
+a_{jk}^{p} & 0 & x_{j}^{p}\\
+a_{jk}^{q_{j}} & 0 & x_{j}^{q_{j}}
+\end{vmatrix}\\
+ &  & -x_{k}^{q_{i}}\begin{vmatrix}a_{ik}^{p} & x_{i}^{p} & 0\\
+a_{jk}^{p} & 0 & x_{j}^{p}\\
+a_{jk}^{q_{j}} & 0 & x_{j}^{q_{j}}
+\end{vmatrix}\\
+ &  & +x_{k}^{p}\begin{vmatrix}a_{ik}^{p} & x_{i}^{p} & 0\\
+a_{ik}^{q_{i}} & x_{i}^{q_{i}} & 0\\
+a_{jk}^{q_{j}} & 0 & x_{j}^{q_{j}}
+\end{vmatrix}\\
+ &  & -x_{k}^{q_{j}}\begin{vmatrix}a_{ik}^{p} & x_{i}^{p} & 0\\
+a_{ik}^{q_{i}} & x_{i}^{q_{i}} & 0\\
+a_{jk}^{p} & 0 & x_{j}^{p}
+\end{vmatrix}\\
+ &  & +x_{k}^{q_{i}}x_{i}^{p}\begin{vmatrix}a_{jk}^{p} & x_{j}^{p}\\
+a_{jk}^{q_{j}} & x_{j}^{q_{j}}
+\end{vmatrix}\\
+ & = & \left(x_{k}^{q_{i}}x_{i}^{p}-x_{k}^{p}x_{i}^{q_{i}}\right)\begin{vmatrix}a_{jk}^{p} & x_{j}^{p}\\
+a_{jk}^{q_{j}} & x_{j}^{q_{j}}
+\end{vmatrix}\\
+ &  & -\left(x_{k}^{p}x_{j}^{q_{j}}-x_{k}^{q_{j}}x_{j}^{p}\right)\begin{vmatrix}a_{ik}^{p} & x_{i}^{p}\\
+a_{ik}^{q_{i}} & x_{i}^{q_{i}}
+\end{vmatrix}\\
+ & \stackrel{k=m}{=} & \begin{vmatrix}x_{m}^{p} & x_{j}^{p}\\
+x_{m}^{q_{j}} & x_{j}^{q_{j}}
+\end{vmatrix}\begin{vmatrix}a_{im}^{p} & x_{i}^{p}\\
+a_{im}^{q_{j}} & x_{i}^{q_{j}}
+\end{vmatrix}-\begin{vmatrix}x_{m}^{p} & x_{i}^{p}\\
+x_{m}^{q_{i}} & x_{i}^{q_{i}}
+\end{vmatrix}\begin{vmatrix}a_{jm}^{p} & x_{j}^{p}\\
+a_{jm}^{q_{j}} & x_{j}^{q_{j}}
+\end{vmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+Hmmm.
+ Lets try 
+\begin_inset Formula 
+\begin{eqnarray*}
+0 & = & \begin{vmatrix}a_{im}^{p} & -x_{m}^{p} & x_{i}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{2}} & -x_{m}^{q_{2}} & x_{i}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{im}^{q_{3}} & -x_{m}^{q_{3}} & x_{i}^{q_{3}} & x_{i}^{q_{3}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & 0 & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & 0 & 0 & x_{j}^{q_{3}}
+\end{vmatrix}\\
+ & = & x_{i}^{p}\begin{vmatrix}a_{im}^{q_{2}} & -x_{m}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{im}^{q_{3}} & -x_{m}^{q_{3}} & x_{i}^{q_{3}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}-x_{i}^{q_{2}}\begin{vmatrix}a_{im}^{p} & -x_{m}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{3}} & -x_{m}^{q_{3}} & x_{i}^{q_{3}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}+x_{i}^{q_{3}}\begin{vmatrix}a_{im}^{p} & -x_{m}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{2}} & -x_{m}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}\\
+ & = & x_{i}^{p}T_{mi^{q_{2}q_{3}}j^{q_{3}p}}-x_{i}^{q_{2}}T_{mi^{pq_{3}}j^{pq_{3}}}+x_{i}^{q_{3}}T_{mi^{pq_{2}}j^{pq_{3}}}
+\end{eqnarray*}
+
+\end_inset
+
+Interesting.
+\end_layout
+
+\begin_layout Itemize
+Now lets try 
+\begin_inset Formula 
+\begin{eqnarray*}
+0 & = & \begin{vmatrix}a_{im}^{p} & -x_{m}^{p} & -x_{m}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{2}} & -x_{m}^{q_{2}} & -x_{m}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{im}^{q_{3}} & -x_{m}^{q_{3}} & -x_{m}^{q_{3}} & x_{i}^{q_{3}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & -x_{m}^{p} & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & -x_{m}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}\\
+ & = & x_{m}^{p}\begin{vmatrix}a_{im}^{q_{2}} & -x_{m}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{im}^{q_{3}} & -x_{m}^{q_{3}} & x_{i}^{q_{3}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}-x_{m}^{q_{2}}\begin{vmatrix}a_{im}^{p} & -x_{m}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{3}} & -x_{m}^{q_{3}} & x_{i}^{q_{3}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}+x_{m}^{q_{3}}\begin{vmatrix}a_{im}^{p} & -x_{m}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{2}} & -x_{m}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}-x_{m}^{p}\begin{vmatrix}a_{im}^{p} & -x_{m}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{2}} & -x_{m}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{im}^{q_{3}} & -x_{m}^{q_{3}} & x_{i}^{q_{3}} & 0\\
+a_{jm}^{q_{3}} & -x_{m}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}+x_{m}^{q_{3}}\begin{vmatrix}a_{im}^{p} & -x_{m}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{2}} & -x_{m}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{im}^{q_{3}} & -x_{m}^{q_{3}} & x_{i}^{q_{3}} & 0\\
+a_{jm}^{p} & -x_{m}^{p} & 0 & x_{j}^{p}
+\end{vmatrix}\\
+ & = & x_{m}^{p}T_{mi^{q_{2}q_{3}}j^{pq_{3}}}-x_{m}^{q_{2}}T_{mi^{pq_{3}}j^{pq_{3}}}+x_{m}^{q_{3}}T_{mi^{pq_{2}}j^{pq_{3}}}-x_{m}^{p}x_{j}^{q_{3}}b_{im}+x_{m}^{q_{3}}x_{j}^{p}b_{im}\\
+ & = & x_{m}^{p}T_{mi^{q_{2}q_{3}}j^{pq_{3}}}-x_{m}^{q_{2}}T_{mi^{pq_{3}}j^{pq_{3}}}+x_{m}^{q_{3}}T_{mi^{pq_{2}}j^{pq_{3}}}+\begin{vmatrix}x_{m}^{q_{3}} & x_{j}^{q_{3}}\\
+x_{m}^{p} & x_{j}^{p}
+\end{vmatrix}b_{im}
+\end{eqnarray*}
+
+\end_inset
+
+Holy shit! Repeat, we get
+\begin_inset Formula 
+\begin{eqnarray*}
+\\
+\\
+\end{eqnarray*}
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\begin{vmatrix}x_{m}^{p} & x_{j}^{p}\\
+x_{m}^{q_{3}} & x_{j}^{q_{3}}
+\end{vmatrix}b_{im} & = & x_{m}^{p}T_{mi^{q_{2}q_{3}}j^{pq_{3}}}-x_{m}^{q_{2}}T_{mi^{pq_{3}}j^{pq_{3}}}+x_{m}^{q_{3}}T_{mi^{pq_{2}}j^{pq_{3}}}\\
+\begin{vmatrix}x_{m}^{p} & x_{j}^{p}\\
+x_{m}^{q_{2}} & x_{j}^{q_{2}}
+\end{vmatrix}b_{im} & = & x_{m}^{p}T_{mi^{q_{2}q_{3}}j^{pq_{2}}}-x_{m}^{q_{2}}T_{mi^{pq_{3}}j^{pq_{2}}}+x_{m}^{q_{3}}T_{mi^{pq_{2}}j^{pq_{2}}}\\
+\begin{vmatrix}x_{m}^{q_{2}} & x_{j}^{q_{3}}\\
+x_{m}^{q_{2}} & x_{j}^{q_{2}}
+\end{vmatrix}b_{im} & = & x_{m}^{p}T_{mi^{q_{2}q_{3}}j^{q_{3}q_{2}}}-x_{m}^{q_{2}}T_{mi^{pq_{3}}j^{q_{3}q_{2}}}+x_{m}^{q_{3}}T_{mi^{pq_{2}}j^{q_{3}q_{2}}}
+\end{eqnarray*}
+
+\end_inset
+
+Similarly, we get 
+\begin_inset Formula 
+\begin{eqnarray*}
+\begin{vmatrix}x_{m}^{p} & x_{i}^{p}\\
+x_{m}^{q_{3}} & x_{i}^{q_{3}}
+\end{vmatrix}b_{jm} & = & x_{m}^{p}T_{mi^{pq_{3}}j^{q_{2}q_{3}}}-x_{m}^{q_{2}}T_{mi^{pq_{3}}j^{pq_{3}}}+x_{m}^{q_{3}}T_{mi^{pq_{3}}j^{pq_{2}}}\\
+\begin{vmatrix}x_{m}^{p} & x_{i}^{p}\\
+x_{m}^{q_{2}} & x_{i}^{q_{2}}
+\end{vmatrix}b_{jm} & = & x_{m}^{p}T_{mi^{pq_{2}}j^{q_{2}q_{3}}}-x_{m}^{q_{2}}T_{mi^{pq_{2}}j^{pq_{3}}}+x_{m}^{q_{3}}T_{mi^{pq_{2}}j^{pq_{2}}}\\
+\begin{vmatrix}x_{m}^{q_{2}} & x_{i}^{q_{3}}\\
+x_{m}^{q_{2}} & x_{i}^{q_{2}}
+\end{vmatrix}b_{jm} & = & x_{m}^{p}T_{mi^{q_{3}q_{2}}j^{q_{2}q_{3}}}-x_{m}^{q_{2}}T_{mi^{q_{3}q_{2}}j^{pq_{3}}}+x_{m}^{q_{3}}T_{mi^{q_{3}q_{2}}j^{pq_{2}}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Look at 
+\begin_inset Formula 
+\[
+\begin{vmatrix}a_{im-1}^{p} & -x_{m-1}^{p} & x_{i}^{p} & 0\\
+a_{im-1}^{q_{2}} & -x_{m-1}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{jm-1}^{p} & -x_{m-1}^{p} & 0 & x_{j}^{p}\\
+a_{jm-1}^{q_{3}} & -x_{m-1}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}+\begin{vmatrix}a_{mm-1}^{p} & -x_{m-1}^{p} & x_{i}^{p} & 0\\
+a_{mm-1}^{q_{2}} & -x_{m-1}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{mm-1}^{p} & -x_{m-1}^{p} & 0 & x_{j}^{p}\\
+a_{mm-1}^{q_{3}} & -x_{m-1}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}+\begin{vmatrix}a_{im}^{p} & x_{m}^{p}-x_{m-1}^{p} & x_{i}^{p} & 0\\
+a_{im}^{q_{2}} & x_{m}^{q_{2}}-x_{m-1}^{q_{2}} & x_{i}^{q_{2}} & 0\\
+a_{jm}^{p} & x_{m}^{p}-x_{m-1}^{p} & 0 & x_{j}^{p}\\
+a_{jm}^{q_{3}} & x_{m}^{q_{3}}-x_{m-1}^{q_{3}} & 0 & x_{j}^{q_{3}}
+\end{vmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,147 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry} 
+\geometry{letterpaper}
+
+\usepackage{titlesec}                   % ... or a4paper or a5paper or ... 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{titlesec}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{cite}
+\usepackage{tikz-cd}
+
+
+
+\input{mydefs}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\setcounter{secnumdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\title{Spectral Rigidity of Hurwitz Surfaces}
+\author{Justin Katz}
+\begin{document}
+\maketitle 
+
+For an element $\gamma \in \PSL(2,\R)$, there is a unique lift $\tilde{\gamma} \in \SL(2,\R)$ such that $\trace(\tilde{\gamma})\geq 0$. Define $\trace(\gamma):= \trace(\tilde{\gamma})$. We say that an element $\gamma \in \PSL(2,\R)$ is hyperbolic if $\trace(\gamma)>2$. In this case, there is a unique real number $N(\gamma)>1$ such that $\tilde{\gamma}$ is conjugate in $\SL(2,\R)$ to $\tbt{N(\gamma)}{0}{0}{N(\gamma)^{-1}}$. We call $N(\gamma)$ the \emph{norm} of $\gamma$. The norm and trace are related by the equation $\trace(\gamma)=N(\gamma)+N(\gamma)^{-1}$. In particular, they uniquely determine one another. 
+
+Let $\Gamma \leq \PSL(2,\R)$ be a cofinite Fuchsian group. We say that a hyperbolic element $\gamma$ is primitive if it is not a proper power.  Let $[\Gamma]_{\prim}$ denote the collection of conjugacy classes of primitive hyperbolic elements of $\Gamma$. Since trace and norm are both conjugation invariant, we may extend their definition to $[\Gamma]_{\prim}$.
+
+Let $\rho:\Gamma\to \GL(V)$ be a representation of $\Gamma$ on a finite dimensional vectorspace $V$. Define, for $\re(s)\gg 0$ the (twisted) Selberg zeta function
+	\[ Z_{\gamma}(s,\rho):= \prod_{[\gamma]\in [\Gamma]_{p}}\prod_{k=0}^{\infty}\det(1-\rho(\gamma)N(\gamma)^{-(s+k)}) \]
+
+\paragraph{Multiplicative independence}
+  
+
+Set $\Lambda_\Gamma(s,\rho)=\log Z_\Gamma(s,\rho)$. Compute for $\re(s)\gg 0$,
+\begin{align*}
+\Lambda_\Gamma(s,\rho)&=\sum_{[\gamma]\in [\Gamma]_p} \sum_{k=0}^\infty \log \det (1-\rho(\gamma)N(\gamma)^{-(s+k)}) \\
+ &=\sum_{[\gamma]\in [\Gamma]_p} \sum_{k=0}^\infty \trace \log (1-\rho(\gamma)N(\gamma)^{-(s+k)})  \\
+&=-\sum_{[\gamma]\in [\Gamma]_p} \sum_{k=0}^\infty\sum_{m=1}^\infty \frac{\chi_\rho(\gamma^m)}{m}N(\gamma)^{-m(s+k)},
+\end{align*}
+since $\log(1-A)=-\sum_{m=1}^\infty \frac{A^m}{m}$ for any matrix $A$ with sufficiently small entries. In the last line, $\chi_\rho(\gamma)=\trace(\rho(\gamma))$ is the character of $\rho$. 
+
+The expression in the last line of the previous display is sensible for $\chi_\rho$ for any class function on $\Gamma$. For $\chi$ a class function on $\Gamma$, we take this as a definition of $\Lambda_\Gamma(s,\chi)$ and thereby $Z_\Gamma(s,\chi)$. For a class function $\chi$, suppose there are finitely many nonzero rational numbers $a_\rho$, for $\rho \in \hat{\Gamma}$ such that  $\chi=\sum_{\rho \in \hat{\Gamma}}a_\rho \chi_\rho$. We call such a $\chi$ a \emph{virtual character}, and write $\chi \in \vchar(\Gamma)$. For such a $\chi$, 
+\[ \Lambda_\Gamma(s,\chi)=\sum_{\rho\in \hat{\Gamma}} a_\rho \Lambda_\Gamma(s,\rho) \]
+and
+\[ Z_\Gamma(s,\chi)=\prod_{\rho\in \hat{\Gamma}} Z_\Gamma(s,\rho)^{a_\rho} \]
+
+Suppose there is some multiplicative dependency among the functions $Z_\Gamma(s,\rho_1),...,Z_\Gamma(s,\rho_n)$, i.e. there are rational numbers $a_{\rho_i}$ so that $\prod_{i=1}^n Z_\Gamma(s,\rho_i)^{a_{\rho_i}}=1$. Then this may be expressed concisely as $Z_\Gamma(s,\chi)=1$, where $\chi=\sum_{i=1}^n a_{\rho_i} \chi_{\rho_i}$.
+
+Let $\Gamma'\leq \Gamma$ be a finite index normal subgroup, and set $G=\Gamma'\lmod \Gamma$. For each class function $\chi$ of $G$, let $\tilde{\chi}$ be its inflation to $\Gamma$. Now suppose $\chi$ is a virtual character of $G$ such that $Z_\Gamma(s,\tilde{\chi})=1$. This is equivalent to 
+	\[ \Lambda_\Gamma(s,\tilde{\chi})= -\sum_{[\gamma]\in [\Gamma]_p} \sum_{k=0}^\infty\sum_{m=1}^\infty \frac{\tilde{\chi}(\gamma^m)}{m}N(\gamma)^{-m(s+k)}=0 \]
+
+Recall (find ref) the uniqueness principle for generalized Dirichlet series: let $\nu_1, \nu_2,...$ be a sequence of distinct positive real numbers and $a(\nu_1),a(\nu_2),...$ a sequence of complex numbers such that the series 
+	\[ \sum_{i=1}^\infty a(\nu_i)\nu_i^{-s}\]
+	converges absolutely to an analytic function $f(s)$ for $\re s \gg 0$. Then $f(s)=0$ identically if and only if $a(\nu_i)=0$ for all $\nu_i$.  
+
+
+In order to apply the uniqueness principle for (generalized) Dirichlet series, we must collect summands according to their base.  To this end, let $\nspec_\Gamma$ denote the \emph{primitive norm spectrum of $\Gamma$}. That is, $\nspec_\Gamma$ is the (multi-)set of values taken by the norm map $N$ at primitive hyperbolic conjugacy classes in $\Gamma$. For every real number $\nu$, let $\nspec_\Gamma(\nu)$ denote the collection of classes $[\gamma] \in [\Gamma]_p$ with $N(\gamma)=\nu$. By definition, $\nspec_\Gamma(\nu)$ is empty unless $\nu \in \nspec_\Gamma$. 
+Now we have 
+	\[ \Lambda_\Gamma(s,\tilde{\chi})=-\sum_{\nu \in \nspec_\Gamma} \sum_{[\gamma] \in \nspec_\Gamma(\nu)} \sum_{k=0}^\infty\sum_{m=1}^\infty \frac{\tilde{\chi}(\gamma^m)}{m}\nu ^{-m(s+k)}=0. \]
+The sum over $k$ is a geometric series with base $\nu^{-m}$, so 
+	\[ \Lambda_\Gamma(s,\tilde{\chi})=-\sum_{\nu \in \nspec_\Gamma} \sum_{[\gamma] \in \nspec_\Gamma(\nu)} \sum_{m=1}^\infty \frac{\tilde{\chi}(\gamma^m)}{m(1-\nu^{-m})}\nu ^{-ms}=0  \] 
+
+The set consisting of all powers of a fixed primitive norm and the set consisting of a fixed power of all primitive norms may intersect nontrivially. Indeed, by McReynolds-Lafont, arithmetic non-compact hyperbolic surfaces admit arbitrarily long arithmetic progressions in their length spectrum. 
+
+For each primitive norm $\nu$, and each integer $m>0$, let $A_m(\nu)$ denote the set of primitive hyperbolic conjugacy classes $[\gamma]$ in $\Gamma$, such that $N(\gamma^m)=\nu$. For a fixed $\nu \in \nspec_\Gamma$, only finitely many $A_m(\nu)$ are nonempty. Let $m(\nu)$ be the largest $m$ such that $A_m(\nu)$ is nonempty.  Then we have a partition $\nspec_\Gamma(\nu)=A_1(\nu)\sqcup ...\sqcup A_{m(\nu)}(\nu)$. Thus, for each $\nu \in \nspec_\Gamma$, the  coefficient $b(\nu,\chi)$ of $\nu^{-s}$ in $\Lambda_\Gamma(s,\chi)$  is
+	\[ b(\nu,\chi):= -\sum_{m=1}^{m(\nu)} \frac{1}{m(1-\nu^{-m})} \sum_{[\gamma]\in A_m(\nu)} \tilde{\chi}(\gamma^m). \]
+which we conclude is zero for every primitive length $\nu$. This does not immediately imply that the class function $\tilde{\chi}$ is zero. 
+
+Indeed, for each fixed $\nu$, as we vary $\chi$ among the virtual characters, the function  $\lambda_\nu: \chi \mapsto b(\nu,\chi)$ is actually a linear functional on the vectorspace $\vchar(\Gamma' \lmod \Gamma)$. In order to conclude that $\chi=0$, we must demonstrate that the (infinite!) set of functionals $\{ \lambda_\nu: \nu \in \nspec_\Gamma\}$ spans the (finite dimensional!) dual space to $\vchar(\Gamma'\lmod \Gamma)$. 
+%%%%%%%%%%%%%%%%%%%%
+\paragraph{Conjugacy classes in $\GL(2,q)$ and $\PGL(2,q)$} 
+Let $q$ be an odd prime power and set $G=\GL(2,q)$ and $\bar{G}=\PGL(2,q)=G/ Z$ where $Z$ is the center of $G$. For an element $g\in G$, define the \emph{characteristic polynomial} $p_{g}:=x^{2}-\tr(g)x+\det(g) \in F_{q}[x]$. Among non central conjugacy classes, the characteristic polynomial of an element completely determines its class:
+	\begin{lemma}
+		Suppose $g$ and $h$ are non central. Then $g$ and $h$ are conjugate in $G$ if and only if $p_{g}=p_{h}$ 
+	\end{lemma} 
+	\begin{proof}
+		This follows from the theory of Jordan normal forms.
+	\end{proof}
+Conjugation in $\bar{G}$ can be described in terms of conjugation in $G$:
+	\begin{lemma}
+		Elements $gZ$ and $hZ$ in $\bar{G}$ are conjugate if and only if $g$ is conjugate to $\lambda h$ in $G$ for some $\lambda \in Z$. 
+	\end{lemma}
+For an element $gZ$ of $\bar{G}$, let $\bar{p}_{gZ}$ denote the collection of characteristic polynomials of lifts of $gZ$ to $G$. That is, $\bar{p}_{gZ}=\{p_{\lambda g}: \lambda \in Z\}$. Combining the preceding lemmas, we obtain a characterization of nonidentity conjugacy classes in $\bar{G}$:
+	\begin{lemma}
+		Nonidentity elements $gZ$ and $hZ$ are conjugate in $\bar{G}$ if and only if $\bar{p}_{gZ}=\bar{p}_{hZ}$. 
+	\end{lemma}
+%%%%%%%%%%%%%%%%%%
+\paragraph{Multiplicative independence for principal congruence covers of semi-arithmetic surfaces}
+ 
+Now suppose $\Gamma$ is a subgroup of $\PGL(2,\O_K)$  where $K$ is a totally real number field, and $\O_K$ is its ring of integers. We further suppose that under some embedding $K\to \R$, the image of $\Gamma$ is a lattice in $\PGL(2,\R)$.  For any prime ideal $\p$ of $\O_K$, the reduction mod $\p$ map $\O_K \to \F_\p:=\O_K \rmod \p \O_K$ induces a map $\PGL(2,O_K)\to G(\p):=\PGL(2,\F_\p)$. Let $\pi_\p$ be its restriction to $\Gamma$. For each $\p$, define the \emph{principal congruence subgroup}  $\Gamma(\p) := \ker \pi_\p$ \emph{of level $\p$}. Let $S$ be the set of primes $\p$ such that the map $\pi_\p$ is surjective. Thus, when $\p \in S$, $\pi_\p$ induces an isomorphism of $\Gamma(\p) \lmod \Gamma$ with $G(\p)=\PGL(2,O_K\rmod \p O_K)$. If $H$ is one of the groups $\Gamma,\Gamma(\p)$ or $G(\p)$, let $\tilde{H}$ denote its lift to $\GL(2,\F_{\p})$.
+
+
+\begin{thm}
+	Suppose $\gamma\in \Gamma - \Gamma(\p)$ is hyperbolic and that the characteristic polynomial $p_{\gamma}$ is irreducible over $K$. If $\lambda \in \Gamma$ is such that $N(\gamma)=N(\lambda)$, then $\pi_{\p}(\gamma)$ and $\pi_{\p}(\lambda)$ are conjugate in $G(\p)$. 
+\end{thm}
+  
+\begin{proof}
+		It suffices to show that $N(\gamma)$ completely determines the characteristic polynomial $p_{\gamma}$.  To this end, observe that the characteristic polynomial $p_{\gamma}$ of $\gamma$ is also the minimal polynomial for the unit $N_{\gamma}$ in the quadratic extension $K_{\gamma}:= K(N(\gamma))$ of $K$. Let $\sigma$ denote the nontrivial Galois automorphism of $K_{\gamma}/K$. Then $p_{\gamma}=(t-N(\gamma))(t-N(\gamma)^{\sigma}),$ as claimed.  Specifically, the constant term $\det(\gamma)$ of $p_{\gamma}$ is the Galois norm $N(\gamma)N(\gamma)^{\sigma}$ of the quadratic unit $N(\gamma)$.  
+\end{proof}
+
+\begin{cor}
+Suppose $\chi$ is the inflation of a class function from $G(\p)$ to $\Gamma$. Then $\chi$ is constant along each set $\nspec_{\Gamma}(\nu)$ such that $\nu \neq 1 \mod \p$. If $\nu=1 \mod \p$,  and $\nspec_{\Gamma}(\nu)\cap \Gamma(\p)= \emptyset$, then $\chi$ is constant on $\nspec_{\Gamma}(\nu)$. 
+\end{cor}
+  
+\begin{thm}
+Suppose $\Gamma$  is as above, and $\p \in S$. Let $\chi$ be a class function on $\Gamma$ inflated from one on $G(\p)$. Then $\Lambda_{\Gamma}(s,\chi)=0$ if and only if $\chi=0$. 
+\end{thm}
+\begin{proof}
+If $\Lambda_{\Gamma}(s,\chi)=0$, then for all $\nu \in \nspec_{\Gamma}$, we have $b(\nu,\chi)=0$. 
+
+First, suppose $\nu\neq 1 \mod \p$. Then along the set $\nspec_{\Gamma}(\nu)$ of primitive hyperbolic $\gamma \in \Gamma$ with norm $\nu$, the function $\chi$ takes a common value which we denote $\chi(\nu)$. Let $a_{m}(\nu)$ denote the cardinality of $A_{m}(\nu)$, the set of primitive hyperbolic $\gamma \in \Gamma$ such that $N(\gamma^{m})=\nu$. Then 
+	\[
+		b(\nu,\chi)=-\sum_{m=1}^{m(\nu)}\frac{a_{m}(\nu)}{m(1-\nu^{-m})}\chi(\nu)=0
+	\] 
+To conclude that $\chi(\nu)=0$, it suffices to demonstrate the existence of a primitive hyperbolic $\gamma \in \Gamma$ such that $N(\gamma)= \nu \mod \p$.  	This follows from the Cheboratev density theorem of (cite Sarnak):
+
+\begin{thm}
+	Let $C$ be a conjugacy class in $G(\p)$ and $F(T,C)$ denote the collection of primitive hyperbolic $\gamma$ in $\Gamma$ with $N(\gamma)<T$ such that $\pi_{\p}(\gamma) \in C$.  Then as $T \to \infty$, 
+		\[F(T,C) = \frac{|C|}{|G(\p)|} \frac{T}{\log T} +o(1).\]
+\end{thm}
+
+Thus, for any primitive hyperbolic $\gamma \in \Gamma$ with $N(\gamma)\neq 1 \mod \p$, we have $\chi(\gamma)=0$. 
+
+Now suppose $\nu =1 \mod \p$. Then if $\gamma \in \nspec_{\Gamma}(\nu)$, either $\pi_{\p}(\gamma) \in I$ the identity conjugacy class, or $\pi_{\p}(\gamma) \in P$ the unique parabolic conjugacy class in $G(\p)$. Note that $|I|=1$, and $|P|=q^{2}-1$, where $q= |O_{K}/\p O_{K}|$. By Sarnak's version of Chebotarev's density theorem, there are infinitely $\nu \in \nspec_{\Gamma}$  with $\nu=1 \mod \p$ such that $\nspec_{\Gamma}(\nu)\cap \Gamma(\p) =\emptyset$. For any such $\nu$, $\chi$ is constant along $\nspec_{\Gamma}(\nu)$. As above, for such $\nu$, $b(\nu,\chi)=0$ implies $\chi(\nu)=0$. 
+
+\end{proof}
+
+
+
+
+
+\bibliography{SRofHS}{}
+\bibliographystyle{plain}
+
+\end{document}

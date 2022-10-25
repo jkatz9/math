@@ -1,0 +1,60 @@
+\documentclass{amsart}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{hyperref}
+\usepackage{cite}
+
+\usepackage{mycros}
+\usepackage{quiver}
+
+
+
+
+\title{On a converse to Sunada}
+\author{Justin Katz}
+
+\begin{document}
+\maketitle 
+
+
+In \cite{sunada1985} Sunada introduced a group theoretic mechanism for producing pairs of isospectral manifolds. In this note, I formulate a converse to that construction and discuss some avenues by which one might prove them.
+
+Suppose we are given two compact Riemannian manifolds, $M_{1}$ and $M_{2}$ which admit a finite covering map onto a common base $M_{o}$, and are both finitely covered by $M$.
+
+\[\begin{tikzcd}
+	&& M \\
+	\\
+	{M_{1}} &&&& {M_{2}} \\
+	\\
+	&& M_{o}
+	\arrow[shorten <=6pt, shorten >=6pt, two heads, from=3-1, to=5-3]
+	\arrow[shorten <=6pt, shorten >=6pt, two heads, from=3-5, to=5-3]
+	\arrow[shorten <=6pt, shorten >=6pt, two heads, from=1-3, to=3-1]
+	\arrow[shorten <=6pt, shorten >=6pt, two heads, from=1-3, to=3-5]
+\end{tikzcd}\]
+
+
+Taking  a finite cover, if necessary, we assume that the cover $M \to M_{o}$ is regular, and set $G=\Gal(M/M_{o})$. Let $H_{i} = \Gal(M/M_i)$ denote the subgroups corresponding to the intermediate covers $M \epi M_i$ for $i=1,2$. Letting $G$ act on $M$ by deck transformations, the diagram above is
+
+% https://q.uiver.app/?q=WzAsNCxbMiwwLCJNIl0sWzAsMiwiSF8xIFxcYmFja3NsYXNoIE0iXSxbNCwyLCJIXzIgXFxiYWNrc2xhc2ggTSJdLFsyLDQsIkdcXGJhY2tzbGFzaCBNIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMiwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzEsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzIsMywiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV1d
+\[\begin{tikzcd}
+	&& M \\
+	\\
+	{H_1 \backslash M} &&&& {H_2 \backslash M} \\
+	\\
+	&& {G\backslash M}
+	\arrow[two heads, from=1-3, to=3-1]
+	\arrow[two heads, from=1-3, to=3-5]
+	\arrow[two heads, from=3-1, to=5-3]
+	\arrow[two heads, from=3-5, to=5-3]
+\end{tikzcd}\]
+
+
+
+\bibliographystyle{plainurl}
+\bibliography{bigBib}
+
+
+\end{document}

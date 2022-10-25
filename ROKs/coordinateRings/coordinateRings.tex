@@ -1,0 +1,47 @@
+\documentclass[11pt]{amsart}
+
+
+\usepackage[margin=1in]{geometry}
+	\geometry{letterpaper}
+\usepackage{titlesec}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{braket}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+
+
+
+\include{mydefs}
+\input{ROKs_defs.tex}
+
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{1em}
+
+
+%\setcounter{secnumdepth}{4}
+%\setcounter{secnumdepth}{4}
+
+\titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection}{1em}{}%%
+\titlespacing*{\section}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+\newcommand{\CP}{\Cbb \Pbb}
+\newcommand{\CPone}{\Cbb \Pbb^1}
+
+\title{An observation reguarding coordinate rings}
+\author{Justin Katz}
+\begin{document}
+\maketitle
+A question: is the coordinate ring $K[V]=\{ f \mid_V : f \in K[\Abb_K^n] \}$ of an affine variety $V$ \emph{literally} the set of regular maps $V \to \Abb^1_K$. Is there a canonical ring structure on the latter?
+
+Consider $\Abb^1_K$ as a 1 dimensional variety over $K$. Its automorphism group is $K^\times \rtimes K$, which acts transitively on its points, though not $K$ linearly
+
+
+\bibliographystyle{plain}
+\bibliography{BigBib}
+
+\end{document}

@@ -1,0 +1,48 @@
+%!TEX root = main.tex
+Sally and Shalika notation:
+\begin{itemize}
+	\item $k$ is a local field, $\Ocal$ its ring of integers, $\pfrak$ its maximal ideal, $q= \|\Ocal /\pfrak \|$ is assumed odd. 
+	\item Normalize the haar measure $\dop x$ on $(k,+)$ so that $ \Ocal$ has measure $1$. 
+	\item Define the valuation on $k$ via the equations $\dop (ax)= \|a\| \dop x$ for $a\in k$. Let $U= \{x\in k : \|x\|=1\} = \Ocal^\times$ and $U_n = 1 + \pfrak^n = \{x \in U : \|x-1\| \leq q^{-n}\}$
+	\item $\tau$ denotes a fixed uniformizer of $\pfrak$, $\eps$ is a fixed generator for the $q-1$th roots of $1$ in $U$. 
+\end{itemize}
+
+For $V$ a quadratic extension of $k$, we let $\Nm{V/k}$ denote the norm map. Since $k$ has odd residual characteristic, $V$ is one of $k(\sqrt{\tau}),$ $k(\sqrt{\eps \tau}),$ or $k(\sqrt{\eps})$. The former two are ramified, and the latter is unramified. We will use $\theta$ to represent one of $\tau, \eps \tau,$ or $\eps$.  
+
+\def\cond#1{{\rm cond}(#1)}
+For $V=V_\theta = k(\sqrt{\theta})$, we let $C_\theta = \ker \Nm{V/k} \leq V^\times$ and $\pfrak_\theta$ the prime ideal in $V_\theta$. Set, in the unramified case, for $h\geq 1$:
+	\[ C_\eps ^{h} = (1 +\pfrak_\eps ^h) \cap C_\eps \] 
+and in either of the ramified cases, for $h\geq 0$:
+	\[ C_\theta^h  = (1+\pfrak_\theta^{2h+1})\cap C_\theta.\]
+
+Then, in any case, $\{ C_\theta ^h \}$ constitute a neighborhood base about $1$ in $C_\theta$. For a character $\psi \in \hat{C_\theta}$, write $\cond{\psi}$ for the largest subgroup in this filtration on which $\psi$ is trivial. For each $\theta,$ $C_\theta$ has a unique character of order $2$ which we denote by $\psi_o=\psi_{o,\theta}$. 
+
+Let $G = \SL(2,k),$ $A=A(k)$ the diagonal subgroup (a maximal split torus). This subgroup is isomorphic to $k^\times$. We let $A_d$ denote the image of $U_d$ under this identification. 
+
+Let $T$ be any compact cartan in $G$, which must be naturally isomorphic to some $C_\theta$. Let $T_d$ denote the image of $C_\theta ^d$ under such an identification. 
+
+For a subset $S$ of $G$, let $S^G = \{ g s g^\inv : g \in G, s \in S\}$, and let $S'$ the subset of $S$ consisting of regular elements (those with distinct eigenvalues). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{From SS paper on fourier transforms}
+For $f \in C_c^\infty(G)$, define, for $\gamma$ noncentral, the orbital integral 
+	\[I_f (\gamma) = \int _{G/G_\gamma} f(x \gamma x^\inv) \dop \xdot \]
+where $G_\gamma$ is the centralizer of $\gamma$ in $G=\SL(2,k)$ and $\dop \xdot$ is a $G$ invariant measure on $G/G_\gamma$. 
+
+We can view the map $f\mapsto I_{f}$ as one from $C_c^\infty (G)$ to $C(G)^{\Inn(G)}$, i.e. sending functions on $G$ to class functions. The naive quotient of $G$ by $\Inn(G)$ is a singular space (owing to the non-regular elements, as well as the unipotent elements) 
+
+\begin{align*}
+	A &= \{ \Tbt{\lambda}{}{}{\lambda^\inv} : \lambda \in k^\times \}, & 	&	  \\
+	T_\tau &= \{\Tbt{x}{y}{\tau y}{x} : x,y \in k\},  & T^\# _\tau &= \{\Tbt{x}{\eps y}{\tau \eps^\inv y}{x} : x,y \in k\} \\
+	T_{\eps \tau} &= \{\Tbt{x}{y}{ \eps \tau y}{x} : x,y \in k\}, & T^\# _{\eps \tau} &= \{\Tbt{x}{\eps y}{\tau y}{x} : x,y \in k\}\\
+	T_{\eps} &= \{\Tbt{x}{y}{ \eps y}{x} : x,y \in k\},  & T^\# _{\eps} &= \{\Tbt{x}{\tau y}{\eps \tau^\inv y}{x} : x,y \in k\}
+\end{align*}
+
+When $-1 \in (k^\times)^2$, these constitute a complete (and irredundant) set of conjugacy classes of cartans in $G$. 
+
+When $-1 \notin (k^\times) ^2$, $T_\theta$ and $T_\theta^\#$ are conjugate for $\theta \in \{ \tau, \eps \tau\}$. 
+
+The set of elliptic elements in $G$ is 
+\[
+	G_e = \bigcup_{T'} (T')^G,
+\]
+as $T'$ runs through the collection $\{ T_\theta, T^\#_\theta : \theta \in \{\tau,\eps \tau, \eps \}\}$ of compact cartans in $G$. 

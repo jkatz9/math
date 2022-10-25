@@ -1,0 +1,274 @@
+\documentclass[12pt]{amsart}
+\usepackage[margin=1in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage[all]{xy}
+\input{mydefs}
+\renewcommand{\sl}{\mathfrak{sl}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\n}{\mathfrak{n}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\der}{\frac{d^2}{dx^2}}
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries}{\thesubsection}{1em}{}[{}]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+ 
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+
+
+\title{Beginning Fourier analysis}
+\author{Justin Katz}
+\begin{document}
+\maketitle
+\section{Start}
+\subsection{Homing in on the right structure}
+	The goal of this thesis is to explain a general technique for finding and proving spectral decompositions for function spaces. The first non-toy case of Fourier analysis, on the circle, will serve as the prototype of the discussions that follow. In this section, we introduce the relevant function spaces on the circles, and an important distinguished operator that acts on these spaces. One issue that arises in setting the stage on the circle is that it has a distracting amount of structure. For example the circle is
+	\begin{itemize}
+		\item an abelian group
+		\item a compact topological space
+		\item a one dimensional smooth manifold.
+	\end{itemize}
+Each of these structures are compatible: the circle is a compact abelian Lie group. With respect to each of these structures, the integer frequency oscillations are
+	\begin{itemize}
+		\item irreducible representations
+		\item continuous characters
+		\item smooth characters.
+	\end{itemize}
+		And from each of these interpretations, there is a reasonable proof that the integer frequency exponentials span the relevant space of functions.  Moreover, the relative simplicity of the circle allows a proof of Fourier expansions that does not explicitly use \emph{any} of these characterizations. Thus, it is not immediate which direction would lead to a profitable generalization. Should we try to generalize by looking at 
+		\begin{itemize}
+			\item nonabelian groups?
+			\item noncompact spaces?
+			\item higher dimensional manifolds?
+		\end{itemize}
+It turns out that we can generalize in all three directions simultaneously, only if we transition to focusing our attention towards the \emph{groups that act} on the space in question. Indeed, later we will find that a smooth manifold that is acted on transitively by a Lie group is actually a model of a particular quotient of the acting group. The structures such as measures, topologies, and differential operators, will descend from the acting group to the quotient, and in turn to the space in question. In particular the acting group need not be abelian, need not be compact, and can have arbitrary (finite) dimension. The following table summarizes various instantiations of this phenomenon.
+\begin{table}
+\centering	
+	\begin{tabular}{c c c}
+		The space: & is acted on by: & \quad and is isomorphic to: \\
+		the circle & $\R$ & $\R/\Z$ \\
+		the $n$ sphere & $O(n)$ & $O(n)/O(n-1)$ \\
+		hyperbolic plane & $\SL_2(\R)$ & $\SL_2(\R) / \SO(2)$ \\
+		hyperbolic $3$-space & $\SL_2(\C)$ & $\SL_2(\C) / SU(2)$ \\
+	\end{tabular} 
+\end{table}
+\subsection{The circle viewed right}
+	The Lie group $(\R,+)=\R$ acts transitively on the circle
+		\begin{equation*}
+		S^1=\{e^{i\theta}: \theta\in\R\}
+		\end{equation*}
+	by rotation 
+		\begin{equation*}
+			r\times e^{i\theta}\mapsto e^{i(\theta+r)}.
+		\end{equation*}
+	The isotropy group in $\R$ of any point on the circle is $2\pi \Z$. Thus, as an $\R$-space, the circle is a model of the quotient
+		\begin{align*}
+			S^1 &\approx \R / 2\pi \Z \\
+			e^{i\theta} &\mapsto \theta+2\pi \Z.
+		\end{align*}
+	Since $\R$ is abelian, the quotient happens to be a group. This is not generally the case, and we should not let it distract us. The isomorphism above is as smooth $\R$-spaces. That is, smooth manifolds acted on (smoothly) by $\R$. Through this isomorphism, we can identify a function on $S^1$ with a $2\pi \Z$ invariant function on $\R$. Conversely, any $2\pi \Z$ invariant function on $\R$ is a function on $S^1$.
+	%(
+	
+	As we begin to endow $S^1\approx \R/2\pi \Z$ with structure coming from $\R$, we must be careful with how we think about quotients. One one hand, one can think of the quotient $\R/2\pi \Z$ in terms of a \emph{fundamental domain}, say $[0,2\pi)$. Choosing to think of the quotient in this way, we risk forgetting that the topology and smooth structure is \emph{not} endowed by the enveloping Euclidean space. Indeed, a continuous function (on the circle!), for example, must agree at $0$ and $2\pi$. A smooth function must have a left derivative at $0$ and a right derivative at $2\pi$, and they must agree. The simple nature of the circle makes finding and working on a fundamental domain tenable, but in larger cases it can be highly nontrivial to \emph{find} a fundamental domain, let alone put coordinates on it. Thus, we will try to establish a habit of working on the quotient, where there is no distracting ambient topology.
+	%]
+	
+	First, we look at the smooth structure of $S^1$ to define $C^\infty(S^1)$. Then we will consider integration to define $L^2(S^1)$.  The $\R$-action on $S^1$ gives rise to an action on functions. For any $r\in \R$ let $R_r$ be the \emph{right translation action} on any space of functions on $S^1$. That is, for $f:S^1\to \C$ the function $R_r\cdot f:S^1 \to \C$ is defined by $(R_r \cdot f)(x)=f(x+r)$.
+	
+	As a Lie group, $\R$ admits a translation invariant differential operator $\frac{d^2}{dx^2}$. For each nonnegative integer $k$, define the complex vectorspace
+		\begin{equation*}
+			C^2k (\R)=\{ f:\R \to \C: (\der)^kf \text{ is continuous} \}.
+		\end{equation*}
+	We understand that $(\der)^0$ is the identity, making $C^0(\R)$ the space of continuous functions on $\R$. Set
+		\begin{equation*}
+			C^\infty (\R)=\{ f:\R \to \C: \der \text{ can be applied to $f$ indefinitely} \}.
+		\end{equation*}
+	Clearly, we have the chain of set containments
+		\begin{equation*}
+			C^\infty(\R) \subset \cdots \subset C^{2(k+1)}(\R) \subset C^{2k}(\R) \subset C^{2(k-1)}(\R) \subset \cdots \subset C^0(\R)
+		\end{equation*}
+	and the description
+		\begin{equation*}
+			C^\infty(\R)= \bigcap_{k\geq0} C^{2k}(\R).
+		\end{equation*}
+	Further, for any $0<k<\infty$ we can differentiation as a linear map between spaces
+		\begin{equation*}
+			\der:C^{2k}(\R) \to C^{2(k-1)}(\R).
+		\end{equation*}
+	or as an operator
+		\begin{equation*}
+			\der:C^\infty(\R) \to C^\infty(\R).
+		\end{equation*}	
+		
+	So far, these are just (infinite dimensional) complex vectorspaces. A natural question is how to topologize them. Later, we will find that the need to ask this question suggests that we have taken a misstep in developing the theory. When we readdress this, we will redefine each of the $C^k$ spaces, for $k<\infty$ as completions of $C^\infty(\R)$ with respect to certain norms, simultaneously specifying the topology uniquely, and making $C^\infty$ dense in each of the $C^k$, by design.  In the present context, since $\R$ is not compact, we cannot define a $\sup$-norm and the spaces $C^k(\R)$ will not be Banach but rather Frechet, being the colimit of Banachs.  Because the goal of this section is to do analysis on the compact circle, rather than the noncompact line, we postpone topologizing these spaces.
+	
+	Translation invariance means for a function $f:\R\to \C$  in $\C^{2k}(\R)$, $k\neq 0$, and any $r\in \R$, we have
+		\begin{equation*}
+			\der (R_r\cdot f)=R_r \cdot (\der f).
+		\end{equation*}
+	Or, more familiarly,
+		\begin{equation*}
+			f''(x+r)=f''(x).
+		\end{equation*}	
+	Since $\der$ is $\R$-translation invariant, it is certainly $2\pi \Z$-invariant. Define the subspace $C^{2k}(S^1)$ of right $2\pi \Z$ invariant functions in $C^{2k}(\R)$, and let $\Delta$ be the restriction of $\der$ to $C^\infty(S^1)$.  Note that the $2\pi \Z$ invariance encodes the `boundary conditions'  in $C^\infty(S^1)$ that one must discuss if one thinks in terms of fundamental domains.
+	
+	The circle is compact, so a continuous function on $S^1$ attains its supremum. Accordingly, for $k<\infty$, define the $k^{th}$ $\sup$-norm
+		\begin{equation*}
+			|f |_{C^{2k}}=\sup_{m\leq k} \left( \sup_{x \in S^1} |\Delta^m f(x)| \right).
+		\end{equation*}
+	We will take for granted that the $k^{th}$ $\sup$-norm makes $C^{2k}(S^1)$ is Banach, and in each $C^\infty(S^1)$ is a dense subspace. Further, one can see that the inclusion $C^{2k}(S^1)\to C^{2(k-1)}(S^1)$ is a contraction, thus continuous, and the chain of set containments from above becomes a chain of continuous inclusions
+		\begin{equation*}
+			\cdots \to C^{2(k+1)}(S^1) \to C^{2k}(S^1) \to C^{2(k-1)}(S^1) \to \cdots \to C^0(S^1).
+		\end{equation*}
+	To topologize $C^\infty(S^1)$, we cannot simply take the outer supremum over all nonnegative integers $k$, because there is no guarantee that this would be finite. Nonetheless, with the continuous chain of inclusions above, we can topologize $C^\infty(S^1)$ as a limit, thus specifying its topology uniquely.  Indeed, the limit $X$ of system of inclusions above is a topological vectorspace with continuous projections $X\to C^{2k}(S^1)$ to the limitands, satisfying the conditions:
+	\begin{itemize}
+		\item The projections are compatible with the inclusion maps: the projection $X\to C^{2(k-1)}(S^1)$ is the composition of the projection $X\to C^{2k}(S^1)$ followed by the inclusion $C^{2k}(S^1)\to C^{2(k-1)}(S^1)$, for all $k$.
+		\item For any topological vectorspace $Z$ mapping continuously to the limitands $Z\to C^{2k}(S^1)$ compatibly with the inclusions, there is a unique continuous map $Z\to X$ through which said maps $Z\to C^{2k}(S^1)$ factor.
+	\end{itemize}
+%%%Remember to make diagram
+As usual, if such a topological vectorspace exists, it is unique. In the present case, a sequence will converge in the limit  if and only if it converges in each of the limitands. We take for granted that $C^\infty(S^1)$ is indeed the limit.
+
+As a locally compact group, $\R$ admits a translation invariant measure $d\mu$. As with differentiation, there are two ways to define a compatible measure $d\overline{\mu}$  on the quotient $S^1\approx \R/2\pi \Z$. The first is by integrating on the fundamental domain. A continuous function $f:S^1\to \C$ determines a continuous function $F:[0,2\pi)\to \C$ and we could define
+	\begin{equation*}
+		\int_{S^1} fd\overline{\mu} = \int_0^{2\pi} F d\mu.
+	\end{equation*}
+ In the present case, there is no harm in doing this, but as discussed earlier, we should exercise restraint in relying on fundamental domains. In particular, even if one can find a fundamental domain, an explicit parameterization may be inaccessible. In that case, explicit computation of the integral is untenable, rendering moot the reason for not using the characterization, described next.
+ 
+ The second is through a characterization. Given continuous function $F$ on $\R$ with rapid enough decay to make the following sum converge, we average $F$
+ 	\begin{equation*}
+		f(x)=\sum_{n\in 2\pi \Z } F(x+n)
+	\end{equation*}
+to get a $2\pi \Z$-invariant function. Given such an $F$ and $f$, we characterize the integral of $f$ on $S^1$ via the integral of $F$ on $\R$ via
+	\begin{equation*}
+		 \int_{S^1} f(x)d\overline{\mu} = \int_{\R} F(x) d\mu.
+	\end{equation*}
+In order for this characterization to be sensible, one must check that every continuous function $f$ can be obtained this way. That is, that every function $f$ on the circle is the average of \emph{some} function on the line. As we will discuss later, this is the case in general. For now, we take it for granted that there is an invariant integral on the circle, and we will write the measure as $d\mu$.
+
+With our invariant integral defined, we now introduce the space $L^2(S^1)$. As before, there are two ways to do this. First, we \emph{na\"ively} try to define it as a space of functions. Try
+	\begin{equation*}
+		L^2_n(S^1)=\{f:S^1\to \C: f\text{ measurable, and } \int_{S^1}|f|^2d\mu < \infty\}.
+	\end{equation*}
+This definition is na\"ive because the natural `norm' 
+	\begin{equation*}
+		|\cdot|_{L^2}: f\mapsto \left(\int_{S^1} |f|^2 d\mu \right)^{1/2}
+	\end{equation*}
+fails to be definite, because integration is not sensitive to behavior on sets of measure zero. To remedy this, we must redefine the space as
+	\begin{equation*}
+		L^2(S^1)=L^2_n(S^1)/\sim
+	\end{equation*}
+where $f\sim g$ when $f$ and $g$ agree off a set of measure zero. Thus, apparently, the `functions' in $L^2(S^1)$ do not take pointwise values!  Nonetheless, this space admits a hermitian inner product
+	\begin{equation*}
+		\ip{\cdot}{\cdot}: f\times g \longmapsto \int_{S^1} f \overline{g} d\mu.
+	\end{equation*}
+Then one can prove that $L^2(S^1)$ is indeed complete, and thus a Hilbert space. Using a modified Urysohn's lemma, one can prove that $C^\infty(S^1)$ is dense in $L^2(S^1)$ with respect to $|\cdot|_{L^2}$.
+
+The other definition of $L^2(S^1)$ is much more practical for harmonic analysis:
+	\begin{equation*}
+		L^2(S^1)=\text{ completion of $C^\infty(S^1)$ with respect to $|\cdot|_{L^2}$}.
+	\end{equation*}
+With this definition, it is by design that $L^2(S^1)$ is complete, and that $C^\infty(S^1)$ is dense. Given that elements of $L^2(S^1)$ are not functions, the characterization of the space as `limits of test functions' under $|\cdot|_{L^2}$ is no more abstract than `equivalence classes of functions,' but allows for useful manipulations that are less immediately accessible for the latter characterization. Though not entirely obvious, these characterizations do indeed specify the same space.
+
+As mentioned twice now, the theme of `function spaces arising as completions of test functions under an engineered norm' will persist through this whole thesis. In particular, this technique is central to Friedrichs construction, detailed later.
+
+To summarize the setting, the $\R$-space $S^1$ is a model of the quotient $\R / 2\pi \Z$ as a smooth manifold. The circle $S^1$ is equipped with an $\R$-invariant differential operator $\Delta$ which we used to define the Banach spaces $C^{2k}(S^1)$, for $1<k<\infty$. The space $C^0(S^1)$ is that of continuous functions, and $C^\infty(S^1)$ is the limit of the $C^{2k}(S^1)$, fitting into the chain of continuous inclusions:
+	\begin{equation*}
+		C^{\infty}(S^1) \to \cdots \to C^{2(k+1)}(S^1) \to C^{2k}(S^1) \to C^{2(k-1)}(S^1) \to \cdots \to C^0(S^1).
+	\end{equation*}
+Further, $S^1$ is equipped with an $\R$-translation invariant measure $d\mu$ which we used to define $L^2(S^1)$ as the completion of $C^\infty(S^1)$ under the norm $f\mapsto \left(\int_{S^1} |f|^2 d\mu\right)^{1/2}$.  Further, because $S^1$ is compact, the $\sup$-norm dominates the $L^2$ norm, giving a continuous inclusion $C^0(S^1) \to L^2(S^1)$. Thus, we can give the chain above a new bottom space 
+ 	\begin{equation*}
+		C^{\infty}(S^1) \to \cdots \to C^{2(k+1)}(S^1) \to C^{2k}(S^1) \to C^{2(k-1)}(S^1) \to \cdots \to C^0(S^1)\to L^2(S^1).
+	\end{equation*}
+
+
+\subsection{Foreshadowing the good proof}
+	As outlined in the first section, the integer frequency exponentials play important roles depending on how we view the circle: they are smooth characters and irreducible representations of the group $S^1$. Without viewing $S^1$ as a group, but rather as an $\R$-space with translation invariant $\Delta$ and $d\mu$, the property that distinguishes them is that they are the smooth eigenfunctions of $\Delta$. Using integration by parts twice, compute for smooth $f$ and $g$,
+	\begin{equation*}
+		\ip{\Delta f}{g}=\int_S^1 \der f \overline{g} d\mu = \int_S^1 f \overline{\der(g)} = \ip{f}{\Delta g}.
+	\end{equation*}
+Thus, $\Delta$ is a \emph{symmetric} operator on $C^\infty(S^1)$ in $L^2(S^1)$. That is, on $C^\infty(S^1)$, $\Delta$ and its adjoint agree. However the domain of the adjoint of $\Delta$ is properly larger than $C^\infty(S^1)$. Nonetheless, recall from linear algebra that any \emph{self-adjoint} operator on a finite dimensional complex vectorspace is unitarily diagonalizable. That is, there is an orthonormal basis of eigenvectors for that operator. The infinite dimensional extension of this theorem says that a \emph{compact, self-adjoint} operator on a Hilbert space has an orthonormal basis of eigenvectors. The operator $\Delta$ is not self-adjoint, as mentioned. Further it cannot be compact, because it is not continuous, even on polynomials: Working on the fundamental domain $[0,2\pi)$, compute the $L^2$ norm of $f_n(x)=(x/2\pi)^n$ is $1/(n+1)$ but the norm of $\Delta f_n(x)$ is $(n-1)n/(n+1)$, showing that $\lim \Delta f_n \neq \Delta \lim f_n$.
+
+Yet, $L^2(S^1)$ \emph{does} have an orthonormal basis of eigenfunctions of $\Delta$. Further, this phenomenon is not specific to the circle!  For example: 
+
+The eigenfunctions of the spherical Laplacian are an orthonormal basis for  $L^2(S^{n-1})$. That is, for $f\in L^2(S^{n-1})$
+	\begin{align*}
+		f=\sum_{d\geq 0}\left( \sum_{p \in \half^{d}} \ip{f}{p}p \right) 
+	\end{align*}
+where $\half^d$ is an orthonormal basis of harmonic polynomials homogeneous of degree $d$ in $\C[x_1,..,x_n]$ restricted to the sphere. 
+
+
+The square integrable eigenfunctions of the Schr\"odinger operator $x^2-\Delta$ are a basis of $L^2(\R)$,
+	\begin{align*}
+		f=\sum_{n \geq 0} \ip{f}{H_{n}}H_{n} 
+	\end{align*}
+where $H_n$ is the $n^{th}$ Hermite polynomial times the Gaussian $e^{-|x|^2/2}$. 
+
+The cuspform eigenfunctions of the hyperbolic Laplacian are an orthonormal basis of all square integrable cuspforms $L^2(\Gamma \backslash \half)_{\text{cfm}}$,
+	\begin{align*}
+		f=\sum_{F}\ip{f}{F}F \qquad F\text{ cuspform eigenfunction of }\Delta^\half.
+	\end{align*}
+where $F$ is a cuspform eigenfunction of $\Delta^\half=y^{-2}\left(\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}\right)$. Notably, this is the case without any formulaic description of the cuspform eigenfunctions.
+
+
+The operators mentioned in each of these decompositions are \emph{symmetric} (not self-adjoint!), unbounded (not compact), and merely densely defined. Yet, their eigenfunctions do form an orthonormal basis. Somehow operators for which the spectral theorem can \emph{almost} be applied, are still producing spectral theorem-like conclusions. One mechanism underlying these phenomena is Friedrichs's construction of a self-adjoint extension to positive symmetric densely defined operators. A feature of this construction is that under certain circumstances, the resolvent of the self-adjoint extension is \emph{compact}. Further, in certain cases, Levi-Sobolev theory shows that the process of extending the operator does not introduce new eigenfunctions. Thus, granting that these assertions are true, we will be able to honestly apply the spectral theorem for compact self adjoint operators to arrive at the decompositions above.
+
+
+
+
+
+%\subsection{dumb proof}
+%
+%
+%
+%	\begin{claim}
+%		The normalized integer frequency exponentials $\psi_{n}(x)=e^{2\pi i n x}/\sqrt{2\pi}$ are an orthonormal basis of $L^{2}(S^{1})$.
+%	\end{claim}
+%
+% The assertion is that finite linear combinations $\sum c_{n}\psi_{n}$ are $L^{2}$-dense in $L^{2}(S^{1})$. One reduces the problem to showing that such linear combinations are $\sup$-norm-dense in $C^{0}(S^{1})$ in three steps.
+%		\begin{itemize}
+%		\setlength{\itemsep}{5 pt}
+%			\item Step functions are $L^{2}$-dense in $L^{2}(S^{1})$: by definition of the Lebesgue integral, 
+%			\item $C^{0}(S^{1})$ is $L^{2}$-dense in $L^{2}(S^{1})$: by Urysohn's lemma, continuous functions $L^{2}$-approximate step functions.
+%			\item A $\sup$-norm dense subspace in $C^{0}(S^{1})$ is $L^{2}$-dense in $L^{2}(S^{1})$: the $\sup$-norm dominates the $L^{2}$-norm on functions in $C^{0}(S^{1})$ and norm domination entails finer topology.
+%		\end{itemize}
+%		Thus, to prove the assertion it suffices to show that continuous functions are uniformly pointwise approximated by finite linear combinations $\sum c_{n}\psi_{n}$. Note, however, that no claim is being made that the approximating trigonometric polynomials are the (truncated) \emph{Fourier} series. Indeed, this is actually \emph{not true}, for such a conclusion would violate \emph{Baire's category theorem}. 
+%		
+%		Instead, one shows that continuous functions are uniformly pointwise approximated by the Ces\'aro summed Fourier polynomials.  For a function $f\in C^{0}(S^{1})$ the $N^{th}$ Fourier polynomial is
+%			\begin{equation*}
+%				f_{N}(x)=\sum_{|n|\leq N} \left(\int_{S^{1}} f(y) \cdot \overline{\psi_{n}(y)}dy \right) \psi_{n}(x).
+%			\end{equation*}
+%		which is, first by passing the finite sum and the scalar $\psi_{n}(x)$ through the integral, then by summing the geometric series
+%			\begin{align*}
+%				f_{N}(x)& = \int_{S^{1}} \sum_{|n|\leq N} f(y) \cdot \left(\psi_{n}(x)\overline{\psi_{n}(y)}\right) \\
+%					    &= \int_{S^{1}} f(y) \cdot K_{N}(x-y) dy.
+%			\end{align*}		
+%		where
+%			\begin{align*}
+%				K_{N}=\frac{\psi_{N+1}-\psi_{-N}}{\psi_{1}-1}.
+%			\end{align*}
+%		Recognizing the $N^{th}$ Fourier polynomial as a convolution $f_{N}=f*K_{N}$ would hope that the Dirichlet kernel is an approximate identity, which we know convolve with continuous functions to give uniform pointwise approximations. However this is demonstrably false, in part because the Dirichlet kernel is not positive. On the other hand, the \emph{Fej\'er kernel}
+%			\begin{align*}
+%				\phi_{N}=\frac{K_{N}^{2}}{2\pi(2N+1)}
+%			\end{align*}
+%is an approximate identity, so uniformly approximates $f$ pointwise. By design, the convolution $f*\phi_{N}$ is the $N^{th}$ Cesaro sum of the sequence of Fourier polynomials,
+%			\begin{align*}
+%				f*\phi_{N}=\frac{1}{2N+1} \sum_{|n|\leq N}f_{n}.
+%			\end{align*}
+%		Thus $f$ is uniformly approximated by a finite linear combination of integer frequency exponentials completing the classical argument for $\psi_{n}$ comprising a basis of $L^{2}(S^{1})$.
+
+
+\end{document}

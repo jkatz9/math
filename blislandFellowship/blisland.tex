@@ -1,0 +1,173 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%preamble%
+\documentclass[12pt]{article}
+\usepackage{mathptmx,amsmath,amscd,amssymb,amsthm,xspace}
+\usepackage[dvips]{graphicx}
+\usepackage{graphics,epsfig,wrapfig,verbatim,syntonly}
+\usepackage{hyperref,amssymb,color, url,fancyhdr,tikz-cd}
+\usepackage{mycros}
+\usepackage{sagetex}
+
+
+\theoremstyle{plain}
+
+
+
+
+\newtheorem{ques}[thm]{Question}
+
+\setlength{\topmargin}{-1.cm} \setlength{\headsep}{1cm}
+\setlength{\evensidemargin}{0.6cm} \setlength{\oddsidemargin}{0.6cm}
+\setlength{\textheight}{22.5cm}
+\setlength{\textwidth}{15.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% \theoremstyle{definition}
+% \newtheorem{defn}[thm]{Definition}
+% \newtheorem{ex}{Example}
+
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newtheorem{exer}{Exercise}
+\newtheorem{rmk}[subsection]{Remark}
+
+\newcommand{\todo}[1]{\vspace{5mm}\par \noindent
+\framebox{\begin{minipage}[c]{0.95 \textwidth} \tt #1
+\end{minipage}} \vspace{5mm} \par}
+
+\DeclareMathOperator{\rk}{rk}\DeclareMathOperator{\avg}{avg}
+\DeclareMathOperator{\LCM}{LCM}\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\D}{D}\DeclareMathOperator{\G}{G}
+\DeclareMathOperator{\FI}{FI}\DeclareMathOperator{\NFI}{NFI}
+\DeclareMathOperator{\Comm}{Comm}\DeclareMathOperator{\Nor}{N}
+
+\DeclareMathOperator{\Cor}{Cor}\DeclareMathOperator{\Mot}{Mot}
+\DeclareMathOperator{\CH}{CH}\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\SB}{SB}\DeclareMathOperator{\Bl}{Bl}
+\DeclareMathOperator{\Grp}{Grp}\DeclareMathOperator{\CoInd}{CoInd}
+
+
+\title{Blisland}
+\author{Justin Katz}
+\begin{document}
+%\maketitle
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{My view of geometry}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{itemize}
+%   \item Nature and applications provide interesting functions on the space of Riemannian manifolds, demand an understanding of the properties of these functions: e.g. systole, area, curvatures, etc
+%   \item Restricting the codomain of these functions to particular classes of geometries on the one hand makes the problem more tractable, and on the other makes the problem more rich: imposing different constraints allows interactions.
+%   \item My research so far has focused on a particular family of invariants: length/eigenvalue spectra; restricted to a particular family: locally symmetric spaces, in particular those of constant negative curvature.
+% \end{itemize}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{My journey}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{itemize}
+%   \item (Should I talk about my undergraduate thesis?)
+%   \item In my first paper, joint work with et al. we did stuff.
+%   \item In a paper in preparation for submission, I did other, somewhat opposite stuff.
+% \end{itemize}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Spectra and moduli}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invariants which play starring role:
+% \begin{itemize}
+%   \item Associated to a closed riemannian manifold $(M,g)$, associate to it its {\bf  laplace eigenvalue spectrum},  $\Ecal(M,g)$ defined as the point measure on the positive real line representing the (multiset) of eigenvalues of the canonical self adjoint extension of the Laplace-Beltrami operator acting on a suitable dense subspace of $L^2(M,g)$. This invariant is naturally encoded in various different guises: via the spectral (or minakshiundaram-pliejel) zeta function, or the closely related theta function arising as the trace of the heat kernel.
+%   \item Associated to a complete, negatively curved riemannian manifold, associate to it its {\bf geodesic  length spectrum} $\Lcal(M,g)$, defined as the point measure on the positive real line representing the (multiset) of lengths of closed geodesics on $M$.
+%   \item It is widely known that both $\Lcal(M,g)$ and $\Ecal(M,g)$ are closely related, and in many cases are mutually determined by one another. This will be the case in all instances in this document, so I will freely refer to both/either of them as the \emph{spectrum} of $(M,g)$.
+%   \item There are many global geometric features of $M$ which are determined by the spectrum. For example, the total volume, mean curvature, etc.
+%   \item A question asked by Mark Kac, popular referred to as 'can you hear the shape of a drum' asks to what extend the spectrum determines the metric on $M$. Even before Kac posed this question, examples due to milnor provided a negative answer: there are Riemannian manifolds with precisely the same spectrum which are non-isometric.
+%   \item In tension with such examples, important results by Uhlenbeck, Wolpert, and others show that these examples are quite special: generically, within various spaces of metrics, riemannian manifolds \emph{are} determined by their spectrum.
+% \end{itemize}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Projects}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section*{Past}
+%   \subsection*{Undergraduate thesis(?)}
+%     Briefly describe as expository, mention that Jerry has used this to teach courses, perhaps?
+%   \subsection*{Effective estimates of $\lambda_0$ in covers(?)}
+%     Do we have anything to say here?
+%   \subsection*{Refined gassman etc}
+%     Just copy from past statement
+% \section*{Present}
+%   \subsection*{Spectral rigidity of certain arithmetic hyperbolic surfaces and threefolds}
+%     State the theorem that I can currently prove. Mention that it takes care of infinitely many hurwitz surfaces, answering a question of Alan. Emphasize that it is a strengthening of automorphic type  multiplicity one theorems: one is forgetting all of the hecke-eigenvalues.
+%   \subsection*{Counting commensurability classes of arithmetic locally symmetric spaces}
+%     Explain what has been counted, and what we wish to count instead. Namedrop the big papers. Inject some number theory in here.
+% \section*{Future}
+%   \subsection*{Passing work of Nagata thru the analogy:multiplicative independence}
+%   \subsection*{}
+%   Riemannian geometrically: fix a topological manifold $M$. It's a complex-valued-function-valued function on the product: [Some space of metrics on $M$]$\times$[Some space of vector bundles $E$ over $M$]
+
+
+% \section{Introduction}
+% Given a closed manifold $M$ equipped with a Riemannian metric $g$ of negative curvature, there are two closely related invariants which frequently bear the title of spectra: the {\bf Laplace eigenvalue spectrum}, and the {\bf geodesic length spectrum}. These are each multisets of real numbers, the first consisting of the eigenvalues (with multiplicty) of the Laplace-Beltrami operator acting on $L^{2}(M)$, and the second of the lengths (with multiplicity) of closed geodesics on $M$. The relationship between these two invariants lies at the heart of various trace formulae .... (TODO)
+
+% A guiding question, posed by GGPS in one form, and Kac in another, is the extent to which either of these invariants determines $(M,g)$ as a Riemannian manifold. More specifically, upon fixing a metric $g$ on $M$, when do either of these spectra determine the metric $g$ within the space of Riemannian metrics on $M$? Generically, as a function of $g$, (by work of Uhlenbeck, Wolpert, Sarnak, etc.) this question has a positive solution.
+
+%introduction
+% To specify a Riemannian manifold is a complicated task. One starts with a set, upon which one stipulates progressively richer structures: first a topology, then a smooth structure, and finally a metric.
+
+% Each step along the way carries its own notion of equivalence: first a homeomorphism, then a diffeomorphism, and finally an isometry. The problem of moduli asks: what is the bare minimum amount of information necessary too specify an object up to the relevant notion of equivalence. In happy circumstances, there exists a nice space which serves
+
+
+My research
+
+\section{past}
+In my first paper, in collaboration with et al., I produced lots of examples of blah blah. In order to state our result, we need some definitions.
+
+Given a closed Riemannian manifold $M$, one associates its Laplace-Beltrami operator $\Delta_M$: an essentially self adjoint unbounded operator acting on a dense subspace of the Hilbert space of $L^2$ $k$-forms $\Omega^k(M)$ on $M$. We denote the {\rm eigenvalue spectrum} of $\Delta_M$ acting on $\Omega^2(M)$ by $\Ecal^k(M)$. The spectrum $\Ecal^k(M)$ is a well studied invariant of the Riemannian metric on $M$ and is known to determine its dimension, volume, and total scalar curvature [CITE].
+
+A related geometric invariant is the {\bf primitive geodesic length spectrum} $\Lcal_p(M)$ of $M$. Assuming for simplicity that $M$ is negatively curved, each free homotopy class of closed curve on $M$ has a unique geodesic representative. Then $\Lcal_p(M)$ is the set of lengths (counted with multiplicty) of each geodesic representative in each free homotopy class.
+
+We denote by $H^k( M,\Zbb )$ the {\bf $k$th singular cohomology group} of $M$ with trivial $\Zbb$--coefficients. Given a finite cover $M' \to M$, we have induced homomorphisms $\Res\colon H^k(M,\Zbb) \to H^k(M',\Zbb)$ and $\Cor\colon H^k(M',\Z) \to H^k(M,\Z)$. For a pair of finite covers $M_1,M_2 \to M$, we say that a morphism $\psi_k\colon H^k(M_1,\Z) \to H^k(M_2,\Z)$ is \textbf{compatible} if the diagram
+\begin{equation}\label{Eq:Natural}
+	\begin{tikzcd}
+		& H^k(M,\Z) \arrow[rd,"\Res", bend left = 30] \arrow[ld,"\Res"', bend right = 30] & \\ H^k(M_1,\Z) \arrow[rr,"\psi_k"', bend right = 45] \arrow[ru,"\Cor"', bend right = 30]  & & H^k(M_2,\Z) \arrow[lu,"\Cor", bend left = 30]&
+	\end{tikzcd}
+\end{equation}
+
+commutes.
+
+Finally, $M$ is called \textbf{large} if there exists a finite index subgroup $\Gamma_0 \leq \pi_1(M)$ and a surjective homomorphism of $\Gamma_0$ to a non-abelian free group.
+
+We now state our first result and refer the reader to \S 2 for a brief review of real/complex hyperbolic manifolds and the definition of non-arithmetic manifolds.
+
+\begin{thm}
+	Let $M$ be a closed hyperbolic $n$-manifold which is large and arithmetic. Then for each $j\in \Nbb$ there exist pairwise non-isometric, finite Riemannian covers $M_1, \dots, M_j$ such that
+	\begin{itemize}
+		\item $\Ecal_k(M_i) = \Ecal_k(M_{i'})$ for all $k$, and all $i,i'$
+		\item $\Lcal_p(M_i) = \Lcal_p(M_{i'})$ and all $i,i'$
+		\item There exist compatible isomorphisms $\psi_k : H^k(M_i,\Zbb) \to H^k(M_{i'},\Zbb)$ for all $k$, and all $i,i'.$
+	\end{itemize}
+\end{thm}
+
+%
+\section{Present}
+In this section, I will summarize my two current projects.
+
+The first is the subject of my dissertation, and regards the spectral rigidity of a substantial collection of hyperbolic surfaces. First we define arithmetic Fuchsian groups, which are a special type of lattice in $\SL_2(\Rbb)$.
+
+Let $k$ be a totally real number field, and $B$ be an indefinite  quaternion algebra over $k$ split over a unique real place. Using this place, we have a unique embeding $B^\times \to \GL_2(\Rbb)$ such that the restriction to the subgroup $B^1$ of {\bf units of reduced norm $1$} embeds into $\SL_2(\Rbb).$ Let $\Ocal$ be a maximal order in $B$, and $\Gamma(\Ocal) \leq \SL_2(\Rbb)$ be the image of $\Ocal^1 = \Ocal \cap B^1$ under the above embedding. We say that a subgroup $\Lambda$ of $\SL_2(\R)$ is an {\bf arithmetic fuchsian group} if it is commensurable to a $\Gamma(\Ocal)$, for (some $\Ocal$ in some $B$ over some $k$ as above.)
+\begin{rem}
+	Recall that two subgroups $H_1,H_2$ of an ambient group $G$ are {\bf commensurable in $G$} if their intersection $H_1\cap H_2$ has finite index in both $H_1$ and $H_2$. When the $H_i$ arise as the fundamental groups $\pi_1(M_i)$ of locally isometric manifolds $M_i$ embedded in the common isometry group $G$ of their universal cover, commensurability translates to the existence of a common finite Riemannian cover $M$ over both $M_1$ and $M_2$.
+\end{rem}
+We say that $B$ has {\bf type number one} if it has a unique conjugacy class of maximal order.
+
+
+
+
+ % % %\bibliographystyle{plain}
+% % %\bibliography{BigBib}
+
+\end{document}

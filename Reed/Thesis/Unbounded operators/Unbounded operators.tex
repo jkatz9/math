@@ -1,0 +1,311 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1 em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}{\nomrmalfont\Large\bfseries}{\thesubsection}{1em}{}[{}]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+%\newtheorem{claim}{Claim}
+%\newtheorem{mydef}{Definition}
+\newtheorem{cor}{Corollary}
+%\newtheorem{thm}{Theorem}
+\input{mydefs}
+
+\title{Unbounded symmetric operators on Hilbert spaces}
+\author{Justin Katz}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%%%%%%%%%Existence of adjoints for densely defined symmetric operators%%%%%%%%%%%%%%%%	
+	\begin{claim}
+		A symmetric operator $(T,D)$ has a unique maximal sub-adjoint $(T^*,D^*)$. We call this maximal sub-adjoint \emph{the adjoint} of $T$. Further, $T^*$ is closed, in the sense that it has a closed graph.
+	\end{claim}
+	\begin{proof}
+		Sub-adjointness can be characterized as an orthogonality condition. Indeed, define an isometry $U:V \to V \oplus V$ by $U(v \oplus w)=-w \oplus v$, and let $T'$ be any sub-adjoint to $T$, $v\in D$ and $w\in \dom T'$. Then the relation
+			\begin{equation*}
+				\ip{Tv}{w}=\ip{v}{T'w}
+			\end{equation*}
+		rephrases as
+			\begin{equation*}
+				\ip{w \oplus T'w}{U(v \oplus Tv)}=0.
+			\end{equation*}
+		Universalizing over $v\in D$ and $w \in \dom T'$, we have 
+			\begin{equation*}
+				\ip{\Graph T'}{U(\Graph T)}=0,
+			\end{equation*}
+		which is exactly to say
+			\begin{equation*}
+				\Graph T' \subset \left(U(\Graph T)\right)^\perp.
+			\end{equation*}
+		If $\left(U(\Graph T)\right)^\perp$ is a graph, then the function it defines will be the maximal sub-adjoint to $T$. To check that it is a graph, fix $w \in V$ and suppose there are two $v,v' \in V$ such that $w \oplus v \in \left(U(\Graph T)\right)^\perp$ and $w \oplus v' \in \left(U(\Graph T)\right)^\perp$. Recall that $U(w \oplus v)=-v\oplus w$. Then we have both $w \oplus v$ and $w \oplus v'$ are orthogonal $-Tx \oplus x$ for all $x \in D$. Subtracting the two candidates shows that $0\oplus (v-v')$ is orthogonal to all of $0 \oplus D$. Further $D$ is dense in $V$, so $v=v'$.  
+		
+		For any $w\in V$ there is at most one $v$ such that $w \oplus v \in \left(U(\Graph T)\right)^\perp$. The assignment $T^*:w \mapsto v$ is linear, and maximal among all sub-adjoints, because the graph of any sub-adjoint is a subset of the graph of $T^*$. Further, as an orthogonal complement, $T^*$ has a closed graph.
+	\end{proof}
+%%%%%%%%%Corollaries$$$$$
+	\begin{cor}
+	$T_1$ is a sub-adjoint to $T_{1}^{*}$ so $T_{1}\subset T^{**}_{1}$.
+	\end{cor}
+Orthogonal complementation reverses inclusions so
+	\begin{cor} For densely defined symmetric $T_1 \subset T_{2}$ we have $T^{*}_{2}\subset T^{*}_{1}$.  \end{cor}
+Because adjoints have closed graphs,
+	\begin{cor} A self adjoint operator has a closed graph \end{cor}
+	\medskip
+	\begin{claim} Eigenvalues for symmetric operators are real \end{claim}
+		\begin{proof}
+			Let $T$ be a symmetric operator defined on $D$, and let $v \in D$ be nonzero, with $Tv=\lambda v$. Compute
+				\begin{equation*}
+					\lambda \ip{v}{v} = \ip{\lambda v}{v} = \ip{Tv}{v} = \ip{v}{Tv} = \ip{v}{\lambda v}=\bar{\lambda}\ip{v}{v}
+				\end{equation*}
+			because $T$ agrees with its adjoint on $D$. Thus $\lambda$ is real.
+		\end{proof}
+	\begin{mydef} The resolvent of $T$ at $\lambda \in \C$ is the operator $R_\lambda=(T-\lambda)^{-1}$, whenever it is continuous and densely defined. \end{mydef}
+	As is shown in the appendix, the spectrum of an operator is in bijection with the spectrum of its inverse. As a continuous operator, the resolvent has a better spectral theory than the not necessarily bounded operator from which it is defined. The following theorem shows that self-adjoint operators admit resolvents everywhere off the real line.
+%%%%%%%%%%Resolvents of self-adjoint operators%%%%%%%%%%%%%%
+		\begin{thm} Let $T$ be self-adjoint with dense domain. For all non real $\lambda \in \C$ 
+			\begin{itemize}
+				\item $R_\lambda=(T-\lambda)^{-1}$ is a resolvent
+				\item $R_\lambda$ is defined on all of $V$.
+			\end{itemize}
+ If $T$ is positive then the same result holds as long as $\lambda$ is nonnegative.
+ 		\end{thm}
+	\begin{proof}
+		First we show that $T-\lambda$ injects for any $\lambda=x+iy\notin\R$, making $R_\lambda$ well defined on the image. Compute
+			\begin{equation*}
+				\ip{(T-\lambda)v}{(T-\lambda)v}=|(T-x)v|^2+iy\ip{(T-x)v}{v}-iy\ip{v}{(T-x)v}+y^2|v|^2.
+			\end{equation*}
+		Because $T$ is symmetric and $x$ is real, $T-x$ is symmetric on $\dom T$. Then the cross terms in the preceding display cancel,
+			\begin{equation}\label{eq:1}	
+				|(T-\lambda)v|^2=|(T-x)v|^2+y^2|v|^2 \geq y^2 |v|^2. 
+			\end{equation}
+		We have chosen $\lambda$ to be nonreal, so $y^2$ is positive. For nonzero $v$, $(T-\lambda)v$ is nonzero, so $T-\lambda$ injects.
+		
+		Now we show $T-\lambda$ surjects, so that the resolvent $R_\lambda=(T-\lambda)^{-1}$ is defined everywhere. First show that the image is dense. Let $w$ be orthogonal to $(T-\lambda)\dom T$. If $(T-\lambda)^*$ is defined on $w$, then $(T-\lambda)^* w$ is orthogonal to $\dom T$ by construction. The latter is dense, so $(T-\lambda)^*w=0$. Further, $(T-\lambda)^* w=0$ is compatible with the definition of the adjoint because for all $v \in \dom T$
+			\begin{equation*}
+				\ip{(T-\lambda)v}{w}=0=\ip{v}{0}.
+			\end{equation*}
+		Thus, $w \in \dom T^*$ and $T^*w=\bar{\lambda} w$. Because $T$ is self adjoint, $w \in \dom T$, and $Tw=\lambda w$. By the last claim, all of the eigenvalues of a self adjoint operator are \emph{real}. Thus $w=0$, meaning $T-\lambda$ has dense image. 
+		
+		To show that $T-\lambda$ surjects, it now suffices to show that $(T-\lambda)\dom T$ is closed. From the corollary above, $T$ has closed graph in $V\oplus V$. Trivially, the scalar operator $\lambda$ has closed graph, so $\Graph(T-\lambda)$ is closed. 
+		
+		One would like to conclude that the continuous image of $\Graph(T-\lambda)$ under projection is closed, but continuous maps need not preserve closedness. However, from the bound at the beginning of the proof, we can say more about this projection than mere continuity. Namely it \emph{respects metrics}. The essential point is that metric respecting maps preserve \emph{completeness}.
+		
+		Define the projection map on the graph of $T-\lambda$,
+			\begin{equation*}
+				F:v\oplus(T-\lambda)v \longmapsto (T-\lambda)v.
+			\end{equation*}
+		From \eqref{eq:1}, for all $v \in \dom T$ 
+			\begin{equation*}
+				|v|^2 \leq \frac{1}{y^2} |(T-\lambda)v|^2
+			\end{equation*}
+		where $y^2$ is positive and fixed. On the other hand, trivially
+			\begin{equation*}
+				|(T-\lambda)v|^2 \leq |(T-\lambda)v|^2 +|v|^2.
+			\end{equation*}
+		Combining, we have 
+			\begin{equation*}
+				|(T-\lambda)v|^2 \leq |(T-\lambda)v|^2 +|v|^2 \leq (1+\frac{1}{y^2}) |(T-\lambda)v|^2
+			\end{equation*}
+		Which is to say for any $z \in \Graph T$,
+			\begin{equation*}
+				|F(z)|^2 \leq |z|^2 \leq (1+\frac{1}{y^2})|F(z)|^2,
+			\end{equation*}
+		so $F$ respects metrics.
+		
+		By the first claim, the self-adjoint operator $T$ has a closed graph in $V \oplus V$,  so $T-\lambda$ has a closed graph. A closed subspace in a complete space is itself complete, so $\Graph (T-\lambda)$ is complete. Then $F$ preserves completeness, so $F(\Graph(T-\lambda))=(T-\lambda)D$ is complete in $V$. A  complete metric subspace is closed, because convergent sequences are always Cauchy in a metric space. So in addition to being dense, $(T-\lambda)\dom T$ is closed in $V$. Thus $(T-\lambda)\dom T=V$ meaning $T-\lambda$ surjects its domain onto $V$. Therefore, $(T-\lambda)^{-1}=R_\lambda$ is everywhere defined. 
+		
+		To see that $R_\lambda$ is continuous, let $v=R_\lambda w$ and use the lower bound on $T-\lambda$
+			\begin{equation*}
+				|(T-\lambda)v|\geq y|v|,
+			\end{equation*}
+		as an upper bound on the operator norm of $R_\lambda$
+			\begin{equation*}
+				|R_\lambda w| \leq \frac{1}{y} |w|,
+			\end{equation*}
+		proving boundedness, thereby continuity.
+		
+		When $T$ is positive, in addition to being self adjoint, we can relax our conditions on $\lambda$, as $\re(\lambda) < 0$. Then we get a similar lower bound on the norm of $T-\lambda$
+			\begin{equation*}
+			\begin{split}
+				|(T-\lambda)v|^2 & =|Tv|^2-\lambda \ip{Tv}{v}-\bar{\lambda} \ip{v}{Tv}+|\lambda v|^2 \\
+							  & =|Tv|^2 -2 \re(\lambda) \ip{Tv}{v} +|\lambda v|^2
+			\end{split}
+			\end{equation*}
+		by observing $\re(\lambda) < 0$, and $T$ is positive, making the cross term positive so 
+			\begin{equation*}
+				|(T-\lambda)v|^2=|Tv|^2 +2 |\Re(\lambda)| \ip{Tv}{v} +|\lambda v|^2 \geq |\lambda|^2 |v|^2.
+			\end{equation*}
+		This estimate allows the proof to repeat verbatim.
+	\end{proof}
+	
+	
+%%%%%%%%%%%%Friedrichs' construction%%%%%%%%%%%%%%	
+	\begin{thm}
+		Let $T$ be a positive, symmetric, densely defined operator on a Hilbert space $V$. There exists a positive self adjoint extension $\tilde{T}$ of $T$. Further, the resolvent $(1+\tilde{T})^{-1}$ is characterized by the condition
+		\begin{equation*}
+			\ip{(1+T)v}{(1+\tilde{T})^{-1}w}=\ip{v}{w} \qquad \left( \text{for all } v \in \dom T \text{ and } w \in V \right)  
+		\end{equation*}
+	\end{thm}
+	\begin{proof}
+		Define the new Hermitian form
+			\begin{equation*}
+				\ipn{v}{w}=\ip{(1+T)v}{w}.
+			\end{equation*}
+		Because $T$ is positive, the new form is positive, and because $1+T$ injects, the form is definite. Initially, $\ipn{\cdot}{\cdot}$ is defined only on $\dom T$ but symmetry allows us to unambiguously extend it to be defined when at least one of its arguments is in $\dom T$. 
+		
+		Define the metric $d_1$ on $\dom T \subset V$ induced by the form $\ipn{\cdot}{\cdot}$.  Similarly let $d$ be the metric induced by the original form $\ip{\cdot}{\cdot}$.  Immediately, by positivity of $T$,
+			\begin{equation*}
+				d(v,w)\leq d_1(v,w) \qquad \left(\text{for all } v \in \dom T \text{ and } w\in V\right).
+			\end{equation*}
+		Let $V_1$ be the metric space completion of $\dom T$ with respect to $d_1$. 
+		
+		I claim that $V_1$ continuously injects into\footnote{In general there is no reason to believe that completions of a space with respect to two distinct metrics will give rise to comparable spaces. Indeed, consider the completion of $\Q$ with respect to an archimedian and a nonarchimedian norm. In the happy case of $V$ and $V_1$, the metric domination makes the completions comparable.} $V$. The issue to check is that equivalent $d_1$ Cauchy sequences in $\dom T$ are also $d$ equivalent. Then, we can associate $d_1$ limits with their corresponding $d$ limits. 
+		
+		Let $v_i,w_i$ be $d_1$ equivalent Cauchy sequences. By metric domination for all $i$,
+			\begin{equation*}
+				d(v_i,w_i)\leq d_1(v_i,w_i),
+			\end{equation*}
+		and the right side tends to zero. Thus $d(v_i,w_i)\to 0$ meaning $v_i$ and $w_i$ are $d$ equivalent. Thus we can include $V_1$ in $V$ and by metric domination, the inclusion is continuous. From now on, we may view $V_1\subset V$. 
+		
+		Note that $V_1$ is $d$ dense in $V$, because $V_1$ is itself larger than $\dom T$ which is already dense in $V$, by assumption.
+		
+		For each $h\in V$, define the functional $\lambda_h: V_1 \to \C$ by $\lambda_h(v)=\ip{v}{h}$. By Cauchy-Schwarz and norm domination, $\lambda_h$ is bounded in the $d_1$ operator topology
+			\begin{equation*}
+				|\lambda_h(v)|=|\ip{v}{h}| \leq |v| |h|\ \leq |v|_1 |h|.
+			\end{equation*}
+		By Riesz-Fischer, there is a unique $w_h$ in $V_1$ so that for all $v \in V_1$
+			\begin{equation*}
+				\lambda_h (v) = \ipn{v}{w_h}.
+			\end{equation*}
+		We can bound $w_h\in V_1$ above by $h$, compute using the bound on $\lambda$
+			\begin{equation*}
+				\lambda(w_h)=\ipn{w_h}{w_h}=|w_h|_1^2\leq |w_h|_1|h|,
+			\end{equation*}
+		then divide by $w_h$. 
+		
+		Define the map $R:V\to V_1\subset V$ by the composition $h\mapsto \lambda _h \mapsto w_h$. From the display above, 
+			\begin{equation*}
+				|Rv|\leq |v||h|\leq |v|_1|h|
+			\end{equation*}
+		for all $v\in V$. Thus the operator $R:V\to V$ is continuous, where the topology on the image is given by $\ip{\cdot}{\cdot}$. Further, it is also continuous as an operator $R:V\to V_1$ with the finer topology on the image, given by $\ipn{\cdot}{\cdot}$. 
+			Note that for all $v\in \dom T$ and $w \in V$, we have 
+			\begin{equation*}
+				\ip{v}{w}=\ipn{v}{Rw}=\ip{(1+T)v}{Rw}
+			\end{equation*} 
+		so that $R$ behaves like the resolvent as characterized in the statement of the theorem.
+		
+			The operator $R$ is verifiably linear, with one step of the verification being
+			\begin{equation*}
+				\lambda_{ah}(v)=\ipn{v}{R(ah)}=\bar{a}\ipn{v}{Rh}=\bar{a}\ip{v}{h}=\ip{v}{ah}=a\lambda_h(v).
+			\end{equation*}	
+		Further, $R$ is symmetric with respect to the original form $\ip{\cdot}{\cdot}$. Compute for any $v,w \in V$
+			\begin{align*}
+				\ip{Rv}{w}& =\lambda_w (Rv)  & (\text{definition of $\lambda$}) \\
+					        & = \ipn{Rv}{Rw} &(\text{defintion of $R$})\\
+					        & = \overline{\ipn{Rw}{Rv}} &\\
+					        & = \overline{\lambda_v(Rw)} &(\text{definition of $R$})\\
+					        & = \overline{\ip{Rw}{v}} &(\text{definition of $\lambda$})\\ 
+					        & = \ip{v}{Rw}.
+			\end{align*}
+		Compute that $R$ is positive:
+			\begin{align*}
+				\ip{Rv}{v} & =\lambda_v {Rv} \\
+				                & = \ipn{Rv}{Rv} \geq 0.
+			\end{align*}
+		Compute that $R$ is injective: let $Rw=0$ so that for all $v\in V_1$
+			\begin{align*}
+				0 &=\ipn{v}{0} \\
+				   &=\ipn{v}{Rw} \\
+				   &=\lambda_w (v) \\
+				   &= \ip{v}{w},
+			\end{align*}
+		but $V_1$ is $d$-dense in $V$, so $w=0$. 
+		
+		Further, $R$ has dense image: if $w \perp RV$ then in particular
+			\begin{align*}
+				0&=\ip{Rw}{w} \\
+				  &=\lambda_w(Rw) \\
+				  &=\ipn{Rw}{Rw}
+			\end{align*}
+		so that $w=0$. 
+		
+		
+		To summarize, the map $R:V\to V_1\subset V$ defined by $h\mapsto \lambda_h\mapsto w_h$ is everywhere defined, continuous, linear, symmetric, positive, with $d$-dense image in $V_1$. As an everywhere defined symmetric operator $R$ is \emph{self adjoint}. Moreover, for all $v\in \dom T$ and $w\in V$
+			\begin{equation*}
+				\ip{v}{w}=\ipn{v}{Rw}=\ip{(1+T)v}{Rw}.
+			\end{equation*}
+		
+		Consequently, $R$ has a positive symmetric inverse $Q$, with $d$-dense domain in $V_1$.  There is no reason to believe $Q$ is continuous.  Further, because $R$ injects $V$ into $V_1$, $Q$ surjects its domain in $V_1$ onto $V$. Next, we show that $Q$ is self-adjoint.
+		
+			Define the isometry $S:V\oplus V \to V\oplus V$ by $S(v\oplus w)=w\oplus v$. For an invertible operator $L$, this gives $S\Graph L =\Graph L^{-1}$. 
+		
+		Recall that we defined $U:V\oplus V\to V\oplus V$ by $U(v\oplus w)=-w\oplus v$ and that the adjoint of an operator $L$ is characterized by
+			\begin{equation*}
+				\Graph L^*=(U\Graph L)^{\perp}.
+			\end{equation*}	 
+			
+			For any $v,w\in V$, 
+			\begin{equation*}
+				U(S(v\oplus w))=U(w\oplus v)=-v \oplus w=-S(-w\oplus v)=-S(U(v\oplus w))
+			\end{equation*}
+		showing $U\circ S=-S\circ U$. 
+		
+		Further,
+			\begin{equation*}
+				\ip{v\oplus w}{S(x\oplus y)}=\ip{v}{y}+\ip{w}{x}=\ip{w}{x}+\ip{v}{y}=\ip{S(v\oplus w)}{x\oplus y}.
+			\end{equation*}
+		In particular, $S(X^\perp)=(SX)^\perp$ for any subspace $X$. 
+		
+		Now compute,
+			\begin{align*}
+				\Graph Q^* & = (U \Graph Q )^{\perp}  & (\text{characterization of $\cdot^*$})\\
+							& = (U \circ S \Graph R)^\perp & (\text{$R$ is the inverse of $Q$})\\
+							& = (-S\circ U \Graph R)^\perp & (U\circ S=-S\circ U)\\
+							& = -S(U\Graph R)^\perp & (S \text{ commutes with } \cdot^\perp)\\
+							& = -S \Graph R & (R \text{ is self-adjoint})\\
+							& = - \Graph Q= \Graph Q &(R \text{ is the inverse of } Q),
+			\end{align*}
+		showing that $Q$ is self-adjoint.
+		
+		Now we prove that $Q$ extends $1+T$.  First, for $v,w\in \dom T$
+			\begin{align*}
+				\ip{v}{(1+T)w}=\ipn{v}{R(1+T)w}
+			\end{align*}
+		but also, by definition of $\ipn{\cdot}{\cdot}$
+			\begin{align*}
+				\ip{v}{(1+T)w}=\ipn{v}{w}.
+			\end{align*}
+		Thus for all $v,w\in \dom T$ 
+			\begin{align*}
+				\ipn{v}{w-R(1+T)w}=0.
+			\end{align*}		
+		The space $V_1$ is the $d_1$-completion of $\dom T$, so $\dom T$ is $d_1$-dense in $V_1$ by design. Thus for any $w\in \dom (1+T)$, we conclude $R(1+T)w=w$. In particular $w$ is in the image of $R$, thus the domain of $Q$. Then, $QR(1+T)w=Qw$, and since $Q$ inverts $R$, we have $(1+T)w=Qw$. That is $\dom (1+T)\subset \dom Q$, and in turn $(1+T)\subset Q$.
+		
+		Thus $Q$ is a positive self-adjoint extension of $(1+T)$, defined on a $d_1$-dense subspace of $V_1$. Further,  denoting $Q$ as $1+\tilde{T}$, we have
+			\begin{equation*}
+				\ip{(1+T)v}{(1+\tilde{T})^{-1}w}=\ip{v}{w}
+			\end{equation*}
+		for all $v\in \dom T$ and $w\in V$, as claimed.
+	\end{proof}
+	\begin{claim}
+		Maintain the notation from the proof of Friedrichs' construction. If the inclusion $V_1\to V$ is \emph{compact}, then the resolvent $(1+\tilde{T}):V\to V_1 \subset V$ is compact as an operator on $V$.
+	\end{claim}
+	\begin{proof}
+		As discussed in the proof above, the resolvent $R=(1+\tilde{T})^{-1}:V\to V_1$ is continuous with the finer $\ipn{\cdot}{\cdot}$ topology on its image.  Composing the continuous map $R:V\to V_1$ with the compact inclusion $V_1\to V$ shows that $R$ is compact. 
+	\end{proof}
+\end{document}  

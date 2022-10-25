@@ -1,0 +1,158 @@
+ \documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage[all]{xy}
+\input{mydefs}
+\newcommand{\Of}{\mathcal{O}}
+\renewcommand{\P}{\mathfrak{P}}
+\renewcommand{\a}{\mathfrak{a}}
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries}{\thesubsection}{1em}{}[{}]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\newtheorem{exer}{Exercise}
+\newcommand{\sm}{\setminus}
+\newcommand{\f}{\mathfrak{f}}
+\newcommand{\cue}{\mathfrak{Q}}
+\newcommand{\q}{\mathfrak{q}}
+\renewcommand{\b}{\mathfrak{b}}
+\renewcommand{\i}{\iota}
+\title{Secret seminar talk: Real quadratic zetas and periods of Eisenstein series}
+\author{Justin Katz}
+\begin{document}
+\maketitle
+\section{Arithmetic side}
+\begin{itemize}
+	\item Let $D$ be square free, for convenience $D=2,3 \mod 4$. Let $k=\Q(\sqrt{D})$ and $\Of_{k}=\Z[\sqrt{D}]$.
+	\item The norm map $N:k\to \Q$ is given by $N(a+b\sqrt{D})=(a+b\sqrt{D})(a-b\sqrt{D})=a^{2}-Db^{2}$. 
+	\item Let $I$ be the collection of integral ideals of $\Of_{k}$ and define
+		\begin{align*}
+			\zeta_{k}(s)=\sum_{\a \in I/\{0\}}|N(\a)|^{-s} \quad \text{ $\re s>1$}
+		\end{align*}
+	\item Let $C_{k}$ be the class group (which is finite), and let $\a_{1},..,\a_{h}$ be integral representatives of each ideal class.
+	\item $\zeta_{k}$ breaks up 
+		\begin{align*}
+			\zeta_{k}(s)=\sum_{i=1}^{h}\sum_{\b \in [\a_{i}]}|N(\b)|^{-s}.
+		\end{align*}
+	\item $\b \in [\a_{i}]$ if and only if $\b=\theta \a_{i}$ for some $\theta \in \a_{i}^{-1}=\{\theta: \theta \a_{i} \subset \Of_{k}\}$, so 
+		\begin{align*}
+			\zeta_{k}(s)=\sum_{i=1}^{h}\sum_{\theta \in \a^{-1}_{i}}|N(\theta \a_{i})|^{-s}.
+		\end{align*}
+	\item Pick a $\Z$ basis $e_{1},e_{2}$ for $\a_{i}^{-1}$
+		\begin{align*}
+			\zeta_{k}(s)=\sum_{i=1}^{h}\sum_{(m,n) \in \Z^{2}/ \{0\}}|N((me_{1}+ne_{2})\a_{i})|^{-s}.
+		\end{align*}
+	\item By algebraic number theory, there are integers $A_{i},B_{i},C_{i}$ with $\disc Q_{i} = B_{i}^{2}-4A_{i}C_{i}=d$ and
+		\begin{align*}
+			N((me_{1}+ne_{2})\a_{i})=A_{i}m^{2}+B_{i}mn+C_{i}n^{2}=Q_{i}(m,n).
+		\end{align*}
+	\item Thus,
+		\begin{align*}
+			\zeta_{k}(s)=\sum_{i=1}^{h}\sum_{(m,n) \in \Z^{2}/ \{0\}}|Q_{i}(m,n)|^{-s}
+		\end{align*} 
+	\item Changing basis in the lattice of $\a_{i}^{-1}$  amounts to the action of $\SL_{2}(\Z)$ on $Q_{i}$, and by theory of quadratic forms, merely permutes the terms in the sum. 
+\end{itemize}
+\section{Geometro-analytic side}
+\begin{itemize}
+	\item To analyze the Dedekind zeta, we bring the geometry of the moduli space of lattices to bear on it. 
+	\item Define a group and its subgroup, using convention that subscripts denote domain of entries
+		\begin{align*}
+			G=\SL_{2}, \quad P= \tbt{*}{*}{0}{*}.
+		\end{align*}
+	\item $G_{\R}$ and its subgroups act on the complex upper half plane $\half=\{z:\im z>0\}$ by linear fractional transformations
+		\begin{align*}
+			\tbt{a}{b}{c}{d} \tau = \frac{a \tau +b}{c\tau +d}
+		\end{align*}
+	\item (Aux. useful computation) 
+		\begin{align*}
+			 \im \tbt{a}{b}{c}{d} \tau= \frac{\im \tau}{ |c \tau +d|^{2}}
+		\end{align*} 
+	\item Aside: If $\half$ is endowed with the hyperbolic metric, $G_{\R}$ acts by isometries. 
+	\item Action is transitive, isotropy of $i$ is $K=\SO(2)$: 
+		\begin{align*}
+			\tbt {a}{b}{c}{d} i= i \iff ai+b=-c + id  \iff a=d, \quad b=-c, \quad a^{2}+b^{2}=1
+		\end{align*}
+	\item By orbit stabilizer theorem
+		\begin{align*}
+			G_{\R}/K \approx \half  \quad \text{ via } \quad  gK \mapsto gi. 
+		\end{align*}
+	\item The moduli space of lattices is given by $G_{\Z} \setminus \half \approx G_{\Z} \setminus G_{\R} / K$
+	\item The Real analytic Eisenstein series are functions either on $\half$ or $G_{\R}$ designed to descend to these quotients: 
+		\begin{align*}
+			E_{s}(g)&= \sum_{\gamma \in P_{\Z} \setminus G_{\Z} } (\im(\gamma g i))^{s}   \quad \text{ $\re(s)>1$}\\ 
+			\text{ or }E_{s}(z)&= \sum_{\gamma \in P_{\Z}\setminus G_{\Z}}(\im(\gamma z))^{s} \\
+						  &= \sum_{\tbt{*}{*}{c}{d} \in G_{\Z} }  \frac{(\im z)^{s}}{2|cz+d|^{2s}} 
+		\end{align*}
+	\item (Note, being in $G_{\Z}$ forces $(c,d)=1$)
+	\item Convenient modification: a sum over all $(c,d)\neq 0$, can be written as $\sum_{e=1}^{\infty}\sum_{(c,d)=e}$. Upon multiplication by $\zeta(2s)$ we thus have
+		\begin{align*}
+			\zeta(2s)E_{s}(z)=\sum_{(c,d) \neq 0} \frac{(\im z)^{s}}{2|cz+d|^{2s}}
+		\end{align*} 
+\end{itemize}
+\section{$D<0$ easy}
+\begin{itemize}
+	\item For imaginary quadratic, $D<0$ we've just shown that the Dedekind zeta breaks into a sum of a definite quadratic form at lattice points. 
+	\item Erstwhile, 
+		\begin{align*}
+			|cz+d|^{2} & = (c\re(z)+d)^{2}+\im( z)^{2}c^{2}  \\
+							 & =  |z|^{2}c^{2}+2\re(z) cd+d^{2}
+		\end{align*}
+		is a quadratic form of discriminant $4(\re z)^{2}-4|z|^{2}=-4 (\im z)^{2} $. 
+	\item  By reduction theory, for each imaginary quadratic ideal class, with corresponding quadratic form $Q_{i}$  there is a unique $z_{i}$ in the standard fundamental domain $G_{\Z}\setminus \half$ with $\frac{\im z}{|mz+n|^{2}}=\frac{\sqrt{D}/2}{Q_{i}(c,d)}$.
+	\item This gives 
+		\begin{align*}
+			\frac{(\sqrt{D}/2)^{s}}{\zeta(2s)} \zeta_{k}(s)= \sum_{i=1}^{h} E_{s}(z_{i}).
+		\end{align*} 
+\end{itemize}
+\section{$D>0$ preparations}
+\begin{itemize}
+	\item For real quadratic, $D>0$ the quadratic forms $Q_{i}$ are \emph{indefinite}. There is no hope of finding $z_{i}$ to make the above work. 
+	\item Instead, approach from the geometric side. There is a canonical embedding $\i:k^{*}\to \GL_{\Q}(k)$ via multiplication.
+	\item With basis $1,\sqrt{D}$,  the embedding is 
+		\begin{align*}
+			a+b\sqrt{D} \mapsto\Tbt{a}{bD}{b}{a}.
+		\end{align*}
+	\item Dirichlet's theorem on units shows that the intersection $H_{\Z}=\i(k^{*})\cap G_{\Z}$ is nontrivial. This subgroup corresponds to $\i({\Of^{\times}_{k}}_{>0})$, positive normed units.
+	\item $H_{\Z}$ is a subgroup of $H_{\R}=H_{\Z}\otimes \R$, a one parameter subgroup which is easy to describe
+		\begin{align*}
+			H_{\R}=\{ \Tbt{a}{bD}{b}{a}: a^{2}-b^{2}D=1\} = \{ h(t)=\Tbt{\cosh t}{ \sinh t \sqrt{D}}{\sinh t/\sqrt{D}}{\cosh t} : t\in \R\} 
+		\end{align*}
+	\item For any nonidentity $h=\tbt{a}{bD}{b}{a} \in H_{\Z}$,  $\Tr(h)=2a>2$ (since $a^{2}=1+b^{2}D$ if $b^{2}\neq 0$ then $a^{2}\geq 1+D$ and one can check for $D=2,3$ that always $2a>2$.) 
+	\item That is, nontrivial units in ${\Of^{\times}_{k}}_{>0}$ correspond to hyperbolic transformations.
+	\item Hyperbolic transformations have $2$ distinct real fixed points, one acting as a sink, the other as a source. 
+	\item For $a+b\sqrt{D} \mapsto h H_{\Z}$, the fixed points of $h$ are its eigenvalues, which are the conjugates $a\pm b \sqrt{D}$.
+	\item The group $H_{\R}$ acts freely and transitively on the geodesic from $a\pm b \sqrt{D}$, and by the existence of nontrivial units $H_{\Z} \setminus H_{\R}$ is closed (hence compact).
+	\subsection{Computation for the quadratic form $a^{2}-Db^{2}$}
+		\item The quadratic form corresponding to the trivial class is just the norm $a^{2}-Db^{2}$. Dehomogenizing, we have the quadratic polynomial $a^{2}-D=0$, with roots $a=\pm \sqrt{D}$. Let $C_{1}$ be the geodesic joining $\pm \sqrt{D}$.
+		\item $i\sqrt{D}$ is on this geodesic, so
+			\begin{align*}
+				C_{1}= \{ h(t)\cdot i\sqrt{D} = \sqrt{D}\frac{i \cosh t+ \sinh t}{i \sinh t+\cosh t}: t\in \R\}. 
+			\end{align*} 
+		\item The integral to compute is then $\int_{\R} E_{s}(\sqrt{D}\frac{i \cosh t+ \sinh t}{i \sinh t+\cosh t}) \dop t $
+			\begin{align*}
+																	&= \int_{H_{\Z}\sm H_{\R}} E_{s}(h  i \sqrt{D}) \dop h \\
+																	&= \int_{H_{\Z}\sm H_{\R}} \sum_{\gamma \in P_{\Z}\sm G_{\Z}}\im(\gamma h i \sqrt{D})^{s}\dop h \\
+																	&= \int_{H_{\Z}\sm H_{\R}} \sum_{a \in P_{\Z}\sm G_{\Z}/H_{\Z}} \sum_{b \in a P_{\Z} a^{-1} \cap H_{z} \sm H_{\Z}} \im(ab h i\sqrt{D})^{s}\dop h  \\
+																	&=\sum_{a \in P_{\Z}\sm G_{\Z}/H_{\Z}}  \int_{H_{\Z}\sm H_{\R}} \sum_{b \in \pm 1 \sm H_{\Z}} \im(ab h i\sqrt{D})^{s}\dop h  \\
+																	&=\sum_{a \in P_{\Z}\sm G_{\Z}/H_{\Z}}  \int_{\pm 1 \sm H_{\R}}  \im(a h i\sqrt{D})^{s}\dop h  \\
+																	&=\frac{1}{\zeta(2s)} \sum_{(c,d)\in \Z^{2}- \{0\}/H_{\Z}}  \int_{\pm 1 \sm H_{\R}}  \left(\frac{\im(h i \sqrt{D})}{|c h i \sqrt{D} +d|^{2}}\right)^{s}\dop h \\
+																	&=\frac{1}{\zeta(2s)} \sum_{(c,d)\in \Z^{2}- \{0\}/H_{\Z}}  \int_{\R}  \left(\frac{\sqrt{D}}{|c  \sqrt{D} (i\cosh t +\sinh t) +d(i \sinh t + \cosh t)|^{2}}\right)^{s}\dop t\\ 
+																	&=\frac{1}{\zeta(2s)} \sum_{(c,d)\in \Z^{2}- \{0\}/H_{\Z}}  \int_{\R}  \left(\frac{\sqrt{D}}{(c^{2}D+d^{2}+2cd \sqrt{D}) e^{2t}+(c^{2}D+d^{2}-2cd \sqrt{D})e^{-2t}}\right)^{s}\dop t 
+			\end{align*}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,97 @@
+
+\footline={}
+\rightline{4 June 2014}
+\bigskip
+
+\font\tenbbold=msbm10
+\def\bbP{{\hbox{\tenbbold P}}}
+\def\midline#1{\raise 0.20em\hbox to #1{\vrule depth0pt height 0.405pt width #1}}
+\def\dashrightarrow{\midline{0.4em} \mkern 3.6mu\midline{0.4em} \mkern -0.6mu \mathrel{\rightarrow}}
+\def\qedbox{\hbox{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}}}% in eqalignno, use: "& \qedbox \cr"
+\def\qed{\unskip\hfill\qedbox}
+
+\noindent
+{\bf Theorem:}
+Let $k$ be a field,
+$X_1, \ldots, X_c$ variables over $k$,
+and for $j = 1, \ldots, n$ and $i = 0, \ldots, r_i$
+let $f_{ij} \in k[X_1, \ldots, X_c]$.
+Let
+$$
+F : k^c \dashrightarrow \bbP^{r_1} \times \cdots \times \bbP^{r_n}
+$$
+be given by the projection of $F(\underline x)$ onto $\bbP^{r_j}$
+as $(f_{0j}(\underline x), \ldots, f_{r_jj}(\underline x))$.
+In the polynomial ring $R = k[X_1, \ldots, X_c, s_1, \ldots, s_n, Y_{ij}: j =
+1, \ldots, n, i = 0, \ldots, r_j]$
+define the ideal
+$$
+I =
+\sum_{j=1}^n (Y_{0j} - s_j f_{0j}(\underline X),
+\ldots,
+Y_{r_jj} - s_j f_{r_jj}(\underline X)).
+$$
+Then the defining ideal in $k[Y_{ij}: i, j]$
+of the closure of the image of $F$ is
+$$
+J = \left( I : \left( \prod_{j=1}^n s_j (Y_{0j}, \ldots, Y_{r_jj})
+\right)^\infty
+\right)
+\cap k[Y_{ij}: i, j].
+$$
+
+\noindent
+{\it Proof:}
+Let $g \in J$, and $b$ in the image of $F$.
+Then there exists $p \in k^c$ such that $b = F(p)$.
+Also,
+there exists a large integer $e$ such that
+$\left( \prod_{j=1}^n s_j (Y_{0j}, \ldots, Y_{r_jj})
+\right)^e g \subseteq I$.
+Hence
+$\left( \prod_{j=1}^n s_j (f_{0j}(p), \ldots, f_{r_jj}(p)) \right)^e g(F(p))
+= 0$.
+Since $b = F(p)$,
+for each $j = 1, \ldots, n$,
+one of $f_{ij}(p)$ is non-zero,
+and since $s_1 \cdots s_n \not = 0$,
+we have that $g(b) = g(F(p)) = 0$.
+Thus $g$ vanishes on the image of $F$,
+and so on the closure of the image of $F$.
+It follows that the closure of the image of $F$ is in $Z(J)$.
+
+We call an element $g$ of $k[Y_{ij}: i, j]$ multihomogeneous
+if for each $j = 1, \ldots, n$,
+the total $(Y_{0j}, \ldots, Y_{r_jj})$-degree of all the terms appearing
+in $g$ is the same.
+Any $g$ can be written as the sum of multihomogeneous polynomials.
+Now let $g \in k[Y_{ij}: i, j]$ vanish on the image of $F$.
+Since the codomain is a product of projective spaces,
+each multihomogeneous component of $g$ also vanishes on the image of $F$.
+If we can prove that each
+multihomogeneous component of $g$ is in $J$,
+then $g$ is in $J$.
+So we may assume that $g$ is multihomogeneous and vanishes on the image
+of $F$.
+So for any $\underline x \in k^c$,
+$g(\underline f_{ij} (\underline x)) = 0$
+(since $g$ is multihomogeneous,
+this is true whether $\underline x$ is in the domain of $F$ or not).
+In short,
+$g(\underline f_{ij} (\underline X)) = 0$ (variables $X$).
+Again by multihomogeneity,
+$g(\underline {s_j f_{ij}} (\underline X))
+= s_1^{e_1} \cdots s_n^{e_n} g(\underline f_{ij} (\underline X)) = 0$
+for some non-negative integers $e_1, \ldots, e_n$.
+But then
+$s_1^{e_1} \cdots s_n^{e_n} g
+\in (Y_{ij} - s_j f_{ij}(\underline X))$,
+so that $g \in J$.
+It follows that the polynomials that vanish on the image of $F$ are in
+$J$,
+and so that the zeros of $J$ are contained
+in the zeros of the polynomials that vanish on the image of $F$,
+i.e.,
+that the zeros of $J$ are contained in the closure of the image of $F$.
+\qed
+

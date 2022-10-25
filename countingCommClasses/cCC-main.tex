@@ -1,0 +1,209 @@
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+
+\documentclass[10pt]{article}
+
+%-----------------------------------------------------------
+%----Paper size---------------------------------------------
+
+\setlength{\topmargin}{-1.cm} \setlength{\headsep}{1cm}
+\setlength{\evensidemargin}{0.6cm} \setlength{\oddsidemargin}{0.6cm}
+\setlength{\textheight}{22.5cm}
+\setlength{\textwidth}{15.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+%-------- Packages -----------------------------------------
+%-----------------------------------------------------------
+
+\usepackage{mathptmx,amsmath,amscd,amssymb,amsthm,xspace}
+\usepackage[all,tips]{xy}
+\usepackage[dvips]{graphicx}
+\usepackage{graphics,epsfig,wrapfig,verbatim,syntonly}
+\usepackage{hyperref,amssymb,color, url,fancyhdr}
+
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{sch}[thm]{Scholium}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}{Example}
+
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newtheorem{exer}{Exercise}
+
+\newenvironment{pf}
+{\begin{proof}} {\end{proof}}
+
+\renewcommand\qedsymbol{$\spadesuit$}
+
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+
+\DeclareMathOperator{\GL}{GL}\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SL}{SL}\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\rk}{rk}\DeclareMathOperator{\avg}{avg}
+\DeclareMathOperator{\LCM}{LCM}\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\D}{D}\DeclareMathOperator{\G}{G}
+\DeclareMathOperator{\FI}{FI}\DeclareMathOperator{\NFI}{NFI}
+\DeclareMathOperator{\Comm}{Comm}\DeclareMathOperator{\Nor}{N}
+\DeclareMathOperator{\Isom}{Isom}\DeclareMathOperator{\Ort}{O}
+\DeclareMathOperator{\SO}{SO}\DeclareMathOperator{\Uni}{U}
+\DeclareMathOperator{\SU}{SU}\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Mat}{M}\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\PGL}{PGL}\DeclareMathOperator{\Tri}{Tri}
+\DeclareMathOperator{\Spec}{Spec}\DeclareMathOperator{\UI}{UI}
+\DeclareMathOperator{\UC}{UC}\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Ad}{Ad}
+
+%-----------------------------------------------------------
+%--------- Variable Greek ----------------------------------
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\vp}{\varphi}
+\newcommand{\vte}{\vartheta}
+\newcommand{\bdef}{\overset{\text{def}}{=}}
+
+%-----------------------------------------------------------
+%--------- Regular Greek -----------------------------------
+
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\te}{\theta}
+\newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda}
+
+%-----------------------------------------------------------
+%-------- Line and page operators --------------------------
+
+\newcommand{\ol}{\overline}
+\newcommand{\nl}{\ensuremath{\newline}}
+\newcommand{\ul}{\underline}
+\newcommand{\np}{\newpage}
+\newcommand{\nid}{\noindent}
+\newcommand{\wh}{\widehat}
+
+%-----------------------------------------------------------
+%--------- Random symbols ----------------------------------
+
+\newcommand{\iny}{\infty}
+\newcommand{\tri}{\ensuremath{\triangle}}
+\newcommand{\es}{\emptyset}
+\newcommand{\co}{\ensuremath{\colon}}
+
+%-----------------------------------------------------------
+%--------- Variable macros ---------------------------------
+%-----------------------------------------------------------
+
+\newcommand{\innp}[1]{\left< #1 \right>}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\norm}[1]{\left\vert \left\vert #1\right\vert\right\vert}
+\newcommand{\brac}[1]{\left[#1\right]}
+\newcommand{\pr}[1]{\left( #1 \right) }
+\newcommand{\su}{\subset}
+\newcommand{\da}[2]{\downarrow_{#1}^{ #2}}
+\newcommand{\ua}[2]{\uparrow_{#1}^{#2}}
+\newcommand{\bua}[2]{\Uparrow_{ #1}^{#2}}
+
+
+
+%-----------------------------------------------------------
+%--------- Union .etc --------------------------------------
+
+\newcommand{\bu}{\bigcup}
+\newcommand{\ba}{\bigcap}
+\newcommand{\bop}{\bigoplus}
+\newcommand{\botm}{\bigotimes}
+\newcommand{\rt}{\ensuremath{\rtimes}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\op}{\oplus}
+
+%-----------------------------------------------------------
+%---------- Font Macros ------------------------------------
+
+\newcommand{\B}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\BB}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand{\Cal}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\Fr}[1]{\ensuremath{\mathfrak{#1}}}
+
+%-----------------------------------------------------------
+%---------- Special set ------------------------------------
+
+\newcommand{\Hy}{\mathbf{H}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\spec}[1]{\Spec(#1)}
+\newcommand{\F}{\mathbf{F}}
+
+%-----------------------------------------------------------
+%---------- ToDo command------------------------------------
+
+
+\newcommand{\todo}[1]{\vspace{5mm}\par \noindent
+\framebox{\begin{minipage}[c]{0.95 \textwidth} \tt #1
+\end{minipage}} \vspace{5mm} \par}
+
+
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+
+%\pagestyle{fancy} \fancyhf{} \fancyhead[R]{\bfseries \thepage}
+%\fancyhead[L]{\bfseries Lattice Recursion}
+%\fancypagestyle{plain}
+
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+\begin{document}
+\bibliographystyle{plain}
+
+\title{Counting Arithmetic Commensurability Classes}
+\author{Mc/K/T}
+\date{\today}
+%\abstract{}
+\maketitle
+
+
+
+
+
+
+
+
+
+
+
+
+
+%-----------------------------------------------------------%-----------------------------------------------------------
+\begin{thebibliography}{9999}
+
+%\bibitem{Sunada}
+%T.~Sunada, \emph{Riemannian coverings and isospectral manifolds}, Ann. of Math. (2) \textbf{121} (1985), 169--186.
+
+\end{thebibliography}
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+
+
+\end{document}
+
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+
+
+

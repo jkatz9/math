@@ -1,0 +1,1854 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsart
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1cm
+\rightmargin 1in
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A Primary Decomposition in Computer Vision
+\end_layout
+
+\begin_layout Author
+Justin Katz 
+\end_layout
+
+\begin_layout Author
+Irena Swanson
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathbb{P}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\V}{\mathcal{V}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Section
+The Multilinear Forms
+\end_layout
+
+\begin_layout Standard
+A projective pinhole camera is modeled by rank 3 projective transformation
+ 
+\begin_inset Formula $A:\mathbb{P}^{3}\setminus\{f_{A}\}\to\mathbb{P}^{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $f_{A}$
+\end_inset
+
+ is the generator of the kernel of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ For a derivation of the camera matrix see (Hartley Zisserman).
+ Given a family of 
+\begin_inset Formula $m$
+\end_inset
+
+ rank-3 projective transformations 
+\begin_inset Formula $A_{i}:\mathbb{P}^{3}-\{f_{A_{i}}\}\to\mathbb{P}^{2}$
+\end_inset
+
+, the 
+\begin_inset Formula $m$
+\end_inset
+
+-view scenario is modeled by the rational map 
+\begin_inset Formula 
+\begin{eqnarray*}
+\Phi_{A}:\P^{3}-\{f_{1},...,f_{m}\} & \to & \underset{\mbox{m times}}{\underbrace{\P^{2}\times\cdots\times\P^{2}}}.
+\end{eqnarray*}
+
+\end_inset
+
+This model is imminently dissatisfactory because one imagines the multiview
+ scenario as a projection of three dimensional projective space onto a family
+ of two dimensional affine hyperplanes embedded in the ambient projective
+ 
+\begin_inset Formula $3$
+\end_inset
+
+-space.
+ By instead mapping into the product of (unembedded) 
+\begin_inset Formula $2$
+\end_inset
+
+-spaces, one would worry that the geometry that constrains the points on
+ the camera planes is lost.
+ For example, one thinks the epipolar geometry of the 
+\begin_inset Formula $2$
+\end_inset
+
+-view scenario is induced by the pencil of lines passing through the epipole,
+ as obtained by intersecting the pencil of planes passing through the epipolar
+ line with the image plane.
+ Fortunately, the elemetary geometry can be recovered by algebraicizing
+ (Heyden Astrom, Hartley) as follows.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X\in\P^{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{1},\ldots,A_{m}$
+\end_inset
+
+ be 
+\begin_inset Formula $3\times4$
+\end_inset
+
+ camera matrices such that 
+\begin_inset Formula $A_{i}X=x_{i}\in\P^{2}$
+\end_inset
+
+ for each 
+\begin_inset Formula $i\in\left[m\right]$
+\end_inset
+
+.
+ Coorespondingly there exist representing 
+\begin_inset Formula $\vec{X}\in\R^{4}\setminus\{0\}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{x}_{i}\in\R^{3}\setminus\{0\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{i}\in\R\setminus\{0\}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+A_{i}\vec{X}=\lambda_{i}\vec{x}_{i}.
+\]
+
+\end_inset
+
+We can compile this data into the equation 
+\begin_inset Formula 
+\[
+Mu=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+M=\begin{bmatrix}A_{1} & \vec{x}_{1} & 0 & \cdots & 0\\
+A_{2} & 0 & \vec{x}_{2} & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+A_{m} & 0 & 0 & \cdots & \vec{x}_{m}
+\end{bmatrix}\qquad u=\begin{bmatrix}\vec{X}\\
+\lambda_{1}\\
+\vdots\\
+\lambda_{m}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+Because 
+\begin_inset Formula $u$
+\end_inset
+
+ is nonzero, 
+\begin_inset Formula $M$
+\end_inset
+
+ has a nontrivial kernel, and the strict inequality 
+\begin_inset Formula 
+\[
+\mbox{rank}\, M<m+4
+\]
+
+\end_inset
+
+holds.
+ Consequently, the determinant of any 
+\begin_inset Formula $\left(m+4\right)\times\left(m+4\right)$
+\end_inset
+
+ submatrix of 
+\begin_inset Formula $M$
+\end_inset
+
+ will be zero.
+ This suggests that if one thinks of the 
+\begin_inset Formula $\vec{x}_{i}$
+\end_inset
+
+ as indeterminates in the polynomial ring 
+\begin_inset Formula $R:=\R\left[x_{1},...,x_{m},y_{1},..,y_{m},z_{1},...,z_{m}\right]$
+\end_inset
+
+, then insisting that all 
+\begin_inset Formula $\left(m+4\right)\times\left(m+4\right)$
+\end_inset
+
+ minors of 
+\begin_inset Formula $M$
+\end_inset
+
+ be zero will impose genuine polynomial constraints on the coordinates in
+ the 
+\begin_inset Formula $m$
+\end_inset
+
+-fold product of projective 2-spaces
+\emph on
+.
+
+\emph default
+ There are three distinct types of choices of 
+\begin_inset Formula $\left(m+4\right)\times\left(m+4\right)$
+\end_inset
+
+ minors, distinguished by how many rows are taken from how many cameras.
+\end_layout
+
+\begin_layout Standard
+To construct the first type, pick two cameras 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+, and consider the 
+\begin_inset Formula $\left(m+4\right)\times\left(m+4\right)$
+\end_inset
+
+ submatrix of 
+\begin_inset Formula $M$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+D=\begin{bmatrix}A_{1}^{q_{1}} & \vec{x}_{1}^{q_{1}} & \cdots & 0 & \cdots & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \vdots\\
+A_{i} & 0 & \cdots & \vec{x}_{i} & \cdots & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \vdots\\
+A_{j} & 0 & \cdots & 0 & \cdots & \vec{x}_{j} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \vdots\\
+A_{m}^{q_{m}} & 0 & \cdots & 0 & \cdots & 0 & \cdots & \vec{x}_{m}^{q_{m}}
+\end{bmatrix}
+\]
+
+\end_inset
+
+where each 
+\begin_inset Formula $q_{k}\in\{1,2,3\}$
+\end_inset
+
+ is picked arbitrarily.Taking the determinant of 
+\begin_inset Formula $D$
+\end_inset
+
+, expanding along the columns containing single indeterminates, we discover
+ 
+\begin_inset Formula 
+\[
+\det D=\pm\left(\prod_{\underset{k\neq i,j}{k=1}}^{m}\vec{x}_{k}^{q_{k}}\right)\det\begin{bmatrix}A_{i} & \vec{x}_{i} & 0\\
+A_{j} & 0 & \vec{x}_{j}
+\end{bmatrix}=0.
+\]
+
+\end_inset
+
+Because we are in the projective setting and are viewing the indeterminates
+ as modeling coordinates, there is some choice of each 
+\begin_inset Formula $p_{k}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x_{k}^{p_{k}}$
+\end_inset
+
+ will be nonzero.
+ Thus, it is clear that the genuine constraint that arises in this way is
+ the bilinear form 
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{ij}(\vec{x}_{i},\vec{x}_{j}):=\det\begin{bmatrix}A_{i} & \vec{x}_{i} & 0\\
+A_{j} & 0 & \vec{x}_{j}
+\end{bmatrix} & = & 0.
+\end{eqnarray*}
+
+\end_inset
+
+We denote the ideal in 
+\begin_inset Formula $R$
+\end_inset
+
+ generated by all such bilinear forms as 
+\begin_inset Formula $J_{b}$
+\end_inset
+
+, and call it the
+\emph on
+ unprojectivized bilinear ideal
+\emph default
+.
+ When we want to consider the unprojectivized bilinear ideal generated by
+ some subset 
+\begin_inset Formula $L$
+\end_inset
+
+ of the cameras, we write 
+\begin_inset Formula $J_{b}(L)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Remark
+Despite the radical differences in derivation, the bilinear forms 
+\begin_inset Formula $b_{ij}$
+\end_inset
+
+ are exactly the bilinear forms that arise by taking the inner product against
+ the fundamental matrix 
+\begin_inset Formula $F_{ij}$
+\end_inset
+
+ between cameras 
+\begin_inset Formula $i,j$
+\end_inset
+
+.
+ That is to say, for any 
+\begin_inset Formula $x_{i},x_{j}\in\P^{2}$
+\end_inset
+
+ and fundamental matrix 
+\begin_inset Formula $F_{ij}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+b_{i,j}(\vec{x}_{i},\vec{x}_{j})=\vec{x}_{i}^{\top}F_{ij}\vec{x}_{j}=0.
+\]
+
+\end_inset
+
+ This can be proved either by direct computation, as is done in (Hartley
+ Zisserman) or by computing an elimination ideal as is done in (Werman Shashua).
+ In this way, we see that the algebraicization of the multiview scenario
+ can be exploited to rederive geometric constraints.
+\end_layout
+
+\begin_layout Standard
+The second type of 
+\begin_inset Formula $\left(m+4\right)\times\left(m+4\right)$
+\end_inset
+
+ minor arises if one picks one distinguished camera 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ from which all three rows will be taken, two auxilliary cameras 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{k}$
+\end_inset
+
+ from which two rows will be taken and one row from each of the other 
+\begin_inset Formula $m-3$
+\end_inset
+
+ cameras.
+ By expanding down each of the columns containing a single indeterminate,
+ one finds the resulting 
+\emph on
+trilinear constraint
+\emph default
+ takes the form 
+\begin_inset Formula 
+\[
+T_{ij^{pq_{j}}k^{pq_{k}}}(\vec{x}_{i},\vec{x_{j}},\vec{x_{k}}):=\det\begin{bmatrix}A_{i} & \vec{x}_{i} & 0 & 0\\
+A_{j}^{p} & 0 & \vec{x}_{j}^{p} & 0\\
+A_{j}^{q_{j}} & 0 & \vec{x}_{j}^{q_{j}} & 0\\
+A_{k}^{p} & 0 & 0 & \vec{x}_{k}^{p}\\
+A_{k}^{q_{k}} & 0 & 0 & \vec{x}_{k}^{q_{k}}
+\end{bmatrix}=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $p,q_{j},q_{k}\in\{1,2,3\}$
+\end_inset
+
+ are the rows that have been chosen from the two auxilliary cameras.
+ We denote the ideal in 
+\begin_inset Formula $R$
+\end_inset
+
+ generated by all trilinear forms by 
+\begin_inset Formula $J_{t}$
+\end_inset
+
+, and call it the 
+\emph on
+unprojectivized trilinear ideal
+\emph default
+.
+ As with the bilinear ideal, we denote the unprojectivized trilinear ideal
+ generated by some subset of cameras 
+\begin_inset Formula $L$
+\end_inset
+
+ by 
+\begin_inset Formula $J(L)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The third type of minor arises by taking two rows from four cameras.
+ While such a minor does give rise to a genuine constraint, the so-called
+ 
+\emph on
+quadlinear constraint,
+\emph default
+ it follows algebraically from the bilinear and trilinear constraints (Heyden
+ Astrom).
+ 
+\end_layout
+
+\begin_layout Section
+The Ideals and Varieties
+\end_layout
+
+\begin_layout Standard
+Despite their computational simplicity, the ideals 
+\begin_inset Formula $J_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $J_{b}$
+\end_inset
+
+ are not suitible to model the multiview scenario.
+ This is because their cooresponding varieties will inevitibly contain the
+ would-be `origin'.
+ To remedy such complications, we take a colon: 
+\begin_inset Formula 
+\begin{eqnarray*}
+I_{t} & = & J_{t}:\left(\prod_{i=1}^{m}\left(x_{i},y_{i},z_{i}\right)\right)^{\infty}\\
+I_{b} & = & J_{b}:\left(\prod_{i=1}^{m}\left(x_{i},y_{i},z_{i}\right)\right)^{\infty}
+\end{eqnarray*}
+
+\end_inset
+
+so as to ensure that the resulting varieties are projectively sensible.
+\end_layout
+
+\begin_layout Definition
+We call 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ the 
+\emph on
+trilinear ideal
+\emph default
+, and 
+\begin_inset Formula $I_{b}$
+\end_inset
+
+ the 
+\emph on
+bilinear ideal
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Coorespondingly, we define 
+\end_layout
+
+\begin_layout Definition
+We define the 
+\emph on
+trilinear variety
+\emph default
+ as 
+\begin_inset Formula $\V_{t}=\V(I_{t})\subset\left(\P^{2}\right)^{m}$
+\end_inset
+
+ , and similarly the 
+\emph on
+bilinear variety
+\emph default
+ 
+\begin_inset Formula $\V_{b}=\V(I_{b})\subset\left(\P^{2}\right)^{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We are interested in studying the geometry constraining the points in the
+ image 
+\begin_inset Formula $\Phi_{A}(\P^{3}\setminus\{f_{1},\ldots,f_{m}\})\subset\left(\P^{2}\right)^{m}$
+\end_inset
+
+, which merits its own definition.
+\end_layout
+
+\begin_layout Definition
+The 
+\emph on
+natural descriptor
+\emph default
+ 
+\begin_inset Formula $\V_{n}$
+\end_inset
+
+ is 
+\begin_inset Formula $\Phi_{A}(\P^{3}\setminus\{f_{1},\ldots,f_{m}\})\subset\left(\P^{2}\right)^{m}$
+\end_inset
+
+, and the 
+\emph on
+natural ideal 
+\emph default
+
+\begin_inset Formula $I_{n}=I(\V_{n})$
+\end_inset
+
+ is its corresponding ideal.
+\end_layout
+
+\begin_layout Standard
+Heyden and Astrom demonstrated that the natural descriptor is never a variety,
+ but that its Zariski closure is 
+\begin_inset Formula $\V_{b}$
+\end_inset
+
+ in the case of 
+\begin_inset Formula $2$
+\end_inset
+
+ cameras, and 
+\begin_inset Formula $\V_{t}$
+\end_inset
+
+ for at least 
+\begin_inset Formula $3$
+\end_inset
+
+ cameras.
+\end_layout
+
+\begin_layout Section
+Specialization and Simplification
+\end_layout
+
+\begin_layout Standard
+The general camera matrix is typically written in the form 
+\begin_inset Formula 
+\[
+A=\begin{bmatrix}\alpha_{x} & s & x_{0}\\
+0 & \alpha_{y} & y_{0}\\
+0 & 0 & 1
+\end{bmatrix}\cdot\left[R|-Rt\right]
+\]
+
+\end_inset
+
+for real numbers 
+\begin_inset Formula $\alpha_{x},\alpha_{y},s,x_{0},y_{0}$
+\end_inset
+
+, a rotation matrix 
+\begin_inset Formula $R$
+\end_inset
+
+, and a 3 vector 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ The entries in the matrix on the left account for internal camera parameters
+ (e.g.
+ skew, aspect ratio, film coordiantes), and the matrix on the right describes
+ external parameters (e.g.
+ world coordinates, and camera position).
+ As a consequence of 
+\begin_inset Formula $QR$
+\end_inset
+
+ decomposition (SEE Hartley Zisserman), any rank three 
+\begin_inset Formula $3\times4$
+\end_inset
+
+ matrix can be written in this form, and can thus be viewed as a camera
+ matrix.
+ That said, the primary objects of study in this paper are ideals, which
+ express little senstivity to the paramaters of the camera matrices in the
+ sense of the following proposition:
+\end_layout
+
+\begin_layout Proposition
+The ideals generated by the master matrix 
+\begin_inset Formula $M$
+\end_inset
+
+ are the same as the ideals generated by the simplified master matrix.
+ 
+\end_layout
+
+\begin_layout Standard
+The proof will follow from a series of lemmas.
+ First, we establish some facts from linear algebra.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Remark
+With the simplified master matrix, it is easy to derive simple explicit
+ formulas for the bilinear and trilinear forms, which I will do here.
+\end_layout
+
+\begin_layout Section
+The Primary Decomposition
+\end_layout
+
+\begin_layout Standard
+We begin with a dimension count.
+ Let 
+\begin_inset Formula $m\geq4$
+\end_inset
+
+ and consider the 
+\begin_inset Formula $m$
+\end_inset
+
+-view scenario.
+ Because the bilinear 
+\begin_inset Formula $\V_{b}$
+\end_inset
+
+ is the Zariski closure of the the image of a nondegenerate rational map
+ from 
+\begin_inset Formula $\mathbb{P}^{3}$
+\end_inset
+
+ into the 
+\begin_inset Formula $m$
+\end_inset
+
+-fold product of 
+\begin_inset Formula $\mathbb{P}^{2}$
+\end_inset
+
+, we know that its (projective) dimension is 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ One would hope that, because the codimension of a (projective) variety
+ is the cardinality of the maximum number of algebraically independent functions
+ in its coordinate ring, 
+\begin_inset Formula $I_{b}$
+\end_inset
+
+ can be generated by 
+\begin_inset Formula $2m-3=\dim\left(\mathbb{P}^{2}\right)^{m}-\dim I_{b}$
+\end_inset
+
+.
+ Unfortunately this cannot always be the case, as Heyden and Astrom demonstrated
+ in the case 
+\begin_inset Formula $m=4,5$
+\end_inset
+
+, the variety generated by 
+\begin_inset Formula $5$
+\end_inset
+
+ and 
+\begin_inset Formula $7$
+\end_inset
+
+ bilinear forms (respectively) is always strictly larger than that generated
+ by 
+\begin_inset Formula $I_{b}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+This discrepancy leads to the study of a particular subset of the bilinearities
+ that uniformly uses all cameras.
+ We define 
+\begin_inset Formula 
+\[
+\tilde{J}_{b}=\sum_{i=1}^{m-1}(b_{i,i+1})+\sum_{i=1}^{m-2}(b_{i,i+2})
+\]
+
+\end_inset
+
+ and set 
+\begin_inset Formula 
+\[
+\tilde{I}_{b}=\tilde{J}_{b}:\left(\prod_{i=1}^{m}\left(x_{i},y_{i},z_{i}\right)\right)^{\infty}
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $i\in\{1,...,m-1\}$
+\end_inset
+
+ a.
+ Despite 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+ proveably not being the whole of 
+\begin_inset Formula $I_{b}$
+\end_inset
+
+, Heyden and Astrom conjectured that it captures much of the complete 
+\begin_inset Formula $m$
+\end_inset
+
+ view scenario, in the sense of the following theorem.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ is a primary component of 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+ for all 
+\begin_inset Formula $m\geq4$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Corollary
+\begin_inset Formula $\V_{t}=\overline{\V_{n}}$
+\end_inset
+
+ is an irreducible subvariety of 
+\begin_inset Formula $\V(\tilde{I}_{b})$
+\end_inset
+
+ for all 
+\begin_inset Formula $m\geq4$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The proof of Theorem 6 will rely on the following lemmas.
+\end_layout
+
+\begin_layout Lemma
+For 
+\begin_inset Formula $w_{123}:=\det\begin{bmatrix}\vec{x}_{1} & \vec{x}_{2} & \vec{x}_{3}\end{bmatrix}$
+\end_inset
+
+ we have 
+\begin_inset Formula $w_{123}\cdot I_{t}(1,2,3)\in\tilde{I}_{b}(1,2,3)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $p,q_{2},q_{3}\in\{1,2,3\}$
+\end_inset
+
+ and let 
+\begin_inset Formula $T_{12^{pq_{2}}3^{pq_{3}}}$
+\end_inset
+
+ be the trilinear form obtained by keeping all rows from the first image,
+ keeping the 
+\begin_inset Formula $p,q_{2}$
+\end_inset
+
+ rows from the second image, and the 
+\begin_inset Formula $p,q_{3}$
+\end_inset
+
+ rows from the third image.
+ Let 
+\begin_inset Formula $w=\begin{bmatrix}\vec{x}_{1} & \vec{x}_{2} & \vec{x}_{3}\end{bmatrix}$
+\end_inset
+
+.
+ Now consider the following element of 
+\begin_inset Formula $\tilde{I}_{b}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+r=w_{1}^{q_{3}}w_{2}^{q_{2}}b_{12}+w_{2}^{q_{2}}w_{3}^{q_{3}}b_{23}-w_{1}^{q_{2}}w_{3}^{q_{3}}b_{13},
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $w_{j}^{i}$
+\end_inset
+
+ is the cofactor of 
+\begin_inset Formula $w$
+\end_inset
+
+ with the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ row and 
+\begin_inset Formula $j^{th}$
+\end_inset
+
+ column removed.
+ Rewriting each 
+\begin_inset Formula $b_{ij}$
+\end_inset
+
+ in the explicit form derived in section II, we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+r & = & w_{1}^{q_{3}}w_{2}^{q_{2}}\left(a_{21}^{q_{2}}w_{3}^{q_{2}}-a_{21}^{q_{3}}w_{3}^{q_{3}}+a_{21}^{p}w_{3}^{p}\right)\\
+ &  & +w_{2}^{q_{2}}w_{3}^{q_{3}}\left(a_{32}^{q_{2}}w_{1}^{q_{2}}-a_{32}^{q_{3}}w_{1}^{q_{3}}+a_{32}^{p}w_{1}^{p}\right)\\
+ &  & -w_{1}^{q_{2}}w_{3}^{q_{3}}\left(a_{31}^{q_{2}}w_{2}^{q_{2}}-a_{31}^{q_{3}}w_{2}^{q_{3}}+a_{31}^{p}w_{2}^{p}\right)
+\end{eqnarray*}
+
+\end_inset
+
+Then replacing 
+\begin_inset Formula $a_{31}$
+\end_inset
+
+ by 
+\begin_inset Formula $a_{32}+a_{21}$
+\end_inset
+
+ and collecting by coefficients, we have
+\begin_inset Formula 
+\begin{eqnarray*}
+r & = & a_{21}^{q_{2}}w_{2}^{q_{2}}\left(w_{1}^{q_{3}}w_{3}^{q_{2}}-w_{1}^{q_{2}}w_{3}^{q_{3}}\right)\\
+ &  & -a_{21}^{q_{3}}w_{3}^{q_{3}}\left(w_{1}^{q_{3}}w_{2}^{q_{2}}-w_{1}^{q_{2}}w_{2}^{q_{3}}\right)\\
+ &  & +a_{21}^{p}\left(w_{3}^{p}w_{1}^{q_{3}}w_{2}^{q_{2}}-w_{1}^{q_{2}}w_{3}^{q_{3}}w_{2}^{p}\right)\\
+ &  & +a_{32}^{q_{2}}w_{1}^{q_{2}}\cdot0\\
+ &  & -a_{32}^{q_{3}}w_{3}^{q_{3}}\left(w_{1}^{q_{3}}w_{2}^{q_{2}}-w_{1}^{q_{2}}w_{2}^{q_{3}}\right)\\
+ &  & +a_{32}^{p}w_{3}^{q_{3}}\left(w_{1}^{p}w_{2}^{q_{2}}-w_{1}^{q_{2}}w_{2}^{p}\right)
+\end{eqnarray*}
+
+\end_inset
+
+To induce further simplifications, we invoke a lemma from Martin and Wong.
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+Let 
+\begin_inset Formula $M$
+\end_inset
+
+ be an 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ matrix with 
+\begin_inset Formula $n\geq3$
+\end_inset
+
+ and denote the determinant of the submatrix obtained by deleting the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ row and 
+\begin_inset Formula $j^{th}$
+\end_inset
+
+ column by 
+\begin_inset Formula $M_{j}^{i}$
+\end_inset
+
+.
+ Fix 
+\begin_inset Formula $1\leq i,j\leq n$
+\end_inset
+
+, with 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+.
+ Let N be the 
+\begin_inset Formula $n-2\times n-2$
+\end_inset
+
+ matrix obtained from 
+\begin_inset Formula $M$
+\end_inset
+
+ by deleting the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ and 
+\begin_inset Formula $j^{th}$
+\end_inset
+
+ row and column.
+ Then 
+\begin_inset Formula $\det M\det N=M_{i}^{i}M_{j}^{j}-M_{i}^{j}M_{j}^{i}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Specializing the lemma to 
+\begin_inset Formula $w$
+\end_inset
+
+, we further reduce 
+\begin_inset Formula 
+\begin{eqnarray*}
+r & = & -a_{21}^{q_{2}}x_{2}^{p}w_{2}^{q_{2}}\det w\\
+ &  & +a_{31}^{q_{3}}x_{3}^{p}w_{3}^{q_{3}}\det w\\
+ &  & -a_{21}^{p}\left(w_{1}^{q_{2}}w_{3}^{q_{3}}w_{2}^{p}-w_{2}^{q_{2}}w_{1}^{q_{3}}w_{3}^{p}\right)\\
+ &  & +a_{32}^{p}x_{3}^{q_{3}}w_{3}^{q_{3}}\det w.
+\end{eqnarray*}
+
+\end_inset
+
+Then adding a suggestive 
+\begin_inset Formula $0=-a_{21}^{p}w_{2}^{q_{2}}w_{1}^{p}w_{3}^{q_{3}}+a_{21}^{p}w_{2}^{q_{2}}w_{1}^{p}w_{3}^{q_{3}}$
+\end_inset
+
+, and using the lemma again
+\begin_inset Formula 
+\begin{eqnarray*}
+r & = & -a_{21}^{q_{2}}x_{2}^{p}w_{2}^{q_{2}}\det w\\
+ &  & +a_{31}^{q_{3}}x_{3}^{p}w_{3}^{q_{3}}\det w\\
+ &  & -a_{21}^{p}x_{3}^{q_{3}}w_{3}^{q_{3}}\det w\\
+ &  & -a_{21}^{p}x_{2}^{q_{2}}w_{2}^{q_{2}}\det w\\
+ &  & +a_{32}^{p}x_{3}^{q_{3}}w_{3}^{q_{3}}\det w.
+\end{eqnarray*}
+
+\end_inset
+
+Rearranging, one sees 
+\begin_inset Formula 
+\begin{eqnarray*}
+r & = & \det w\cdot\left(\left(a_{21}^{q_{2}}x_{2}^{p}-a_{21}^{p}x_{2}^{q_{2}}\right)w_{2}^{q_{2}}+\left(a_{31}^{q_{3}}x_{3}^{p}-a_{31}^{p}x_{3}^{q_{3}}\right)w_{3}^{q_{3}}\right)\\
+ & = & \det w\cdot T_{12^{pq_{2}}3^{pq_{3}}}\in\tilde{I}_{b}.
+\end{eqnarray*}
+
+\end_inset
+
+By symmetry, 
+\begin_inset Formula $\det w\cdot I_{t}\subset\tilde{I}_{b}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Lemma 8 tells a rich geometric story.
+ When the cameras in a 
+\begin_inset Formula $3$
+\end_inset
+
+-view scenario are not colinear, the trilinear constraints are valuable
+ because they are nonzero when the bilinear constraints have common 
+\emph on
+false 
+\emph default
+zeroes.
+ Indeed, consider the following points which make up 
+\begin_inset Formula $\V_{n}\subset\left(\P^{2}\right)^{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+An arbitrary point 
+\begin_inset Formula $x_{1}\in\P^{2}-tl_{123}$
+\end_inset
+
+ in the first image constrains 
+\begin_inset Formula $x_{2}\in\P^{2}-tl_{213}$
+\end_inset
+
+ to the line of points satisfying 
+\begin_inset Formula $b_{12}(x_{1},x_{2})=0$
+\end_inset
+
+ in the second image, so then the back-projections of 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ intersect at a unique point, which projects to a unique point in the third
+ image.
+ Similarly for any permutation of 
+\begin_inset Formula $1,2,3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $x_{1}=e_{12}$
+\end_inset
+
+ in the first image, and 
+\begin_inset Formula $x_{2}=e_{21}$
+\end_inset
+
+ in the second image, then 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ can lie anywhere on 
+\begin_inset Formula $tl_{123}$
+\end_inset
+
+ in the third.
+ This cooresponds to the projection of an image on the epipolar line between
+ 
+\begin_inset Formula $e_{12}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{21}$
+\end_inset
+
+.
+ Similarly for any permutation of 
+\begin_inset Formula $1,2,3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $\vec{x}_{1}=e_{12}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}_{2}=e_{21}$
+\end_inset
+
+, then for any 
+\begin_inset Formula $\vec{x}_{3}\in tl_{321}$
+\end_inset
+
+, we will have 
+\begin_inset Formula $\left(\vec{x}_{1},\vec{x}_{2},\vec{x}_{3}\right)\in\V_{n}$
+\end_inset
+
+.
+ This is because the back-projections from 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}_{2}$
+\end_inset
+
+ degenerate to a whole line, so that the trilinearities do not constrain
+ 
+\begin_inset Formula $\vec{x}_{3}\in tl_{312}$
+\end_inset
+
+.
+ Similarly for any permutation of 
+\begin_inset Formula $1,2,3$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+Looking at the explicit form of the generators of 
+\begin_inset Formula $I_{b}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{12}(\vec{x}_{1},\vec{x}_{2}) & = & \det\begin{bmatrix}e_{12} & \vec{x}_{1} & \vec{x}_{2}\end{bmatrix}=0\\
+b_{23}(\vec{x}_{2},\vec{x}_{3}) & = & \det\begin{bmatrix}e_{23} & \vec{x}_{2} & \vec{x}_{3}\end{bmatrix}=0\\
+b_{13}(\vec{x}_{1},\vec{x}_{3}) & = & \det\begin{bmatrix}e_{13} & \vec{x}_{1} & \vec{x}_{3}\end{bmatrix}=0
+\end{eqnarray*}
+
+\end_inset
+
+We see that the preceeding points will be in 
+\begin_inset Formula $\V_{b}$
+\end_inset
+
+, but also the 
+\emph on
+false 
+\emph default
+zeroes:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Due to the relation 
+\begin_inset Formula $e_{13}=e_{12}+e_{23}$
+\end_inset
+
+, if for any 
+\begin_inset Formula $t,p,q\in\R$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+\vec{x}_{1} & = & te_{12}+(1-t)e_{13}\nonumber \\
+\vec{x}_{2} & = & pe_{21}+(1-p)e_{23}\label{eq:6.1}\\
+\vec{x}_{3} & = & qe_{31}+(1-q)e_{32}\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+then all of the bilinearities will be zero.
+ This is to say that 
+\begin_inset Formula $\V_{b}$
+\end_inset
+
+ contains all 
+\begin_inset Formula $(\vec{x}_{1},\vec{x}_{2},\vec{x}_{3})\in tl_{123}\times tl_{213}\times tl_{312}\subset\left(\P^{2}\right)^{3},$
+\end_inset
+
+ even if 
+\begin_inset Formula $\vec{x}_{1},\vec{x}_{2},\vec{x}_{3}$
+\end_inset
+
+ are not mutually projections of one point in 
+\begin_inset Formula $\P^{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $\vec{x}_{1}=e_{13}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}_{2}=e_{23}$
+\end_inset
+
+, then 
+\begin_inset Formula $e_{13}=e_{12}+e_{23}$
+\end_inset
+
+ forces all three bilinearities to be zero, regardless of the value of 
+\begin_inset Formula $\vec{x}_{3}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $\V_{b}$
+\end_inset
+
+ contains all 
+\begin_inset Formula $\left(e_{12},e_{23},\vec{x}_{3}\right)\in\{e_{12}\}\times\{e_{23}\}\times\P^{2}\subset\left(\P^{2}\right)^{3}$
+\end_inset
+
+.
+ Geometrically, this is because the intersection of the back-projection
+ of 
+\begin_inset Formula $e_{13}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{23}$
+\end_inset
+
+ is exactly 
+\begin_inset Formula $f_{3}$
+\end_inset
+
+, camera center of camera 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ The projection of such a point does not exist in 
+\begin_inset Formula $\P^{2}$
+\end_inset
+
+, so 
+\begin_inset Formula $\vec{x}_{3}$
+\end_inset
+
+ is unconstrained.
+ Similarly for any permutation of 
+\begin_inset Formula $1,2,3$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+The Zariski closure of 
+\begin_inset Formula $\V_{n}$
+\end_inset
+
+ is 
+\begin_inset Formula $\V_{t}$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $\V_{n}\neq\V_{t}$
+\end_inset
+
+, we know 
+\begin_inset Formula $\V_{t}$
+\end_inset
+
+ also contains 
+\emph on
+false
+\emph default
+ zeroes.
+ In addition to the three types of points coming from 
+\begin_inset Formula $\V_{n}\subset\V_{t}$
+\end_inset
+
+, situation 
+\begin_inset Formula $2$
+\end_inset
+
+ of 
+\begin_inset Formula $\V_{b}$
+\end_inset
+
+ can arise in 
+\begin_inset Formula $\V_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Remark
+Thus 
+\begin_inset Formula 
+\[
+\V_{n}\subset\V_{t}\subset\V_{b},
+\]
+
+\end_inset
+
+and coorespondingly 
+\begin_inset Formula 
+\[
+I_{n}\supseteq I_{t}\supset\tilde{I}_{b}.
+\]
+
+\end_inset
+
+In general, taking (saturated) colons of ideals translates to closures of
+ differences of varieties 
+\begin_inset Formula 
+\begin{eqnarray*}
+\V(\tilde{I_{b}}:w_{123}^{\infty})\stackrel{I_{t}\mbox{ is prime}}{=}\V(\tilde{I_{b}}:w_{123}) & = & \overline{\V(\tilde{I_{b}})-\V(w_{123})}\\
+ & \stackrel{\mbox{lemma }}{=} & \V(I_{t}).
+\end{eqnarray*}
+
+\end_inset
+
+One notices that situation 
+\begin_inset Formula $1$
+\end_inset
+
+ from 
+\begin_inset Formula $\V_{b}$
+\end_inset
+
+ does not arise in 
+\begin_inset Formula $\V_{t}$
+\end_inset
+
+, but that the relation 
+\begin_inset Formula $e_{13}=e_{12}+e_{23}$
+\end_inset
+
+ demands that 
+\begin_inset Formula $w_{123}=\det\begin{bmatrix}\vec{x}_{1} & \vec{x}_{2} & \vec{x}_{3}\end{bmatrix}=0$
+\end_inset
+
+ whenever equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:6.1"
+
+\end_inset
+
+ hold.
+ Thus, for any 
+\begin_inset Formula $T\in I_{t}$
+\end_inset
+
+, we must have 
+\begin_inset Formula $w_{123}\cdot T(\vec{x}_{1},\vec{x}_{2},\vec{x}_{3})=0$
+\end_inset
+
+ for arbitrary points on respective trifocal lines.
+ This is to say that 
+\begin_inset Formula $w_{123}$
+\end_inset
+
+ is zero exactly when one would hope to use the trilinear constraints.
+\end_layout
+
+\begin_layout Standard
+Somewhat suprisingly, Lemma 8 extends to the scenario with four cameras.
+ 
+\end_layout
+
+\begin_layout Lemma
+For 
+\begin_inset Formula $w_{123}:=\det\begin{bmatrix}x_{1} & x_{2} & x_{3}\end{bmatrix}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{234}:=\det\begin{bmatrix}x_{2} & x_{3} & x_{4}\end{bmatrix}$
+\end_inset
+
+, we have 
+\begin_inset Formula $w_{123}\cdot w_{234}\cdot I_{t}(1,2,3,4)\subset\tilde{I}_{b}(1,2,3,4).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+The result is true by Lemma 8 for trilinearities using consecutive triples
+ of cameras, and by symmetry it suffices to all trilinearities using cameras
+ 
+\begin_inset Formula $1,2,4$
+\end_inset
+
+: 
+\begin_inset Formula $T_{12^{pq_{2}}4^{pq_{4}}},$
+\end_inset
+
+ 
+\begin_inset Formula $T_{21^{pq_{1}}4^{pq_{4}}}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{41^{pq_{1}}2^{pq_{2}}}$
+\end_inset
+
+ for all choices of 
+\begin_inset Formula $p,q_{1},q_{2},q_{4}\in\{1,2,3\}$
+\end_inset
+
+.
+ Further, for all of the trilinearities of a fixed distinguished camera
+ (say, camera 
+\begin_inset Formula $1$
+\end_inset
+
+), there is no algebraic distinction between each of the cases where 
+\begin_inset Formula $q_{2}\neq q_{4}$
+\end_inset
+
+, and likewise no distinction between the cases with 
+\begin_inset Formula $q_{2}=q_{4}$
+\end_inset
+
+.
+ Finally, by the computation the earlier section (CROSS REF), if 
+\begin_inset Formula $q_{2}=q_{4}=q$
+\end_inset
+
+ then the trilinearity 
+\begin_inset Formula $T_{12^{pq}4^{pq}}$
+\end_inset
+
+ is the same as 
+\begin_inset Formula $T_{21^{pq}4^{pq}}=T_{41^{pq}2^{pq}}$
+\end_inset
+
+.
+ Thus it suffices to check one cases for each distinguished camera, in addition
+ to the degenerate case where 
+\begin_inset Formula $q_{2}=q_{4}$
+\end_inset
+
+.
+ The computations are similar to those from Lemma 8, so we will offer each
+ of the four polynomials written as an 
+\begin_inset Formula $R$
+\end_inset
+
+ linear combination of the bilinearities.
+ We see 
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{123}\cdot w_{234}T_{12^{12}4^{12}} & = & \begin{vmatrix}x_{2} & x_{2}\\
+y_{2} & y_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{3}\\
+y_{1} & y_{3}
+\end{vmatrix}\cdot w_{234}\cdot b_{12}+\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\cdot w_{134}\cdot b_{23}+\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\cdot w_{123}b_{34}\\
+ &  & -\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\cdot w_{234}\cdot b_{13}-\begin{vmatrix}x_{3} & x_{4}\\
+y_{3} & y_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\cdot w_{123}\cdot b_{14}\\
+w_{123}\cdot w_{234}T_{12^{12}4^{23}} & = & \left(x_{1}y_{2}\begin{vmatrix}y_{3} & y_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}-x_{3}y_{2}\begin{vmatrix}y_{1} & y_{4}\\
+z_{1} & z_{4}
+\end{vmatrix}+x_{2}y_{4}\begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\right)w_{234}b_{12}+\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}w_{134}b_{23}\\
+ &  & +\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}w_{123}b_{34}-\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}w_{234}b_{13}-\begin{vmatrix}y_{3} & y_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}\begin{vmatrix}x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{vmatrix}w_{123}b_{24}\\
+w_{123}\cdot w_{234}T_{21^{23}4^{13}} & = & \begin{vmatrix}y_{1} & y_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+y_{2} & y_{4}
+\end{vmatrix}w_{234}b_{12}+\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}w_{134}b_{23}+\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}w_{123}b_{34}\\
+ &  & -\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{2} & x_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}w_{234}b_{13}-\begin{vmatrix}y_{1} & y_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\begin{vmatrix}x_{3} & x_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}w_{123}b_{24}\\
+w_{123}\cdot w_{234}T_{41^{12}2^{23}} & = & \begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{3}\\
+z_{1} & z_{3}
+\end{vmatrix}\cdot w_{234}\cdot b_{12}+\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\cdot w_{134}b_{23}+\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\cdot w_{123}b_{34}\\
+ &  & +\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}\cdot\begin{vmatrix}x_{1} & x_{2}\\
+z_{1} & z_{2}
+\end{vmatrix}\cdot w_{234}\cdot b_{13}+\left(-x_{4}z_{1}\begin{vmatrix}y_{2} & y_{3}\\
+z_{2} & z_{3}
+\end{vmatrix}+x_{3}z_{1}\begin{vmatrix}y_{2} & y_{4}\\
+z_{2} & z_{4}
+\end{vmatrix}-x_{1}z_{2}\begin{vmatrix}y_{3} & y_{4}\\
+z_{3} & z_{4}
+\end{vmatrix}\right)w_{123}b_{14}.
+\end{eqnarray*}
+
+\end_inset
+
+One can see from the form of the coefficients, that each of these cases
+ represent an earnestly different algebraic phenomena.
+ By symmetry, these phenomenad exhaust the possibilities.
+\end_layout
+
+\begin_layout Standard
+With Lemmas 
+\begin_inset Formula $8$
+\end_inset
+
+ and 
+\begin_inset Formula $11$
+\end_inset
+
+ in hand, we are equipped to prove Theorem 6.
+\end_layout
+
+\begin_layout Proof
+(Of Theorem 6) It is a general fact that for an ideal 
+\begin_inset Formula $J$
+\end_inset
+
+ and ring element 
+\begin_inset Formula $p$
+\end_inset
+
+ such that 
+\begin_inset Formula $J:p$
+\end_inset
+
+ is primary, then 
+\begin_inset Formula $J:p$
+\end_inset
+
+ is a primary component of 
+\begin_inset Formula $J$
+\end_inset
+
+.
+ The first step in the proof will thus be to demonstrate some ring element
+ 
+\begin_inset Formula $w\notin I_{t}$
+\end_inset
+
+ such that 
+\begin_inset Formula $w\cdot I_{t}\subset\tilde{I}_{b}$
+\end_inset
+
+.
+ Then, noting that 
+\begin_inset Formula $\tilde{I}_{b}\subset I_{b}=I_{t}$
+\end_inset
+
+ and that 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ is a prime ideal, we will have 
+\begin_inset Formula $\tilde{I}_{b}:w\subset I_{t}:w=I_{t}$
+\end_inset
+
+ forcing 
+\begin_inset Formula $\tilde{I}_{b}:w=I_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The proof will follow by induction, with the base cases 
+\begin_inset Formula $m=3,4$
+\end_inset
+
+ dispatched in Lemmas 8 and 11.
+ 
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $m>4$
+\end_inset
+
+ and suppose there exists some 
+\begin_inset Formula $w$
+\end_inset
+
+ such that 
+\begin_inset Formula $w\cdot I_{t}\subset\tilde{I}_{bt}$
+\end_inset
+
+ for any configuration of 
+\begin_inset Formula $m-1$
+\end_inset
+
+ cameras.
+ By the induction hypothesis, we know that there exists some 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+,
+\begin_inset Formula $w_{2}\in R$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\begin{align}
+w_{1}\cdot I_{t}(1,...,m-1) & \subset\tilde{I}_{b}(1,..,m-1)\\
+w_{2}\cdot I_{t}(2,...,m) & \subset\tilde{I}_{b}(2,...,m)
+\end{align}
+
+\end_inset
+
+Thus, it will suffice to demonstrate that there is some 
+\begin_inset Formula $w'$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+w'\cdot I_{t}(1,s,m)\subset\tilde{I}_{b}(1,...,m)
+\]
+
+\end_inset
+
+ for each 
+\begin_inset Formula $1<s<m-1$
+\end_inset
+
+.
+ By the case when 
+\begin_inset Formula $m=4$
+\end_inset
+
+, and by the trivial containment 
+\begin_inset Formula $I_{t}(1,s,m)\subset I_{t}(1,s,s+1,m)$
+\end_inset
+
+, there must exist some 
+\begin_inset Formula $w'_{s}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\begin{eqnarray*}
+w'_{s}\cdot I_{t}(1,s,m) & \subset & \tilde{I}_{b}(1,s,s+1,m).
+\end{eqnarray*}
+
+\end_inset
+
+Granting that 
+\begin_inset Formula $\tilde{I}_{b}(1,s,s+1,m)=\tilde{I}_{b}(1,s,s+1)+\tilde{I}_{b}(s,s+1,m)$
+\end_inset
+
+, and that 
+\begin_inset Formula $I_{b}=I_{t}$
+\end_inset
+
+, we find 
+\begin_inset Formula 
+\[
+w'_{s}\cdot I_{t}(1,s,m)\subset I_{t}(1,..,m-1)+I_{t}(2,..,m).
+\]
+
+\end_inset
+
+Using (1) and (2) 
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{1}\cdot w_{2}\cdot w'_{s}\cdot I_{t}(1,s,m) & \subset & \tilde{I}_{b}(1,..,m-1)+\tilde{I}_{b}(2,..,m)\\
+ & = & \tilde{I}_{b}.
+\end{eqnarray*}
+
+\end_inset
+
+Doing this for all 
+\begin_inset Formula $s$
+\end_inset
+
+, gives 
+\begin_inset Formula 
+\[
+w_{1}\cdot w_{2}\cdot\prod_{s=2}^{m-2}w'_{s}\cdot I_{t}\subset\tilde{I}_{b},
+\]
+
+\end_inset
+
+completing the induction.
+ 
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+ Hartley, Richard, and Andrew Zisserman.
+ 
+\emph on
+Multiple View Geometry in Computer Vision
+\emph default
+.
+ 2nd ed.
+ Cambridge, UK: Cambridge UP, 2003.
+ Print.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

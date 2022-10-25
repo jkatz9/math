@@ -1,0 +1,154 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage[all]{xy}
+\input{mydefs}
+\newcommand{\Of}{\mathcal{O}}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries}{\thesubsection}{1em}{}[{}]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newcommand{\ord}{\operatorname{ord}}
+ \newcommand{\gp}{\mathfrak{P}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\gen}{\operatorname{Gen}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\B}{\mathcal{B}}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newtheorem{exer}{Problem}
+
+\title{TMF project}
+\author{Justin Katz}
+\begin{document}
+\maketitle
+\subsection{Introduction}
+The goal of this independent study was to compute a basis for the $\Z_{(p)}$ module $\gen^{S}(\Z_{(p)})_{*}$ of `generalized two-variable, $p$ local modular forms' for $p=2$ or $3$ by extending the techniques (which he used for primes $p>3$) developed in Andrew Baker's paper. In this document I give a brief overview of the pertinent parts of that paper, provide relevant definitions, and summarize my work (thus far) in extending his results.
+
+\section{Background}
+\subsection{Classical modular forms: from lattices to $\SL_{2}(\Z) \setminus \half$}
+A classical (elliptic), weight $k$, level $1$ modular form is a complex valued function of lattices in $\C$, homogeneous of degree $k$ respect to homothety. Once we have a suitable notion of holomorphy for lattice functions, we will also require such forms to be either meromorphic. Letting $\L$ denote the collection of lattices in $\C$, the condition for a function $f:\L\to \C$ to be modular form is 
+	\begin{align*}
+		f(\lambda L)=\lambda^{k}f(L) \quad \text{ for all $L\in \L$, $\lambda \in \C^{\times}$}.
+	\end{align*}
+Oriented basis $\{\omega_{1},\omega_{2}\}$  (with the convention $\omega_{1}/\omega_{2}\in \half$, the complex upper half-plane) determine a lattice $L=\omega_{1}\Z\oplus \omega_{2}\Z$, but since $L$ is invariant under the (linear) action of $\SL_{2}(\Z)$, any $\SL_{2}(\Z)$ translate of $\{\omega_{1},\omega_{2}\}$ will generate the same lattice $L$. Conversely, any two oriented bases that generate the same lattice are related by a transformation from $\SL_{2}(\Z)$. Thus, letting $\B$ be the collection of oriented bases, there is a bijection $\SL_{2}(\Z)\setminus \B \approx \L$. Thus, we may view modular forms as functions of ordered bases, left-$\SL_{2}(\Z)$ invariant.
+
+A modular form is determined on a homothety class of lattices by its value at any representative, due to the homogeneity condition. Identifying a lattice $L$ with the orbit $\SL_{2}(\Z)\{\omega_{1}.\omega_{2}\}$ of an oriented basis for $L$, apply the homothety $L\mapsto L\omega_{2}^{-1}$, to that orbit to obtain a representative $\SL_{2}(\Z)\{\omega_{1}/\omega_{2},1\}$, where $\omega_{1}/\omega_{2}\in \half$. For the identification of (the homothety class of) $L$ with the point $\tau=\omega_{1}/\omega_{2} \in \half$ to be compatible with left-$\SL_{2}(\Z)$ invariance, we define an action of $\SL_{2}(\Z)$ on $\half$ by 
+	\begin{align*}
+		\Tbt{a}{b}{c}{d}\tau = \frac{a \tau +b}{c \tau+d} \quad \text{ for $\Tbt{a}{b}{c}{d}\in \SL_{2}(\Z)$, and $\tau \in \half$}.
+	\end{align*}
+This action is designed to be compatible with the identification $\SL_{2}(\Z)\tau \to (\tau\Z\oplus \Z)\C^{\times}$. Consequently, we may redefine a weight $k$, level $1$ modular form $f$ as a degree $k$, $\SL_{2}(\Z)$ equivariant function $\half \to \C$ satisfying the `cocycle condition'
+	\begin{align*}
+		f(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^{-k}f(\tau) \quad \text{ for all $\Tbt{a}{b}{c}{d}\in \SL_{2}(\Z)$ and $\tau \in \half$.}
+	\end{align*}
+As a function on $\half$, we may sensibly restrict $f$ to be holomorphic on $\half$. The one point compactification is $\half^{*}=\half \cup \{ i \infty\}$, and we require that $f$ is meromorphic on $\half^{*}$. 
+
+Denote the space of weight $k$ (level $1$) holomorphic modular forms\footnote{The usage of $S$ is following Baker, but such notation is uncomfortably non-standard} as $S(\C)_{k}$ and meromorphic modular forms as $M(\C)_{k}$. Under pointwise multiplication, the modular condition is additive in the weight, and gives rise to graded ring structures $S(\C)_{*}$ and $M(\C)_{*}$.
+ 
+\subsection{Classical modular forms: $q$ expansion}
+The element $\tbt{1}{1}{0}{1} \in \SL_{2}(\Z)$ acts on $\tau \in \half$ by $\tau \mapsto \tau+1$. Further, a modular form is invariant with respect to such an action. Thus a modular form is $\Z$-periodic in $\re(\tau)$. The assumption of meromorphy ensures that the Fourier expansion (in $\re(\tau)$) is rapidly converging. Initially, the Fourier coefficients $c_{n,f}=\int_{0}^{1}f(x+iy)e^{-2\pi i x} \dop x$ are functions of $y$, but the meromorphy condition implies the Cauchy--Riemann equation 
+	\begin{align*}
+		(\partial_{x}+i\partial_{y})f=0.
+	\end{align*}
+Differentiating the Fourier series termwise shows that the $n$th Fourier coefficient (as a function of $\im(\tau)$) satisfies the linear differential equation $2\pi i n u+iu'=0$, which has solutions of the form $\text{\emph{cosntant}}\cdot e^{-2\pi i y}$. Letting $q=e^{2\pi i \tau}$, this shows that there are numerical coefficients $c_{n}$ so that
+	\begin{align*}
+		f=\sum_{n\in \Z}c_{n}q^{n}.
+	\end{align*}
+We call the expression on the right side the `$q$-expansion' of $f$. Meromorphy requires that there are only finitely many non-zero negatively indexed coefficients. If a modular form is holomorphic on $\half^{*}$, then its negatively indexed coefficients are all zero. We say that a modular form $f$ is defined over a subring $K$ of $\C$ if its $q$-expansion has coefficients in $K$.
+
+Via $q$ expansions, the graded rings $S(K)_{*}$ and $M(K)_{*}$ embed in the formal power series/Laurent rings $K[[q]]$ and $K((q))$ respectively.
+
+A classical result, widely known, is that $S(\Q)_{*}$ is generated (as a $\Q$) algebra by the Eisenstein series $Q=E_{4}$ and $R=E_{6}$. The meromorphic forms $M(\Q)_{*}$ is generated by $Q,R$ and $\Delta^{-1}$ where $\Delta =1/12^{3}(Q^{3-R^{2}}$ is the modular discriminant.
+ 
+\subsection{Generalizing modular forms: level structure}
+Lattices are rank $2$ free $\Z$-submodules of $\C$. For any such lattice $L$, the quotient (complex torus)  $\C/L$ is again a $\Z$-module, but is not free, having $N$-torsion corresponding to the image of lattices $L'$ containing $L$ with index $N$, under the quotient map. In the sense that weight $1$ modular forms are functions on the moduli space of `lattices up to homothety,'  then level $N$ modular forms for $\Gamma(N)$  are functions on the moduli space of 'pairs $(L,\{\omega_{1}+L,\omega_{2}+L\})$, (where the latter is a basis for the $N$-torsion), up to homothety'\footnote{Of course, there is also an interpretation of level $N$ modular forms as left $\Gamma(N)$ equivariant functions on $\half$, but that view obscures the method of generalization in Baker's paper.}.
+
+Given any lattice $L$ with homothety class generated by $\tau$, the bases for $N$-torsion are of the form 
+	\begin{align*}
+		\frac{r \tau +t}{N}\Z \oplus \frac{s}{N}\Z \quad \text{ $r,s$ integers with $rs=N$, $0\leq t <s$.}
+	\end{align*}
+We can then view a weight $k$, level $N$ modular form as a modular function in the variables $\tau\in \half$ and $r,s,t$ where the latter are constrained as in the display above. For each of the finitely many possible combinations of $r,s,t$ we may expand the level $N$ modular form as a $q$-series, and Baker says that such a form `is defined over the subring $K\subset \C$' if each of the finitely many such expansions has coefficients in $K$.
+
+I have a hunch that `the point' of Baker's generalization of modular forms is to impose more arithmetic restrictions on the coefficients of the $q$-expansions by allowing infinitely many $r,s,t$. Certainly the requirement of the coefficients of the $q$-expansions for each $r,s,t$ lying in some ring $K$ imposes polynomial (in $r,s,t$) constraints on the coefficients, but since there are only finitely many such $r,s,t$ such polynomials are far from unique.
+
+A coarser notion of level structure is to replace the data of a point $\tau$ and oriented basis for the $N$ torsion with the data of a point $\tau$ and a choice of super-lattice $L'$ containing $\tau \Z \oplus \Z$ with index $N$. This corresponds to a looser equivariance requirement. Without getting into the details, for the remainder, we consider such functions to be level $N$ modular forms (this is essentially the aside in the middle of page 48 in Baker). 
+
+\subsection{The generalization}
+Thinking of level $N$ modular forms as functions of pairs of lattices $L\subset L'$ with index $N$ is apparently too strict for Baker's topological needs. In particular, as observed above, for any fixed lattice $L$ there are only finitely many lattices $L'$ containing $L$ with index $N$, thus there are only finitely many polynomial constraints. His idea is to consider a special function on some subset of the product $\L\times \L$ of pairs of lattices, that can take as its input \emph{any} pair of lattices $L\subset L'$ of finite index, and is modular in each. Further, we require that there is some modular function on the whole product $\L\times \L$ (as defined in the paper), that induces all of the level $N$  `sub'-forms. This is formalized in the paper, so assume for the moment we have a sensible definition. 
+
+The upshot (and the point, it seems) is that for any lattice $L$, in the homothety class of (say) $\tau \in \half$, there infinitely many lattices containing $L$ with (some) finite index. For each of the infinitely many such super-lattices there are finitely many $r,s,t$ determining the oriented bases for the super-lattice (in terms of $\tau$, as above), and thus an integrality condition on the coefficients of such a function determine a unique polynomial function in $r,s,t$, since the value of the polynomial is constrained at infinitely many distinct points.
+
+
+\section{Baker's technqiue}
+\subsection{Katz's divided congruences, $p$-local action, numerical polynomials}
+Fix a prime $p$, possibly necessarily $>3$, and define the ring of divided congruences $DC_{p}$ as the ungraded ring of classical modular forms with $q$ in the $p$-local integers $\Z_{(p)}$. Elements of $DC_{p}$ are not modular forms, since there is no requirement on homogeneity of degree (in the `variables' $Q$ and $R$). Nonetheless, each element $\Phi \in DC_{p}$ is a finite sum of genuine modular forms
+	\begin{align*}
+		\Phi=\sum_{k}F_{k}, \quad \text{ with $F_{k}$ modular, weight $k$.}
+	\end{align*}
+Baker defines an action of the $p$-local units on $DC_{p}$ by acting on the homogeneous components
+	\begin{align*}
+		a\cdot \Phi=\sum_{k}a^{k}F_{k}.
+	\end{align*}
+Somewhat off-handedly, Baker asserts that this action comes from `including each lattice $L$ into $(1/N)L$, for each integer $N$.' I have not quite figured out what he means here. Nonetheless, if we view elements of $DC_{p}$ to be lattice functions, and assume that $F_{k}$ is homogeneous of degree $k$ with respect to homothety, then $\Phi(N\cdot L)=\sum_{k}F_{k}(N \cdot L)=\sum_{k} \sum_{k}N^{k}F_{k}(L)=N\cdot \Phi(L)$, where the `$\cdot$' in the lattermost equality connotes the just-defined $p$-local unit action. Thus, if one can justify interpreting the homothety $L\mapsto N\cdot L$ as the inclusion that Baker suggests, then this computation justifies the definition of the action.
+
+In any case, if we first take an element $\Phi\in DC_{p}$ and think of  $a\in \Z_{(p)}^{\times}$ as a variable, and let it act, then take the $q$-expansion of $\Phi$ (which is sensible since every term in the sum is $\Z$-invariant in $\re(\tau)$), the instances of $a$ coming from the homogeneous components smeared about polynomially. That is, the $q$-expansion of $a\cdot \Phi$, with $a$ thought of as a free variable in $\Z_{(p)}^{\times}$,
+	\begin{align*}
+		a\cdot \Phi=\sum_{n}c_{n}(a)q^{n}
+	\end{align*} 
+where each $c_{n}(a)$ is a polynomial in $a$ with rational coefficients. Furthermore, the assumption that $\Phi\in DC_{p}$ assures us that $c_{n}(a)$ is $p$-local for every $n$ at any $a\in \Z_{(p)}$. Thus, the polynomials $c_{n}(a)$ are (what Baker calls) `semi-stable numerical polynomials,' and supposedly a basis for such polynomials is known. Understanding these polynomials could be a helpful foothole in working later problems.
+
+\subsection{Formal group laws, logarithms}
+(Note, I have not defined generalized modular forms in this paper. Rather, I tried to intimate what they \emph{ought} to be. In this section, I follow Baker's definition of generalized modular forms.)
+
+I take for granted the topological claim that `the maps (left and right units) embedding classical modular forms into the module of generalized modular forms by inclusion into the left-or-right side of the tensor product, gives rise to a unique strict isomorphism between the formal group laws attached to the elliptic curves given by the respective module of modular forms.
+
+Using the notation of Bakers paper, $H(T):\gen S^{Ell}(\Z[[1/6])[[T]]$,
+	\begin{align*}
+		H(T)=\sum_{i>0}H_{i}T_{i}
+	\end{align*}
+is that strict isomorphism, and the logarithms of the respective formal group laws are
+	\begin{align*}
+		\log^{Ell}T=\sum_{i>0}\frac{L_{i}}{i}T^{i}, \quad \log^{Ell'}T=\sum_{i>0}\frac{L_{i}'}{i}T^{i},
+	\end{align*}
+where $L_{i}.L_{i}',H_{i}$ are generalized modular forms of weight $i$. By definition of these entities, letting $+_{Ell}$  and $+_{Ell'}$ denote the respective formal sums, we have
+	\begin{align*}
+		H(x+_{Ell}y)=H(x)+_{Ell'}H(y).
+	\end{align*}
+Consequently we have an equality of power series
+	\begin{align*}
+		\log^{Ell'}(H(T))=\log^{Ell}(T). 
+	\end{align*}
+Expanding this, we have 
+	\begin{align*}
+		\sum_{i>0}\frac{L_{i}'}{i}(\sum_{j>0}H_{j}T^{j})^{i}=\sum_{i>0}\frac{L_{i}}{i}T^{i}..
+	\end{align*}
+Expanding power on the right hand side, equating coefficients, we have a formula for $L_{i}$ in terms of $H_{j}$ and $L'_{k}$ for $j,k\leq i$:
+	\begin{align*}
+		L_{i}=i\cdot \sum_{k=1}^{i} \frac{L_{k}}{k}B_{i,k}(H_{1},...,H_{i-k+1}),
+	\end{align*}
+where $B_{i,k}$ is the $i,k$th \emph{Bell polynomial}
+	\begin{align*}
+		B_{i,k}(x_{1},...,x_{i-k+1})=\sum\frac{i!}{j_{1}!....,j_{n-k+1}!}\prod_{\ell=1}^{i-k+1}\left(\frac{x_{\ell}}{\ell!}\right)^{j_{\ell}}
+	\end{align*}
+and the sum is over sequences $j_{1},...,j_{i-k+1}$ of nonnegative integers such that $\sum j_{\ell}=k$ and $\sum \ell\cdot j_{\ell}=i$, (definition from wikipedia).
+
+This formula emphatically does not agree with Baker's computation. Attached is some sage code, implementing the sum in the penultimate display. Baker's formula consistently gives incorrect answers, even in smaller, more tractable situations (i.e. simpler formal group laws). This suggests that there may be an irreparable flaw in Baker's technique, the investigation of which will require further study of these Bell polynomials.
+
+
+\end{document}

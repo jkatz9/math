@@ -1,0 +1,35 @@
+%!TEX root = main.tex
+
+For $\tbt{a}{b}{c}{d} \in G = \SL(2,k)$, if $c \in k^\times$ then one has 
+\al{ 
+    \Tbt{a}{b}{c}{d} &= \Tbt{-1}{}{}{-1}  \Tbt{c^\inv}{}{}{c} \Tbt{1}{ac}{}{1} \Tbt{}{1}{-1}{} \Tbt {1}{dc^\inv}{}{1} \\
+    				 &= \abf (-1)\cdot \abf (c^\inv)\cdot \ubf (ac) \cdot \wbf \cdot \ubf(dc^\inv)
+}
+while if $c=0$, then $d=a^\inv$
+\al{
+	\Tbt{a}{b}{0}{a^\inv} &= \Tbt{a}{}{}{a^\inv} \Tbt{1}{ba^\inv}{}{1} \\
+						  &= \abf(a)\ubf(ba^\inv) 
+}
+Here, $\abf: \Gbb_m \to G$ is the cocharacter corresponding to the split maximal torus $A \leq G$, $\ubf: \Gbb_a \to G$ parameterizes the associated root subgroup, and $\wbf = \tbt{}{1}{-1}{}$ is the weyl element.
+
+For $b \in k^\times$, one has 
+\al{
+	\abf(b) &= w \cdot \ubf(b^\inv)\cdot w\cdot \ubf (b) \cdot w \cdot \ubf(b^\inv)
+			}
+
+
+Some computations for posterity: 
+\al{
+	w*g*w &= \left(\begin{array}{rr}
+-d & c \\
+b & -a
+\end{array}\right) \\
+	w*g	  &= \left(\begin{array}{rr}
+c & d \\
+-a & -b
+\end{array}\right) \\
+	g*w   &= \left(\begin{array}{rr}
+-b & a \\
+-d & c
+\end{array}\right)
+}

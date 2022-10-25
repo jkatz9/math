@@ -1,0 +1,99 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{quiver}
+\usepackage{mycros}
+\def\fr{\ON{frob}}
+\newtheorem{question}{Question}
+
+
+\begin{document}
+%	\section{Lifting curves under covers: three perspectives}
+%In what follows, I will give three different descriptions of some numerical invariants associated to a finite Riemannian cover $\pi : M \to M_o$, a closed geodesic $\pfrak \subset M_o$, and a lift $\Pfrak \subset \pi^\inv ( \pfrak) \subset M$. 
+%These invariants are:
+%\begin{itemize}
+%	\item The inertial degree: $f_\pi(\Pfrak \vert \pfrak)$
+%	\item The number $g_\pi(\pfrak)$ of connected components $\Pfrak \subset \pi^\inv(\pfrak)$
+%	\item When $\pi: M \to M_o$ is galois with $\Gal(\pi) = G$: a conjugacy class $\ON{frob_\pfrak} \subset G$.  	
+%\end{itemize} 
+%
+%	\subsection{The Riemannian description}
+%Given a closed geodesic $\pfrak$ on $M_o$, its preimage under the cover $\pi$ is a disjoint union of $g = g_\pi(\pfrak)$ closed geodesics $\Pfrak$ on $M$. For any such $\Pfrak$ lying over $\pfrak$, the ratio of their lengths $f=f_\pi (\Pfrak \vert \pfrak) = \frac{\ell(\Pfrak)}{\ell(\pfrak)}$ is an integer.  
+% 
+%When the cover is finite and regular, the deck group $G$ acts by isometries on $M$, permuting transitively the components $\Pfrak$ lying over $\pfrak$. The set-wise stabilizer $G_\Pfrak$ of any component $\Pfrak$  acts by isometries on $\Pfrak \approx S^1$, and in fact $G_\Pfrak \lmod \Pfrak$ is isometric to $\pfrak$. In particular the $G_\Pfrak$ is cyclic of order $f$, and the number $g$ of components $\Pfrak$ lying over $\pfrak$ is $|G \rmod G_\Pfrak | = \deg(\pi)\rmod f $  
+%
+%\subsection{The topological description}
+\def\pimx{\pi_1(M,x)}
+%\def\pimoxo{\pi_1(M_o,x_o)}
+%Let $r : S^1 \to \pfrak \subset M_o$ be a parameterization of a closed geodesic $\pfrak$ on $M_o$. Pick a point $x_o$ on $\pfrak$. Then $r$ lifts to a closed curve $\tilde{r} : S^1 \to M$ if and only if, for some $x \in \pi^\inv(x_o)$, the homotopy class of $r$ in $\pimoxo$ lies in the image of $\pimx$ under the inclusion induced by $\pi$. 
+%
+%For each such lift $x$ of $x_o$, there is a least integer $f=f(x_o , \pfrak)$ such that the $f$-fold concatenation $r^f$ is homotopic to an element of $\pimx$. 
+%
+%\subsection{The group theoretic description}
+%Let $\tilde{M}$ be the common universal cover of $M$ and $M_o$, and let $\Gamma$ and $\Gamma_o$ denote $\pimx$ and $\pimoxo$ respectively, so that $M = \Gamma \lmod \tilde{M}$ and $M_o = \Gamma_o \lmod \tilde{M}$. Recall that the free homotopy class of a loop corresponds to a conjugacy class in any of a space's (based)  fundamental groups. Given a closed geodesic $\pfrak$ on $M_o$, we may identify it with a conjugacy  class in $\Gamma_o$.  By definition, $\Gamma_o$ acts transitively on $\pfrak$, by conjugation. Restricting this action to the subgroup $\Gamma \leq \Gamma_o$, the $\Gamma_o$-conjugacy class $\pfrak$ will break up into a union of $g=g(\pfrak)$ disjoint $\Gamma$-orbits: $\pfrak = \bigsqcup_{i=1} ^g \Pfrak_i$, 
+
+\section{Selberg zeta formalism}
+For a closed Riemannian manifold $M$ of negative curvature and a unitary representation $\rho : \pimx = \Gamma \to \GL(V)$, one can form the \textbf{Selberg zeta function}: for $s$ a complex variable in a suitable right-halfplane
+	\begin{align*}
+		Z_\Gamma(s, \rho) = \prod_{\gamma \in \Gamma_{pcc}} \prod_{k \geq 0} \det \left( \id_V - \rho(\gamma) e^{-(s+k) \ell(\gamma)} \right),
+	\end{align*}
+where the product is over the set $\Gamma_{pcc}$ of primitive conjugacy classes $\gamma$ in $\Gamma$, and $\ell(\gamma)$ is the Riemannian length of the corresponding geodesic. 
+
+	\begin{claim} \label{claim1}
+
+		The following assertions are purely formal: 
+		\begin{itemize}
+				\item Knowledge of $Z_\Gamma(s,\rho)$  amounts to the knowledge of the following data set: for each length $\ell \in \Rbb_{\geq 0}$, the value of the sum 
+					\[ \sum_{\gamma \in \Gamma_{pcc}, \ell(\gamma^k) = \ell } \Tr(\rho(\gamma))/ k. \]
+				In particular, if $\rho = 1$ is trivial then knowledge of $Z_\Gamma(s,1)$ amounts to knowing the length spectrum of $\Gamma$. 
+				\item \textbf{Functoriality under direct sums:} $Z_\Gamma{s, \rho}$ is multiplicative w/r/t direct sum of representations: 
+					\[ Z_\Gamma(s,\rho \oplus \sigma) = Z_\Gamma(s,\rho) Z_\Gamma(s,\sigma).  \] 
+				\item $Z_\Gamma(s, \rho)$ depends only on the isomorphism class of $\rho$, so is consequently dependent only on its  character $\Tr\circ \rho$. 
+				\item \textbf{A consequence of the preceeding two observations}: While $Z_\Gamma(s,\rho)$ is initially only defined for representations $\rho$, we can extend its definition to any conjugacy invariant function on $\Gamma$ which arises as a finite linear sum of characters of representations.   
+				\item \textbf{Functoriality under finite covers:} Suppose $N \to M$ is a finite cover and $ \pi_1(N,y) =  \Lambda \leq \Gamma = \pimx $. For any representation $\sigma: \Lambda \to \GL(V)$ on the cover, one can realize $Z_\Lambda(s, \sigma)$ as a Selberg zeta function for the base $M$ via induction:
+					\[ Z_\Lambda(s,\sigma) = Z_\Gamma (s , \ind_{\Lambda}^{\Gamma} \sigma ). \]
+		\end{itemize}
+	\end{claim}
+	In order to directly relate $Z_\Gamma(s,\rho)$ to the Laplace spectrum of $M$, it suffices to take $M$ to be locally symmetric (and negatively curved). In this setting if we let $\tilde{M}$ denote the universal cover, and let $\Gamma$ act on $\tilde{M}$ by isometries so that $M \approx \Gamma \rmod \tilde{M}$, then we can define the space 
+		\[ L^2 (M, \rho) = \{ f \in L^2(M,V): f(gz)= \rho(g)f(z)\} \] 
+	and consider the spectral problem for $\Delta_\rho = \Delta \otimes \id_V$ acting on it. The following is \emph{almost} purely formal (modulo understanding the Selberg trace formula)
+		\begin{claim}
+				Up to a (topological) fudge factor:
+					\[ Z_\Gamma(s,\rho) = \det \left(\Delta_\rho - s(s-1)\right). \]
+				In particular, away from the zeroes of the fudge factor (the so-called trivial zeroes), the zeroes of $Z_\Gamma(s,\rho)$ occur precisely at the eigenvalues of $\Delta_\rho$ acting on $L^2(M,\rho)$, taken with multiplicty.  
+		\end{claim}
+\subsection{A converse to Sunada: formulation}
+Suppose one has a diamond of Riemannian covers: 
+	\[\begin{tikzcd}
+		& M \\
+		{N_1} && {N_2} \\
+		& {M_o}
+		\arrow[from=1-2, to=2-1]
+		\arrow[from=1-2, to=2-3]
+		\arrow[from=2-1, to=3-2]
+		\arrow[from=2-3, to=3-2]
+		\end{tikzcd}\]
+with corresponding (flipped) configuration of fundamental groups: 
+	\[\begin{tikzcd}
+	& {\Gamma_o=\pi_1(M_o)} \\
+	{\Lambda_1=\pi_1(N_1)} && {\Lambda_2=\pi_1(N_2)} \\
+	& {\Gamma=\pi_1(M)}
+	\arrow[hook, from=2-1, to=1-2]
+	\arrow[hook, from=3-2, to=2-1]
+	\arrow[hook', from=3-2, to=2-3]
+	\arrow[hook', from=2-3, to=1-2]
+	\end{tikzcd}\]
+	\begin{question}
+			Suppose $N_1$ and $N_2$ are isospectral. Are $\Lambda_1$ and $\Lambda_2$ almost-conjugate in $\Gamma_o$? That is: if $N_1$ and $N_2$ are isospectral and live in a diamond, is that diamond a sunada diamond? 
+	\end{question}
+	Applying the Selberg zeta formalism to this question, it is 	equivalent to ask:
+	\begin{question}
+		Suppose $Z_{\Gamma_o}(s, \ind_{\Lambda_1}^{\Gamma_o}1)  = Z_{\Gamma_o}(s, \ind_{\Lambda_2}^{\Gamma_o}1)$.  Can one conclude that, as $\Gamma_o$ representations, $\ind_{\Lambda_1}^{\Gamma_o}1=\ind_{\Lambda_2}^{\Gamma_o}1$ ?
+	\end{question}
+	Applying the first bullet in claim \ref{claim1}, this amounts to asking: 
+	\begin{question}
+		Suppose that, for all $\ell$ in $\Rbb_{\geq 0}$, one has 
+			\[ \sum_{\gamma \in {\Gamma_o}_{pcc}, \ell(\gamma^k) = \ell }\chi_{\Lambda_1}^{\Gamma_o}(\gamma)/k   = \sum_{\gamma \in {\Gamma_o}_{pcc}, \ell(\gamma^k) = \ell } \chi_{\Lambda_1}^{\Gamma_o}(\gamma)/k, \] 
+			(where $\chi_{\Lambda_i}^{\Gamma_o}$ is the trace of the induced representation) must then  $\chi_{\Lambda_1}^{\Gamma_o} =\chi_{\Lambda_1}^{\Gamma_o}?$
+	\end{question}
+\end{document}

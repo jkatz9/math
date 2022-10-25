@@ -1,0 +1,374 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage[all]{xy}
+\input{mydefs}
+\newcommand{\Of}{\mathcal{O}}
+\newcommand{\lmod}{\backslash}
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries}{\thesubsection}{1em}{}[{}]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newcommand{\ord}{\operatorname{ord}}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\newtheorem{exer}{Problem}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\amat}[1] {\Tbt{e^{#1}}{0}{0}{e^{-#1}}}
+\newcommand{\nmat}[1]{\Tbt{1}{#1}{0}{1}}
+\newcommand{\kmat}[1]{\Tbt{\cos #1}{\sin #1}{-\sin #1}{\cos #1}}
+\newcommand{\dbdt}{\frac{d}{dt}}
+\title{Trace formula talk}
+\author{Justin Katz}
+\begin{document}
+\maketitle
+%\section{The desired computation}
+%Let $G$ be a unimodular locally compact group, $\Gamma$ be a discrete subgroup, and $R$ be the right regular representation of $G$ on $L^{2}(\Gamma \lmod G)$. Convert the group representation $R$ to an algebra representation of $C_{c}(G)$, still called $R$, by 
+%	\begin{align*}
+%		(R(f)\phi)(x)=\int_{G}f(y)\phi(xy)\dop y.
+%	\end{align*}
+%In situations where it is sensible, the following computation `winds up' this integral along $\Gamma$:
+%	\begin{align*}
+%		(R(f)\phi)(x)&= \int_{G}f(y)\phi(xy)\dop y \\
+%				&= \int_{G}f(x^{-1}y)\phi(y)\dop y \\
+%				&=\int_{\Gamma \lmod G}\sum_{\gamma\in\Gamma}f(x^{-1}\gamma y)\phi(\gamma y)\dop y \\
+%				&=\int_{\Gamma \lmod G}\left (\sum_{\gamma \in \Gamma}f(x^{-1}\gamma y)\right ) \phi(y) \dop y,
+%	\end{align*}
+%where we've used $\Gamma$ invariance of $\phi$ (not $f$!) in the last step. The sum appearing in the last integrand manifests a kernel defining $R(f)$. Set
+%	\begin{align*}
+%		K_{f}(x,y)=\sum_{\gamma \in \Gamma}f(x^{-1}\gamma y).
+%	\end{align*}
+%Then, on the one hand, the trace of $R(f)$ is 
+%	\begin{align*}
+%		\Tr R(f)=\int_{\Gamma\lmod G} K_{f}(x,x)\dop x. 
+%	\end{align*}
+%Now, denote the set of conjugacy classes of elements in $\Gamma$ by $\{\Gamma\}$, and for a class $\gamma$ in $\{\Gamma\}$  denote the centralizers of $\gamma$ in $\Gamma$ and $G$ respectively by:
+%	\begin{align*}
+%		\Gamma_{\gamma}&=\{ g\in \Gamma: g^{-1}\gamma g =\gamma\} \\
+%		G_{\gamma}&=\{g \in G:g^{-1}\gamma g= \gamma\}.
+%	\end{align*}
+%Now note that the set orbits of $\Gamma$ acting on itself by conjugation is precisely $\{\Gamma\},$ and the stabilizer of an element in an orbit $\gamma$ is $\Gamma_{\gamma}$.  Orbit stabilizer affords us the decomposition of $\Gamma$ (abusing notation, conflating classes and elements)
+%	 \begin{align*}
+%		\Gamma&=\bigcup_{\gamma \in \{\Gamma\}}\bigcup_{g \in \Gamma_{\gamma}\lmod \Gamma} \{ \delta \gamma \delta^{-1}\}
+%	\end{align*}
+%which manifests in the sum 
+%	\begin{align*}
+%		\sum_{\gamma \in \Gamma} f(x\gamma x^{-1}) = \sum_{\gamma \in \{\Gamma\}} \sum_{g\in \Gamma_{\gamma}\lmod \Gamma} f(xg \gamma g^{-1} x^{-1}).
+%	\end{align*}
+% pass the sum over $\{\Gamma\}$ through the integral, and then `wind' $\Gamma \lmod G$ along $\Gamma_{\gamma} \lmod \Gamma$ to obtain
+%	\begin{align*}
+%		\Tr(R(f))&= \sum_{\gamma \in \{\Gamma\}}\sum_{g\in \Gamma_{\gamma}\lmod\Gamma}f(x^{-1}g^{-1}\gamma gx) \\
+%			&=\sum_{\gamma \in \{\Gamma\}}  \sum_{\Gamma_{g}\lmod G} f(x^{-1}\gamma x) \dop x.
+%	\end{align*}
+%As a last refinement, wind $\Gamma_{\gamma}\lmod G$ along $\Gamma_{\gamma}\lmod G_{\gamma}$ to obtain 
+%	\begin{align*}
+%				\Tr(R(f)) &=  \sum_{\gamma \in \{\Gamma\}}\vol(\Gamma_{\gamma}\lmod G_{\gamma}) \int_{G_{\gamma}\lmod G}f(x^{-1}\gamma x)\dop x.
+%	\end{align*}
+%
+%
+%Now, if as a $G$ rep (and thereby as a $C_{c}(G)$ rep,) we have a decomposition 
+%	\begin{align*}
+%		L^{2}(\Gamma \lmod G) = \bigoplus_{\pi \in \hat{G}} m_{\pi}^{\Gamma} \pi,  \qquad \text{where $m_{\pi}^{\Gamma}=\dim(\hom_{G}(\pi,L^{2}(\Gamma\lmod G)))$},
+%	\end{align*}
+%	and on the other hand, 
+%		\begin{align*}
+%			\Tr R(f)= \sum_{\pi \in \hat{G}} m_{\pi}\Tr \pi(f).
+%		\end{align*}
+%The trace formula is the equality of these two expressions. 
+%
+%Note, there are many things that are potentially nonsense here: 
+%\begin{enumerate}
+%	 \item Is the operator $R(f)$ of trace class? 
+%	 \item Are the passages of sums through integrals sensible?
+%	 \item Does $L^{2}(\Gamma  \lmod G)$ have such a decomposition? Need the multiplicities be finite? Are the irreducibles finite dimensional? If not, is $\pi(f)$ trace class on $\pi$?
+%\end{enumerate}
+%\section{Situations where it works, no problem: 1--Finite groups}
+%Suppose $G$ is finite. Then any $\Gamma \leq G$ is discrete. Haar measure on $G$ and $\Gamma$ is counting, so integrals are merely sums over group elements. Note, in this case, that the space $L^{2}(\Gamma \lmod G)$ is finite dimensional and consists of (all) left $\Gamma$ invariant functions on $G$. This coincides with the representation induced from the trivial one on $\Gamma$.
+%
+%All sums being finite, and spaces finite dimensional, the discussion in section 1 applies with no stipulations. This gives us a formula
+%	\begin{align*}
+%		\sum_{\pi \in \hat{G}} m_{\pi}^{\Gamma}\Tr(\pi(f)) = \Tr R(f)= \sum_{\gamma \in \{\Gamma\}}\left |\Gamma_{\gamma}\lmod G_{\gamma}\right| \sum_{x \in G_{\gamma}\lmod G}f(x^{-1}\gamma x).
+%	\end{align*}
+%
+%An application:
+%\begin{thm}For an irreducible  $\pi$ of $G$, 
+%	\begin{align*}
+%		\dim_{\C}\hom_{G}(\pi,L^{2}(\Gamma \lmod G))=\dim_{\C}(\hom_{\Gamma}(1,\pi))
+%	\end{align*}
+%\end{thm}
+%\begin{proof}
+%Fix an irreducible $\sigma$ of $G$ and apply the trace formula to $f_{\sigma}g\mapsto \overline{\Tr(\sigma(g))}$, the (conjugate) character of $\sigma$. The operators $\pi(\overline{\Tr(\sigma)})$ appearing on the LHS act as
+%	\begin{align*}
+%		v\mapsto \sum_{g\in G}\overline{\Tr(\sigma)}(g)\pi(g)v.
+%	\end{align*}
+%By orthogonality (and linearity!) of characters, the trace of this operator is $0$ unless $\pi=\sigma$ and $|G|$ otherwise. 
+%
+%To attack the RHS, recall that characters are conjugacy invariant, so for each conjugacy class $\gamma$
+%	\begin{align*}
+%		\sum_{x\in G_{\gamma}\lmod G}\Tr(\sigma(x^{-1}\gamma x))&= \left| G_{\gamma} \lmod G \right| \overline{\Tr(\sigma(\gamma ))}.
+%	\end{align*}
+%Now the RHS is 
+%	\begin{align*}
+%		\Tr(f_{\sigma})&=\sum_{\gamma \in \{\Gamma\}} \left | \Gamma_{\gamma}\lmod G_{\gamma} \right | \left | G_{\gamma} \lmod G \right| \overline{\Tr \sigma (\gamma)} \\
+%				&=|G| \overline{\sum_{\gamma\in \{\Gamma\}}1/|\Gamma_{\gamma}| \Tr(\sigma(\gamma))} \\
+%			        &=|G| \dim \hom_{\Gamma}(1,\sigma)
+%	\end{align*}
+%\end{proof}
+%\section{Situations where it works, with some effort: Compact Quotients}
+%%Now using the discreteness of $\Gamma$ and the compact support of $f$ to conclude that the sum defining $K_{f}$ is locally finite, we
+%Functional analytic preliminaries:
+%
+%\begin{enumerate}
+%\item Compact operator means image of ball is precompact
+%\item Equiv, compact means limit of finiite rNAK operators
+%\item Collection of compact operators is closed in norm topology
+%\item Take $A$ bounded on $H$. If for some orthonormal basis $B$, the sum $\sum_{b \in B}|Ab|^{2}$ is finite, then its value is independent of the orthonormal basis. Call such an operator \emph{Hilbert--Schmidt}. Proof: Take another basis $B'$ and write $Ab=\sum_{b' \in B'}\ip{Ab}{b'}b'$ then by orthonormality $|Ab|^{2}=\sum_{b' \in B'}|\ip{Ab}{b'}|^{2}$. Then
+%	\begin{align*}
+%		\sum_{b\in B} |Ab|^{2}&=\sum_{b\in B}\sum_{b'\in B'}|\ip{Ab}{b'}|^{2} \\
+%						&=\sum_{b\in B}\sum_{b'\in B'}|\ip{b}{A^{*}b'}|^{2}\\ 
+%	\end{align*}
+%Switch the sums, note that $|A|_{2}=|A^{*}|_{2}$ and we're done.
+%\item Hilbert-Schmidt operators are compact. Proof: manifest them as limit of finite rNAK operators-- Since the sum $\sum |Ae_{i}|^{2}$ converges, for any $n$ there is an $N_{n}$ with $\sum_{i>N_{n}}Ae_{i}<1/n^{2}$. So define $A_{n}$ as the projection of $A$ onto the space spanned by the first $N_{n}$ basis vectors.  
+%\item Say that $A$ is \emph{of trace class} if for every orthonormal basis, the sum 
+%	\begin{align*}
+%		\sum_{b\in B}|\ip{Ab}{b} 
+%	\end{align*}
+%converges.  (Note, the requirement that this converge for every ONB is not vacuous. Delicate: if of trace class, then sum is absolutely convergent and independent of basis. If not of trace class, could be finite for some bases but not others). Define the trace of a trace class operator as that sum. 
+%\item Trace class implies Hilbert Schmidt
+%\item A product of Hilbert-Schmidt's is trace class. Proof: Use adjoint and cauchy schwarz.  
+%\item $|\Tr(AB)|\leq |A||B|$
+%\item If $A$ of trace class, then so is $A^{*}$ w/ $\Tr A^{*}=\overline{\Tr A}$. 
+%\item An operator defined by an $L^{2}$ kernel is Hilbert--Schmidt
+%\end{enumerate}
+%RHS justifications:
+%Since $R$ is a convolution homomorphism, the operator $R(f)$ defined by a function $f=f_{1}*f_{2}\in C_{c}(G)*C_{c}(G)\leq L^{2}(G)\times L^{2}(G)$,   is a product of Hilbert--Schmidt operators, and thus is trace class. A straightforward computation shows that, in fact, the integral kernel of the product is the product of integral kernels, in the sense that 
+%	\begin{align*}
+%		K_{f}(x,y)=\int_{G}K_{f_{1}}(x,z)K_{f_{2}}(z,y)\dop z. 
+%	\end{align*}
+%So, for such $f$, the RHS computations are justified.
+%	\begin{remark}
+%		For $G$ a Lie group, or adelic points of a reductive group, then any $C^{\infty}_{c}$ function is a finite sum of convolutions of $C_{c}$ functions. 
+%	\end{remark}
+%To justify the LHS, we need more functional analytic preliminaries:
+%\begin{enumerate}
+%	\item Compact self adjoint operators on a Hilbertspace have a nonzero eigenspace, and its dimension is finite. Proof: First, establish $|A|=\sup_{|v|=1}||\ip{Av}{v}|$. Then take a sequence $v_{n}$ of unit vectors such that $|\ip{ A v_{n}}{v_{n}}=|A|$. Pass to a subseq	uence to attain convergence to real $\alpha$ with $|\alpha|=|A|$.  Use compactness of $A$ to pass to subsequence so that $Av_{n}\to v$. Then compute 
+%	\begin{align*}
+%		|Av_{n}-\alpha v_{n}|^{2}&=|Av_{n}|^{2}-2\alpha \ip{Av_{n}}{v_{n}}+\alpha^{2}|v_{n}|^{2}\\
+%							&\leq |A|^{2}-2\alpha \ip{Av_{n}}{v_{n}}+\alpha^{2}|v_{n}|^{2}\\
+%							&=\alpha^{2}-2\alpha \ip{Av_{n}}{v_{n}}+\alpha^{2}|v_{n}|^{2}\to 0. 
+%	\end{align*}
+%Thus, $Av_{n}\to \alpha v_{n}$, but also $Av_{n}\to v$ so $v_{n}\to v/\alpha$. 
+%	\item By induction, $A$ breaks its space into a direct some of eigenspaces, each with finite dimension. 
+%	\item If $A$ is a product of Hilbert--Schmidt operators, hence of trace class, then 
+%		\begin{align*}
+%			\Tr A=\sum_{\lambda\in \spec A} (\dim H(\lambda))\lambda.
+%		\end{align*}
+%	\item IOU
+%\end{enumerate}
+%LHS holds
+%
+%Example: Poisson summation 
+%
+%Set $G=\R$ and $\Gamma=\Z$. For each integer $n$ define $\chi_{n}:x \mapsto e^{2\pi i n x}$. Then as $\R$ representations,
+%	\begin{align*}
+%		L^{2}(\Z\lmod \R)=\bigoplus_{n\in \Z}\C \chi_{n}. 
+%	\end{align*}
+%For $f$ smooth of compact support on $\R$, LHS gives
+%	\begin{align*}
+%		\Tr R(f)= \sum_{n} \Tr \chi_{n}(f)
+%	\end{align*}
+%where 
+%	\begin{align*}
+%		\chi_{n}(f) v=\int_{\R}f(y)\chi_{n}(y)v\dop y=(\int_{\R}e^{2\pi i n y}f(y)\dop y) v. 
+%	\end{align*}
+%Then 
+%	\begin{align*}
+%		\Tr \chi_{n}(f)=\hat{f}(-n). 
+%	\end{align*}
+%Thus, 	
+%	\begin{align*}
+%		\Tr R(f)=\sum_{n} \hat{f}(-n). 
+%	\end{align*}
+%To compute the RHS, note that conjugacy classes are singletons, centralizers are the whole group, so
+%	\begin{align*}
+%		\Tr R(f)&= \sum_{n\{\Z\}} \vol(\Gamma_{n}\lmod G_{n}) \int_{\{1\}} f(n) \dop x \\
+%			&=\sum_{n\in \Z} \vol(\Z\lmod \R) f(n)=\sum_{n}f(n). 
+%	\end{align*}
+%	Thus, the trace formula is, for any smooth $f$ compactly supported on $\R$
+%	\begin{align*}
+%		\sum_{n}\hat{f}(-n) = \sum_{n}f(n). 
+%	\end{align*}
+\section{$\SL(2,\R)$}
+Let $G=\SL(2,\R)$ and $\Gamma \leq G$ be a compact lattice. Taking for granted that there are no issues with convergence, the trace formula reads: (Recalling that $\cdot_{\gamma}$ is the centralizer of $\gamma$ in $\cdot$, and that $R^{\Gamma}$ is the right regular action of $G$ on $L^{2}(\Gamma \setminus G)$) for a test function $f\in C_{c}^{\infty}(G)$, 
+	\begin{align*}
+		\sum_ {\pi \in \hat{G}} m_{\pi}^{\Gamma}\Tr \pi(f)= \Tr R^{\Gamma}(f)= \sum_{\gamma\in \{\gamma\}} \vol (\Gamma_{\gamma} \lmod G_{\gamma}) \int_{G_{\gamma}\lmod G} f(g^{-1}\gamma g) \dop g.
+	\end{align*} 
+The aim of this talk is to demonstrate how this formula manifests in the following
+\begin{thm}
+	Let $\{\lambda_{j}\}$ be the eigenvalues of the hyperbolic Laplacian acting on $L^{2}(\Gamma \lmod \half)$, and $g\in C_{c}^{\infty}(\R)$. Then
+		\begin{align*}
+			\sum \hat{g}(\sqrt{\lambda_{j}-1/4}) = \frac{\vol (\Gamma \lmod \half)}{2\pi} \int_{0}^{\infty}\hat{g}(r) r\tanh(r)\dop r +1/2 \sum_{\gamma \in \{\Gamma\}} \frac{\ell(\gamma_{o})}{e^{\ell(\gamma)/2}-e^{-\ell(\gamma)/2}} g(\ell(\gamma))			
+		\end{align*}
+	where $\hat{g}$ is the Euclidean Fourier transform of $g$; where $\gamma_{o}$ is the generator of $\Gamma_{\gamma}$ (hence primitive geodesic in the class); and $\ell(\gamma)$ is the translation length of $\gamma$.   
+\end{thm}
+
+
+
+
+\subsection{Structure of $\SL(2,\R)$}
+	Put coordinates on $G$ via the Iwasawa decomposition $G=NAK$:
+	\begin{align*}
+		A&=\{ a(u)=\amat{u}: u\in \R\}  \\ 
+		N&=\{ n(x)=\nmat{x}: x \in \R\} \\
+		K&= \{ k(\theta)=\kmat{\theta}: \theta \in [0,2\pi)\}. 
+	\end{align*}
+%With respect to these coordinates, the haar measure on $G$ is  
+%	 \begin{align*}
+%		\dop g = \frac{1}{2\pi} \dop u \dop x \dop \theta, 
+%	\end{align*}
+	Classification of conjugacy classes: 
+	\begin{enumerate}
+		\item $g \in G$ is hyperbolic if 
+			\begin{enumerate}
+				\item $\Tr g >2$ 
+				\item $g$ is conjugate to an element in $A$
+				\item The action of $g$ on $\overline{\half}$ has two distinct fixed points on the boundary
+			\end{enumerate}
+				\item $g \in G$ is elliptic if 
+			\begin{enumerate}
+				\item $\Tr g <2$ 
+				\item $g$ is conjugate to an element in $K$
+				\item The action of $g$ on $\overline{\half}$ has one fixed point in $\half$. 
+			\end{enumerate}
+					\item $g \in G$ is parabolic if 
+			\begin{enumerate}
+				\item $\Tr g =2$ 
+				\item $g$ is conjugate to an element in $N$
+				\item The action of $g$ on $\overline{\half}$ has exactly one point on the boundary
+			\end{enumerate}
+	\end{enumerate}
+	Fact: a discrete subgroup $\Gamma$ is cocompact iff it doesnt contain any parabolic elements.
+	
+\subsection{Spectral side}
+To understand the RHS, we need to compute $\Tr \pi (f)$ for those $\pi \in \hat{G}$ with $m_{\pi}^{\gamma}\neq 0$. To do this, we relate these $\pi$ with special functions on $\Gamma \lmod \half$.  Here's the theorem:
+\begin{thm}
+	Suppose $m_{\pi}^{\Gamma}\neq 0$. Then $\pi^{K}$  (that is, the right $K$ invariant vectors in $\pi$) is one dimensional, say $\pi^{K}=\C\phi$. Then, upon identifying $\phi$ with a function on $\Gamma \lmod \half$, we have
+		\begin{align*}
+			\Delta^{\half} \phi = \lambda \phi
+		\end{align*}
+	for $\lambda \in \R_{\geq 0}$ dependent only on the isomorphism class of $\pi$. 
+\end{thm} 
+	Essence of proof:  
+	\begin{itemize}
+		\item The convolution algebra of left-and-right $K$ invariant functions on $G$ is commutative: use Cartan decomposition $G=KAK$ to show first that functions on $K\lmod G / K$ are invariant under transpose, then note that transpose induces an anti-automorphism of $C_{c}^{\infty}(K\lmod G/ K)$, which is the identity. 
+		\item Irreducible unitary reps of $G$ appearing in $L^{2}(\Gamma \lmod G)$ are admissible (meaning the restriction of the rep to $K$  is completely reducible, with irreducible constituents having finite multiplicity). 
+		\item For an irreducible admissible rep $\pi$, the subspace $\pi^{K}$ affords a representation of $C_{c}^{\infty}(K\lmod G / K)$ which is irreducible. Irreducible reps of a commutative algebra are at most one dimensional. 
+		\item Under the identification of functions on $\Gamma \lmod \half$ with right $K$ invariant, left $\Gamma$ invariant functions on $G$, the hyperbolic Laplacian agrees with the Casimir operator of G up to a constant. 
+			\begin{itemize}
+				\item Quick and dirty on Casimir:\\
+				 The action of $G$ on $C^{\infty}(G)$ induces an action of its Lie algebra via the formula 
+					\begin{align*}
+						R(X)f(g)=\frac{d}{dt}|_{t=0} R(\exp(tX))f(g)=\frac{d}{dt}|_{t=0}f(g\exp(e^{tX})). 
+					\end{align*}
+					Thus, we can view $R$ as a Lie algebra homomorphism $\g$ into the associative algebra of differential operators on $G$ such that $R([X,Y])=R(X)R(Y)-R(Y)R(X)$. The universal object for such maps is $\mathcal{U} (\g)$, the universal enveloping algebra: this is an associative algebra and a map $\g \to \mathcal{U}(\g)$ such that any Lie algebra map of $\g$ into an associative algebra (turning Lie bracket into commutant) factors through a unique associative algebra map from  $\mathcal{U}(\g)$.  \emph{This is all to say that $\mathcal{U}(\g)$ is the smallest place in which it is meaningful to take products of Lie algebra elements}. 
+					\item  The center of $\mathcal{U}(\g)$ is manifestly the algebra of differential operators on $G$ which commute with the action of $G$. The Casimir is a distinguished element of the center, constructed as follows:
+					\begin{itemize}
+						\item We'll contrive a nonzero algebra map $\End \g \to \mathcal{U}(\g)$ and take Casimir to be the image of the identity (which is certainly in the center): \\
+						First, use the canonical map $\End \g \to \g \otimes \g^{*}$, then use a nondegenerate bilinear form on $\g$  to pin down an isomorphism $\g \to \g^{*}$ to obtain a map $\End \g \to \g \otimes \g$. Then use the canonical inclusion $\g \otimes \g$ into the tensor algebra $\bigotimes \g $, and quotient by brackets to get a map to $\mathcal{U}(\g)$. 
+					\end{itemize}
+				\item With the basis of $\g$ 
+					\begin{align*}
+						h=\Tbt{1}{0}{0}{-1} \quad e= \Tbt{0}{1}{0}{0}   \quad f= \Tbt{0}{0}{1}{0}
+					\end{align*}
+					and using the trace form to make the identification of $\g$ with its dual, we have  
+					\begin{align*}
+						h^{*}=h \quad e^{*}= f/2   \quad f^{*}= e/2.
+					\end{align*}
+					so Casimir is $h^{2}+2ef+2fe$.
+					\item We want to compute the action of this differential operator on left $K$ invariant functions on $G$. To do this, first note that $e-f$ exponentiates into $K$, so will act by zero on left $K$ invariant functions. So we'll compute $h^{2}+4e^{2}$.   
+					\item  Exponentials are
+						\begin{align*}
+							\exp(th)&= a(t)=\amat{t} \\
+							\exp(te)&=n(t)=\nmat{t}
+						\end{align*}
+					so compute, for right $K$ invariant $f$ on $G$, using the fact that $A$ normalizes $N$ via $a(-u)n(x)a(a)=n(e^{u}x)$ so $n(x)a(u)=a(u)a(-u)n(x)a(u)=a(u)n(e^{u}x)$
+						\begin{align*}
+								R(e)f(n(x)a(u))&=\dbdt|_{t=0} f(n(x)a(u)n(t))=\dbdt|_{t=0}f(n(x+e^{ut})a(u))= e^{u}\frac{\partial}{\partial_{x}}f(n(x)a(u))\\
+								R(h)f(n(x)a(u))&=\dbdt|_{t=0}f(n(x)a(u)a(t))=\dbdt|_{t=0}f(n(x)a(u+t))=\frac{\partial}{\partial u} f(n(x)a(u))
+						\end{align*}
+				%%%resolve this nonsense.
+				\end{itemize}
+			\item Because casimir commutes with $G$, it provides an $G$-invariant automorphism of any irreducible to itself. Thus, by schur, it acts as a scalar on that irreducible. I.e. the one dimensional subspace $\pi^{K}$ of $\pi$ appearing in $L^{2}(\Gamma\lmod G)$ is in fact an eigenspace of casimir.
+			\item Since laplacian and casimir agree up to scale on left $K$ invariant functions on $G$,  this shows that the function in $\pi^{K}$ is in fact a laplacian eigenfunction. 
+	\end{itemize}
+		So now we look at the irreps $\pi$ of $G$ such that $\pi^{K}$ is one dimensional. These are called \emph{spherical} representations.
+		\subsection{Spherical representations of $\SL(2,\R)$}.
+			 Consider the subgroup 
+				 \begin{align*}
+					B=AN=\Tbt{*}{*}{0}{*}.
+				\end{align*} 
+		Parametrize the multiplicative characters on $B$ by
+			\begin{align*}
+				\chi_{s}(\Tbt{a}{b}{0}{a^{-1}})=|a|^{s},
+			\end{align*}
+			and induce from $\chi_{s}$ the representation
+				\begin{align*}
+					V_{s}=\{ \phi:G\to \C: \phi(bg)=\chi_{s+1}(b)\phi(g)\}.
+				\end{align*}
+		(the $+1$ is a normalization that we'll benefit from later). Since $G=NAK$, a function in $V_{s}$ is determined by its values on $K$. Denote by $\pi_{s}$ the $\phi \in V_{s}$ such that $\phi|_{K} \in L^{2}(K)$. Let $G$ act on $\pi_{s}$ by right translation. Then
+	\begin{thm}
+	When $s$ is not an odd integer, $\pi_{s}$ is irreducible with $\dim \pi_{s}^{K}=1$.  When  $s$ is an odd integer, $\pi_{s}$ has a unique irreducible subquotient which we'll renotate to $\pi_{s}$. Every irreducible spherical representation of $G$ arises as a $\pi_{s}$ and pairs $\pi_{s},\pi_{s'}$ are distinct unless $s=\pm s'$. 
+	\end{thm}
+	In order for  $\m_{\pi_{s}}^{K}\neq0$ we need $\pi_{s}$ to be unitary. The pairing on $\pi_{s_{1}}\times \pi_{s_{2}}$ 
+		\begin{align*}
+			\ip{\phi_{1}}{\phi_{2}}=\int_{K}\phi_{1}(k)\overline{\phi_{2}(k)}\dop k
+		\end{align*}
+	is $G$ invariant precisely when $s_{1}=-\overline s_{2}$ and thus gives a $G$ invariant innerproduct on $\pi_{s}$ when $s\in i\R$.  \\
+	
+	When $s \in(0,1)$, the map $M(s): \phi \mapsto  \int_{-\infty}^{\infty} f(\Tbt{0}{-1}{1}{0} \Tbt{1}{x}{0}{1} \cdot) \dop x$ is an intertwining map $\pi_{s}\to \pi_{-s}$, which induces an inner product on $\pi_{s}$ iff $s\in(-1,1)$. 
+	\begin{thm}
+		These irreducible unitary spherical reps of $G$ are the $\pi_{s}$ with $s\in i\R \cup (-1,1)$. 
+	\end{thm}
+Since each of these $\pi_{s}$ are irreducible, casimir acts on it by a scalar. To compute this scalar, it suffices to compute its value on a $\phi \in \pi_{s}^{K}$ which we normalize to take the value $1$ on $K$. Then identifying $\phi$ with a function on $\half$, the condition 
+	\begin{align*}
+		 \phi(bg)=\chi_{s+1}(b)\phi(g)
+	\end{align*}
+translates to
+	\begin{align*}
+		\phi(x+iy)=y^{(s+1)/2}
+	\end{align*}
+and since casimir is laplacian, the casimir eigenvalue is obtained by
+	\begin{align*}
+		\Delta^{\half}\phi(x+iy)=y^{2}(\frac{\partial^{2}l}{\partial x^{2}}+\frac{\partial^{2}l}{\partial y^{2}})y^{(s+1)/2} =\frac{(s+1)(s-1)}{4}y^{(s+1)/2}. 
+	\end{align*}
+	 Casmir acts on $\pi_{s}$  by $(s^{2}-1)/4$.  \\
+From all of this, we conclude:
+	\begin{align*}
+		m_{\pi_{s}}^{\Gamma}=\dim \{ \phi : \half \to \C \vert \Delta^{\half}\phi = \frac{s^{2}-1}{4} \phi\}
+	\end{align*}
+To finish our analysis of the LHS, we'll compute the traces $\Tr \pi_{s}(f)$ for $f\in C^{\infty}_{c}(K\lmod G / K)$. Recalling that this algebra is commutative, it acts by a scalar on irreducibles, and its trace is that scalar. To compute that scalar, check it on the unique function $\phi \in \pi_{s}^{K}$ such that $\phi(1)=1$: compute
+	\begin{align*}
+		(\pi_{s}(f)\phi)(1)&=\int_{G}f(g) R(g)\phi(1))\dop g\\ 
+					&=\int_{G}f(g)\phi(g)\dop g\\ 
+					&=\frac{1}{2\pi} \int_{\R}\int_{\R}\int_{[0.2\pi)} f(n(x)a(u)k(\theta)) \phi(n(x)a(u)k(\theta))\dop \theta \dop u \dop x  \\
+					&=\int_{\R}\int_{\R}f(n(x)a(u)) \phi(n(x)a(u)k(\theta))\dop u \dop x \\
+					&=\int_{\R}\int_{\R}f(\nmat{x}\amat{u}) \chi_{s+1}(\amat{u}) \dop u \dop x\\
+					&=\int_{\R}\int_{\R}f(\Tbt{e^{u/2}}{e^{u/2}x}{0}{e^{-u/2}}) e^{\frac{u(1+s)}{2}} \dop u \dop x\\
+					&=\int_{\R}\int_{\R}f(\Tbt{e^{u/2}}{x}{0}{e^{-u/2}})e^{us/2}\dop u \dop x\\
+	\end{align*}
+The function $
+
+\end{document}

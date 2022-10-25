@@ -1,0 +1,398 @@
+
+\documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage[all]{xy}
+\input{mydefs}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries}{\thesubsection}{1em}{}[{}]
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\newtheorem*{exer}{Exercise}
+\newtheorem{defn}{Definition}
+\newtheorem{ex}{Exercise}
+
+
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\hsp}{\hspace{1mm}}
+\newcommand{\E}{\mathcal{E}}
+\renewcommand{\H}{\mathcal{H}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\h}{\mathfrak{h}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\set}[2]{\left\{ #1 \hsp| \hsp #2\right\}}
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\cts}{\operatorname{cts}}
+\newcommand{\irr}{\operatorname{Irr}}
+\newcommand{\nai}{\operatorname{Naive}}
+\newcommand{\tr}{\operatorname{tr}}
+
+
+
+\title{Decomposing unitary representations of locally compact groups}
+\author{Justin Katz}
+\begin{document}
+\maketitle
+Let $G$ be a locally compact group, which we will always assume to be Hausdorff and second countable. Let $D$ be the collection of equivalence classes of irreducible unitary representations $\pi$ such that for any (hence all) nonzero $u,v\in \H_{\pi}$ the function $\phi_{\pi,u,v}:x \mapsto \ip{\pi(x)u}{v}_{\pi}$ is in $L^{2}(G)$. If $\pi \in D$, then $\phi_{\pi,u,v}$ generates a subrepresentation (a closed invariant subspace) of the right regular representation $R$ in $L^{2}(G)$ that is isomorphic to $\pi$. Let $\E_{\pi}$ denote the image in $L^{2}(G)$ of the functions $\phi_{\pi,u,v}$. Define two subspaces of $L^{2}(G)$: 
+	\begin{align*}
+		L^{2}_{\disc}(G)&=\bigoplus_{\pi \in D}\E_{\pi} \qquad \text{(Hilbert space direct sum)}\\
+		L^{2}_{\cts}(G)&=(L^{2}(G)_{\disc})^{\top}, 
+	\end{align*}
+We call these the discrete and continuous parts of $L^{2}(G)$ respectively. By construction, $L^{2}_{\disc}(G)$ is absolutely reducible: if $C(\pi,R)$ denotes the space of unitary operators intertwining $\pi$ and $R$, set $m(\pi)=\dim C(\pi,R)$. Then 
+	\begin{align*}
+		L^{2}_{\disc}(G)\approx \bigoplus_{\pi \in D} \pi^{\oplus m(\pi)}.
+	\end{align*}
+Whereas, by construction $L^{2}_{\cts}(G)$ has no irreducible subrepresentations.
+
+\par In these notes, I follow Folland (A course in abstract harmonic analysis) showing that $L^{2}_{\cts}(G)$ decomposes as a \emph{direct integral} (a generalization of direct \emph{sum}) over irreducible representations. 
+
+
+\section{Direct integrals}
+\subsection{...of trivial Hilbert bundles} Let $(A,\M,\mu)$ be a measure space, and $(\H,\ip{\cdot}{\cdot}_{\H},|\cdot|_{\H})$ a Hilbert space which we will always assume to be separable. We want to form a new Hilbert space `over $A$.'  A naive approach is to make the underlying vectorspace 
+	\begin{align*}
+		\left[\int_{A}^{\bigoplus}\H \dop \mu\right]_{\nai}=\bigoplus_{\alpha \in A} \H.
+	\end{align*}
+The elements of this space are then finitely supported $\H$ valued functions on $A$ with norm given by $|f|^{2}_{\nai}=\sum_{\alpha \in A} |f(\alpha)|_{\H}^{2}$. In the case that $A$ is uncountable, there is no way that this will be complete.
+
+\par The missing ingredient from the naive approach was the measure-structure on $A$.  Rather than requiring that the functions be finitely \emph{supported}, we instead require that the functions be \emph{square-integrable}, in the sense that the function 
+	\begin{align*}
+		\alpha \mapsto |f(\alpha)|^{2}_{\H} 
+	\end{align*}
+is square-integrable over $A$. This is the right idea: define the {\bf direct integral} of $\H$ over $A$ with respect to $\mu$ to be 
+	\begin{align*}
+		\int^{\oplus}_{A}\H \dop \mu=L^{2}(A,\H,\mu)=\set{f:A \to \H}{|f|^{2}=\int_{A} |f(\alpha)|^{2}_{\H}\dop \mu(\alpha)<\infty} / \ker(|\cdot|^{2}).
+	\end{align*}
+This is the direct integral of the {\bf trivial Hilbert bundle} in the sense that the Hilbert space $\H$ is fixed as we vary over $A$. We need to generalize this to allow a family of spaces $H_{\alpha}$ for $\alpha \in A$.
+\subsection{... of general Hilbert bundles}
+Throughout this section, fix the following data and terminology:
+	\begin{itemize}
+		\item {\bf The `base space'}: $(A,\M, \mu)$ a measure space 
+		\item {\bf The `fibers'}: For each $\alpha\in A$ a separable Hilbert space $\H_{\alpha}$ with norm and inner product denoted $|\cdot|_{\alpha}$ and $\ip{\cdot}{\cdot}_{\alpha}$ respectively.
+		\item {\bf A choice of `basis sections'}: A countable set $\E$ of maps $e:A \to \coprod_{\alpha\in A} \H_{\alpha}$ such that 
+			\begin{enumerate}
+				\item  $e_{\alpha} \in \H_{\alpha}$ for all $\alpha \in A$ (think: section of a bundle).
+				\item For fixed $e,e'\in \E$, the map $\alpha \mapsto \ip{e_{\alpha}}{e'_{\alpha}}$ is measurable. 
+				\item For a fixed $\alpha \in A$, the set $\{e_{\alpha}\}$ is a Hilbert space basis of $\H_{\alpha}$.
+			\end{enumerate}
+	\end{itemize}
+This data defines a {\bf Hilbert bundle} over $A$.  A function $f:A\to \coprod_{\alpha \in A}\H_{\alpha}$ such that $f_{\alpha} \in \H_{\alpha}$ is called a {\bf section}. A section is {\bf measurable} if the map $\alpha \mapsto \ip{f_{\alpha}}{e_{\alpha}}_{\alpha}$ is, for each $e \in \E$. 
+
+\begin{remark}
+	In practice, Hilbert spaces are typically spaces of functions. Since sections are then `function valued functions,' I denote evaluation at $\alpha \in A$ as a subscript.
+\end{remark}
+
+\begin{defn}
+The {\bf direct integral} of the Hilbert bundle above (with respect to $\mu$) is 
+	\begin{align*}
+		\int^{\oplus}_{A}\H_{\alpha}\dop \mu(\alpha)= \{ f: A \to \coprod_{\alpha\in A} \H_{\alpha}| \quad f_{\alpha}\in\H_{\alpha}, \quad \int_{A}|f_{\alpha}|^{2}_{\alpha}\dop \mu(\alpha)<\infty\} / \sim
+	\end{align*}
+where $\sim$ denotes agreement away from set of measure zero. The elements of the direct integral are called {\bf square integrable sections} of the Hilbert bundle. 
+\end{defn}
+Verification that this is a Hilbert space, with the inner product $\ip{f}{g}=\int_{A}\ip{f_{\alpha}}{g_{\alpha}}_{\alpha}\dop \mu (\alpha)$ is roughly the same argument that $L^{2}(A,\mu)$ is, along with Lebesgue's dominated convergence theorem.
+
+%\begin{ex}
+%	Let $A=\{1,2\}$, with $\M=2^{A}$ and $\mu$ the counting measure. Take $\H_{1}$ and $\H_{2}$ to be $1$-dimensional complex vectorspaces, say $H_{1}=\C v_{1}$ and $H_{2}=\C v_{2}$ for any nonzero $v_{\alpha} \in\H_{\alpha}$. Then\footnote{The choice of basis sections $e_{i}$ was tacit in writing $H_{\alpha}$ in terms of basis vectors. To be totally explicit, the single section $e:A\to \H_{1}\coprod\H_{2}$ defined by $e_{\alpha}= v_{\alpha}$ suffices. If $f:A \to \H_{1}\coprod \H_{2}$ is any section, say $f(1)=c_{1}v_{2}$ and $f(2)=c_{2}v_{2}$, then measurability of $f$ is tantamount to the map $\alpha \mapsto \ip{f_{\alpha}}{e_{\alpha}}=c_{\alpha} \cdot \overline{1}=c_{\alpha}$ being measurable. Since every subset of $A$ is measurable this is vacuous.}
+%	\begin{align*}
+%		\int^{\oplus}_{A}\H_{\alpha}\dop \mu(\alpha)= \set{f:\{1,2\}\to \C}{f(1) \in \C v_{1}, \hsp f(2) \in \C v_{2}, \hsp |f(1)|^{2}+|f(2)|^{2}<\infty} 
+%	\end{align*}
+%Square integrability is vacuous here.
+%\end{ex}
+The following are some quick exercises that I think are pretty important to grasp `what's going on.'
+\begin{ex}
+\begin{itemize}
+		%\item Make it absolutely clear that this is just $\H_{1}\oplus \H_{2}$. \\
+		\item Let $A$ be a countable set, $\mu$ the counting measure on $A$, with arbitrary (separable) $\H_{\alpha}$ for all $\alpha \in A$.  Show
+				\begin{align*}
+					\int^{\oplus}_{A}\H_{\alpha}\dop \mu(\alpha) \approx \bigoplus_{\alpha \in A} \H_{\alpha}. 
+				\end{align*}\\
+		\item  Define a map $H_{\alpha'}\to \int^{\oplus}\H_{\alpha}\dop \mu(\alpha)$ by $v \mapsto f$ where $f$ is the function on $A$ such that $f_{\alpha}=0$ unless $\alpha=\alpha'$, whereat $f_{\alpha'}=v$. For arbitrary $\mu$ on $A$, why is this not necessarily an embedding? 		
+\end{itemize}
+\end{ex}
+\subsection{... of operators}
+	Consider a collection of unitary operators $T_{\alpha} \in \L(\H_{\alpha})$, (the latter is the space of bounded operators on $\H_{\alpha}$) such that for any measurable section $\alpha \mapsto f_{\alpha}$, the section $\alpha \mapsto T_{\alpha} f_{\alpha}$ is measurable. Such a collection is called a {\bf measurable field of operators}. Such a field gives rise to a unitary\footnote{Exercise: check this} operator on $\int^{\oplus}_{A}\H_{\alpha}\dop \mu(\alpha)$ called the {\bf direct integral of the field $T$},  denoted $\int^{\oplus}_{A}T_{\alpha} \dop \mu(\alpha)$ or just $\int^{\oplus}T$ if the rest of the data is clear. This operator acts on square integrable sections fibre--wise, 
+	\begin{align*}
+		\left[\left(\int^{\oplus}_{A}T_{\alpha} \dop \mu(\alpha)\right) f\right]_{\alpha}=T_{\alpha}f_{\alpha}. 
+	\end{align*}
+\begin{ex}
+	\begin{itemize}
+		\item  Let $A$ be a finite set, and $\mu$ be the counting measure. Fix a Hilbert space $\H$ of dimension $1$. Characterize the operators in $\int^{\oplus}_{A}\H \dop \mu(\alpha)$ that arise as the direct integral of $|A|$ operators on $\H$.
+		%Take the $A=\{1,2\}$ example from above. Then any operator in $\L(\C v_{\alpha})$ acts by scaling. Pick $\xi_{\alpha}\in \C$ of norm $1$. Define a collection of unitary operators on $\H_{\alpha}$ by $T(\alpha)v_{\alpha}=\xi_{\alpha}v_{\alpha}$. Then if $f\in \int^{\oplus}_{A}H_{\alpha}\dop \mu(\alpha)$, and $f(\alpha)=c_{\alpha}v_{\alpha}$, the direct integral of the field $F$ acts on $f$ by $\left(\int^{\oplus}T\right)f(\alpha)=\xi_{\alpha}f(\alpha)=(\xi_{\alpha}c_{\alpha})v_{\alpha}$. 
+	\end{itemize}
+\end{ex}
+\subsection{... of representations}
+	Let $G$ be a locally compact group and consider a collection of unitary representations $\pi_{\alpha}:G \mapsto \L(\H_{\alpha})$. Further, suppose that for each $x\in G$ the field of operators $\pi_{\alpha}(x)$  is measurable, so that $\int^{\oplus} \pi_{\alpha} (x)\dop \mu (\alpha)$ defines a unitary operator on $\int^{\oplus}\H_{\alpha} \dop \mu(\alpha)$. We call such a collection a {\bf field of unitary representations}. The map $x\mapsto \int^{\oplus}\pi(x)\dop \mu(\alpha)$ then defines a unitary representation\footnote{Exercise: check this.} of $G$ on $\int^{\oplus}\H_{\alpha} \dop \mu(\alpha)$. 
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\section{Decomposing unitary representations}
+The theorem of this section, which decomposes a unitary representation into a direct integral of a field of representations, is phrased in terms of a choice of commutative ($C^{*}$, weakly closed) algebra of intertwining operators. Let's look at how this manifests in the simplest case: 
+
+
+Consider a finite group $G$, with an irreducible unitary representation of $\pi$ on finite dimensional Hilbert space  $V$. Now suppose $\tau$ is a unitary representation of $G$ on $W$ which is unitarily equivalent to $\pi\oplus\pi$ on $V\oplus V$. The algebra of intertwining operators $\Hom_{\tau}(W,W)$ is isomorphic to $M_{2}(\C)$ (basically Schur's lemma). 
+\begin{claim}
+	A choice of isomorphism $\tau \approx \pi \oplus \pi$ is equivalent to a choice of maximal commutative subalgebra of $\Hom_{\tau}(W,W)$.
+\end{claim}
+\begin{proof}
+	Given an isomorphism $\phi:W\to V\oplus V$ intertwining $\tau$ and $\pi \oplus \pi$, take the preimage of the algebra of diagonal matrices in $\End(V)\oplus\End(V)$. 
+
+	\par Given a maximal commutative subalgebra $B$ of $\Hom_{\tau}(W,W)$, all operators in $B$ can be simultaneously diagonalized. Since $\Hom_{\tau}(W,W)$ is isomorphic to $M_{2}(\C)$, $B$ must be two dimensional, so pick basis vectors $T,S$. Since $T,S$ are linearly independent, there must be an eigenspace $W_{1}$ on which their eigenvalues are distinct. Since $T,S$ are intertwining operators $W_{1}$ is a $\tau$ invariant subspace (which is necessarily proper). Conclude that $W_{1}$ is equivalent to $V$, and by Schur, the equivalence is unique up to scale. The same argument shows that the orthogonal complement $W_{2}$ to $W_{1}$ is also equivalent to $V$. After taking some linear combination of $T$ and $S$, we may assume that $T$ and $S$ are projections onto $W_{1}$ and $W_{2}$ respectively. Then $T\oplus S$ provides a $G$ isomorphism $W\to W_{1}\oplus W_{2}\to V\oplus V$.
+\end{proof}
+
+Paraphrasing: to decompose $W$ into its irreducible subrepresentations, one must make a choice of orthogonal projections onto its invariant subspaces, which is a commutative subalgebra of intertwining operators. Now suppose $G$ is a locally compact group and $\pi=\int^{\oplus}\pi_{\alpha}$ on $\H=\int^{\oplus}\H_{\alpha}$. Take a measurable subset $E\subset A$ and let $\chi_{E}$ be its characteristic function. Define an operator on $\int^{\oplus}\H_{\alpha}$ by $\left[M_{E}f\right]_{\alpha}=\chi_{E}(\alpha)f_{\alpha}$. Then\footnote{Exercise: check this} $M_{E}$ is a projection onto a closed $\pi$--invariant subspace of $\H$. Note that the collection of $M_{E}$ for all measurable $E$ commute with one another, and will generate a commutative $C^{*}$ algebra of intertwining operators. 
+
+\par The reference to such algebras in the following theorem is what allows one to modulate the fine-ness of the direct integral decomposition. On one extreme, a maximal commutative subalgebra of intertwining operators implies that the representations appearing in the direct integral are \emph{irreducible}. On the other, the zero subalgebra makes the theorem vacuous. 
+
+\begin{thm}
+	Let $G$ be a locally compact group, $\pi$ be a unitary representation on a separable Hilbert space $\H$, and $B$ a weakly closed commutative $C^{*}$ algebra of intertwining operators $\H \to \H$.  Then there exists 
+		\begin{itemize}
+			\item a measure space $(A,\M,\mu)$,
+			\item a field of Hilbert spaces $\H_{\alpha}$ over $A$,
+			\item a field of representations $\pi_{\alpha}\in \L(\H_{\alpha})$ over $A$, 
+			\item a unitary isomorphism $U: \H \to \int^{\oplus}_{A}\H_{\alpha}\dop \mu(\alpha)$
+		\end{itemize}
+	such that
+		\begin{align*}
+			U\pi U^{-1}= \int^{\oplus}_{A}\pi_{\alpha}\dop \mu(\alpha)
+		\end{align*}
+	and 
+		\begin{align*}
+			U B U^{-1} \text{ is the algebra of diagonal operators on $\int^{\oplus}\H_{\alpha}\dop \mu(\alpha)$}
+		\end{align*}
+\end{thm}
+By analogy to the Euclidean Fourier transform (of which this is a direct generalization), denote $U(\cdot)$ by $\hat{\cdot}$. Remind yourself that this means $\hat{v}$ is a function on $A$, taking a value in $H_{\alpha}$ at $\alpha\in A$.  This theorem says that the action of $\pi$ on $v$ is given by 
+	\begin{align*}a
+		\pi(x) v= U^{-1} \left (\alpha\mapsto \pi_{\alpha}(x) [\hat{v}(\alpha)]\right)
+	\end{align*}
+and for any operator $T\in B$, there exists a $\phi \in L^{\infty}(A)$ such that 
+	\begin{align*}
+		Tv=U^{-1} \left[\alpha \mapsto \phi(\alpha) \hat{f}(\alpha)\right].
+	\end{align*}
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+
+\subsection{A brief interlude on the unitary dual}
+	As a set, denote by $\hat{G}$ the collection of irreducible unitary representations modulo unitary equivalence. In this section, I will briefly describe a $\sigma$--algebra of subsets of $\hat{G}$ which, when $G$ is `good,' will let $\hat{G}$ serve as $A$ universally in the theorem above. 
+	
+	\par For each $n<\infty$, let $\H_{n}$ denote a fixed Hilbert space of dimension $n$ (say $\C^{n}$ with the Euclidean inner product), and let $\H_{\infty}$ denote a fixed infinite dimensional separable Hilbert space (say $\ell^{2}(\Z)$). Now for each $n$ let $\irr_{n}(G)$ denote the collection of irreducible unitary representations of $G$ on $\H_{n}$. Note: we are not identifying unitarily equivalent representations \emph{yet}. Let $X_{n}$ denote the collection of matrix coefficient functions on $\irr_{n}(G)$; i.e. maps $\irr_{n}(G) \to \C$ of the form 
+	\begin{align*}
+		\pi \mapsto \ip{\pi(x)u}{v}.
+	\end{align*}
+Then set $B_{n}$ to be the $\sigma$-algebra on $\irr_{n}(G)$ generated by $X_{n}$; i.e. the smallest $\sigma$--algebra containing  \emph{all} preimages of subsets of $\C$ under \emph{all} maps in $B_{n}$.
+ 
+ \par Now let
+	\begin{align*}
+		\irr(G)= \bigcup_{n\leq \infty} \irr_{n}(G).
+	\end{align*}
+Because we have not made any identifications, this union is disjoint. Define a $\sigma$-algebra on $B$ by 
+	\begin{align*}
+		E \in B \iff E\cap \irr_{n}(G) \in B_{n} \text{ for all $n$}.
+	\end{align*}
+Now let $\cdot \mapsto [ \cdot ]$ be the map taking a unitary representation to its unitary equivalence class, which is a surjection $\irr(G) \to \hat{G}$. Then define a $\sigma$--algebra, called the {\bf Borel--Mackey} structure on $\hat{G}$, by pulling back along $[\cdot]$. 
+
+
+\par Aside: there is also a topology on $\hat{G},$ called the Fell topology. The $\sigma$--algebra of Borel subsets with respect to the Fell topology is coarser than the Borel--Mackey algebra. In particular, singletons are in the Borel--Mackey algebra, but need not be in the Borel--Fell algebra. In any case, one should expect that the Fell topology is not Hausdorff at a handful of points, arising when a `continuous' family of unitary irreps degenerate. 
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\subsection{Some representation theoretic definitions}
+To strengthen the decomposition theorem above, we will need to isolate a class of groups for which $\hat{G}$ is `good.' We need some definitions to make this precise. 
+
+\par A measurable space $(X,\M)$ is {\bf standard} if it is measurably isomorphic to a Borel subset of a complete separable metric space\footnote{Astonishingly (to me at least), there are only two options for such spaces: either $X$ is countable and $\M=2^{X}$, or $X$ is measurably isomorphic to $[0,1]$ with its Euclidean topology and its $\sigma$-algebra of Borel sets.}.
+
+\par A unitary representation $\pi$ of $G$ is {\bf primary} if the center of its algebra of intertwining operators is trivial (scalar multiples of the identity). Schur says that irreducible representations are primary, and if $\pi$ is completely reducible (as a direct sum) then it is primary if and only if all of its irreducible subrepresentations are unitarily equivalent (the example of $\tau$ on $W$ above is an example).
+
+\par A group $G$ is said to be {\bf type I} if every primary representation is a direct \emph{sum} of some irreducible subrepresentation. \emph{These are the `good' groups}
+
+\begin{thm}
+	A locally compact group $G$ is type I if and only if its Borel-Mackey  $\sigma$--algebra is standard. 
+\end{thm}
+ %%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%
+ \subsection{Strengthening the decomposition}
+For each $n\leq \infty$, let $\hat{G}_{n} \subset G$ be the collection of unitary equivalence classes of $n$ dimensional irreducible unitary representations of $G$. As before $\H_{n}$ is a choice of fixed Hilbert space of dimension $n$. Then, with respect to the Borel--Mackey structure, there is a canonical `locally trivial' measurable field of Hilbert spaces $\{ H_{p}\}$ sitting over $\hat{G}$. That is, $\hat{G}=\coprod_{n \leq \infty} \hat{G}_{n}$ is a partition into measurable subsets such that $\H_{p}=\H_{n}$ for $p \in \hat{G}_{n}$.
+
+\par Further, essentially by definition, there is a measurable field of representations $\{\pi_{p}\}$ over $\hat{G}$ acting on the canonical field of Hilbert spaces $\{ H_{p}\}$ such that $\pi_{p} \in p$ for all equivalence classes $p\in \hat{G}$. One must be a little careful in showing that the choice of representatives $\pi_{p}$ can be made measurably in $p$.
+
+\begin{thm}
+	Suppose that $G$ is locally compact and type $1$, $\pi$ a unitary representation of $G$ on a separable Hilbert space, and $\H_{p}$, $\pi_{p}$ are the fields over $\hat{G}$ discussed in the preceding two paragraphs. Then there exist pairwise disjointly supported finite measures $\mu_{1},...,\mu_{\infty}$ on $\hat{G}$ such that 
+		\begin{align*}
+			\pi \approx \bigoplus_{n\leq \infty} n\cdot \rho_{n}
+		\end{align*}
+	where $n \rho_{n}$ denotes $n$ copies of $\int^{\oplus}\pi_{p}\dop \mu_{n}(p)$.
+\end{thm}
+%As far as I can tell, one can arrange that the measure $\mu_{n}$ is supported in $\hat{G}_{n}$. We will see how this works in the examples to follow.
+\subsection{Plancherel}
+Let $J^{1}=L^{1}(G)\cap L^{2}(G)$ and let $J^{2}$ be the linear span of $f*g$ for $f,g\in J^{1}$. For $f\in J^{1}$ define the Fourier transform
+	\begin{align*}
+		\hat{f}(\pi)=\int f(x)\pi(x^{-1})\dop x.
+	\end{align*}
+We think of $\hat{f}(\pi)$ as element of $\H_{\pi}\otimes \overline{\H_{\pi}}$. This is the same as viewing $\hat{f}(\pi)$ as a trace class operator on $\H_{\pi}$. Then we have the Plancherel's theorem:
+	\begin{thm}
+		Let $G$ be type $1$ and unimodular. Then there is a measure $\mu$ on $\hat{G}$, uniquely determined by a choice of Haar on $G$, with the following properties:
+		\begin{itemize}
+			\item The Fourier transform maps $J^{1}$ unitarily into $\int^{\oplus}\H_{\pi}\otimes \H_{\overline{\pi}}\dop \mu$ which extends to a unitary isomorphism on $L^{2}(G)$.
+			\item The Fourier transform intertwines the two sided regular representation $\tau$ with $\int^{\oplus}\pi \otimes \overline{\pi} \dop \mu(\pi)$. 
+			\item For $f,g\in J^{1}$ 
+				\begin{align*}
+					\int_{G}f(x)\overline{g}(x)\dop x=\int_{\hat{G}}\Tr[\hat{f}(\pi) \hat{g}(\pi)^{*}] \dop \mu (\pi)
+				\end{align*} 
+			\item For $h\in J^{2}$ one has 
+				\begin{align*}
+					h(x)=\int \tr[\hat{\pi}(x)\hat{h}(\pi)] \dop \mu(\pi).
+				\end{align*}
+		\end{itemize}
+	\end{thm}
+\section{explicit examples}
+In all the examples, $G$ is of type $1$. We apply the theorem to the unitary representation of $G$ on $L^{2}(G)$ acting via right translation. The output of the theorem is always a measurable field of representations $\pi_{p}$ on the canonical field of Hilbert spaces $\H_{p}$ over $\hat{G}$, along with a measure $\dop \mu$. The measure is what we'll be looking at. Further, the collection of subrepresentations (not necessarily irreducible) correspond to elements of the direct integral supported on a measurable subset of the $\hat{G}$. The \emph{irreducible} subspaces correspond to points in $\hat{G}$ with nonzero measure. 
+\subsection{$L^{2}(\R)$} 
+Let $G=\R$.  By Schur's lemma, any irreducible unitary representation of $G$ must be one dimensional. For each $t \in \R$, define the character $\xi_{t}: \R\mapsto \Aut(\C)=\C^{\times}$ by $\xi_{t}(x)=e^{-2\pi i x t}=:\ip{\xi_{t}}{x}$. This defines an irreducible unitary representation of $G$ on $\C$, viewed as a 1 dimensional complex vectorspace. It is classical that $\hat{G}=\set{\xi_{t}}{t\in \R}\approx \R$ where the identification is as topological groups (hence also as measure spaces). Let $\H_{t}=\C$ for all $t\in \R=\hat{G}$, and $\mu$ be the Lebesgue measure. Then for $f\in L^{1}(\R)\cap L^{2}(\R)$ define a map $U$, taking values in $\int^{\oplus}\H_{t}\dop \mu(t)$ by
+	\begin{align}\label{eq:1}
+		\left[Uf\right](t)=\int_{\R}\xi_{t}(x)f(x)\dop \mu(x).
+	\end{align}
+$U$ is unitary on $L^{2}(\R)\cap L^{1}(\R)$ and extends to a unitary isomorphism $L^{2}(\R)\to \int^{\oplus}\H_{t}\dop \mu(t)$, which we still denote by $U$.  Then for any $f\in L^{2}(\R)$,  and $t\in \R$,
+	\begin{align*}
+		[UR_{y}f][(t)= \int^{\oplus}\xi_{t}(y)\left[Uf\right](t)\dop \mu (t) =\left[ \xi_{t}(y)Uf](t)\right]= e^{2\pi i t y}\left[Uf\right](t).
+	\end{align*}
+
+\par With respect to the Lebesgue measure, all points in $\hat{G}$ have measure zero, which is one explanation for why $L^{2}(\R)$ has no \emph{irreducible} subrepresentations. The non-irreducible subrepresentations are all of the form $U^{-1}\int^{\oplus}_{E}\H_{t}\dop \mu (t)=\set{f\in L^{2}(\R)}{Uf \text{ is supported on $E$}}$ where $E\subset \R$ is measurable. One should think about why the sequence of representations $U^{-1}\int^{\oplus}_{(-1/n,1/n)}\H_{t}\dop \mu (t)$ does not `converge' in any meaningful sense.
+
+\subsection{$L^{2}(\R/\Z)$}
+We'll look at $L^{2}(\R/\Z)$ as a unitary representation in two different ways. First, $\R/\Z$ is itself a compact abelian group, so the theorem applies to decompose $L^{2}(\R/\Z)$ with respect to unitary irreps of $\R/\Z$. Second, $\R$ acts on $\R/\Z$ by translation, which induces a unitary action of $\R$ on $L^{2}(\R/\Z)$. The theorem applies here too.
+
+\par All irreducible finite dimensional unitary reps of $\R/\Z$ are $1$ dimensional. Take a smooth function $f\in L^{2}(\R/\Z)$ and identify it with a smooth $\Z$ periodic function on $\R$ which we still call $f$. Then observe that for any $x\in \R$ $\Delta f(x+t)=\left[\Delta f\right] (x+t)$ for each $t\in \R$, where $\Delta= d^{2}/dx^{2}$ is the one dimensional Laplacian. Since $\Delta$ commutes with translation, it stabilizes the irreducible subrepresentations. Since those subspaces are $1$-dimensional, they must be eigenspaces for $\Delta$. Integration by parts twice, on $\R/\Z$, shows that eigenvalues must be nonpositive real. That is to say, if $f$ spans an irreducible subrepresentation for $\R/\Z$ in $L^{2}(\R/\Z)$ then its lift to $\R$ must satisfy the following ordinary differential equation with initial conditions 
+	\begin{align*}
+		f''=-\lambda^{2} f \quad \text{ for some $\lambda^{2} \in \R$,} \qquad f(0)=f(1).
+	\end{align*}
+All solutions to the differential equation on $\R$ are of the form $f(x)=e^{\pm i\lambda x}$, and the initial condition forces $e^{\pm i \lambda}=1$, so $\lambda \in 2\pi i \Z$. If $\lambda=2\pi i n \neq 0$ then $\xi_{n}(x)=e^{2\pi i n x}$ is an eigenfunction and spans an irreducible representation. If $\lambda = 0$ then $f$ satisfies the differential equation $f''=0$ which means $f'$ is constant. The only smooth periodic function $f$ such that $f'$ is constant is itself a constant function. We have shown that $\{ [\xi_{n}]: n\in \Z\} \subset \hat{\R/\Z}$. To show  the opposite containment, use the fact that any unitary rep of an abelian group acts as a unitary character. Thus $\hat{\R/\Z}$ is in bijection with $\Z$ and we'll take for granted that this is actually an isomorphism of topological groups. L:et $\H_{n}=\C$ for all $n\in \hat{\R/\Z}=\Z$  and let $\eta$ denote the counting measure. Then for $f\in L^{2}$, define an operator $U: L^{2}(\R/\Z)\to \int^{\oplus}_{\Z} \H_{n}\dop \eta (n)=\bigoplus_{n\in \Z} \H_{n}$ (Hilbert space direct sum) by
+	\begin{align*}
+		\left[Uf\right](n)=\int_{\R/\Z}\xi_{n}(x)f(x)\dop \eta (x).
+	\end{align*}
+Then for any $f\in L^{2}(\R/\Z)$ and $y\in \R/\Z$ we have
+	\begin{align*}
+		[U R_{y}f](n)=\xi_{n}(x)\left[Uf\right](n).
+	\end{align*}
+
+\par With respect to the counting measure all points in $\hat{G}$ have measure one, so all irreducible finite dimensional unitary representations of $G$ appear in $L^{2}(\R/\Z)$ as direct summands. All subrepresentations can be obtained as (Hilbert space) direct sums of irreducibles. 
+
+\par Now we look at $L^{2}(\R/\Z)$ as a unitary representation of $\R$. The parameter space in the direct integral decomposition $\int_{\R}^{\oplus}\H_{t}\dop \eta$ remains $\R$, but the measure $\dop \eta$ will not be Lebesgue. Instead, it must be supported on the representations $\xi_{t}$ which are invariant under translation by the subgroup $\Z$. That is, $\xi_{t}(x+1)=\xi_{t}(x)$ for all $x\in \R$. This is to say that $e^{2\pi i t(1+x)}=e^{2\pi i tx}$, whence we recover $t=n\in \Z$. Let $\eta$ be the counting measure on this copy of $\Z\subset \R =\hat{G}$. The definition of our operator $U$ is identical to that in equation (\ref{eq:1}), with $\dop \eta$ replacing $\dop \mu$. Now lets look at the $0$ element of the direct integral. It is an equivalence class:
+	\begin{align*}
+				0=\set{f:\R \to \C}{\int_{\R}|f(x)|^{2} \dop \eta(x)=0}.
+	\end{align*}
+
+These are precisely the functions supported away from $\Z$. Thus each class in $\int^{\oplus}_{\R}\H_{t}\dop \eta(t)$ has exactly one representative supported on $\Z$. This provides the bijection between this decomposition and the preceding.
+
+\par Note: The second example is the one which will apply to the decomposition of $L^{2}(G(\Q)\setminus G(\mathbb{A}))$ as a unitary rep of $G(\mathbb{A})$. The key point is that looking at functions on a \emph{quotient} of $G$ corresponds to a measure supported on a \emph{subspace} of $\hat{G}$.  
+
+
+%\subsection{$L^{2}(H_{n})$}
+%The underlying space of the Heisenberg group $H_{n}$ is $\R^{n}\times \R^{n}\times \R$, and the group law is 
+%	\begin{align*}
+%		(x,\xi,t)(x',\xi',t')=(x+x',\xi+\xi', t+t'+\frac{1}{2}(x\cdot \xi'+\xi\cdot x'))
+%	\end{align*}
+%where $\cdot$ denotes the euclidean inner product. One can realize $H_{n}$ as a matrix group via the embedding
+%	\begin{align*}
+%		  \left(\begin{array}{ccc} %    1 & x & t \\ %     & \operatorname{id}_{n\times n} & \xi^{\top} \\ %     &  & 1 \\ %  \end{array}\right).
+%	\end{align*}
+%This is a nilpotent Lie group of dimension $2n+1$. Thus the exponential map $\operatorname{Lie}(H)=\h \to H$ is a diffeomorphism. The Lie bracket is given by 
+%	\begin{align*}
+%		[(x,\xi,t),(x',\xi',t')]=(0,0, x\cdot \xi'+\xi\cdot x'). 
+%	\end{align*}
+%We will make use of the following theorem of Kirillov:
+%\begin{thm}
+%	Let $G$ be a simply connected nilpotent Lie group, $\g=\operatorname{Lie}(g)$. Fix $\lambda \in \g^{*}$ and let $\h$ be a maximal subalgebra of $\g$ such that $\lambda|_{[\h,\h]}=0$. Let $H$ be the unique subgroup of $G$ such that $\exp \h = H$. Define a character on $H$ by $\sigma_{\lambda}(\exp X)=e^{2\pi i \lambda(X)} $ for all $X\in \h$. Then the unitarily induced representation $\ind_{H}^{G}(\sigma_{\lambda})$ is irreducible, and its equivalence class is invariant under the  the co-adjoint action of $G$ on $\g$ (that is, $\ind_{H}^{G}(\sigma_{\lambda})\approx \ind_{H}^{G}(\sigma_{\operatorname{Ad}(g^{-1})^{*}\lambda})$  for all $g\in G$.). The map $[\lambda] \to [\ind_{H}^{G}(\sigma_{\lambda})]$ taking co-adjoint orbits to $\hat{G}$ is a homeomorphism, where the source has the quotient topology and the target has the Fell topology. 
+%\end{thm}
+%The co-adjoint action of $H_{n}$ on $\h$ is given by
+%	\begin{align*}
+%		[\operatorname{Ad}^{*}(x,\xi,t)](b,\beta,r)=(b+rx,\beta-r\xi,r).
+%	\end{align*}
+%Fix $(b,\beta,r)$. If $r=h\neq0$ then letting $x,\xi$ vary through $\R^{n}$, we see that the orbit of $(b,\beta,r)$ is the hyperplane $r=h$. If $r=0$, then $(b,\beta,r)$ is co-adjoint invariant, so its orbit is the singleton $\{(b,\beta,0)\}$. Thus, $\hat{G}=\R^{n}\times \R^{n}\times \R / \sim$, where $(b,\beta,r)\sim(b',\beta',r')$ when either $r=r'\neq 0$ or $r=r'=0$ and $(b,\beta)=(b',\beta')$. As a set, this is in bijection with $\R^{\times} \cup \R^{n}\times \R^{n}$, though they are not homeomorphic (when the latter has the subspace topology of $\R^{2n+1}$). Indeed, take two points in $\R^{n}\times \R^{n}$ and look at open balls about these points in $\R^{n}\times \R^{n}\times$, they intersect with some common hyperplane $r=h\neq 0$ so their projections both contain the point $(\cdot,\cdot, r)$. Thus, such points cannot be separated: $\hat{G}$ is not Hausdorff. 
+%
+%Let $N_{1}=\set{(x,\xi,t)\in H_{n}}{x=0}$, an abelian subgroup. Define a one dimensional representation of $N_{1}$ by the untiary character $\chi_{h}(0,\xi,t)=e^{2\pi i h t}$. Let $\rho_{h}=\ind_{N_{1}}^{H_{n}}(\chi_{h})$. This is unitarily equivalent to the subspace of $L^{2}(\R)$ transforming according to 
+%	\begin{align*}
+%		\left[\rho_{h}(x,\xi,t)f\right](y)=e^{\pi i h(2t+ \xi\cdot x-2\xi \cdot y) }f(y-x). 
+%	\end{align*} 
+%A corollary to the proof of the \emph{Stone--von Neumann} theorem shows that $\rho_{h}$ is irreducible. These are the representations corresponding to the hyperplanes $r=h \neq 0$.
+%
+%The representations corresponding to the singletons $\{(b,\beta,0)\}$ are one dimensional, acting by the character $\pi_{b,\beta}(x,\xi,t)=e^{2\pi i (b\cdot x+\beta \cdot \xi}$. 
+
+\subsection{$L^{2}(\SL_{2}(\R))$}
+ Let $G=\SL_{2}(\R)$ and define subgroups
+	 \begin{align*}
+		A&=\set{a_{t}=\Tbt{e^{t}}{0}{0}{e^{-t}}}{t \in \R} \\
+		N&=\set{N_{x}=\Tbt{1}{x}{0}{1}}{x\in \R}, \\
+		K&=\set{r_{\theta}=\Tbt{\cos \theta}{-\sin \theta}{\sin \theta}{\cos \theta}}{\theta \in [0,2\pi)} \\
+		P&=AN
+	\end{align*}
+
+The following is an exhaustive non-redundant list of irreducible unitary reps of $G$
+\begin{itemize}
+	\item The trivial representation,
+	\item The discrete series, $\delta^{\pm}_{n}$ ($n\geq 2$). Let $H^{+}_{n}$ be the collection of holomorphic $f$ on the  upper half plane $\h$ equipped with the norm $|f|_{n}^{2}=\int_{h}|f(x+iy)|^{2}y^{n}\frac{\dop x \dop y}{y^{2}}$. Define the representation by
+		\begin{align*}
+			\delta_{n}^{+}\Tbt{a}{b}{c}{d}f(\tau)=(cz+d)^{-n}f(\frac{az+b}{cz+d}).
+		\end{align*} 
+	The action $\delta^{-}_{n}$ is the same as $\delta^{+}_{n}$, but is on the space of \emph{anti}-holomorphic functions.
+	\item The mock discrete series (or limit of discrete series): Let $H^{\pm}_{1}$ be the space of holomorphic (resp. antiholomorphic) functions on $\h$ such that 
+	\begin{align*}
+		|f|^{2}_{1}=\sup_{y>0}\int_{\R}|f(x+iy)|^{2}\dop x<\infty.
+	\end{align*}
+The representation is defined by the formula above. 
+	\item The unramified spherical principal series: for $s\geq 0$ define a character $\chi_{t}$ on $P$ by $\chi_{s}(a_{t}n_{x})=|e^{t}|^{is}$ and let $\pi_{is}=\ind_{P}^{G}(\chi_{s})$. 
+	\item The aspherical principal series: same as before, but $s>0$ and $\chi_{s}$ is twisted by the sign character. 
+	\item The complementary series: for $s\in(0,1)$ let the space of $k_{s}$ be all $f:\R\to \C$ so that 
+	\begin{align*}
+		|f|_{s}^{2}=s/2 \int f(x)\overline{f}(y)|x-y|^{s-1}\dop x \dop y<\infty	
+	\end{align*}
+	and define the action 
+	\begin{align*}
+		k_{s}\Tbt{a}{b}{c}{d}f(x)=|cx+d|^{-1-s}f(\frac{az+b}{cz+d}). 
+	\end{align*}
+\end{itemize} 
+
+So
+	\begin{align*}
+		\hat{G}=\{1\}\cup \{ \delta^{\pm}_{n}:n\geq 1\}\cup \{ \pi_{is}^{+}:s\geq0\} \cup \{ \pi^{-}_{is}: s>0\} \cup \{k_{s}: 0<s<1\}.
+	\end{align*}
+
+The plancherel measure is given by 
+	\begin{align*}
+		\dop \mu(\pi_{it}^{+})&=\frac{t}{2}\tanh \frac{\pi t}{2} \dop t \\
+		\dop \mu(\pi_{it}^{-})&=\frac{t}{2}\coth\frac{\pi t}{2} \dop t\\
+		\dop \mu(\delta^{+}_{n})&=\dop \mu( \delta^{-}_{n})=n-1.
+	\end{align*}
+	
+
+
+
+%The Iwasawa decomposition shows that $G=NAK,$ and in fact the map $(n_{x},a_{t},r_{\theta}) \mapsto   n_{x}a_{t}r_{\theta}$ is a homeomorphism $N\times A \times K \to G$.
+%
+%For $\lambda \in \C$ define a character on $A$ by $\chi_{\lambda}(a_{t})=e^{t(2\lambda+1)}$ and extend $\chi_{\lambda}$ to $P$ (the only way to do this is by letting $\chi_{\lambda}|_{N}=1$.) Set
+%	\begin{align*}
+%		V_{\lambda}=\ind_{P}^{G}(\chi_{\lambda})=\set{f:G\to \C}{f(\pm a_{t}n_{x} g)=\chi_{\lambda}(a_{t}n)f(g), \quad f|_{K}\in L^{2}(K)},
+%	\end{align*}
+%equipped with the inner product 
+%	\begin{align*}
+%		\ip{f}{\phi}=\int_{K}f(k)\overline{\phi}{k}\dop k. 
+%	\end{align*}
+%Call the right regular action restricted to this space $\pi_{\lambda}$. One can compute that $\pi_{\lambda}$ is unitary with respect to this inner product if and only if $\lambda \in i\R$. 
+
+
+
+
+\end{document}

@@ -1,0 +1,53 @@
+%!TEX root = main.tex
+
+Given a group $G$, a field $k$, and a class function $\tau : G \to k$, say that a subgroup $H\leq G$ with $\tau(H) = S$ is $(S,\tau)$-maximal if for all $H < K \leq G$ with $\tau(H) = \tau(K)$, one has $H = K$. Let $X(S, \tau, G) $ be the collection of $(S, \tau)$ maximal subgroups of $G$.
+
+Let $\Inn:G \to \Aut(G)$ denote the conjugation action $\Inn(g)x = g x g^\inv,$ at both the level of elements and subgroups. Then $X(S, \tau, G)$ is $\Inn(G)$ stable. 
+
+Say that $S\subset k$ is $(\tau, G)$ if $\Inn(G)$ acts transitively on $X(S, \tau, G)$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The metatheorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let $B$ be an indefinite quaternion algebra over a number field $K$, satisfying condition  (*)\footnote{$K$ should be  a totally real field, with odd class number, and $B$ should be a split over a unique real place of $K$}. 
+
+Let $\Nrd: B\to K$, and $\Trd: B \to K$ denote the reduced norm and trace maps respectively. The canonical involution $\bar{\cdot}$ on $B$ satisfies $x\bar{x} = \Nrd(x) 1 \in K$ and  $x+\bar{x} = \Trd(X) 1 \in K$, where we identify in both cases $K$ with the center of $B$. 
+
+Further, suppose that $B$ has type number $1$, so that $B$ has a unique $B^\times$ conjugacy class of maximal orders. Pick one, say $\Ofrak$. 
+
+
+% \begin{itemize}
+% 		 	\item $p$ in $P < \Ocal < K$, $\pi$ in $\Pcal$;
+% 		  	\item $q_n : \Ocal \to Q_n = \Ocal / \Pcal^n$, $q  = q_n, k = Q_1$;
+% 		  	\item Pick a section $\xi_n : Q_n \to \Ocal $compatible with transition map
+% 		  	\item $G$ semisimple rank 1 over $K$; $\gfrak$ its lie algebra
+% 		  	\item $r_n : G(\Ocal) \to G(Q_n)$ induced by map on $\Ocal$;
+% 		  		\begin{itemize}
+% 		  			\item $A$ is the maximally split torus in $G$. As an algebraic group is $\Gbb_m$, since rank 1. 
+% 		  			\item Pick a root $\alpha: A \to \Gbb_m $, and designate it positive, let $u=u_\alpha: \Gbb_a \to G$ be a parameterization of the associated unipotent $U=U_\alpha$; 
+% 		  			\item $B$ is the associated borel, with unipotent radical $U$, and factorization $B=AU$ semidirect, with $\Ad(a)u(x)= u(\alpha(a) x)$ for $a \in A$ and $x\in \Gbb_a$. The opposite unipotent is $\Ubar=U_{-\alpha}$, one which $A$ acts by the character $\alpha^\inv$. 
+% 		  			\item The sequence $\Gbb_a \xrightarrow{u_\alpha} B \to B/U$ exhibits $B$ as a line bundle over $B/U$. The cocharacter $\check{\alpha}: \Gbb_m \to A \leq B \leq G$ yields a section: $\check{\alpha} \times u : \Gbb_m \times \Gbb_a \to B$ are global coordinates on this (apparently trivial) bundle. 
+% 		  			\item $A$ acts on the fibers of $B \xrightarrow{\alpha} A$. In $u$ coordinates:
+% 						\al{
+% 						a\cdot u(x)\cdot a' \cdot u(y) 
+% 						&= a \cdot \Ad(a')u(x) \cdot  u(y) \\
+% 						&=  a \cdot u(a'^\alpha  u) \cdot u(y) \\
+% 						&= a \cdot u(  a'^\alpha  x + y )
+% 							}
+% 					\al{ 
+% 						u(x)\cdot a\cdot u(y) 
+% 						&= \Ad(a) u(a^{-\alpha} x) \cdot a \cdot u(y) \\
+% 				   		&= a \cdot u(a^{-\alpha} x )\cdot u(y) \\
+% 				   		&= a \cdot u(a^{-\alpha} x +y)
+% 				   			}
+% 	  				shows that the action of $U= \Gbb_a$ on the line affine line $\Abb^1 = \{a\} \times U$ over $a \in A$ in $B$ is 
+% \[  x \times y \mapsto a^{- \alpha} x + y \]
+% 		  		\end{itemize}
+% 		  	\item $\rho_n : G(Q_n) \to G(\Ocal)$ a section of $r_n$; 
+% 		  	\item $\tau : G(K; \Ocal; Q_n) \to K; \Ocal; Q_n$, natural and $\Inn(G) (K; \Ocal; Q_n)$ invariant 
+% 				% \subitem Open subsets of $K$ of form $ q_n^\inv (S)$ for a (finite) subset $S$ subset $Q^n$. It is of the form $\cup_{s in S} q_n^\inv(s) s  = \cup_{s in S} (\sig_n(s) + \Pcal^n)$
+% 				% \subitem Open subsets of $G(K)$ 
+% \end{itemize} 
+
+% For $S \subset G$, write $S^G = \cup_{s \in S} s^G = \cup_{s\in S, g\in G} \{ s^g\}$. 

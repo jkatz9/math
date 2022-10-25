@@ -1,0 +1,132 @@
+\documentclass[11pt]{amsart}
+
+
+\usepackage[margin=1in]{geometry}
+	\geometry{letterpaper}
+\usepackage{titlesec}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{braket}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+
+
+
+\include{mydefs}
+\input{ROKs_defs.tex}
+
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{1em}
+
+
+%\setcounter{secnumdepth}{4}
+%\setcounter{secnumdepth}{4}
+
+\titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection}{1em}{}%%
+\titlespacing*{\section}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+\newcommand{\CP}{\Cbb \Pbb}
+\newcommand{\CPone}{\Cbb \Pbb^1}
+
+\title{Slightly more refined ROKs}
+\author{Justin Katz}
+\begin{document}
+\maketitle
+These are notes on the article \cite{girondoFieldsDefinitionUniform2014} from the journal issue
+\cite{izquierdoRiemannKleinSurfaces2015}.
+
+\begin{itemize}
+  \item A \emph{dessin} is a hypermap on a compact oriented two-manifold. Equivalently, they are bipartite graphs embedded on a surfaces, with simply connected complementary regions.
+  \item Dessins arise on all smooth complex projective curves defined over a numberfield. Belyi demonstrated that there exist nonconstant meromorphic functions $\beta: C\to \CP^1$ on a smooth curve $C$ ramified at most over $0,1,\infty \in \CP^1$ if and only if $C$ can be defined over a numberfield. The dessin arises as the preimage of the interval $[0,1]$ under $\beta$.
+  \item Conversely any topological hypermap on a compact surface admits a unique conformal structure,   corresponding to an algebraic curve defined over a number field, together with a belyi function producing that hypermap as a dessin.
+  \item Belyi functions on a curve $C$ correspond to inclusions of fuchsian groups $\Gamma \leq \Delta(r,s,t)$ (with finite index) and $\Delta=\Delta(r,s,t)$ is a fuchsian triangle group, such that $\Gamma \lmod \Hbb$ identifies with $C(\C)$. Identifying\footnote{In what sense are we making this identification? Surely, we are doing so as topological spaces, but what more?} the quotient $\Delta \lmod \Hbb$ with the Riemann sphere $\CPone$ (arranging the ramification points to occur at $0,1,\infty$), the belyi function $C \to \CPone$ identifies with  the canonical quotient map $\Gamma \lmod \Hbb \to \Delta \lmod \Hbb$ induced by the inclusion $\Gamma \to \Delta$.
+  \item A \emph{regular} dessin is one for which the group of color--and--orientation preserving automorphisms acts transitively on the edges. The surfaces of genus $g>1$ admitting regular dessins are called \emph{quasi-platonic}. Such dessins on such surfaces are distinguished as arising from those $\Gamma$ which are \emph{normal} subgroups of the relevant triangle group.
+  \item A \emph{uniform} dessin is characterized by $\Gamma < \Delta$ being a \emph{torsion free} finite index subgroup, though need not necessarily be normal.
+  \item A (tantalizing) theorem in \cite{girondoShimuraCurvesMany2012} seems to characterize those surfaces admitting several different uniform dessins \emph{of the same signature} as those arising from those \emph{contained in}\footnote{Note: contained \emph{in} rather than \emph{containing}} a congruence subgroup of an arithmetic triangle group.
+\end{itemize}
+
+\section*{Background on fields of moduli/fields of definition}
+Here, $S$ is a smooth algebraic curve\footnote{over $\C$?} and $k \subset \C$ is a field. Say that $k$ is \emph{a} \textbf{field of definition} for $S$ if there exist $J$ homogeneous polynomials $F_j\in k[x_0, \cdots, x_n]$ such that $S(\C)$ and
+		\[S_F= \set{x\in \CP^n \mid F_j(x) \; \text{ for all j}}\]
+are isomorphic\footnote{complex analytically?}.
+
+Given a set $F$ of homogeneous generators for the ideal defining  $S$, and an element $\sigma \in  \Gal(\Qbar / \Qbb)$,  one can define $S_{ F^\sigma}$ as above, with coefficients of the polynomials conjugated by $\sigma$. The \textbf{inertia subgroup}  $I_S \leq \Gal ( \Qbar / \Qbb)$  consists of those $\sigma \in \Gal(\Qbar/\Qbb)$ such that $S_{F^\sigma} \approx S_F$  as\footnote{presumably} complex analytic varieties. Apparently this subgroup is independent (perhaps up to conjugation?) of the choice of model.  The fixed field $\Qbbar^{I_S}= \Fix(I_S)$ is the \textbf{field of moduli} for $S$, which we denote by $M(S)$.  The field of moduli is contained in any field of definition, though not every curve is defined over its field of moduli. That is, $M(S)$ may not be a field of definition for $S$.
+
+If $G<\Aut(S)$ say that $k$ is a field of definition for the pair $(S,G)$ if there exists a model $S_F$ of $S$ over $k$ and an isomorphism $\phi:S_F \to S$ such that $\phi^\inv G \phi < \Aut(S_F)$ is also defined over $k$. Then the inertia group of the pair is
+\[ I_{(S,G)} =  \set{\sigma \in \Gal(\Qbbar/\Q) \mid \parbox[t]{.5\linewidth}{ there exists an isomorphism $f_\sigma: S\to S^\sigma$ such that $\alpha^\sigma \circ f_\sigma = f_\sigma \circ \alpha$ for all $\alpha \in G$}}. \]
+Write $M(S,G)$ for the field of moduli for the pair.
+
+Now, given a belyi function $\beta:S\to \CPone$ defining a dessin $\Dcal$ on $S$, define the group of automorphisms of $(S,\beta)$ to be the subgroup of $\Aut(S)$ such that $\beta\circ f= \beta$ (equality of functions $S\to \CPone$). We also write $\Aut(\Dcal)$ for $\Aut(S,\beta)$.
+
+For any model $S_F$ as above, $\beta \circ \phi$ is a rational function on $S_F$. Say that $k$ is a field of definition of $(S,\beta)$ (or $\Dcal$) if there exists a model $S_F$ of $S$ such that both $F$ and the covering $\beta \circ \phi$ are defined over $k$. Define the inertia subgroup similarly to above and define $M(\Dcal)=M(S,\beta)$ to be its fixed field: the field of moduli for $\Dcal$. Note $I_(S,\beta) < I_S$ so $M(S)< M(S,\beta)$
+
+Say a belyi function is regular if it defines a normal covering $S\to S/G\approx \CPone$, for some subgroup $G$ of $\Aut(S)$.
+
+\begin{lemma}
+	If $S$ is quasiplatonic with surface group $\Gamma \triangleleft \Delta$ for a maximal triangle group $\Delta$, then $M(S)=M(S,\beta)$ for the belyi function $\beta:\Gamma \lmod \Hbb \to \Delta \lmod \Hbb$.
+\end{lemma}
+
+If $\Delta$ is not maximal, (say, for example, $r=s \neq t$) then there exist a $\sigma \in I_S$ fixing $S$ but exchanging the zero set of its belyi function $B$ and the zero set of $1-B$ such that $M(S,B)$ (can be) a quadratic extension of $M(S)$.
+
+\begin{thm}
+	Let $S$ be a quasiplatonic curve of genus $g>1$ with full automorphism group $G=\Aut(S)$. If $Z(G)\leq G$ is a direct factor off $G$: i.e. $G=G'\times Z(G)$, then $(S,G)$ can be defined over its field of moduli $M(S,G)$.
+\end{thm}
+
+Note: this theorem applies to $\PGL_2$ and $\PSL_2$ and direct products of them with $C_2$'s. A consequence: if $U\leq G$ and $C=U\lmod S$ (a cover of $G\lmod S$, covered by $S$), then $C$ can be defined over $M(S,G)$. Further, all such $S$ can be simultaneously defined over $M(S,G)$ in the sense that all the function fields $M(S,G)(C)$ are subfields of $M(S,G)(S)$.
+
+\section*{Hurwitz groups and surfaces}
+Say $G$ is a hurwitz group if it is a quotient of $\Delta(2,3,7)$ by a finite index torsion free normal subgroup. A theorem of Macbeath characterizes those $q$ for which $\PSL_2(\Fbb_q)$ is a hurwitz group. The cases are as follows:
+\begin{itemize}
+	\item $q=7$,
+	\item $q=p$ for $p$ prime $\pm 1$ mod $7$.
+	\item $q=p^3$ for $p$ prime and $p= \pm 2$ or $\pm 3$ mod $7$.
+\end{itemize}
+
+See \cite{dzambicMacbeathsInfiniteSeries2007} for details on the following arithmetic construction of Macbeath's curves. Given a number field $k$ let $\Ocal_k$ be its ring of integers. Let $A$ be the indefinite quaternion algebra defined over $k=\Q(\cos\pi/7)$ unramified at all finite places. Then $\Delta(2,3,7)$ is the image of the norm $1$ subgroup of $A$ under canonical inclusion $A \to \GL(2,\R)$ induced by the unique split real place, followed by the surjection $\GL(2,\R) \to \PGL(2,\R)$. Further, $\Delta$ can be realized as a subgroup of $\PSL(2,\Ocal_L)$ for an (at worst) quadratic extension of $k$.
+
+For a rational prime $p \in \Z$, the ideal $p\Ocal_k$ is:
+	\begin{itemize}
+		\item ramified if (and only if) $p=7$; in this case $p\Ocal_k=\pfrak^3$ for some prime $\pfrak \leq \Ocal_k$ with $N(\pfrak)=7$,
+		\item split if (and only if) $p=\pm 1$ mod $7$; in this case $p\Ocal_k=\pfrak_1 \pfrak_2 \pfrak_2$ with primes $\pfrak_i \leq \Ocal_k$ of norm $p$
+		\item inert if(and only if) $p=\pm 2$ or $\pm 3$ mod $7$; in this case $p\Ocal_k=\pfrak$ remains prime, and has norm $p^3$.
+	\end{itemize}
+
+Now let $\Delta=\Delta(r,s,t)$ be any \emph{arithmetic} triangle group, realized as the norm $1$ units $\Mcal^1$ of a maximal order $\Mcal$ of a quaternion algebra $A$ over a totally real field\footnote{apparently, as first observed by Takeuchi, all of the arithmetic triangle groups have trace fields with class number one. Consequently, for all such $k$, every ideal $\pfrak=\pi \Ocal_k$ for some prime element $\pi$ of $\Ocal_k$.} $k$. Let $A_\pfrak$ be the local quaternion algebra defined over the $\pfrak$-adic field $k_\pfrak$.
+
+So long as $\pfrak$ doesnt divide the discriminant of $A$, the local quaternion alg $A_\pfrak$ is isomorphic to $M_2(k_\pfrak)$. Let $\Delta(\pfrak)$ denote the principal congruence subgroup of level $\pfrak$. Then all of the surfaces $\Delta(\pfrak) \lmod \Hbb$ have a regular belyi function $\beta: S=\Delta(\pfrak) \lmod \Hbb \to \Delta \lmod \Hbb$ and has automorphism group of order $\abs{Aut(S)}=\abs{N(\Delta(\pfrak))/\Delta(\pfrak)}$ where $N$ denotes the $\PSL(2,\R)$ normalizer of $\Delta(\pfrak)$.
+
+The principal congruence subgroups of level $\pfrak^n$ of the local quaternion algebra correspond to the intersections of certain collections of maximal orders. More precisely, the principal congruence subgroup of level $\pfrak^n$ corresponds to (norm one units of) the intersection of all of the vertices in the Bruhat-Tits tree of distance $\leq n$ from the root.
+
+Let $\Ecal_\pfrak$ denote the Eichler order of level $\pfrak$ in $A_\pfrak$: that is, the intersection of the two maximal orders $\Mcal_\pfrak$ and $\gamma^\inv \Mcal_\Pfrak \gamma $, where $\gamma=\tbt{\pi}{0}{0}{1}$. Let $\Phi_0(\pfrak)=\Ecal_\pfrak^1$ denote the norm $1$ subgroup of $\Ecal_\pfrak$. The \textbf{fricke element} $\tbt{0}{\pi ^\inv}{-1}{0} \in A_\pfrak$ conjugates one maximal order into the other, and so preserves their intersection $\Ecal_\pfrak$, and induces an involution on $\Phi_0(\pfrak)$. Globally, the fricke involution may give rise to a matrix in $\GL(2,\R)$ which conjugates two triangle groups. By the rigidity of triangle groups, such a conjugation can be realized inside $\PSL(2,\R)$, hence gives rise to an involution $\alpha_\pfrak$ which generates a $C_2$ extension $\Delta_{f}(\pfrak)= \langle\alpha_\pfrak, \Delta_0(\pfrak) \rangle$ of $\Delta_0(\pfrak)$, called the Fricke extension.
+
+Now $\alpha_\pfrak$ normalizes $\Delta_0(\pfrak)$ but \emph{not} $\Delta$, though $\alpha_\pfrak^2 \in \Delta_0(\pfrak)$. Conjugation by $\alpha_\pfrak$ induces an involution on the curve $\Delta_0(\pfrak)\lmod \Hbb$. Note: $\alpha_\pfrak \in \PSL(2,\R)$ may not have order two, despite it inducing an involution on the curve $\Delta_0(\pfrak) \lmod \Hbb$.
+
+Consequently, any group $K\leq \Delta_0(\pfrak)$ is a subgroup of both $\Delta$ and $\alpha_\pfrak \Delta \alpha_\pfrak^\inv$, and consequently possess two distinct uniform dessins on $K\lmod \Hbb$.
+
+The discussion also applies verbatim for prime powers: we obtain subgroups $\Delta_0(\pfrak^j) \leq \Delta_0(\pfrak)$, involutions $\alpha_{\pfrak^j}$, and extensions $\Delta_{fr}(\pfrak^j)=\langle \Delta_0(\pfrak^j),\alpha_{\pfrak^j}\rangle $. Now, $\Delta_{0}(\pfrak^j)$ is normal in $\Delta_{fr}(\pfrak^j)$, but none of $\Delta_0(\pfrak^\ell)$ is normal in $\Delta_{fr}(\pfrak^j)$ for $j<\ell$. Nor are any of its $\Delta$ conjugates $\Delta_0^i(\pfrak^\ell)$.
+
+\begin{lemma}
+	\begin{itemize}
+		\item For each $j=1,\cdots,n$ there are $q^{j-1}(q+1)$ congruence subgroups $\Delta_0^i(\pfrak^j)$, each conjugate to $\Delta_0(\pfrak^j)$ (in $\Delta$) for $i=0,\cdots,q^{j-1}(q+1)-1$.
+		\item  Each of them is contained in $\Delta$, and in $j$ different triangle groups conjugate to $\Delta$, \textbf{in which $\Delta(\pfrak^n)$ is included non-normally}.
+		\item Every $\Delta_0^i(\pfrak^j)$ is the intersection of $\Delta$ with a conjugate triangle group $\Delta^{j,i}$, and for fixed $j$, the different $\Delta^{i,j}$ form an orbit under $\Delta$ conjugation.
+	\end{itemize}
+\end{lemma}
+	\begin{proof}
+		Proceed by induction on $j$. The group $\Delta_0(\pfrak)$ has index $q+1$ in $\Delta$, and for each class $\rho_i \in \Delta$ modulo $\Delta_0(\pfrak)$ for $i=0,\cdots, q$ set $\Delta_0^i(\pfrak):= \rho_i  \Delta_0(\pfrak) \rho_i^\inv$ for $\rho_0=\id, \cdots, \rho_q$ such that $\Delta(\pfrak^n) \triangleleft \Delta_0^i(\pfrak) < \Delta$.
+
+		For each of them, let $\alpha_i:= \rho_i \alpha_\pfrak \rho_i^\inv$ be its fricke involution (where $\alpha_\pfrak$ is the one for $\Delta_0(\pfrak)$). Then form the corresponding Fricke extension $\Delta_{fr}^i(\pfrak)$ which is properly contained in $\Delta$.
+
+		The conjugacy of the different $\Delta_0^i(\pfrak^j)$ for fixed $j$ comes from the following interpretation: consider the \textbf{fake projective line} $\Pbb^1(\Ocal_k/\pfrak^j)$ consisting of pairs $(x,y) \in (\Ocal_k / \pfrak^j)^2$ not both coordinates divisible by $\pfrak$, modulo the diagonal action of $(\Ocal_k / \pfrak^j)^\times $. The action of $\Delta$ on this fake projective line is transitive, and the subgroups $\Delta_0^i(\pfrak^j)$ are the point stabilizers.
+	\end{proof}
+
+
+
+\bibliographystyle{plain}
+\bibliography{BigBib}
+
+\end{document}
