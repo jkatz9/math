@@ -1,0 +1,21 @@
+# ignore finder files
+.DS_Store
+# ignore auxillary latex files
+.aux
+.bbl
+.blg
+.brf
+.idx
+.ilg
+.ind
+.lof
+.log
+.lol
+.lot
+.out
+.toc
+.synctex.gz
+.nav
+.snm
+.vrb
+.pyg
