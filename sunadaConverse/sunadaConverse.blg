@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: sunadaConverse.aux
+The style file: plainurl.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bigBib.bib
+Warning--empty journal in sunada1985
+Warning--empty year in sunada1985
+You've used 1 entry,
+            2882 wiz_defined-function locations,
+            629 strings with 5160 characters,
+and the built_in function-call counts, 466 in all, are:
+= -- 44
+> -- 9
+< -- 0
++ -- 3
+- -- 2
+* -- 33
+:= -- 87
+add.period$ -- 4
+call.type$ -- 1
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 11
+empty$ -- 44
+format.name$ -- 2
+if$ -- 108
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 1
+newline$ -- 9
+num.names$ -- 2
+pop$ -- 10
+preamble$ -- 1
+purify$ -- 3
+quote$ -- 0
+skip$ -- 27
+stack$ -- 0
+substring$ -- 30
+swap$ -- 2
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4
+warning$ -- 2
+while$ -- 4
+width$ -- 2
+write$ -- 13
+(There were 2 warnings)
