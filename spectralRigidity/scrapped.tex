@@ -1,121 +1,118 @@
- A putative outline:
- \begin{enumerate}
-	 \item Define laplace spectrum assoc to closed riemannian manifold, define respective notions of isospectrality, resp. spectral rigidity.
-	 \item Define arithmetic locally symmetric space. Narrow down to setup for arithmetic hyperbolic $2$ and $3$ manifolds. Describe all commensurability classes, by means of relevant invariants.
-	 \item Set scope of theorem: principal congruence covers of particular maximal arithmeetic $2$ and $3$ manifolds.
- \end{enumerate}
+A putative outline:
+\begin{enumerate}
+	\item Define laplace spectrum assoc to closed riemannian manifold, define respective notions of isospectrality, resp. spectral rigidity.
+	\item Define arithmetic locally symmetric space. Narrow down to setup for arithmetic hyperbolic $2$ and $3$ manifolds. Describe all commensurability classes, by means of relevant invariants.
+	\item Set scope of theorem: principal congruence covers of particular maximal arithmeetic $2$ and $3$ manifolds.
+\end{enumerate}
 
 
- \section{Invariant trace fields and quaternion algebras}
+\section{Invariant trace fields and quaternion algebras}
 
- The following definitions are standard (and can be found in, say, \cite[Ch. 3]{maclachlanArithmeticHyperbolic3Manifolds2003}).
- \begin{definition}\label{def:trace field}
-	 Let $\Gamma  \leq \SL(2,\Cbb)$. The \textbf{trace field of $\Gamma$} is the field
-	 \begin{align*}
-		 \Qbb(\Tr(\Gamma)):= \Qbb( \Tr(\gamma) : \gamma \in \Gamma).
-	 \end{align*}
- \end{definition}
+The following definitions are standard (and can be found in, say, \cite[Ch. 3]{maclachlanArithmeticHyperbolic3Manifolds2003}).
+\begin{definition}\label{def:trace field}
+	Let $\Gamma  \leq \SL(2,\Cbb)$. The \textbf{trace field of $\Gamma$} is the field
+	\begin{align*}
+		\Qbb(\Tr(\Gamma)):= \Qbb( \Tr(\gamma) : \gamma \in \Gamma).
+	\end{align*}
+\end{definition}
 
- \begin{lemma}\label{lemma:quat alg}
-	 Suppose $\Gamma \leq \SL(2,\Cbb)$ is a non-elementary subgroup (equiv. acts irreducibly, equiv. is not virtually solvable). Then the $\Q(\Tr(\Gamma)$-linear span of $\Gamma$ in $M(2,\Cbb)$ is a quaternion algebra over $\Qbb(\Tr(\gamma))$.
- \end{lemma}
+\begin{lemma}\label{lemma:quat alg}
+	Suppose $\Gamma \leq \SL(2,\Cbb)$ is a non-elementary subgroup (equiv. acts irreducibly, equiv. is not virtually solvable). Then the $\Q(\Tr(\Gamma)$-linear span of $\Gamma$ in $M(2,\Cbb)$ is a quaternion algebra over $\Qbb(\Tr(\gamma))$.
+\end{lemma}
 
- \begin{definition}\label{def:quat alg}
-	 For non-elementary $\Gamma \leq \SL(2,\Cbb)$, the call the algebra in \ref{lemma:quat alg} the quaternion algebra of $\Gamma$.
- \end{definition}
+\begin{definition}\label{def:quat alg}
+	For non-elementary $\Gamma \leq \SL(2,\Cbb)$, the call the algebra in \ref{lemma:quat alg} the quaternion algebra of $\Gamma$.
+\end{definition}
 
- \section{Arithmetic Fuchsian and Keinian groups and their associated hyperbolic manifolds}
- For details on quaternion algebras and their arithmetic, see \cite{maclachlanArithmeticHyperbolic3Manifolds2003}.
+\section{Arithmetic Fuchsian and Keinian groups and their associated hyperbolic manifolds}
+For details on quaternion algebras and their arithmetic, see \cite{maclachlanArithmeticHyperbolic3Manifolds2003}.
 
- An arithmetic lattice $\Gamma$ in a Lie group $G$ is a subgroup of $G$ commensurable to one of the form $\bf{G}(\Zbb)$ for some semisimple linear algebraic group $\bf{G}$ defined over $\Zbb$ such that $\bf{G}(\Rbb) \approx G$. Arithmetic Fuchsian (resp. Kleinian) groups are those of this form where $G = \PSL(2,\Rbb)$ (resp $G= \PSL(2,\Cbb)$). More precisely,
+An arithmetic lattice $\Gamma$ in a Lie group $G$ is a subgroup of $G$ commensurable to one of the form $\bf{G}(\Zbb)$ for some semisimple linear algebraic group $\bf{G}$ defined over $\Zbb$ such that $\bf{G}(\Rbb) \approx G$. Arithmetic Fuchsian (resp. Kleinian) groups are those of this form where $G = \PSL(2,\Rbb)$ (resp $G= \PSL(2,\Cbb)$). More precisely,
 
- \begin{definition}[Arithmetic Fuchsian (Kleinian) groups]\label{def:arithFuchsianKleinian}
-	 Let $k$ be a totally real number field (resp. a number field with exactly one place) and let $A$ be a quaternion algebra over $A$ which is ramified over all real places except one (resp. ramified over all real places). Let $\rho$ be a $k$-embedding of $A$ in $M(2,\Rbb)$ (resp. $M(2,\Cbb)$, and let $\Ocal$ be an order in $A$. Then a subgroup of $\PSL(2,\Rbb)$ (resp. $\PSL(2,\Cbb)$) is an \textbf{arithmetic fuchsian} (resp. \textbf{Kleinian})\textbf{ group} if it is commensurable with some such $P\rho(\Ocal^1)$.
- \end{definition}
+\begin{definition}[Arithmetic Fuchsian (Kleinian) groups]\label{def:arithFuchsianKleinian}
+	Let $k$ be a totally real number field (resp. a number field with exactly one place) and let $A$ be a quaternion algebra over $A$ which is ramified over all real places except one (resp. ramified over all real places). Let $\rho$ be a $k$-embedding of $A$ in $M(2,\Rbb)$ (resp. $M(2,\Cbb)$, and let $\Ocal$ be an order in $A$. Then a subgroup of $\PSL(2,\Rbb)$ (resp. $\PSL(2,\Cbb)$) is an \textbf{arithmetic fuchsian} (resp. \textbf{Kleinian})\textbf{ group} if it is commensurable with some such $P\rho(\Ocal^1)$.
+\end{definition}
 
- We say that  hyperbolic $2$ (or $3$) manifold is arithmetic if it is isometric to one of the form $\Gamma \lmod G \rmod K$ where $G= \PSL(2,\Rbb)$ and $K = \PSO(2)$ (or $G= \PSL(2,\Cbb)$ and $K = \PSU(2)$) (TODO: discuss an intrinsic characterization via developing maps and uniformization/geometrization).
-
-
-
-
-
- %\subsection{The bruhat tits tree associated to $\PGL(2,K)$:}\label{sec:the bruhat tits}
-
- The \textbf{Bruhat-Tits tree} $\Xcal$ of $\PGL(2,K)$ is the graph whose vertices are homothety classes of lattices in $K^2$. Vertices $x,x' \in \Xcal$ are adjacent if there are representative lattices $L \in x$ and $L' \in x'$ such that $L' < L$ and $L/L' \approx k$.  The graph $\Xcal$ is a $q+1$ regular tree, where $q = \operatorname{card}(k)$ (see \cite{serreTrees2003}).
-
- Let $d$ denote the distance on $\Xcal$ induced by its graph structure. For a vertex $x$ and a lattice $L$ representing $x$ there is a canonical identification between the set of vertices of distance $d$ from $x$ and the set of $\Ocal/\pi^d \Ocal$-free rank-1 submodules of $L / \pi^d L$.
-
- Note that $\GL(2,K)$ acts on the vertices of $\Xcal$ as graph automorphisms, and that this action factors through the quotient $\PGL(2,K)$.
-
- For a subset $S$ of $\GL(2,K)$, write $\Xcal(S)$ for the set of vertices fixed by each element of $S$. Note, as in \cite[Sec. 3.1]{bellaicheSousgroupesGLArbres2014}, that if $G$ is the group generated by $S$, then $\Xcal(S) = \Xcal(G)$. Consequently, $\Xcal(S)$ is a connected subtree (possibly empty) for any $S$.
-
- For  a set $C\subset \Xcal$ of vertices, write $\Gamma(C)$ for the (pointwise) stabilizer of $C$ in $\GL(2,K)$.
-
- % vertex $x$ is in $\Xcal(S)$ if for some (hence any) lattice $L$ representing $x$, one has $sL \leq L$ for all $s \in S$.
-
- %	\subsection{The modular representations associated to a fixed vertex}\label{sec:the modular representations} For a vertex $x\in \Xcal(S)$ and representative lattice $L\in x$, the action of each $s\in S$ on $L$ preserves the sublattices $\pi^n L$, hence acts on the finite quotient $L/\pi^n L$.
- %
-
- %\begin{lemma}\label{lemma:integral-traces}
- %		For a subgroup $G \leq \SL(2,K)$, the following properties are equivalent:
- %		\begin{itemize}
-	 %			\item $\Xcal(G)$ is nonempty.
-	 %			\item $\Tr(g) \in \Ocal$ for all $g\in G$.
-	 %			\item $G$ is $\GL(2,K)$-conjugate to a subgroup of $\GL(2,\Ocal)$.
-	 %			\item The orbit of some vertex $x\in \Xcal$ under $G$ is finite
-	 %			\item The orbit of any vertex $x\in \Xcal$ is finite
-	 %			\item $G$ is relatively compact in $\SL(2,K)$
-	 %			\item $G$ is contained in a compact subgroup of $\SL(2,K)$
-	 %			\item $G$ is bounded as a subset of $M(2,K)$.
-	 %	\end{itemize}
- %		\end{lemma}
- %
- %
-
- % A \textbf{geodesic segment} in $\Xcal$ is an isometric image of a (possibly infinite) interval $I \subseteq \Zbb$ in $\Xcal$. Since $\Xcal$ is a tree, there is a unique directed geodesic $[x,y]$ between any two vertices $x,y$. A subset $S \subset \Xcal$ is \textbf{convex} if, for all pairs $x,y \in S$, one has $[x,y] \subset S$. A vertex $x$ in a convex set $S$ is extremal if either it has only one neighbor in $S$, or $S$ is a singleton,  in which case its only vertex is extremal. For any set its \textbf{convex hull} is the smallest convex set  containing it.
-
-
- \begin{lemma}(\cite[Lemma 2.2]{ophirRIBETLEMMAGL22021})
- Let $x \in X(S)$ and fix a representative $L \in x$. There is a bijection between
- \begin{itemize}
-	 \item Points $y \in X(S)$ with $d(x,x') = n$;
-	 \item Free rank 1 $\Ocal/ \pi^n \Ocal$ submodules of $L/\pi^n L$ which are stable under $S$.
- \end{itemize}
- Given a point $x' \in X(S)$ with $d(x,x')=n$, the corresponding submodule of $L/\pi^n L$ is given by $L'/\pi^n L$ where $L'$ is a lattice representing $y$, chosen so that $ \pi^n L \leq L' \leq L$.
- \end{lemma}
-
- \begin{lemma}(\cite[Lemma 2.6]{ophirRIBETLEMMAGL22021})
- Fix $x\in \Xcal(G)$, and $r\geq 1$. Then $G$ acts on $L_x / \pi^r L_x$ by scalars if and only if $B(x,r) \subset \Xcal(G)$.
- \end{lemma}
-
-
- \begin{definition}
- For a connected subset $C$ of $\Xcal$, say that a vertex $x \in C$ is a \textbf{boundary point} of $C$ if $B(x,1) \subset C$.
- \end{definition}
-
-
-
- \begin{lemma}\label{lemma:elementwise}
- \cite[Cor. 2.20]{ophirRIBETLEMMAGL22021} Let $g\in M(2,\Ocal)$ and $x$ be boundary point of $\Xcal(\{g\})$. Let $n$ be a positive integer. The following are equivalent:
- \begin{itemize}
-	 \item $P_g(t)$ is reducible modulo $\pi^n$.
-	 \item There exists a point $y \in X(\{g\})$ with $d(x,y) = n$.
- \end{itemize}
- \end{lemma}
+We say that  hyperbolic $2$ (or $3$) manifold is arithmetic if it is isometric to one of the form $\Gamma \lmod G \rmod K$ where $G= \PSL(2,\Rbb)$ and $K = \PSO(2)$ (or $G= \PSL(2,\Cbb)$ and $K = \PSU(2)$) (TODO: discuss an intrinsic characterization via developing maps and uniformization/geometrization).
 
 
 
 
- Sketch of proof:
- \begin{itemize}
- \item Overall claim: suppose $G$ is a subgroup of $\SL(2,K)$ such that $\Tr(G) = 2 + \Pcal^{2n}$. Then $G$ is $\GL(2,K)$ conjugate to a subgroup of $K(\Pcal^n) = \{ g \in \SL(2,\Ocal) : g = \id \mod \Pcal^{n}\}$.
- \item Base case: take $n=1$ and suppose that $\tr(g) = 2 \mod \Pcal^{2}$ for all $g\in G$.
- \subitem Claim: there is a geodesic segment of length two contained in $X(G)$.
- \subitem Proof: We know that $X(G)$ is nonempty, since $\tr(g) \in \Ocal$ for all $g\in G$. Pick $v \in X(G)$, and pick a representative lattice $L \in v$,  set $\overline{L} = L / \Pcal L$, and  obtain a representation $\bar{\rho}: G \to \SL(2,\Ocal/\Pcal) < \Aut(\overline{L})$. Since the characteristic polynomial of $\bar{\rho}(g)$ is $(x-1)^2 \in \Ocal /\Pcal [x]$ there exists $\bar{\rho}(G)$ invariant line $\overline{L_0} \leq \overline{L}$. Then the unique lift $L_0 \leq L$ containing $\Pcal L$ represents a vertex $v_0 \in X$ which is fixed by $G$.
- \end{itemize}
+
+%\subsection{The bruhat tits tree associated to $\PGL(2,K)$:}\label{sec:the bruhat tits}
+
+The \textbf{Bruhat-Tits tree} $\Xcal$ of $\PGL(2,K)$ is the graph whose vertices are homothety classes of lattices in $K^2$. Vertices $x,x' \in \Xcal$ are adjacent if there are representative lattices $L \in x$ and $L' \in x'$ such that $L' < L$ and $L/L' \approx k$.  The graph $\Xcal$ is a $q+1$ regular tree, where $q = \operatorname{card}(k)$ (see \cite{serreTrees2003}).
+
+Let $d$ denote the distance on $\Xcal$ induced by its graph structure. For a vertex $x$ and a lattice $L$ representing $x$ there is a canonical identification between the set of vertices of distance $d$ from $x$ and the set of $\Ocal/\pi^d \Ocal$-free rank-1 submodules of $L / \pi^d L$.
+
+Note that $\GL(2,K)$ acts on the vertices of $\Xcal$ as graph automorphisms, and that this action factors through the quotient $\PGL(2,K)$.
+
+For a subset $S$ of $\GL(2,K)$, write $\Xcal(S)$ for the set of vertices fixed by each element of $S$. Note, as in \cite[Sec. 3.1]{bellaicheSousgroupesGLArbres2014}, that if $G$ is the group generated by $S$, then $\Xcal(S) = \Xcal(G)$. Consequently, $\Xcal(S)$ is a connected subtree (possibly empty) for any $S$.
+
+For  a set $C\subset \Xcal$ of vertices, write $\Gamma(C)$ for the (pointwise) stabilizer of $C$ in $\GL(2,K)$.
+
+% vertex $x$ is in $\Xcal(S)$ if for some (hence any) lattice $L$ representing $x$, one has $sL \leq L$ for all $s \in S$.
+
+%	\subsection{The modular representations associated to a fixed vertex}\label{sec:the modular representations} For a vertex $x\in \Xcal(S)$ and representative lattice $L\in x$, the action of each $s\in S$ on $L$ preserves the sublattices $\pi^n L$, hence acts on the finite quotient $L/\pi^n L$.
+%
+
+%\begin{lemma}\label{lemma:integral-traces}
+%		For a subgroup $G \leq \SL(2,K)$, the following properties are equivalent:
+%		\begin{itemize}
+%			\item $\Xcal(G)$ is nonempty.
+%			\item $\Tr(g) \in \Ocal$ for all $g\in G$.
+%			\item $G$ is $\GL(2,K)$-conjugate to a subgroup of $\GL(2,\Ocal)$.
+%			\item The orbit of some vertex $x\in \Xcal$ under $G$ is finite
+%			\item The orbit of any vertex $x\in \Xcal$ is finite
+%			\item $G$ is relatively compact in $\SL(2,K)$
+%			\item $G$ is contained in a compact subgroup of $\SL(2,K)$
+%			\item $G$ is bounded as a subset of $M(2,K)$.
+%	\end{itemize}
+%		\end{lemma}
+%
+%
+
+% A \textbf{geodesic segment} in $\Xcal$ is an isometric image of a (possibly infinite) interval $I \subseteq \Zbb$ in $\Xcal$. Since $\Xcal$ is a tree, there is a unique directed geodesic $[x,y]$ between any two vertices $x,y$. A subset $S \subset \Xcal$ is \textbf{convex} if, for all pairs $x,y \in S$, one has $[x,y] \subset S$. A vertex $x$ in a convex set $S$ is extremal if either it has only one neighbor in $S$, or $S$ is a singleton,  in which case its only vertex is extremal. For any set its \textbf{convex hull} is the smallest convex set  containing it.
+
+
+\begin{lemma}(\cite[Lemma 2.2]{ophirRIBETLEMMAGL22021})
+	Let $x \in X(S)$ and fix a representative $L \in x$. There is a bijection between
+	\begin{itemize}
+		\item Points $y \in X(S)$ with $d(x,x') = n$;
+		\item Free rank 1 $\Ocal/ \pi^n \Ocal$ submodules of $L/\pi^n L$ which are stable under $S$.
+	\end{itemize}
+	Given a point $x' \in X(S)$ with $d(x,x')=n$, the corresponding submodule of $L/\pi^n L$ is given by $L'/\pi^n L$ where $L'$ is a lattice representing $y$, chosen so that $ \pi^n L \leq L' \leq L$.
+\end{lemma}
+
+\begin{lemma}(\cite[Lemma 2.6]{ophirRIBETLEMMAGL22021})
+	Fix $x\in \Xcal(G)$, and $r\geq 1$. Then $G$ acts on $L_x / \pi^r L_x$ by scalars if and only if $B(x,r) \subset \Xcal(G)$.
+\end{lemma}
+
+
+\begin{definition}
+	For a connected subset $C$ of $\Xcal$, say that a vertex $x \in C$ is a \textbf{boundary point} of $C$ if $B(x,1) \subset C$.
+\end{definition}
 
 
 
+\begin{lemma}\label{lemma:elementwise}
+	\cite[Cor. 2.20]{ophirRIBETLEMMAGL22021} Let $g\in M(2,\Ocal)$ and $x$ be boundary point of $\Xcal(\{g\})$. Let $n$ be a positive integer. The following are equivalent:
+	\begin{itemize}
+		\item $P_g(t)$ is reducible modulo $\pi^n$.
+		\item There exists a point $y \in X(\{g\})$ with $d(x,y) = n$.
+	\end{itemize}
+\end{lemma}
+
+
+
+
+Sketch of proof:
+\begin{itemize}
+	\item Overall claim: suppose $G$ is a subgroup of $\SL(2,K)$ such that $\Tr(G) = 2 + \Pcal^{2n}$. Then $G$ is $\GL(2,K)$ conjugate to a subgroup of $K(\Pcal^n) = \{ g \in \SL(2,\Ocal) : g = \id \mod \Pcal^{n}\}$.
+	\item Base case: take $n=1$ and suppose that $\tr(g) = 2 \mod \Pcal^{2}$ for all $g\in G$.
+	      \subitem Claim: there is a geodesic segment of length two contained in $X(G)$.
+	      \subitem Proof: We know that $X(G)$ is nonempty, since $\tr(g) \in \Ocal$ for all $g\in G$. Pick $v \in X(G)$, and pick a representative lattice $L \in v$,  set $\overline{L} = L / \Pcal L$, and  obtain a representation $\bar{\rho}: G \to \SL(2,\Ocal/\Pcal) < \Aut(\overline{L})$. Since the characteristic polynomial of $\bar{\rho}(g)$ is $(x-1)^2 \in \Ocal /\Pcal [x]$ there exists $\bar{\rho}(G)$ invariant line $\overline{L_0} \leq \overline{L}$. Then the unique lift $L_0 \leq L$ containing $\Pcal L$ represents a vertex $v_0 \in X$ which is fixed by $G$.
+\end{itemize}
 
 
 
@@ -125,34 +122,37 @@
 
 
 
- %A more specific description comes from the following
-
-
- %\begin{lemma}
- %	Fix a vertex $x\in \Xcal$ and a representative lattice $L_x \in x$. The followings sets can be naturally identified:
- %	\begin{enumerate}
- %		\item The set $C_d(x)$ of vertices $y\in \Xcal$ with $d(x,y)=d$
- %		\item The set of sublattices $L \leq L_x$ such that $d$ is the minimal integer $n$ satisfying
- %			\[ \pi^n L_x < L < L_x \]
- %		\item The set $\Pbb(L_x/\pi^d L_x)$ of cyclic $\Ocal / \pi^d \Ocal$ submodules of $L_X/\pi^d L_x$.
- %		\item The projective line $\Pbb(\Ocal/\pi^d)$ over $\Ocal/\pi^d$.
- %	\end{enumerate}
- %\end{lemma}
 
 
 
+%A more specific description comes from the following
 
- %
- %\section{The tree associated to $\PGL_2$}
- %
- %	A lattice in $V$ is a finitely generated $\Ocal$ sub-module which generates $V$ as a $K$-vectorspace. Let $\Lcal=\Lcal(V)$ denote the set of lattices in $V$. The action of $K^\times$ on $V$ induces an action on $\Lcal$. The orbit of a lattice under this action is its \textbf{homothety} class, and we let $X= K^\times \rmod \Lcal$ denote the set of such classes.
- %
- %
- %
- %\section{some maps}
- %	There is a map
- %		\begin{align*}
- %			V \times V \setminus \{(v,w) : \dim_K(Kv + Kw) < 2 \} & \to \Lcal \\
- %			(v,w) &\mapsto \Ocal v + \Ocal w
- %		\end{align*}
- %	sending a pair of vectors to the lattice they generate.
+
+%\begin{lemma}
+%	Fix a vertex $x\in \Xcal$ and a representative lattice $L_x \in x$. The followings sets can be naturally identified:
+%	\begin{enumerate}
+%		\item The set $C_d(x)$ of vertices $y\in \Xcal$ with $d(x,y)=d$
+%		\item The set of sublattices $L \leq L_x$ such that $d$ is the minimal integer $n$ satisfying
+%			\[ \pi^n L_x < L < L_x \]
+%		\item The set $\Pbb(L_x/\pi^d L_x)$ of cyclic $\Ocal / \pi^d \Ocal$ submodules of $L_X/\pi^d L_x$.
+%		\item The projective line $\Pbb(\Ocal/\pi^d)$ over $\Ocal/\pi^d$.
+%	\end{enumerate}
+%\end{lemma}
+
+
+
+
+%
+%\section{The tree associated to $\PGL_2$}
+%
+%	A lattice in $V$ is a finitely generated $\Ocal$ sub-module which generates $V$ as a $K$-vectorspace. Let $\Lcal=\Lcal(V)$ denote the set of lattices in $V$. The action of $K^\times$ on $V$ induces an action on $\Lcal$. The orbit of a lattice under this action is its \textbf{homothety} class, and we let $X= K^\times \rmod \Lcal$ denote the set of such classes.
+%
+%
+%
+%\section{some maps}
+%	There is a map
+%		\begin{align*}
+%			V \times V \setminus \{(v,w) : \dim_K(Kv + Kw) < 2 \} & \to \Lcal \\
+%			(v,w) &\mapsto \Ocal v + \Ocal w
+%		\end{align*}
+%	sending a pair of vectors to the lattice they generate.

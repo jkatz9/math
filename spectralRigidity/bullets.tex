@@ -8,29 +8,28 @@
 \usepackage{quiver}
 \usepackage{verbatim}
 \usepackage{tikz}
-\input{theorems}
 \setlength{\parindent}{0em} \setlength{\parskip}{1em}
 
-\usepackage{mycros}
+\usepackage{mycros,mythms}
 
 
 \begin{document}
 \begin{itemize}
-	\item For a closed Riemann surface $M$, there exists a representation $\rho=\rho_M : \pi_1(M) \to \Isom^+(\tilde{M})$ such that $M$ is isometric to $\Gamma \lmod \tilde{M}$, where $\Gamma=\Gamma_M = \rho(\pi_1(M))$. 
-	\item When $M$ has genus $>1$, the universal cover $\tilde{M}$ is the hyperbolic plane $\Hbb$, and $\Isom^+(\Hbb) \approx \PSL(2,\Rbb)$. 
+	\item For a closed Riemann surface $M$, there exists a representation $\rho=\rho_M : \pi_1(M) \to \Isom^+(\tilde{M})$ such that $M$ is isometric to $\Gamma \lmod \tilde{M}$, where $\Gamma=\Gamma_M = \rho(\pi_1(M))$.
+	\item When $M$ has genus $>1$, the universal cover $\tilde{M}$ is the hyperbolic plane $\Hbb$, and $\Isom^+(\Hbb) \approx \PSL(2,\Rbb)$.
 \end{itemize}
 2022-12-13 9:25:55 PM
 
 objective: modularize the argument
 \begin{itemize}
-	\item for a subset $A$ of $T$, let $G_A$ be $\cap_{x \in A}G_a$ where $G_a$ is the isotropy subgroup of $G$ at $a$. 
-	\item for a subgroup $H$ of $G$, let $T^H$ be the subtree of fixed points of $H$ acting on $T$. 
+	\item for a subset $A$ of $T$, let $G_A$ be $\cap_{x \in A}G_a$ where $G_a$ is the isotropy subgroup of $G$ at $a$.
+	\item for a subgroup $H$ of $G$, let $T^H$ be the subtree of fixed points of $H$ acting on $T$.
 	\item Observations:
-	\begin{itemize}
-		\item What can be said of $G_{T^H}$ vis-a-vis $H$? 
-		\item What can be said of $T^{G_A}$ vis-a-vis $A$?  Answer: (1) $T^H$ is connected for any $H$, so at the very least, this will contain the subtree spanned by $A$.  (2) there exists a [core] geodesic $c=c(A)$ and a radius $r=r(A)$ such that $T^{G_A} = B_r(c) = \cup_{x \in c} B_r(x)$.    
-		\item Under what conditions on $H, H'$ will $G_{T^H} = G_{T^{H'}}$? 
-		\item 
-	\end{itemize}
+	      \begin{itemize}
+		      \item What can be said of $G_{T^H}$ vis-a-vis $H$?
+		      \item What can be said of $T^{G_A}$ vis-a-vis $A$?  Answer: (1) $T^H$ is connected for any $H$, so at the very least, this will contain the subtree spanned by $A$.  (2) there exists a [core] geodesic $c=c(A)$ and a radius $r=r(A)$ such that $T^{G_A} = B_r(c) = \cup_{x \in c} B_r(x)$.
+		      \item Under what conditions on $H, H'$ will $G_{T^H} = G_{T^{H'}}$?
+		      \item
+	      \end{itemize}
 \end{itemize}
 \end{document}

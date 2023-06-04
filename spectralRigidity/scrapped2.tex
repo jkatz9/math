@@ -38,7 +38,7 @@
 %A \textbf{line} $L$ is a one dimensional vectorspace over $F$. In particular, $L$ is equipped with an element $0_L$, a group law $+_L$, and a compatible action $\cdot_L : F^\times \to \Aut(L,+_L)$. Write $\GL(L)$ for the group of linear automorphisms of a line. 
 %\end{definition}
 %\begin{remark}
-  %The automorphism group of a line acts neither transitively nor effectively on the whole line: the origin $0_L$ is fixed by any linear automorphism.  Rather, $\GL(L)\approx F^\times$  acts simply and transitively on the punctured line $L\setminus\{0_L\}$. 
+%The automorphism group of a line acts neither transitively nor effectively on the whole line: the origin $0_L$ is fixed by any linear automorphism.  Rather, $\GL(L)\approx F^\times$  acts simply and transitively on the punctured line $L\setminus\{0_L\}$. 
 %\end{remark}
 %\begin{definition}[(Affine line)]
 %An \textbf{affine line} $A$ over $F$ is a set on which a line $L$ acts simply and transitively. A map $A \to A$ is an \textbf{affine transformation} if it commutes with the action of $L$ on $A$. Write $\Aff(A)$ for the group of affine automorphisms of $A$. 
@@ -50,44 +50,44 @@
 %The projective line $\Pbb^1(F)$ is covered by two copies of the affine line via the maps $\phi_0, \phi_\infty : \Abb^1(F) = F \to \Pbb^1$ sending $x \in F$ to the lines $[x;1]$ and $F^\times (x,1)$ respectively.     
 %Their images intersect along a copy of $\Gbb_m(F)= F^\times$ glued along the map $x \mapsto 1/x$.  In particular, $\Pbb ^1 \setminus  \phi_0(F) = \{\phi_\infty(0)\}$. Denoting the latter point by $\infty$, we obtain the familiar description $\Pbb^1 = F \sqcup \{ \infty \}$. The mapping $w:x \mapsto 1/x$ extends to an involution of $\Pbb^1$ by defining $w(0)= 1/0 = \infty$ and $w(\infty) = 1/\infty =0$. 
 %\begin{lemma}
-  %This extension $w : \Pbb^1 \to \Pbb^1$ is a projective transformation.
-  %\end{lemma}
+%This extension $w : \Pbb^1 \to \Pbb^1$ is a projective transformation.
+%\end{lemma}
 %\begin{proof}
-  %It is represented by any involutive linear transformation which takes the affine line $(0,1)+F(1,0)$ to the line $(1,0)+F(0,1)$ while fixing their point of intersection $(1,1)$: for example $\tbt{0}{-1}{1}{0}$. 
+%It is represented by any involutive linear transformation which takes the affine line $(0,1)+F(1,0)$ to the line $(1,0)+F(0,1)$ while fixing their point of intersection $(1,1)$: for example $\tbt{0}{-1}{1}{0}$. 
 %\end{proof}
 %\subsection{Homogeneous descriptions}
 %The automorphism group $G$ acts highly transitively on $\Pbb^1$, yielding several important descriptions, as in the following
 %\begin{lemma}
-          %The subgroup $G_0$  (resp. $G_\infty$) of $G$ that preserves the image of $\phi_0$ (resp. $\phi_\infty)$ is the pointwise stabilizer of $\infty$ (resp. $0$). The following diagram commutes:
+%The subgroup $G_0$  (resp. $G_\infty$) of $G$ that preserves the image of $\phi_0$ (resp. $\phi_\infty)$ is the pointwise stabilizer of $\infty$ (resp. $0$). The following diagram commutes:
 %% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXFBHTCgyLEYpIl0sWzAsMiwiXFxQYmJeMShGKVxcYXBwcm94IFxcUEdMKDIsRikvQl9cXGluZnR5Il0sWzIsMCwiXFxQYmJeMShGKVxcYXBwcm94IFxcUEdMKDIsRikvQl8wIl0sWzIsMiwiXFxQYmJeMShGKSJdLFswLDIsImcgXFxtYXBzdG8gZyhcXGluZnR5KSJdLFswLDEsImcgXFxtYXBzdG8gZygwKSIsMl0sWzEsMywidyIsMl0sWzIsMywidyJdXQ==
 %\[\begin{tikzcd}[column sep=scriptsize]
-  %{G} && {\Pbb^1(F)\approx G/G_0} \\
-  %\\
-  %{\Pbb^1(F)\approx G/G_\infty} && {\Pbb^1(F)}
-  %\arrow["{g \mapsto g(\infty)}", from=1-1, to=1-3]
-  %\arrow["{g \mapsto g(0)}"', from=1-1, to=3-1]
-  %\arrow["w"', from=3-1, to=3-3]
-  %\arrow["w", from=1-3, to=3-3]
+%{G} && {\Pbb^1(F)\approx G/G_0} \\
+%\\
+%{\Pbb^1(F)\approx G/G_\infty} && {\Pbb^1(F)}
+%\arrow["{g \mapsto g(\infty)}", from=1-1, to=1-3]
+%\arrow["{g \mapsto g(0)}"', from=1-1, to=3-1]
+%\arrow["w"', from=3-1, to=3-3]
+%\arrow["w", from=1-3, to=3-3]
 %\end{tikzcd}\]
-  %\end{lemma}
-  %\begin{lemma}
-          %\begin{itemize}
-                  %\item $G_0$ (resp. $G_\infty$) acts transitively on $\phi_0(F)$ (resp. on $\phi_\infty(F)$) by affine transformations, yielding an isomorphism $G_\infty \approx G_0 \approx \Aff(1,F)$.
-                  %\item The stabilizer in $G_0$ of $0$ coincides with the stabilizer in $G_\infty$ of $\infty$, and is consequently their intersection.
-                  %\item The intersection $A:=G_0 \cap G_\infty$ is isomorphic to $\Gbb_m(F)= F^\times$.             
-                  %\item Picking $\phi_0(0)$ (resp. $\phi_\infty(0)$) as the origin in $\phi_0(F)$ (resp. in $\phi_\infty(F)$), $A$ acts as linear transformations on $\phi_0(F)$ (resp. $\phi_\infty(F)$), hence simply transitively on their intersection $\phi_0(F) \cap \phi_\infty(F)$. 
-                  %\item $A$ is a normal subgroup of $G_0$ and $G_\infty$. The sequences
-                  %\begin{align*}
-                          %1 \to G_0 \to G \to G/G_0 \to 1 \\
-                          %1 \to G_\infty \to G \to G/G_\infty \to 1
-                  %\end{align*}
-                  %are split
-          %\end{itemize}
-          
-  %\end{lemma}
+%\end{lemma}
+%\begin{lemma}
+%\begin{itemize}
+%\item $G_0$ (resp. $G_\infty$) acts transitively on $\phi_0(F)$ (resp. on $\phi_\infty(F)$) by affine transformations, yielding an isomorphism $G_\infty \approx G_0 \approx \Aff(1,F)$.
+%\item The stabilizer in $G_0$ of $0$ coincides with the stabilizer in $G_\infty$ of $\infty$, and is consequently their intersection.
+%\item The intersection $A:=G_0 \cap G_\infty$ is isomorphic to $\Gbb_m(F)= F^\times$.             
+%\item Picking $\phi_0(0)$ (resp. $\phi_\infty(0)$) as the origin in $\phi_0(F)$ (resp. in $\phi_\infty(F)$), $A$ acts as linear transformations on $\phi_0(F)$ (resp. $\phi_\infty(F)$), hence simply transitively on their intersection $\phi_0(F) \cap \phi_\infty(F)$. 
+%\item $A$ is a normal subgroup of $G_0$ and $G_\infty$. The sequences
+%\begin{align*}
+%1 \to G_0 \to G \to G/G_0 \to 1 \\
+%1 \to G_\infty \to G \to G/G_\infty \to 1
+%\end{align*}
+%are split
+%\end{itemize}
+
+%\end{lemma}
 
 %\begin{remark}
-  %The choice of $0$ and $\infty$ in the preceding discussion was arbitrary. In fact, the map $x \mapsto G_x = \Stab_G(x)$ from $\Pbb^1(F)$  to the set of subgroups of $G$ intertwines the action of $G$ on $\Pbb^1$ by projective transformations and the action of $G$ on the set of its subgroups by conjugation. In particular, for any pair of distinct points $x,y \in \Pbb^1(F)$, one obtains a covering by affine lines, preserved by subgroups $G_x$ and $G_y$, on which they act by affine transformations. Their intersection $G_x\cap G_y$ acts on affine line linearly, simply and transitively on their intersection. 
+%The choice of $0$ and $\infty$ in the preceding discussion was arbitrary. In fact, the map $x \mapsto G_x = \Stab_G(x)$ from $\Pbb^1(F)$  to the set of subgroups of $G$ intertwines the action of $G$ on $\Pbb^1$ by projective transformations and the action of $G$ on the set of its subgroups by conjugation. In particular, for any pair of distinct points $x,y \in \Pbb^1(F)$, one obtains a covering by affine lines, preserved by subgroups $G_x$ and $G_y$, on which they act by affine transformations. Their intersection $G_x\cap G_y$ acts on affine line linearly, simply and transitively on their intersection. 
 %\end{remark}
 %% 
 %% \begin{corollary}
@@ -111,11 +111,11 @@
 
 
 %\begin{thm}
-  %Let $H$ be a subgroup of $\SL(2,\Ocal)$ such that $\Tr(H)  \subset \Tr(K_n)$, then there exists an $h\in \GL(2,K)$ such that $h H h^\inv \leq K_n$. 
+%Let $H$ be a subgroup of $\SL(2,\Ocal)$ such that $\Tr(H)  \subset \Tr(K_n)$, then there exists an $h\in \GL(2,K)$ such that $h H h^\inv \leq K_n$. 
 %\end{thm}
 %\begin{proof}
 %\begin{itemize}
-  %\item First, 
+%\item First, 
 %\end{itemize}
 %%     \begin{definition}
 %%         Let $F$ be a field, and $g \in \Aut(\Pbb^1(F))$. Say 
@@ -139,9 +139,9 @@
 
 %\begin{lemma}\label{lemma:modncommutes}
 %Let $g\in \GL(2,K)$ stabilize a lattice $L \leq K^2$. Then $\tr(g), \det(g) \in \Ocal$. Let $\rho_{L,n} : \Aut(L) \to \Aut(L/ \pi^n L) \approx \GL(2,\Ocal/\wp^n)$. Then for all $n>0$, the following equality holds in $\Ocal/\Pcal^n [t]$. 
-  %\begin{align*}
-                  %\det(g - t \id) \mod \wp^n = \det ( \rho_{L,n}(g) - t \id).
-  %\end{align*}
+%\begin{align*}
+%\det(g - t \id) \mod \wp^n = \det ( \rho_{L,n}(g) - t \id).
+%\end{align*}
 %\end{lemma}
 %Let $g$ and $L$ be as above. Let $\Pbb(L/\pi^n L)$ denote the set of cyclic $\Ocal/\wp^n$ submodules of $L/\pi^nL$ which are direct factors. Let $q = |\Ocal/ \Pcal|$. Then $\Pbb(L/\pi^n L) = q^{n-1}(q+1)$.   
 %\claim Suppose $\tr(g) = 2 \mod \wp^{2n}$ and $\det(g) = 1$. Then there exists a lattice $M$ containing $L$ with $M/L$ a cyclic $\Ocal/ \Pcal^k$ module for some $k \leq n$ and $\rho_{M , n} (g) = \id \in \Aut(M/\pi^n M)$. 

@@ -1,6 +1,6 @@
 % Created 2022-10-03 Mon 06:25
 % Intended LaTeX compiler: pdflatex
-\documentclass[11pt]{article}
+\documentclass[11pt]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -12,8 +12,7 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
-\usepackage{mycros}
-\usepackage{mycros}
+\usepackage{mycros,mythms}
 \author{Justin Katz}
 \date{\today}
 \title{A brief attmept at reformulating the setup in terms of algebraic groups}
@@ -33,36 +32,65 @@
 \label{sec:org8b2862a}
 \subsection{Indefinite quaternion algebras}
 \label{sec:orgef86b72}
-Let \(F\) be a totally real field, with finite degree \(t\) over \(\Qbb\). A quaternion algebra \(D\) over \(F\) is a central simple algebra over \(F\) such that \(|D:F|=4\). Write \(R\) for the ring of integers of \(F\). For a
-prime ideal \(\pfrak\) of \(R\), we let \$R\textsubscript{\pfrak},\$ \$F\textsubscript{\pfrak},\$ and \(D_\pfrak\) denote the \$\pfrak\$-adic completions of \$R,\$ \$F,\$ and \(D\) respectively. We enumerate the \(t\) infinite places of \(F\) and denote them by \(\pfrak_{\infty,1},\cdots \pfrak_{\infty,t}\). For \(i \leq t\) we write \(D^i\) for the completion of \(D\) at \(\pfrak_{\infty,i}\) so that
+Let \(F\) be a totally real field, with finite degree \(t\) over \(\Qbb\).
+A quaternion algebra \(D\) over \(F\) is a central simple algebra over \(F\) such that \(|D:F|=4\).
+Write \(R\) for the ring of integers of \(F\).
+For a
+prime ideal $\pfrak$ of \(R\), we let $R_\pfrak,$ $F_\pfrak,$ and \(D_\pfrak\) denote the $\pfrak$-adic completions of $R,$ $F,$ and \(D\) respectively.
+We enumerate the \(t\) infinite places of \(F\) and denote them by \(\pfrak_{\infty,1},\cdots \pfrak_{\infty,t}\).
+For \(i \leq t\) we write \(D^i\) for the completion of \(D\) at \(\pfrak_{\infty,i}\) so that
 \[ D \otimes_\Qbb \Rbb \approx D^1 \times \cdots \times D^t \]
-There are exactly two quaternion algebras over \(\Rbb\): the split algebra \(M_2(\Rbb)\), and the nonsplit algebra \(\Hcal\). After reindexing, we may assume that for \(i \leq r\), we have \(D^i \approx M_2(\Rbb)\), and for \(r < i \leq t\), we have \(D^i \approx \Hcal\). We say that \(D\) is \textbf{indefinite} if \(r>0\), and henceforth will assume that this is the case.
+There are exactly two quaternion algebras over \(\Rbb\): the split algebra \(M_2(\Rbb)\), and the nonsplit algebra \(\Hcal\).
+After reindexing, we may assume that for \(i \leq r\), we have \(D^i \approx M_2(\Rbb)\), and for \(r < i \leq t\), we have \(D^i \approx \Hcal\).
+We say that \(D\) is \textbf{indefinite} if \(r>0\), and henceforth will assume that this is the case.
 
-For an element \(a \in D\), we write its image in \(D^i\) by \(a^i\). Thus, for each \(i \leq r\) we have \(a^i \in M_2(\Rbb)\) and \(a^i \in \Hcal\) for \(r < i \leq t\). Note that the restrictions of the maps \((\cdot)^i\) to the central copy of \(F\) in  \(D\) yeild all of the embeddings of \(F\) into \(\Rbb\). We write \(F^i\) for that image. 
+For an element \(a \in D\), we write its image in \(D^i\) by \(a^i\).
+Thus, for each \(i \leq r\) we have \(a^i \in M_2(\Rbb)\) and \(a^i \in \Hcal\) for \(r < i \leq t\).
+Note that the restrictions of the maps \((\cdot)^i\) to the central copy of \(F\) in  \(D\) yeild all of the embeddings of \(F\) into \(\Rbb\).
+We write \(F^i\) for that image.
 
-The algebras \(D\) (resp \(D_\pfrak,D^i\))  are each equipped with an involution \(a \mapsto a'\) characterized by the condition that \(F[a] \approx F[x]/ ((X-a)(X-a'))\) (resp. \(F_\pfrak[a], \Rbb[a]\)). Set, for each \(a \in D\) (resp, in \(D_\pfrak, D^i\))
-\[ N(a) = aa' \quad \tr(a) = a + a'. \]
+The algebras \(D\) (resp \(D_\pfrak,D^i\))  are each equipped with an involution \(a \mapsto a'\) characterized by the condition that \(F[a] \approx F[x]/ ((X-a)(X-a'))\) (resp.
+\(F_\pfrak[a], \Rbb[a]\)).
+Set, for each \(a \in D\) (resp, in \(D_\pfrak, D^i\))
+\[ N(a) = aa' \quad \tr(a) = a + a'.
+\]
 For those \(i\leq r\), under the identification \(D^i \approx M_2(\Rbb)\), the maps \(N\) and \(\tr\) coincide with \(\det\) and \(\tr\) of matrices.
 
 Letting \(N_{F/\Qbb}\) and \(\tr_{F/\Qbb}\) denote the absolute norm and trace maps on \(F\), we define absolute maps for \(a \in D\):
-\[ N_{D/\Qbb} (a) = N_{F/\Qbb} (N(a)) \quad \tr_{D/\Qbb} (a) = \tr_{F/\Qbb} (\tr (a)) \] 
+\[ N_{D/\Qbb} (a) = N_{F/\Qbb} (N(a)) \quad \tr_{D/\Qbb} (a) = \tr_{F/\Qbb} (\tr (a)) \]
 \subsection{Ideal theory in \(D\)}
 \label{sec:orgec6b45e}
-An \(R\) (resp. \(R_\pfrak\)) lattice in \(D\) (resp. \(D_\pfrak\)) is a finitely generated \$R\$-module (resp. \$R\textsubscript{\pfrak}\$-module) \(M\) in \(D\) (resp. \(D_\pfrak\)) such that \(FM = D\) (resp. \(F_\pfrak M = D_\pfrak\)).
+An \(R\) (resp.
+\(R_\pfrak\)) lattice in \(D\) (resp.
+\(D_\pfrak\)) is a finitely generated $R$-module (resp.
+$R_\pfrak$-module) \(M\) in \(D\) (resp.
+\(D_\pfrak\)) such that \(FM = D\) (resp.
+\(F_\pfrak M = D_\pfrak\)).
 \subsubsection{consider introducing the set \(\Lcal(D)\) of lattices in \(D\), as well as its local counterparts.}
 \label{sec:org7ff204b}
-A subring of \(D\) containg \(R\) is an \textbf{order} if it is also an \(R\) lattice.  An order is maximal if its not properly contained in any other order.   Maximal orders exist, and any order is contained in a maximal one.
+A subring of \(D\) containg \(R\) is an \textbf{order} if it is also an \(R\) lattice.
+An order is maximal if its not properly contained in any other order.
+Maximal orders exist, and any order is contained in a maximal one.
 
-For an order \(\ofrak\), a lattice \(M\) in \(D\) is a right (resp. left) \$\ofrak\$-ideal  if \(M \ofrak \subset M\) (resp. \(\ofrak M \subset M\)). We say \(M\) is a two-sided \(\ofrak\) ideal if it is both a left and a right \$\ofrak\$-ideal.
+For an order \(\ofrak\), a lattice \(M\) in \(D\) is a right (resp.
+left) $\ofrak$-ideal  if \(M \ofrak \subset M\) (resp.
+\(\ofrak M \subset M\)).
+We say \(M\) is a two-sided \(\ofrak\) ideal if it is both a left and a right $\ofrak$-ideal.
 
 \subsection{The local theory, split case:}
 \label{sec:org7edff72}
-In this section \(F\) is a finite extension of \(\Qbb_p\) with ring of integers \(R\),  \(\pi\) a uniformizer, \(\ord\) the normalized valuation. For an element \(y \in \GL(2,F)\) write \(\bar{y}\) for its image in \(\PGL(2,F)\). Say \(y\) (or \(\bar{y}\) ) is \uline{even} if \(\ord(\det(y))\) is so, and odd otherwise. Write \(F \times F\) as rwo vectors, and let \(M(2,F)\) act on it from the right.
+In this section \(F\) is a finite extension of \(\Qbb_p\) with ring of integers \(R\),  \(\pi\) a uniformizer, \(\ord\) the normalized valuation.
+For an element \(y \in \GL(2,F)\) write \(\bar{y}\) for its image in \(\PGL(2,F)\).
+Say \(y\) (or \(\bar{y}\) ) is \uline{even} if \(\ord(\det(y))\) is so, and odd otherwise.
+Write \(F \times F\) as rwo vectors, and let \(M(2,F)\) act on it from the right.
 
 A maximal \(R\) order \(\Ocal\) of \(M(2,F)\) takes the form
 \[ \Ocal = \End_R(\Lambda) = \{ x \in M(2,F) : \Lambda x \subset \lambda \} \]
-for some \(R\) lattice \(\Lambda \subset F \times F\), uniquely determined by \(\Ocal\) up to homothety. Conversely, for any such lattice \(\Lambda\), the ring \(\End_R(\Lambda)\) is a maximal order.
+for some \(R\) lattice \(\Lambda \subset F \times F\), uniquely determined by \(\Ocal\) up to homothety.
+Conversely, for any such lattice \(\Lambda\), the ring \(\End_R(\Lambda)\) is a maximal order.
 
 
-Given two maximal orders \(\Ocal_1\) and \(\Ocal_2\), pick a lattice \(\Lambda_1 =  Rf +Rg\) so that \(\Ocal_1 = \End_R(\Lambda_1)\). Then there is a lattice \(\Lambda_2\) such that \(\Ocal_2 = \End_R(\Lambda_2)\) and \(\Lambda_2 = R f + \pi^n R g  \leq \Lambda_1\). The integer \(n=d(\Ocal_1,\Ocal_2)\) is uniquely determined by \(\Ocal_1\) and \(\Ocal_2\). 
+Given two maximal orders \(\Ocal_1\) and \(\Ocal_2\), pick a lattice \(\Lambda_1 =  Rf +Rg\) so that \(\Ocal_1 = \End_R(\Lambda_1)\).
+Then there is a lattice \(\Lambda_2\) such that \(\Ocal_2 = \End_R(\Lambda_2)\) and \(\Lambda_2 = R f + \pi^n R g  \leq \Lambda_1\).
+The integer \(n=d(\Ocal_1,\Ocal_2)\) is uniquely determined by \(\Ocal_1\) and \(\Ocal_2\).
 \end{document}

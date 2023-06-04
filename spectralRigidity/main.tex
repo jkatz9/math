@@ -8,393 +8,392 @@
 \usepackage{quiver}
 \usepackage{verbatim}
 \usepackage{tikz}
-\input{theorems}
+\usepackage{mycros,mythms}
 \setlength{\parindent}{0em} \setlength{\parskip}{1em}
 
-\usepackage{mycros}
 
 
 \begin{document}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	\section{pseudo-introduction}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	Let $M$ be a compact Riemannian manifold. The eigenvalues of the Laplace operator $\Delta$ acting on $L^{2}(M)$ form a discrete sequence $0 =\lambda_{0}\leq \lambda_{1 }\leq \ldots $. The multiset of eigenvalues $\{\lambda_{i}\}$ is the \textbf{Laplace spectrum} of $M$. We say that two manifolds are \textbf{isospectral} if their Laplace spectra coincide. A manifold is \textbf{absolutely spectrally rigid} if the only manifolds to which it is isospectral are in fact isometric.
-	
-	In this article, we prove the following
-	\begin{thm}
-		Let $k$ be a totally real number field with ring of integers $R$, and $A$ a quaternion algebra over $k$ with type number $1$. Further, suppose that there is a unique real place of $k$ at which $A$ is unramified. Let $\Ocal$ be a maximal order in $A$, $\Ocal^{1}$ the multiplicative group of norm $1$ units. For an ideal $I$ in $R$, let $\Ocal^{1}(I) \leq \Ocal^{1}$ be the kernel of the reduction map. Denote by $\Gamma$ (resp. $\Gamma(I)$) the image of $\Ocal^{1}$ (resp. $\Ocal^{1}(I)$) in $\PSL(2,\Rbb)  = \Isom^{+}( \Hbb)$. Suppose that $I$ is not divisible by any prime in $R$ at which $A$ is ramified. Then the Riemann surface $\Gamma(I) \lmod \Hbb$ is absolutely spectrally rigid.
-	\end{thm}
-	
-	\begin{comment}
-		[TODO] identify the length spectrum for arithmetic hyperbolic surfaces coming
-		from maximal orders in quaternion algebras
-	\end{comment}
-	
-	\begin{comment}
-		\section{background spectral theory}
-		\subsection{The spectral theorem}% [TODO] cite LA TAKHTAJAN etudes
-		Let $H$ be a Hilbert space, and $A$ a closed, self-adjoint linear operator on $H$. The values
-		$\lambda \in \Cbb$ such for which the
-		\begin{equation}
-			\label{eq:resolvent}
-			R_\lambda (A) = (A - \lambda \id )^\inv
-		\end{equation}
-		exists (as a bounded operator defined on all of $H$) is called the
-		\textbf{resolvent set} $\rho(A)$ of $A$. The resolvent set is open in $\Cbb$;
-		its complement $\sigma(A)$ is the \textbf{spectrum set} of $A$. If $A$ is a
-		self-adjoint operator, then $\sigma(A) \subset \Rbb$.
-		
-		The spectral theorem of von Neumann associates to the self adjoint operator $A$
-		a projection-valued countably additive measure $\mathbf{E}$ on the
-		$\sigma$-algebra of borel subsets of $\Rbb$ such that $\Eloc(\emptyset) = 0 $
-		and $\Eloc(\Rbb) = \id$, that
-		\begin{equation}
-			\label{eq:specthm}
-			D(A) = \{ f \in H : \int_{\Rbb} \lambda^2 \dop \ip{\Eloc_\lambda f }{f} \},
-		\end{equation}
-		and for $f \in D(A)$,
-		\begin{equation}
-			\label{eq:specthm2}
-			A f = \int_{\Rbb} \lambda \dop \Eloc_\lambda f,
-		\end{equation}
-		where $E_\lambda = \Eloc((-\infty, \lambda))$.
-		\subsection{Determinants}
-		In this section $C$ is a compact self-adjoint operator of trace class. Its
-		\textbf{characteristic determinant} is the entire function
-		\begin{equation}
-			\label{eq:fredet}
-			p_C (\lambda) : \lambda \mapsto \det ( \id - \lambda C ) : = \prod_i (1 - \lambda_i \lambda)
-		\end{equation}
-		where the eigenvalues $\lambda_i$ of $C$ are repeated according to their
-		multiplicity. Much like the characteristic polynomial of an operator on a finite
-		dimensional vectorspace, the characteristic determinant $p_C(\lambda)$ has
-		zeroes at $\lambda in \sigma(C)$ with order $\dim \ker (C - \lambda \id))$.
-		
-		Now suppose that $C$ is invertible (so that, in particular, $p_\lambda(0) \neq
-		0$) and set $A = C^\inv$. Then the formula
-		\begin{equation}
-			\label{eq:dlog}
-			\frac{d}{d\lambda} \log \det (\id - \lambda C) = -\Tr R_\lambda (A)
-		\end{equation}
-		holds. When $R_\lambda(A)$ is an integral operator acting on some space $H =
-		L^2(X)$ via an integral kernel $R_\lambda (x,y)$ on $X\times X$, the trace may be
-		computed via
-		\begin{equation}
-			\label{eq:trace}
-			\Tr R_\lambda (A) = \int_X R_\lambda (x,x) \dop x.
-		\end{equation}
-		\subsection{Storing spectral data}
-		Now let $M$ be a compact connected, Riemannian manifold without boundary. Let
-		$\Delta$ be the laplace-beltrami operator on $M$. Its resolvent
-		$R_\lambda(\Delta) = (\Delta - \lambda \id)^\inv$ is compact and self-adjoint. We
-		consider its characteristic determinant: [TODO bloviate]
-		
-		We associate to each $M$ some generating functions. For $t>0$, the \textbf{heat
-			trace} of $M$ is
-		\begin{equation}
-			\label{eq:theta}
-			\Theta_M(t) = \Tr (\exp(-t\Delta_M ) - \id ) = \sum_{\lambda \in \sigma(\Delta_M)} m_\lambda \exp (-t \lambda).
-		\end{equation}
-		For $s \in \Cbb$ the \textbf{resolvent determinant}
-		\begin{equation}
-			\label{eq:zeta}
-			Z_M(\lambda) = \det (1 - \lambda R_\Delta(-1))
-		\end{equation}
-		
-		
-		\begin{prop}
-			Let $M$ and $M'$ be compact connected Riemannian manifolds without boundary.
-			The following properties are equivalent
-			\begin{enumerate}
-				\item $M$ and $M'$ are isospectral
-				\item $\Theta_M = \Theta_{M'}$ (as functions on $\Rbb_{>0}$)
-				\item $Z_M = Z_{M'}$ (as functions on $\Cbb$).
-			\end{enumerate}
-		\end{prop}
-		[TODO bloviate]
-	\end{comment}
-	
-	
-	\section{Audible properties}
-	\subsection{Heat invariants}
-Let $M$ be a compact Riemannian manifold. Enumerate the spectrum of its Laplace-Beltrami operator as $0 = \lambda_0 < \lambda_1 \leq \lambda_2 \leq \cdots $, where each eigenvalue is repeated according to its multiplicity. Pick an $L^2(M)$-orthonormal basis $\{ \phi_j  \}$ of corresponding eigenfunctions.  The \textbf{heat kernel} of $M$ is the function $K : \R_{>0} \times M \times M$ defined by 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{pseudo-introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let $M$ be a compact Riemannian manifold. The eigenvalues of the Laplace operator $\Delta$ acting on $L^{2}(M)$ form a discrete sequence $0 =\lambda_{0}\leq \lambda_{1 }\leq \ldots $. The multiset of eigenvalues $\{\lambda_{i}\}$ is the \textbf{Laplace spectrum} of $M$. We say that two manifolds are \textbf{isospectral} if their Laplace spectra coincide. A manifold is \textbf{absolutely spectrally rigid} if the only manifolds to which it is isospectral are in fact isometric.
+
+In this article, we prove the following
+\begin{thm}
+	Let $k$ be a totally real number field with ring of integers $R$, and $A$ a quaternion algebra over $k$ with type number $1$. Further, suppose that there is a unique real place of $k$ at which $A$ is unramified. Let $\Ocal$ be a maximal order in $A$, $\Ocal^{1}$ the multiplicative group of norm $1$ units. For an ideal $I$ in $R$, let $\Ocal^{1}(I) \leq \Ocal^{1}$ be the kernel of the reduction map. Denote by $\Gamma$ (resp. $\Gamma(I)$) the image of $\Ocal^{1}$ (resp. $\Ocal^{1}(I)$) in $\PSL(2,\Rbb)  = \Isom^{+}( \Hbb)$. Suppose that $I$ is not divisible by any prime in $R$ at which $A$ is ramified. Then the Riemann surface $\Gamma(I) \lmod \Hbb$ is absolutely spectrally rigid.
+\end{thm}
+
+\begin{comment}
+[TODO] identify the length spectrum for arithmetic hyperbolic surfaces coming
+from maximal orders in quaternion algebras
+\end{comment}
+
+\begin{comment}
+\section{background spectral theory}
+\subsection{The spectral theorem}% [TODO] cite LA TAKHTAJAN etudes
+Let $H$ be a Hilbert space, and $A$ a closed, self-adjoint linear operator on $H$. The values
+$\lambda \in \Cbb$ such for which the
 \begin{equation}
-	K(t,x,y) = \sum_{j} e^{-t \lambda_j} \phi_j(x)\phi_j(y). 
-\end{equation}	
+	\label{eq:resolvent}
+	R_\lambda (A) = (A - \lambda \id )^\inv
+\end{equation}
+exists (as a bounded operator defined on all of $H$) is called the
+\textbf{resolvent set} $\rho(A)$ of $A$. The resolvent set is open in $\Cbb$;
+its complement $\sigma(A)$ is the \textbf{spectrum set} of $A$. If $A$ is a
+self-adjoint operator, then $\sigma(A) \subset \Rbb$.
+
+The spectral theorem of von Neumann associates to the self adjoint operator $A$
+a projection-valued countably additive measure $\mathbf{E}$ on the
+$\sigma$-algebra of borel subsets of $\Rbb$ such that $\Eloc(\emptyset) = 0 $
+and $\Eloc(\Rbb) = \id$, that
+\begin{equation}
+	\label{eq:specthm}
+	D(A) = \{ f \in H : \int_{\Rbb} \lambda^2 \dop \ip{\Eloc_\lambda f }{f} \},
+\end{equation}
+and for $f \in D(A)$,
+\begin{equation}
+	\label{eq:specthm2}
+	A f = \int_{\Rbb} \lambda \dop \Eloc_\lambda f,
+\end{equation}
+where $E_\lambda = \Eloc((-\infty, \lambda))$.
+\subsection{Determinants}
+In this section $C$ is a compact self-adjoint operator of trace class. Its
+\textbf{characteristic determinant} is the entire function
+\begin{equation}
+	\label{eq:fredet}
+	p_C (\lambda) : \lambda \mapsto \det ( \id - \lambda C ) : = \prod_i (1 - \lambda_i \lambda)
+\end{equation}
+where the eigenvalues $\lambda_i$ of $C$ are repeated according to their
+multiplicity. Much like the characteristic polynomial of an operator on a finite
+dimensional vectorspace, the characteristic determinant $p_C(\lambda)$ has
+zeroes at $\lambda in \sigma(C)$ with order $\dim \ker (C - \lambda \id))$.
+
+Now suppose that $C$ is invertible (so that, in particular, $p_\lambda(0) \neq
+	0$) and set $A = C^\inv$. Then the formula
+\begin{equation}
+	\label{eq:dlog}
+	\frac{d}{d\lambda} \log \det (\id - \lambda C) = -\Tr R_\lambda (A)
+\end{equation}
+holds. When $R_\lambda(A)$ is an integral operator acting on some space $H =
+	L^2(X)$ via an integral kernel $R_\lambda (x,y)$ on $X\times X$, the trace may be
+computed via
+\begin{equation}
+	\label{eq:trace}
+	\Tr R_\lambda (A) = \int_X R_\lambda (x,x) \dop x.
+\end{equation}
+\subsection{Storing spectral data}
+Now let $M$ be a compact connected, Riemannian manifold without boundary. Let
+$\Delta$ be the laplace-beltrami operator on $M$. Its resolvent
+$R_\lambda(\Delta) = (\Delta - \lambda \id)^\inv$ is compact and self-adjoint. We
+consider its characteristic determinant: [TODO bloviate]
+
+We associate to each $M$ some generating functions. For $t>0$, the \textbf{heat
+	trace} of $M$ is
+\begin{equation}
+	\label{eq:theta}
+	\Theta_M(t) = \Tr (\exp(-t\Delta_M ) - \id ) = \sum_{\lambda \in \sigma(\Delta_M)} m_\lambda \exp (-t \lambda).
+\end{equation}
+For $s \in \Cbb$ the \textbf{resolvent determinant}
+\begin{equation}
+	\label{eq:zeta}
+	Z_M(\lambda) = \det (1 - \lambda R_\Delta(-1))
+\end{equation}
+
+
+\begin{prop}
+	Let $M$ and $M'$ be compact connected Riemannian manifolds without boundary.
+	The following properties are equivalent
+	\begin{enumerate}
+		\item $M$ and $M'$ are isospectral
+		\item $\Theta_M = \Theta_{M'}$ (as functions on $\Rbb_{>0}$)
+		\item $Z_M = Z_{M'}$ (as functions on $\Cbb$).
+	\end{enumerate}
+\end{prop}
+[TODO bloviate]
+\end{comment}
+
+
+\section{Audible properties}
+\subsection{Heat invariants}
+Let $M$ be a compact Riemannian manifold. Enumerate the spectrum of its Laplace-Beltrami operator as $0 = \lambda_0 < \lambda_1 \leq \lambda_2 \leq \cdots $, where each eigenvalue is repeated according to its multiplicity. Pick an $L^2(M)$-orthonormal basis $\{ \phi_j  \}$ of corresponding eigenfunctions.  The \textbf{heat kernel} of $M$ is the function $K : \R_{>0} \times M \times M$ defined by
+\begin{equation}
+	K(t,x,y) = \sum_{j} e^{-t \lambda_j} \phi_j(x)\phi_j(y).
+\end{equation}
 
 
 
-	\subsection{Scope: Riemannian manifolds}
-	\begin{thm}
-		Volume is an audible property.
-	\end{thm}
-	\begin{proof}
-		[TODO: use asymptotics of $\Theta_M$]
-	\end{proof}
-	\begin{thm}
-		Dimension is an audible property.
-	\end{thm}
-	\begin{proof}
-		[TODO: use asymptotics of $\Theta_M$]
-	\end{proof}
-	\subsection{Scope: smooth, compact Riemannian surfaces}
-	\begin{thm}
-		Suppose $\dim M = 2$ and that $M$ is smooth. The homeomorphism class of
-		$M$ is audible.
-	\end{thm}
-	\begin{proof}
-		[TODO: gauss-bonnet]
-	\end{proof}
-	\begin{thm}
-		Suppose $\dim M = 2$, and that $M$ is smooth. The property of having constant
-		curvature is audible.
-	\end{thm}
-	\begin{proof}
-		[TODO: GCB the metric of constant curvature minimizes topological
+\subsection{Scope: Riemannian manifolds}
+\begin{thm}
+	Volume is an audible property.
+\end{thm}
+\begin{proof}
+	[TODO: use asymptotics of $\Theta_M$]
+\end{proof}
+\begin{thm}
+	Dimension is an audible property.
+\end{thm}
+\begin{proof}
+	[TODO: use asymptotics of $\Theta_M$]
+\end{proof}
+\subsection{Scope: smooth, compact Riemannian surfaces}
+\begin{thm}
+	Suppose $\dim M = 2$ and that $M$ is smooth. The homeomorphism class of
+	$M$ is audible.
+\end{thm}
+\begin{proof}
+	[TODO: gauss-bonnet]
+\end{proof}
+\begin{thm}
+	Suppose $\dim M = 2$, and that $M$ is smooth. The property of having constant
+	curvature is audible.
+\end{thm}
+\begin{proof}
+	[TODO: GCB the metric of constant curvature minimizes topological
 		entropy, which is a spectral invariant.]
-	\end{proof}
-	\subsection{Scope: Riemann surfaces}
-	\begin{thm}
-		Suppose $M$ is a compact Riemann surface. Then arithmeticity is audible.
-	\end{thm}
-	\begin{proof}
-		[TODO: apply Takeuichi]
-	\end{proof}
-	\subsection{Scope: Arithmetic Riemann surfaces}
-	\begin{thm}
-		Suppose $M$ is an arithmetic Riemann surface. The commensurability class
-		of $M$ is audible. \end{thm}
-	\begin{proof}
-		[TODO: apply Reid]
-	\end{proof}
-	% Let $(M,g)$ be a compact, connected Riemannian manifold without boundary. For a function $f\in
-	% C^2(M)$ define the \textbf{laplace-beltrami operator}
-	% \begin{equation}
-		%   \label{eq:laplacian}
-		%   \Delta f = \delta d f,
-		% \end{equation}
-	% where $d : C^1(M) \to C^1 (T^* M)$ is the exterior derivative, and $\delta : C^1
-	% (T^* M) \to C^1(M)$ is its formal adjoint, defined relative to the Riemannian
-	% metric $g$ on $M$. The set of $\lambda \in \cbb$ such that the equation
-	% \begin{equation}
-		%   \label{eq:spec}
-		%   \Delta f  = \lamba f  \quad \text{ for some } f\in L^2(M)
-		% \end{equation}
-	% has a solution is called the \textbf{eigenvalue set} of $M$. The
-	% \textbf{eigenvalue spectrum} of $M$ is the multiset of such $\lambda$, repeated
-	% according to their multiplicty $m_\lambda = \dim \ker (\Delta - \lambda \id)$.
-	% \subsection{Storing spectral data: traces and determinants}
-	\section{The proof}
-	Now let us fix all of data $(k, A , \Ocal, I)$ as in the main theorem. Sequentially applying the
-	theorems of the preceeding section, we may assume that a manifold $M$
-	isospectral to $\Gamma(I) \lmod \Hbb$ is of the form $M = \Lambda \lmod \Hbb$
-	for some subgroup $\Lambda$ of $\Gamma$ with the same index as  $\Gamma(I)$.
-	
-	To prove the theorem, it suffices to show that $\Lambda$ is in fact conjugate
-	(in $A^\times$) to $\Gamma(I)$. To this end, we convert the problem into a local
-	one.
-	
+\end{proof}
+\subsection{Scope: Riemann surfaces}
+\begin{thm}
+	Suppose $M$ is a compact Riemann surface. Then arithmeticity is audible.
+\end{thm}
+\begin{proof}
+	[TODO: apply Takeuichi]
+\end{proof}
+\subsection{Scope: Arithmetic Riemann surfaces}
+\begin{thm}
+	Suppose $M$ is an arithmetic Riemann surface. The commensurability class
+	of $M$ is audible. \end{thm}
+\begin{proof}
+	[TODO: apply Reid]
+\end{proof}
+% Let $(M,g)$ be a compact, connected Riemannian manifold without boundary. For a function $f\in
+% C^2(M)$ define the \textbf{laplace-beltrami operator}
+% \begin{equation}
+%   \label{eq:laplacian}
+%   \Delta f = \delta d f,
+% \end{equation}
+% where $d : C^1(M) \to C^1 (T^* M)$ is the exterior derivative, and $\delta : C^1
+% (T^* M) \to C^1(M)$ is its formal adjoint, defined relative to the Riemannian
+% metric $g$ on $M$. The set of $\lambda \in \cbb$ such that the equation
+% \begin{equation}
+%   \label{eq:spec}
+%   \Delta f  = \lamba f  \quad \text{ for some } f\in L^2(M)
+% \end{equation}
+% has a solution is called the \textbf{eigenvalue set} of $M$. The
+% \textbf{eigenvalue spectrum} of $M$ is the multiset of such $\lambda$, repeated
+% according to their multiplicty $m_\lambda = \dim \ker (\Delta - \lambda \id)$.
+% \subsection{Storing spectral data: traces and determinants}
+\section{The proof}
+Now let us fix all of data $(k, A , \Ocal, I)$ as in the main theorem. Sequentially applying the
+theorems of the preceeding section, we may assume that a manifold $M$
+isospectral to $\Gamma(I) \lmod \Hbb$ is of the form $M = \Lambda \lmod \Hbb$
+for some subgroup $\Lambda$ of $\Gamma$ with the same index as  $\Gamma(I)$.
+
+To prove the theorem, it suffices to show that $\Lambda$ is in fact conjugate
+(in $A^\times$) to $\Gamma(I)$. To this end, we convert the problem into a local
+one.
+
 	[TODO: get to the prime power setting].
-	
-	
-	
-	\section{Arithmetic Subgroups of algebraic groups}
-	A matrix group $G \leq \GL(n,\Cbb)$ is said to be \textbf{algebraic} if it consists of all invertible matrices whose coefficients annihilate some set of polynomials on $M(n,\Cbb)$. If this set of polynomials can be taken with coefficients in some subring $R \leq \Cbb$, then this group is said to be \textbf{defined over} R.  
-	
-	
-	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\subsection{Base case}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	Let $X$ denote the \textbf{Bruhat-Tits tree} for $\SL_2(k)$. The vertices of $X$ are homothety classes of lattices in $k^2$, and two vertices $x,y \in X$ are adjacent if there exist lattices $L_x \in x$ and $L_y \in y$ so that $L_y \leq L_x$ and $L_y/ \pi L_x$ is a $\kfrak$-line in $L_x / \pi L_x \approx \kfrak^2$. We write $d: X \times X \to \Zbb_{\geq 0}$ for the graph-theoretic distance function on $X$.
-	
-	For a lattice $L \leq k^2$, we write $[L]$ for the vertex in $X$ corresponding to $L$. For a subset $A \subset X$ of vertices, write
-	\begin{align*}
-		B(A,r) & = \{ y \in X: d(x,y)\leq  r,\, \forall x \in A\} \\
-		S(A,r) & = \{ y \in X: d(x,y) = r \, \forall x \in A\}    
-	\end{align*}
-	for the ball and sphere about $A$ of radius $r$, respectively.
-	
-	A \textbf{geodesic} is a non-backtracking path in $X$.  The length of a geodesic $c$ is $\sup_{x,y \in c} d(x,y) \in \Zbb_{\geq 0} \cup \{\infty\}$. For vertices $x,y
+
+
+
+\section{Arithmetic Subgroups of algebraic groups}
+A matrix group $G \leq \GL(n,\Cbb)$ is said to be \textbf{algebraic} if it consists of all invertible matrices whose coefficients annihilate some set of polynomials on $M(n,\Cbb)$. If this set of polynomials can be taken with coefficients in some subring $R \leq \Cbb$, then this group is said to be \textbf{defined over} R.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Base case}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Let $X$ denote the \textbf{Bruhat-Tits tree} for $\SL_2(k)$. The vertices of $X$ are homothety classes of lattices in $k^2$, and two vertices $x,y \in X$ are adjacent if there exist lattices $L_x \in x$ and $L_y \in y$ so that $L_y \leq L_x$ and $L_y/ \pi L_x$ is a $\kfrak$-line in $L_x / \pi L_x \approx \kfrak^2$. We write $d: X \times X \to \Zbb_{\geq 0}$ for the graph-theoretic distance function on $X$.
+
+For a lattice $L \leq k^2$, we write $[L]$ for the vertex in $X$ corresponding to $L$. For a subset $A \subset X$ of vertices, write
+\begin{align*}
+	B(A,r) & = \{ y \in X: d(x,y)\leq  r,\, \forall x \in A\} \\
+	S(A,r) & = \{ y \in X: d(x,y) = r \, \forall x \in A\}
+\end{align*}
+for the ball and sphere about $A$ of radius $r$, respectively.
+
+A \textbf{geodesic} is a non-backtracking path in $X$.  The length of a geodesic $c$ is $\sup_{x,y \in c} d(x,y) \in \Zbb_{\geq 0} \cup \{\infty\}$. For vertices $x,y
 	\in X$ write $[x,y]$ for the unique geodesic starting at $x$ and finishing at $y$.
-	
-	For a subset $A \subset X$ we say that a vertex $x\in A$ is an {\bf interior point} of $A$ and write $x\in A^\inte$ if $B(x,1) \subset A$. Otherwise we say $x$ is a {\bf boundary point} of $A$ and write $x\in \partial A$. We say $x$ is an \textbf{extremal point} in $A$ if either: $A=\{x\}$ or $\card(S(x,1) \cap A) = 1$.
-	
-	Let $\mathcal{G}= \SL_{2}$, and write  $G=\mathcal{G}(k)$  and $K= \mathcal{G}(R)$. $G$ acts on the set of lattices in $k^2$, and this action passes to one on $X$.  For a subgroup $H \leq G$, we write $X^H$ for its fixed point set on $X$. For a subset $A \subset X$,  and a subgroup $H\leq G$, we write $H_A$ for its (pointwise) stabilizer in $H$.
-	
-	% \paragraph{A homothety section} Fix once and for all a root vertex $x_o \in X$, and a representative lattice $L_o \in x_o$. With this choice, we may associate to each vertex $x\in X$ a unique lattice $L_x \leq L_o$ satisfying the property:  $\pi^{d(x,x_o)} L_o \leq L_x \leq L_o$.
-	
-	For each vertex $x$ and integer $n\geq 1$, we have a $R/\Pcal^{n}$-representation $\rho_{x} : G_{x} \to \SL(L_x / \pi^{n} L_{x}) \approx (R / \Pcal^{n})$
-	
-	Upon picking a basis $e_{1},e_{2}$ for $L_{o}$ we may identify $G_{x_{o}}$ with $\SL_{2}(R)$. The action of $\SL_{2}(k)$ on $X$ has exactly two orbits. Letting $\alpha = \tbt{1}{0}{0}{p}$, the set $\{x_{o}, \alpha x_{o}\}$ constitutes a fundamental domain for this action. The respective stabilizers $G_{x_{o}}$ and $G_{\alpha x_{o}} = \alpha G_{x_{o}} \alpha^{\inv }$ are representatives of the two conjugacy classes of maximal compact subgroups.
-	The following lemma is standard:
-	\begin{lemma}\label{lem:nball}
-		For a vertex $x \in X$, there is a $G_{x}$ equivariant bijection between $n$-sphere $S(x,n)$ and cyclic $R/\Pcal^{n}$-submodules of $L_{x} / \pi^{n} L_{x}$. Using a basis for $L_{x}$, the latter set is naturally identified with $\Pbb^{1}(R/\Pcal^{n})$
-	\end{lemma}
-	
-	\begin{lemma}\label{lem:XH}
-		Let $H \leq G$ be a subgroup such that $X^{H}$ is nonempty.
-		\begin{enumerate}
-			\item\label{item:XH1} For a subgroup $H\leq G$ and a vertex $x\in X^{H}$, the bijection in \cref{lem:nball} restricts to one between $H$-fixed vertices $X^{H}\cap S(x,n)$, and  $H$-stable $R/\Pcal^{n}$-submodules of $L_{x}/\pi^{n}L_{x}$.
-			\item\label{item:XH2} For $x\in X^{H}$, one has $B(x,n) \leq X^{H}$ if and only if $H$ acts by scalars under $\rho_{x,n}$.
-			\item\label{item:XH3} A vertex $x$ is a non-extremal boundary point of $X^{H}$ if and only if $\rho_{x,1}$ decomposes as a direct sum of (distinct) nontrivial characters.
-			\item\label{item:XH4} A vertex $x$ is extremal in $X^{H}$ if and only if the $\mathfrak{k}$-representation $\rho_{x,1}$ is reducible but indecomposable.
-		\end{enumerate}
-	\end{lemma}
-	\begin{proof}
-		\cref{item:XH1} and \cref{item:XH2} follow immediately from the definitions and the equivariance in \cref{lem:nball}.
-		
-		\cref{item:XH3}: Suppose $x$ is a nonextremal boundary point of $X^{H}$. There are then exactly two vertices $y,z \in X^{H}$ adjacent to $x$. Under the identification of $S(x,1)$ with $\Pbb^{1}(\kfrak)$, we see that $H$ must act as a group of hyperbolic transformations with common fixed points $y,z$.
-		
-		\cref{item:XH4} Suppose $x$ is extremal in $X^{H}$. Then $x$ has exactly one neighbor in $X^{H}$. Under the identification of $S(x,1)$ with $\Pbb^{1}(\kfrak)$, we find that $H$ must act as a group of parabolic transformations.
-	\end{proof}
-	
-	
-	\begin{prop}\label{prop:ribetgl2}[ref ribetGL2]
-		Let $g\in \SL_{2}(R)$ and $x \in \partial X^{\langle g \rangle }$. For an integer $n>0$, the following are equivalent.
-		\begin{enumerate}
-			\item\label{item:ribet1} The characteristic polynomial $p_{g}(T)$ is reducible mod $\Pcal^{n}$.
-			%\item $\tr(g)^{2}-4$ is a square modulo $\Pcal^{n}$.
-			\item\label{item:ribet2} There exists a geodesic of length $n$ based at $x$ and contained in $X^{\langle g \rangle}$.
-		\end{enumerate}
-	\end{prop}
-	\begin{proof}
-		Assuming \cref{item:ribet1}, pick $\alpha,\beta \in R$ such that $p_{g}(T) \equiv (T-\alpha)(T-\beta)$ mod $\Pcal^{n}$. Then since $x$ is a boundary point, $g$ does not act as a scalar on $L_{x}/\pi L_{x}$. Consequently, $L_{x}/\pi L_{x}$ is a cyclic $R[g]$ module. Pick a vector $v \in L_{x}$ such that $\{v, gv\}$ projects to a basis of $L_{x}/\pi L_{x}$. By Nakayama's lemma, $\{v,gv\}$ projects to a basis of $L_{x}/\pi^{n}L_{x}$.
-		
-		Let $w = (g-\beta)v$. Then, compute modulo $\Pcal^{n}$:
-		\begin{align*}
-			g w & \equiv (g^{2} -g \beta ) v                            \\
-			& \equiv ((\alpha +\beta )g -\alpha\beta g - g\beta  )v \\
-			& \equiv \alpha(g-\beta )v                              \\
-			& \equiv \alpha w                                       
-		\end{align*}
-		Thus, the cyclic $R/\Pcal^{n}$-submodule of $L_{x}/\pi^{n}L_{x}$ spanned by $w$ is $g$ stable. The corresponding vertex lies in $X^{\langle g \rangle}$ and is at distance $n$ from $x$ as desired.
-		
-		Now assume that $y \in X^{\langle g \rangle }$ has $d(x,y)=n$. Pick a lattice
-		$L_y$ representing $y$ with $\pi^n L_x < L_y <L_x$. Then $L_y$ projects to a
-		$g$-stable free rank 1 $R/\Pcal^n$ submodule of $L_x / \pi^n L_y$ on which $g$
-		must act by an element $\alpha \in (R/\Pcal^n)^\times$. It follows that
-		$(t-\alpha)$ divides $p_g(t)$ modulo $\Pcal^n$, proving reducibility.
-	\end{proof}
-	
-	
-	\begin{prop}
-		Let $g\in \SL_{2}(R)$. For an integer $n >0$, the following are equivalent:
-		\begin{enumerate}
-			\item $\tr(g) = \pm 2 \mod \Pcal^{2n}$
-			\item There is a point $x \in X^{g}$ such that $B(x,n)\subset X^{g}$.
-		\end{enumerate}
-	\end{prop}
-	\begin{proof}
-		The argument is by induction on $n$.
-		
-		Base case: suppose $\tr(g)=2 \pm 2 \mod \Pcal^{2}$. By \cref{prop:ribetgl2} there is a geodesic $\gamma$ of length $2$ contained in $X^{g}$.  Conjugating by an element of $\GL_{2}(k)$ if needed, we may assume that $\gamma$ takes the form $(y, x_{o},z)$. Since $g$ has two fixed points in the $1$ neighborhood of $x_{o}$, it acts semisimply on $L_{x_o}/\pi L_{x_{o}}$ say with eigenvalues $\alpha,\beta \in R/\Pcal$. These eigenvalues must satisfy $\alpha + \beta =\pm 2 \mod \Pcal$ and $\alpha \beta = 1  \mod \Pcal$, but then $g$ acts as $\pm \id$ and the claim follows.
-		
-		Suppose now that for all $k<n$ that $\tr(g) = \pm 2 \mod \Pcal^{2k}$ iff and only if $g$ fixes some $k$ ball in $X$. Let $\tr(g) = \pm 2 \mod \Pcal^{2n}$. Applying \cref{prop:ribetgl2}  as before, there is some geodesic $\gamma$ passing through $x_{o}$ of length $2n$ which is fixed pointwise by $g$.
-		
-		
-	\end{proof}
-	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\subsection{Some projective geometry}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	Let $F$ be a field, let $V$ be a two dimensional vectorspace over $F$. The \textbf{projective line} over $F$ is the set of $F$-lines in $V$. There are several useful coordinate systems that one can put on $\Pbb^{1}(F)$.
-	
-	The first system requires no choices: the association of a nonzero vector $v$ with the $F$-line that it spans yeilds a surjection $V\setminus \{0\} \to \Pbb^{1}(F)$. The multiplicative group $F^{\times}$ acts transitively on the fibers, yeilding our first identification: $\Pbb^{1}(F) = F^{\times}\rmod (V - \{0\})$
-	
-	A bijection $\Pbb^{1}(F) \to \Pbb^{1}(F)$ is a \textbf{projective transformation} if it lifts to a linear automorphism of $V$. Write $G'$ for the group of projective transformations.
-	
-	
-	\begin{lemma}
-		A nonidentity projective transformation can have at most $2$ fixed points on $\Pbb^{1}(F)$
-	\end{lemma}
-	\begin{proof}
-		The points in $\Pbb^{1}(F)$ fixed by $g$ correspond to eigenlines of its lifts to $\GL(V)$. Since $V$ is two dimensional, it supports at most two linearly independent lines.
-	\end{proof}
-	We classify nonidentity transformations accordingly:
-	\begin{itemize}
-		\item say $g$ is \textbf{hyperbolic} if it fixes two points on $\Pbb^{1}(F)$
-		\item say $g$ is \textbf{parabolic} if it fixes exactly one point on $\Pbb^{1}(F)$
-		\item say $g$ is \textbf{elliptic} if it fixes no points in $\Pbb^{1}(F)$.
-	\end{itemize}
-	The following lemma demonstrates how to determine the category of a projective transformation in terms of its lifts. For a linear transformation $\tilde{g} \in \GL(V)$ write $p_{\tilde{g}}(T) = \det(\tilde{g}-T \id) \in F[T]$ for its characteristic polynomial and $\delta(\tilde{g}) = \tr(g)^{2} -4 \det(g)$ for its discriminant.
-	\begin{lemma}
-		Let $g$ be a nonidentity projective transformation.
-		\begin{itemize}
-			\item $g$ is hyperbolic if and only if any lift $\tilde{g}$ is semisimple and diagonalizable over $F$, for any lift $\tilde{g}$. This is so  if and only if $\delta(\tilde{g})  \in (F^{\times})^{2}$.
-			\item $g$ is parabolic if and only if $\tilde{g}$ is not semisimple for any lift $\tilde{g}$. This is so if and only if $\delta(\tilde{g})= 0$.
-			\item $g$ is parabolic if and only if $\tilde{g}$ is not semisimple for any lift $\tilde{g}$. This is so if and only if $\delta(\tilde{g}) \in F^\times \setminus (F^{\times})^{2}$.
-		\end{itemize}
-	\end{lemma}
-	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% \section{another attempt}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% The main theorem of this section is
-	% \begin{thm}
-		% 	Let $G \leq	\SL_2(R)$ be a subgroup satisfying $\tr(g)^2 - 4 \in
-		% 	\Pcal^{2n}$ for all $g\in G$. Then there exists a $g\in \GL_2(k)$ such that
-		% 	$gGg^\inv \leq K(n) = \{g \in \SL_2(R) : g - \id \in \Pcal^n
-		% 	M_2(R)\}$.
-		% \end{thm}
-	
-	
-	
-	% \begin{prop}
-		% 	For a subgroup $H \subseteq \GL_2(k)$, fix a vertex $x\in X^G$ and let $L_x \in
-		% 	x$ be a representative lattice. There is a bijection between
-		% 	\begin{enumerate}
-			% 		\item Vertices $x\in X^G$ with $d(x,y)=n$, and
-			% 		\item $G$-stable, rank-1, free $R/\Pcal^n$ submodules of $L_x / \pi^n
-			% 			L_x$.
-			% 	\end{enumerate}
-		% 	Given a point $y\in X^G$ with $d(x,y)=n$, the corresponding submodule of $L_x
-		% 	/ \pi^n L_x$ is given by $L_y / \pi^n L_x$ where $L_y$ is chosen so that
-		% 	$\pi^n L_x < L_y < L_x$.
-		% \end{prop}
-	
-	% \begin{prop}
-		% 	For a subgroup $G \subseteq \GL_2(K)$, fix a vertex $x\in X^G$ and a representative $G$-stable lattice $L_x \in x$. Then $G$ acts on $L_x /\pi^r L_x$ by scalars if and only if $B(x,r) \subseteq X^G$.
-		% \end{prop}
-	
-	
-	% For an element $g\in M_2(k)$, we write $p_g(t)= \det(g -t \id) \in k[t]$ for its characteristic polynomial.
-	
-	% \subsection{Elementwise results}
-	% 	Our first lemma characterizes those elements of $\GL_2(k)$ which fix some vertex. \begin{lemma}
-		% 	Let $g\in \GL_2(k)$. Then $X^g$ is nonempty if and only $p_g(t) \in R[t]$.
-		% \end{lemma}
-	% 	\begin{proof}
-		% 			The $R$ module $R[g]$ is finitely generated if and only if $p_g(t) \in R[t]$. In this case, $R[g]$ is a a $g$ stable lattice in $k[g] \approx k^2$.
-		% 	\end{proof}
-	
-	
-	% \begin{cor}
-		%   Suppose $g,h \in \GL_2(k)$ satisfy $X^g, X^h \neq \varnothing $. Then $X^{g} \cap X^{h} = X^{\langle g,h\rangle} \neq \varnothing $ if and only if $p_{gh}(t) \in R[t]$.
-		% \end{cor}
-	% \begin{cor}
-		%   For a subgroup $G\leq \GL_2(k)$, $X^G\neq \varnothing $ if and only if $p_g(t) \in R[t]$ for all $g\in G$.
-		% \end{cor}
-	
-	
-	
-	% The next lemma characterizes elements $g\in \GL_2(k)$ for which fix a geodesic of length $n$.
-	% \begin{lemma}
-		%    Let $g\in \GL_2(k)$ and $x \in \partial X^g$ be an boundary point. Then there exists a vertex $y \in X^g$ with $d(x,y) = n $ if and only if $p_g(t)$ is reducible mod $\Pcal^n$.
-		% \end{lemma}
-	% 	\begin{proof}
-		% 		Let $\alpha,\beta \in R$ satisfying $p_g(t) \equiv (t - \alpha)(t-\beta) \mod \Pcal^n$. Since $x$ is a boundary point of $X^g$, the action of $g$ is nonscalar on $L_x/\pi L_x$. Thus, we may pick a vector $u \in L_x$ such that $\{u,gu\}$ projects to a basis of $L_x/\pi L_x$. By Nakayama's lemma, we may assume that $\{u,gu\}$ projects to an $R/\Pcal^n$-basis for $L_x / \pi^n L_x$.
-		
-		% 		By the cayley-hamilton theorem, the vector $v = (g-\beta ) u$ satisfies $g v \equiv \alpha v \mod \Pcal^n$. Let $L = R v + \pi^n L_x$. Then the vertex $y=[L]$ lies in $X^g$ and satisfies $d(x,y)=n$ as desired.
-		% 	\end{proof}
+
+For a subset $A \subset X$ we say that a vertex $x\in A$ is an {\bf interior point} of $A$ and write $x\in A^\inte$ if $B(x,1) \subset A$. Otherwise we say $x$ is a {\bf boundary point} of $A$ and write $x\in \partial A$. We say $x$ is an \textbf{extremal point} in $A$ if either: $A=\{x\}$ or $\card(S(x,1) \cap A) = 1$.
+
+Let $\mathcal{G}= \SL_{2}$, and write  $G=\mathcal{G}(k)$  and $K= \mathcal{G}(R)$. $G$ acts on the set of lattices in $k^2$, and this action passes to one on $X$.  For a subgroup $H \leq G$, we write $X^H$ for its fixed point set on $X$. For a subset $A \subset X$,  and a subgroup $H\leq G$, we write $H_A$ for its (pointwise) stabilizer in $H$.
+
+% \paragraph{A homothety section} Fix once and for all a root vertex $x_o \in X$, and a representative lattice $L_o \in x_o$. With this choice, we may associate to each vertex $x\in X$ a unique lattice $L_x \leq L_o$ satisfying the property:  $\pi^{d(x,x_o)} L_o \leq L_x \leq L_o$.
+
+For each vertex $x$ and integer $n\geq 1$, we have a $R/\Pcal^{n}$-representation $\rho_{x} : G_{x} \to \SL(L_x / \pi^{n} L_{x}) \approx (R / \Pcal^{n})$
+
+Upon picking a basis $e_{1},e_{2}$ for $L_{o}$ we may identify $G_{x_{o}}$ with $\SL_{2}(R)$. The action of $\SL_{2}(k)$ on $X$ has exactly two orbits. Letting $\alpha = \tbt{1}{0}{0}{p}$, the set $\{x_{o}, \alpha x_{o}\}$ constitutes a fundamental domain for this action. The respective stabilizers $G_{x_{o}}$ and $G_{\alpha x_{o}} = \alpha G_{x_{o}} \alpha^{\inv }$ are representatives of the two conjugacy classes of maximal compact subgroups.
+The following lemma is standard:
+\begin{lemma}\label{lem:nball}
+	For a vertex $x \in X$, there is a $G_{x}$ equivariant bijection between $n$-sphere $S(x,n)$ and cyclic $R/\Pcal^{n}$-submodules of $L_{x} / \pi^{n} L_{x}$. Using a basis for $L_{x}$, the latter set is naturally identified with $\Pbb^{1}(R/\Pcal^{n})$
+\end{lemma}
+
+\begin{lemma}\label{lem:XH}
+	Let $H \leq G$ be a subgroup such that $X^{H}$ is nonempty.
+	\begin{enumerate}
+		\item\label{item:XH1} For a subgroup $H\leq G$ and a vertex $x\in X^{H}$, the bijection in \cref{lem:nball} restricts to one between $H$-fixed vertices $X^{H}\cap S(x,n)$, and  $H$-stable $R/\Pcal^{n}$-submodules of $L_{x}/\pi^{n}L_{x}$.
+		\item\label{item:XH2} For $x\in X^{H}$, one has $B(x,n) \leq X^{H}$ if and only if $H$ acts by scalars under $\rho_{x,n}$.
+		\item\label{item:XH3} A vertex $x$ is a non-extremal boundary point of $X^{H}$ if and only if $\rho_{x,1}$ decomposes as a direct sum of (distinct) nontrivial characters.
+		\item\label{item:XH4} A vertex $x$ is extremal in $X^{H}$ if and only if the $\mathfrak{k}$-representation $\rho_{x,1}$ is reducible but indecomposable.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\cref{item:XH1} and \cref{item:XH2} follow immediately from the definitions and the equivariance in \cref{lem:nball}.
+
+	\cref{item:XH3}: Suppose $x$ is a nonextremal boundary point of $X^{H}$. There are then exactly two vertices $y,z \in X^{H}$ adjacent to $x$. Under the identification of $S(x,1)$ with $\Pbb^{1}(\kfrak)$, we see that $H$ must act as a group of hyperbolic transformations with common fixed points $y,z$.
+
+	\cref{item:XH4} Suppose $x$ is extremal in $X^{H}$. Then $x$ has exactly one neighbor in $X^{H}$. Under the identification of $S(x,1)$ with $\Pbb^{1}(\kfrak)$, we find that $H$ must act as a group of parabolic transformations.
+\end{proof}
+
+
+\begin{prop}\label{prop:ribetgl2}[ref ribetGL2]
+	Let $g\in \SL_{2}(R)$ and $x \in \partial X^{\langle g \rangle }$. For an integer $n>0$, the following are equivalent.
+	\begin{enumerate}
+		\item\label{item:ribet1} The characteristic polynomial $p_{g}(T)$ is reducible mod $\Pcal^{n}$.
+		%\item $\tr(g)^{2}-4$ is a square modulo $\Pcal^{n}$.
+		\item\label{item:ribet2} There exists a geodesic of length $n$ based at $x$ and contained in $X^{\langle g \rangle}$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Assuming \cref{item:ribet1}, pick $\alpha,\beta \in R$ such that $p_{g}(T) \equiv (T-\alpha)(T-\beta)$ mod $\Pcal^{n}$. Then since $x$ is a boundary point, $g$ does not act as a scalar on $L_{x}/\pi L_{x}$. Consequently, $L_{x}/\pi L_{x}$ is a cyclic $R[g]$ module. Pick a vector $v \in L_{x}$ such that $\{v, gv\}$ projects to a basis of $L_{x}/\pi L_{x}$. By Nakayama's lemma, $\{v,gv\}$ projects to a basis of $L_{x}/\pi^{n}L_{x}$.
+
+	Let $w = (g-\beta)v$. Then, compute modulo $\Pcal^{n}$:
+	\begin{align*}
+		g w & \equiv (g^{2} -g \beta ) v                            \\
+		    & \equiv ((\alpha +\beta )g -\alpha\beta g - g\beta  )v \\
+		    & \equiv \alpha(g-\beta )v                              \\
+		    & \equiv \alpha w
+	\end{align*}
+	Thus, the cyclic $R/\Pcal^{n}$-submodule of $L_{x}/\pi^{n}L_{x}$ spanned by $w$ is $g$ stable. The corresponding vertex lies in $X^{\langle g \rangle}$ and is at distance $n$ from $x$ as desired.
+
+	Now assume that $y \in X^{\langle g \rangle }$ has $d(x,y)=n$. Pick a lattice
+	$L_y$ representing $y$ with $\pi^n L_x < L_y <L_x$. Then $L_y$ projects to a
+	$g$-stable free rank 1 $R/\Pcal^n$ submodule of $L_x / \pi^n L_y$ on which $g$
+	must act by an element $\alpha \in (R/\Pcal^n)^\times$. It follows that
+	$(t-\alpha)$ divides $p_g(t)$ modulo $\Pcal^n$, proving reducibility.
+\end{proof}
+
+
+\begin{prop}
+	Let $g\in \SL_{2}(R)$. For an integer $n >0$, the following are equivalent:
+	\begin{enumerate}
+		\item $\tr(g) = \pm 2 \mod \Pcal^{2n}$
+		\item There is a point $x \in X^{g}$ such that $B(x,n)\subset X^{g}$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	The argument is by induction on $n$.
+
+	Base case: suppose $\tr(g)=2 \pm 2 \mod \Pcal^{2}$. By \cref{prop:ribetgl2} there is a geodesic $\gamma$ of length $2$ contained in $X^{g}$.  Conjugating by an element of $\GL_{2}(k)$ if needed, we may assume that $\gamma$ takes the form $(y, x_{o},z)$. Since $g$ has two fixed points in the $1$ neighborhood of $x_{o}$, it acts semisimply on $L_{x_o}/\pi L_{x_{o}}$ say with eigenvalues $\alpha,\beta \in R/\Pcal$. These eigenvalues must satisfy $\alpha + \beta =\pm 2 \mod \Pcal$ and $\alpha \beta = 1  \mod \Pcal$, but then $g$ acts as $\pm \id$ and the claim follows.
+
+	Suppose now that for all $k<n$ that $\tr(g) = \pm 2 \mod \Pcal^{2k}$ iff and only if $g$ fixes some $k$ ball in $X$. Let $\tr(g) = \pm 2 \mod \Pcal^{2n}$. Applying \cref{prop:ribetgl2}  as before, there is some geodesic $\gamma$ passing through $x_{o}$ of length $2n$ which is fixed pointwise by $g$.
+
+
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Some projective geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Let $F$ be a field, let $V$ be a two dimensional vectorspace over $F$. The \textbf{projective line} over $F$ is the set of $F$-lines in $V$. There are several useful coordinate systems that one can put on $\Pbb^{1}(F)$.
+
+The first system requires no choices: the association of a nonzero vector $v$ with the $F$-line that it spans yeilds a surjection $V\setminus \{0\} \to \Pbb^{1}(F)$. The multiplicative group $F^{\times}$ acts transitively on the fibers, yeilding our first identification: $\Pbb^{1}(F) = F^{\times}\rmod (V - \{0\})$
+
+A bijection $\Pbb^{1}(F) \to \Pbb^{1}(F)$ is a \textbf{projective transformation} if it lifts to a linear automorphism of $V$. Write $G'$ for the group of projective transformations.
+
 
 \begin{lemma}
-	For a subgroup $H \leq \SL(2,k)$, suppose $X(H)$ contains a geodesic segment $[y,z]$ of length two. Denote its midpoint $x$. Then there exists a character $\chi : H \to \mathfrak{f}^{\times}$ such that $\rho_{x} \approx \chi \oplus \chi^{\inv}$. 
-\end{lemma}	
-	
+	A nonidentity projective transformation can have at most $2$ fixed points on $\Pbb^{1}(F)$
+\end{lemma}
+\begin{proof}
+	The points in $\Pbb^{1}(F)$ fixed by $g$ correspond to eigenlines of its lifts to $\GL(V)$. Since $V$ is two dimensional, it supports at most two linearly independent lines.
+\end{proof}
+We classify nonidentity transformations accordingly:
+\begin{itemize}
+	\item say $g$ is \textbf{hyperbolic} if it fixes two points on $\Pbb^{1}(F)$
+	\item say $g$ is \textbf{parabolic} if it fixes exactly one point on $\Pbb^{1}(F)$
+	\item say $g$ is \textbf{elliptic} if it fixes no points in $\Pbb^{1}(F)$.
+\end{itemize}
+The following lemma demonstrates how to determine the category of a projective transformation in terms of its lifts. For a linear transformation $\tilde{g} \in \GL(V)$ write $p_{\tilde{g}}(T) = \det(\tilde{g}-T \id) \in F[T]$ for its characteristic polynomial and $\delta(\tilde{g}) = \tr(g)^{2} -4 \det(g)$ for its discriminant.
+\begin{lemma}
+	Let $g$ be a nonidentity projective transformation.
+	\begin{itemize}
+		\item $g$ is hyperbolic if and only if any lift $\tilde{g}$ is semisimple and diagonalizable over $F$, for any lift $\tilde{g}$. This is so  if and only if $\delta(\tilde{g})  \in (F^{\times})^{2}$.
+		\item $g$ is parabolic if and only if $\tilde{g}$ is not semisimple for any lift $\tilde{g}$. This is so if and only if $\delta(\tilde{g})= 0$.
+		\item $g$ is parabolic if and only if $\tilde{g}$ is not semisimple for any lift $\tilde{g}$. This is so if and only if $\delta(\tilde{g}) \in F^\times \setminus (F^{\times})^{2}$.
+	\end{itemize}
+\end{lemma}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{another attempt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main theorem of this section is
+% \begin{thm}
+% 	Let $G \leq	\SL_2(R)$ be a subgroup satisfying $\tr(g)^2 - 4 \in
+% 	\Pcal^{2n}$ for all $g\in G$. Then there exists a $g\in \GL_2(k)$ such that
+% 	$gGg^\inv \leq K(n) = \{g \in \SL_2(R) : g - \id \in \Pcal^n
+% 	M_2(R)\}$.
+% \end{thm}
+
+
+
+% \begin{prop}
+% 	For a subgroup $H \subseteq \GL_2(k)$, fix a vertex $x\in X^G$ and let $L_x \in
+% 	x$ be a representative lattice. There is a bijection between
+% 	\begin{enumerate}
+% 		\item Vertices $x\in X^G$ with $d(x,y)=n$, and
+% 		\item $G$-stable, rank-1, free $R/\Pcal^n$ submodules of $L_x / \pi^n
+% 			L_x$.
+% 	\end{enumerate}
+% 	Given a point $y\in X^G$ with $d(x,y)=n$, the corresponding submodule of $L_x
+% 	/ \pi^n L_x$ is given by $L_y / \pi^n L_x$ where $L_y$ is chosen so that
+% 	$\pi^n L_x < L_y < L_x$.
+% \end{prop}
+
+% \begin{prop}
+% 	For a subgroup $G \subseteq \GL_2(K)$, fix a vertex $x\in X^G$ and a representative $G$-stable lattice $L_x \in x$. Then $G$ acts on $L_x /\pi^r L_x$ by scalars if and only if $B(x,r) \subseteq X^G$.
+% \end{prop}
+
+
+% For an element $g\in M_2(k)$, we write $p_g(t)= \det(g -t \id) \in k[t]$ for its characteristic polynomial.
+
+% \subsection{Elementwise results}
+% 	Our first lemma characterizes those elements of $\GL_2(k)$ which fix some vertex. \begin{lemma}
+% 	Let $g\in \GL_2(k)$. Then $X^g$ is nonempty if and only $p_g(t) \in R[t]$.
+% \end{lemma}
+% 	\begin{proof}
+% 			The $R$ module $R[g]$ is finitely generated if and only if $p_g(t) \in R[t]$. In this case, $R[g]$ is a a $g$ stable lattice in $k[g] \approx k^2$.
+% 	\end{proof}
+
+
+% \begin{cor}
+%   Suppose $g,h \in \GL_2(k)$ satisfy $X^g, X^h \neq \varnothing $. Then $X^{g} \cap X^{h} = X^{\langle g,h\rangle} \neq \varnothing $ if and only if $p_{gh}(t) \in R[t]$.
+% \end{cor}
+% \begin{cor}
+%   For a subgroup $G\leq \GL_2(k)$, $X^G\neq \varnothing $ if and only if $p_g(t) \in R[t]$ for all $g\in G$.
+% \end{cor}
+
+
+
+% The next lemma characterizes elements $g\in \GL_2(k)$ for which fix a geodesic of length $n$.
+% \begin{lemma}
+%    Let $g\in \GL_2(k)$ and $x \in \partial X^g$ be an boundary point. Then there exists a vertex $y \in X^g$ with $d(x,y) = n $ if and only if $p_g(t)$ is reducible mod $\Pcal^n$.
+% \end{lemma}
+% 	\begin{proof}
+% 		Let $\alpha,\beta \in R$ satisfying $p_g(t) \equiv (t - \alpha)(t-\beta) \mod \Pcal^n$. Since $x$ is a boundary point of $X^g$, the action of $g$ is nonscalar on $L_x/\pi L_x$. Thus, we may pick a vector $u \in L_x$ such that $\{u,gu\}$ projects to a basis of $L_x/\pi L_x$. By Nakayama's lemma, we may assume that $\{u,gu\}$ projects to an $R/\Pcal^n$-basis for $L_x / \pi^n L_x$.
+
+% 		By the cayley-hamilton theorem, the vector $v = (g-\beta ) u$ satisfies $g v \equiv \alpha v \mod \Pcal^n$. Let $L = R v + \pi^n L_x$. Then the vertex $y=[L]$ lies in $X^g$ and satisfies $d(x,y)=n$ as desired.
+% 	\end{proof}
+
+\begin{lemma}
+	For a subgroup $H \leq \SL(2,k)$, suppose $X(H)$ contains a geodesic segment $[y,z]$ of length two. Denote its midpoint $x$. Then there exists a character $\chi : H \to \mathfrak{f}^{\times}$ such that $\rho_{x} \approx \chi \oplus \chi^{\inv}$.
+\end{lemma}
+
 \end{document}
