@@ -1,0 +1,83 @@
+\ifdefined\DeclarePrefChars\DeclarePrefChars{'’-}\else\fi
+\begin{thebibliography}{10}
+
+\bibitem{arapura2019}
+D.~Arapura, J.~Katz, D.~B. McReynolds, and P.~Solapurkar.
+\newblock Integral gassman equivalence of algebraic and hyperbolic manifolds.
+\newblock {\em Mathematische Zeitschrift}, 291(1-2):179--194.
+
+\bibitem{borel1989}
+Armand Borel and Gopal Prasad.
+\newblock Finiteness theorems for discrete subgroups of bounded covolume in
+  semi-simple groups.
+\newblock {\em Inst. Hautes \'Etudes Sci. Publ. Math.}, (69):119--171.
+
+\bibitem{funakura1978}
+Takeo Funakura.
+\newblock On artin theorem of induced characters.
+\newblock {\em Comment, math. Univ. St. Pauli}, 27(1):51--58.
+
+\bibitem{gassmann1926}
+Fritz Gassmann.
+\newblock Bemerkungen zu der vorstehenden arbeit von hurwitz (comments on the
+  article \"uber beziehungen zwischen den primidealen eines algebraischen
+  k\"orpers und den substitutionen seiner gruppe by hurwitz) math.
+\newblock {\em Z}, 25:655--665.
+
+\bibitem{huber1959}
+Heinz Huber.
+\newblock Zur analytischen theorie hyperbolischer raumformen und
+  bewegungsgruppen.
+\newblock {\em Mathematische Annalen}, 138(1):1--26.
+
+\bibitem{margulis1969}
+Grigorii~Aleksandrovich Margulis.
+\newblock Applications of ergodic theory to the investigation of manifolds of
+  negative curvature.
+\newblock {\em Funktsional'nyi Analiz i ego Prilozheniya}, 3(4):89--90.
+
+\bibitem{milnor1964}
+J.~Milnor.
+\newblock Eigenvalues of the laplace operator on certain manifolds.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 51(4):542.
+
+\bibitem{perlis1977}
+Robert Perlis.
+\newblock On the equation $\zeta_k(s) = \zeta_{k'} (s)$.
+\newblock {\em Journal of Number Theory}, 9(3):342--360, 1977.
+
+\bibitem{prasad2017}
+Dipendra Prasad.
+\newblock A refined notion of arithmetically equivalent number fields, and
+  curves with isomorphic jacobians.
+\newblock {\em Advances in Mathematics}, 312:198--208.
+
+\bibitem{sarnak1981}
+Peter Sarnak.
+\newblock Asymptotic behavior of periodic orbits of the horocycle flow and
+  eisenstein series.
+\newblock {\em Communications on Pure and Applied Mathematics}, 34(6):719--739.
+
+\bibitem{scott1993integral}
+L~Scott.
+\newblock Integral equivalence of permutation representations.
+\newblock {\em Group theory (Granville, OH, 1992)}, 262274.
+
+\bibitem{sunada1985}
+Toshikazu Sunada.
+\newblock Riemannian coverings and isospectral manifolds.
+\newblock {\em Annals of Mathematics}, 121(1):169--186.
+
+\bibitem{vigneras1980}
+Marie-France Vign\'eras.
+\newblock Vari\'et\'es riemanniennes isospectrales et non isom\'etriques.
+\newblock {\em Annals of Mathematics}, 112(1):21--32.
+
+\bibitem{wolpert1978}
+Scott Wolpert.
+\newblock The eigenvalue spectrum as moduli for flat tori.
+\newblock {\em Transactions of the American Mathematical Society},
+  244:313--321.
+
+\end{thebibliography}

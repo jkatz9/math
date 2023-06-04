@@ -1,1 +1,151 @@
-/Users/jukatz/Dropbox/Ben/spectralRigidity/scrapped2.tex
+%\section{Identifying the spectra for arithmetic surfaces} %Let $k$ be a field. We write $\pl_k$ for its set of places, $\pl_k^\infty$ for those dividing $\infty$, and %$\pl_k^f$ for those dividing a finite prime. For any $\nu \in \pl_k$, write $k_\nu$ for the corresponding completion.  %Let $\qa_k$ denote the set of isomorphism classes quaternion algebras over $k$. If $k$ is a local %field, then there are at most two elements of $\qa_k$. If $k \neq \Cbb$, then there are exactly two: a divison algebra %$\Hcal_k$ and the split algebra $M(2,k)$. If $k = \Cbb$ then there is only the split algebra $M(2,k)$.  %Now suppose $k$ is a number field and take $A \in \qa_k$. For $ \nu \in \pl_k$ let $A_\nu = A \otimes k_\nu$. By the %preceeding paragraph, for each place $\nu$, there are at most two options for $A_\nu$ up to isomorphism. We say that $A$ %is ramified at $\nu$ (and write $\nu \in \ram_A$) if $A_\nu$ is the divison algebra $\Hcal_\nu = \Hcal_{k_\nu}$; %otherwise we say $A$ is unramified at $\nu$ if $A_\nu$ is $M(2,k_\nu)$. The following lemma provides a complete %description of $\qa_k$ via the map $A \mapsto \ram_A$. %\begin{lemma} Let $k$ be a number field. %\begin{enumerate} %\item If $A,B \in \qa_k$ satisfy $\ram_A = \ram_B$ then $A$ and $B$ are isomorphic. %\item For any $A \in \qa_k$, the set $\ram_A$ is finite and has even cardinality. %\item For any finite subset $S$ of $\pl_k$ of even cardinality, there exists unique $A \in \qa_K$ such that $S = %\ram_A$. %\end{enumerate} %\end{lemma} %For each $A \in \qa_k$, let $\Ord_A$ denote the set of orders in $A$: $\Ocal\in  \Ord_A$  if $\Ocal$  is a finitely %generated $R_k$ unital subalgebra $A$, of maximal rank. Let $\MOrd_A$ denote the set of orders in $A$ which are maximal %with respect to containment. The following lemma indicates the relevance of $\Ord_A$ and $\MOrd_A$ to geometry: %\begin{lemma}\label{lemma:A1} %Let $k$ be a number field, $A \in \qa_k$ a quaternion algebra over $k$, and $\Ocal \in \Ord_A$ an order. The image of %$\Ocal^1$ is an irreducible lattice in the semisimple lie group $\prod_{\nu \in \pl_k^\infty} A_\nu^1 \approx %\SL(2,\Rbb)^r \times \SL(2,\Cbb)^s \times \SU(2)^t$. If $\Ocal  \in \MOrd_A$ is a maximal order, then its image is a %maximal lattice. %\end{lemma} %It is straightforward to see that the conclusion of lemma \ref{lemma:A1} remains true if one projects to the noncompact %factors (i.e. if one restricts the product to only unramified archimedian places). %We now restrict to totally real number fields $k$, and let $\qae_k$ denote the set of $A \in \qa_k$ satisfying the so-called: %\begin{quote}{Eichler condition:} %$A$ is split at exactly one real place of $k$. %\end{quote} %Applying lemma \ref{lemma:A1} to orders $\Ocal \in \Ord_A$ for quaternion algebras $A \in \qae_k$, we obtain the %archaetypal examples of {\bf arithmetic fuchsian groups}.  %\begin{definition}[arithmetic fuchsian group] %Let $P: \SL(2,\Rbb) \to \PSL(2,\Rbb)$ denote the canonical projection. We say that a lattice $\Gamma \leq %\PSL(2,\Rbb)$ is an arithmetic fuchsian group if it is commensurable (in the wide sense) with $P(\rho(\Ocal^1))$ for %some order $\Ocal \in \Ord_A$ for some quaternion algebra $A \in \qae_k$ for some totally real number field $k$. %\end{definition} %We let$\ArFu$ denote the set of arithmetic fuchsian groups.  %%Some comments are in order. Suppose $\Gamma$ is an arithmetic fuchsian group which is commensurable to $P(\rho(\Ocal^1))$ and $P(\rho'(\Ocal'^1))$ for $(\Ocal,A,k)$ and $(\Ocal',A',k')$ as above. Then in fact, $k\approx k'$ and $A \approx A'$. It follows that $\ArFu = \sqcup_{k{\rm totally real}} \sqcup_{A \in \qae_k} \ArFu(A)$. %\newpage  %\section{Notation} %If $S$ is a ring, let $S^\times$ denote the group of multiplicatively invertible elements  in $S$. %$k$ will be a nonarchimedean local field, with normalized valuation $\ord : k \to \Zbb \cup \{ \infty \}$. We let $R$ %denote its ring of integers $\wp$ %its maximal ideal, and $ \varpi $ a uniformizer (chosen once and for all) of $\wp$. We write $\mathfrak{f} = R/\Pcal$ for the residue field, and $q$ its cardinality, and $p$ its characteristic. We operate throughout with the assumption that %As a rule, boldface letters denote algebraic groups, the corresponding fraktur letters denote their Lie algebras, and the corresponding regular letters denote their groups of rational points. %For a group $H$ equipepd with a filtration by subgroups $H_r$ for $r \in \Zbb_{\geq 0}$, we extend the filtration to $r %\in \Rbb_{\geq 0}$ by setting $H_r = H_{\lceil r \rceil }$. For $r\in \Rbb_{\geq 0}$, wwe set $H_{r+} = \cup_{s > r} %H_s$.  %We let $\mathbf{G} = \SL_2$ and take  the diagonal subgroup $\mathbf{A}$ as our fixed maximal $k$ split torus in %$\mathcal{G}$. We let $X(T) = \Hom(\mathbf{A}, \Gbb_m)$, which in this case is isomorphic to $\Zbb$ . We pick the root %$\alpha : \tbt{a}{0}{0}{d} \mapsto a/d$ as a generator, and let $\mathbf{U}$ be the corresponding root subgroup, $\mathbf{B} = \mathbf{A} \mathbf{U}$ the corresponding Borel. %We write $\Ad : G \to \Aut(\gfrak)$ for the adjoint representation $\Ad(g) X = g X g^\inv $, and $\ad : \gfrak \to %\End(\gfrak)$ its differential $ \ad (Y)X = [X,Y] = XY-YX$.  We will consider the characteristic polynomial for these %actions:  %We let $K = \Gbf(R)$ denote a maximal compact open subgroup of $G= \Gbf(k)$.  %\newpage %\section{Some filtrations} %The group $k^\times$ is equipepd with a canonical filtration, defined by setting $k^\times_0 = R^\times $ and for $n %>0$, setting $k^\times_n = 1 + \mathcal{P}^n$. We transport this filtration to $A$ via \emph{either} of the two %isomorphisms $A \approx k^\times$.    %\newpage %\section{The dumbest possible argument} %Let  $K=\SL(2,\Ocal)$ and for $n>0$ let $\pi_n : K \to G(\wp^n):=\SL(2,\Ocal/\Pcal^n)$ be the reduction map. Define subgroups %\begin{align*} %B(\wp^{n}) &= \{ \Tbt{a}{b}{0}{d} \in G(\Pcal^{n})\} \\ %U(\wp^n) &= \{ \Tbt{1}{b}{0}{1} \in G(\Pcal^n)\} %\end{align*} %of $G(\wp^n)$ and subgroups %\begin{align*} %K_{0}(\wp^n) &= \pi_n^\inv (B(\Pcal^n))  \\ %K_1(\wp^n) &= \pi_n^\inv (U(\Pcal^n)) \\ %K(\wp^n) & = \ker \pi_n %\end{align*} %of $K$.  %\begin{thm} \label{theorem:conj} %Let $G$ be a subgroup of $\SL(2,k)$. Then %\begin{enumerate} %\item $G$ is $\GL(2,k)$-conjugate to subgroup of $K$ if and only if $\Tr(G) \subset \Tr(K)$. %\item $G$ is $\GL(2,k)$-conjugate to subgroup of $K_0(n)$ if and only if $\Tr(G) \subset \Tr(K_0(n))$.  %\item $G$ is $\GL(2,k)$-conjugate to subgroup of $K_1(n)$ if and only if $\Tr(G) \subset \Tr(K_1(n))$.   %\item $G$ is $\GL(2,k)$-conjugate to subgroup of $K(n)$ if and only if $\Tr(G) \subset \Tr(K(n))$. %\end{enumerate} %\end{thm} %We start with some facts about subgroups $H$ of $G(\wp^n)$. %\claim\label{claim:residual} $H$ is $\GL(2,\Ocal /\wp^n)$ conjugate to a subgroup of %\begin{itemize} %\item\label{item:residualB} $B(\wp^n)$  if and only if $H$ preserves a free cyclic $\Ocal/\Pcal^n$ submodule of $(\Ocal/\Pcal^n) ^2$ if and only if $\det(x -  h) \in \Ocal/ \Pcal^n [x]$ is reducible for all $h\in H$ if and only if $\tr(h)^2 -4$ is a square modulo $\Pcal$ if and only if $\Tr(H) \subset \Tr(B(\Pcal^n))$ %\item\label{item:residualU} $U(\wp^n)$ if and only if $H$ fixes a free cyclic $\Ocal/\Pcal^n$ submodule of $(\Ocal/\Pcal^n) ^2$ pointwise if and only if $\det(x -  h)$ has a repeated root in $\Ocal/\Pcal^n$ if and only if $\tr(h)^2 -4 \in \Pcal^n$ if and only if $\Tr(H) \subset \Tr(U(\Pcal^n))$. %\end{itemize} %\begin{proof}[(of theorem \ref{theorem:conj})] I'll work case by case. %\begin{itemize} %\item Suppose $\tr(g) \in \Ocal$ for all $g\in G$. %\item Suppose that $\Tr(G) \subset \Tr(K_0(n))$. Applying part  of claim \ref{theorem:conj}, we may assume $G$ preserves the lattice $L = \Ocal \oplus \Ocal \leq k^2$ and by linearity its sublattices $\wp^n L$.  Let $\rho_n : G \to G(n) \leq \Aut(L/\pi^n L)$ be the resulting represention over $\Ocal/\Pcal^n$.  By assumption, for all $g\in G$, the polynomial $P_g (x) = x^2 - \tr(g) x + 1$ is reducible modulo $\Pcal^n$. Applying part \ref{item:residualB} of claim \ref{claim:residual}, there exists an element $\gamma \in \GL(2,\Ocal/\Pcal^n)$ so that $\gamma \rho(G) \gamma^\inv \leq B(n)$. Then for any lift $\tilde{\gamma}$ of $\gamma$ in $\GL(2,\Ocal)$, we have $\tilde{\gamma} G \tilde{\gamma}^\inv \leq K_0(n)$. %For each $g$, pick $\alpha_g,\beta_g \in \Ocal^n$ such that $P_g(x) \equiv (x-\alpha_g)(x -\beta_g)$ modulo $\Pcal^n$. First, suppose $\alpha_g \not\equiv  \beta_g$ moduolo $\Pcal^n$. %\item Argue as with $K_0(n)$, but instead apply part 2 of claim \ref{claim:residual}. %\item Suppose that $\tr(g) = 2 \mod \wp^{2n}$ for all $g\in G$. Then applying part we may assume that $G$ is a subgroup of $K_1(2n)$. Letting $\alpha= \tbt{\pi^n}{0}{0}{1}$, write $g = \tbt{1+a' \pi^{2n}}{b}{c'\pi^{2n}}{1+d'\pi^{2n}}$ with $a',b,c',d'\in \Ocal$. Then $\alpha g \alpha^\inv = \tbt{1+a' \pi^{2n}}{b\pi^n}{c'\pi^{n}}{1+d'\pi^{2n}} \in K(n)$. %\end{itemize} %\end{proof}   %%\section{The projective, affine, and linear line over a field} %%[Fuck it, lets go full  AG.] %%
+%%In this section, I use a little bit of basic algebraic geometry to introduce some key players. 
+
+
+
+%% In this section, $F$ is a field.
+%% \begin{definition}
+%%     \begin{itemize}
+%%         \item The \textbf{affine line} $\Abb^1$ over $F$ is the (affine) scheme $\spec(F[t])$. 
+%%         \item The \textbf{linear line} $\Gbb_a$ over $F$ is the (affine) group scheme with underlying scheme $\Abb^1$, with multiplication, inverse, and identity section respectively given by the dual maps to 
+%%             \begin{align*}
+%%                   \mu_a : F[t] &\to F[t_1] \otimes F[t_2]   \\
+%%                   t &\mapsto t_1 + t_2  \\
+%%                   \iota_a : F[t] & \to F[t] \\
+%%                                     t & \mapsto -t \\
+%%                          0_a : F[t] &\to F \\
+%%                                     t &\mapsto 0.
+%%             \end{align*} 
+%%         \item The \textbf{projective line} over $F$ is covered by two affine lines $\phi_0,\phi_\infty : \Abb^1 \to \Pbb^1$ intersecting along the punctured line $\Abb^1 \setminus \{0\}$ 
+%%     \end{itemize}
+%%%        \begin{itemize}
+%%%            \item The (linear)-\textbf{line} over $F$ is the (affine) group scheme $\Gbb_a=(\Abb^1,0_a, \mu_a, \iota_a)= (\spec F[t], x\mapsto 0, x \mapsto 1\otimes x + x \otimes 1, x\mapsto -x) $.%The automorphism group of $\Gbb_a$ (as a group scheme) is $\Gbb_m$, assigns to any $F$-algebra $A$ its underlying multiplicative group $(A^\times , \cdot)$. The action of $\Gbb_m(A)$ on $\Gbb_a(A)$ is the underlying algebra left-muliplication, we refer to this action as \textbf{linear}.  %in particular, the zero-section is part of the defining data of a linear line. 
+%%%            \item The \textbf{affine line} over $F$ is the (affine) scheme $\Abb^1=\spec(F[t])$, which assigns to any $F$-algebra $A$ the underlying set $A$. %The automorphism group of $\Abb^1$ (as a scheme) is written as $\Aff_1$.
+%%%            \item The group $\Aff_1$ acts transitively on the fibers of the forgetful map $\Gbb_a \to \Abb^1$: for an affine automorphism $\psi: \Abb^1 \to \Abb^1$ the action is 
+%%%                \begin{align*}
+%%%                        (x \mapsto 0) &\mapsto (g^\inv x \mapsto 0) \\
+%%%                        
+%%%                \end{align*}
+%%%                \begin{align*}
+%%%                    1 \to \Gbb_a \to \Aff_1 \to \Gbb_m \to 1. 
+%%%                \end{align*}
+%%%                        \item The \textbf{projective line} $\Pbb^1$ over $F$ is covered by two affine lines $\phi_0,\phi_\infty: \Abb^1 \to \Pbb^1$ intersecting along a 
+%%%        \end{itemize}
+%% \end{definition}
+%\section{A structural description of $\PGL_2$ and its subgroups}
+
+%\begin{definition}[(Linear line)]
+%A \textbf{line} $L$ is a one dimensional vectorspace over $F$. In particular, $L$ is equipped with an element $0_L$, a group law $+_L$, and a compatible action $\cdot_L : F^\times \to \Aut(L,+_L)$. Write $\GL(L)$ for the group of linear automorphisms of a line. 
+%\end{definition}
+%\begin{remark}
+  %The automorphism group of a line acts neither transitively nor effectively on the whole line: the origin $0_L$ is fixed by any linear automorphism.  Rather, $\GL(L)\approx F^\times$  acts simply and transitively on the punctured line $L\setminus\{0_L\}$. 
+%\end{remark}
+%\begin{definition}[(Affine line)]
+%An \textbf{affine line} $A$ over $F$ is a set on which a line $L$ acts simply and transitively. A map $A \to A$ is an \textbf{affine transformation} if it commutes with the action of $L$ on $A$. Write $\Aff(A)$ for the group of affine automorphisms of $A$. 
+%\end{definition}
+%\begin{definition}[(Projective line)]
+%For a field $F$, let $\Pbb^1 = \Pbb^1(F) = F^\times \lmod (F^2 - \{ 0 \})$ denote the \textbf{projective line} over $F$. A bijection $g : \Pbb^1(F) \to \Pbb^1(F)$ is a \textbf{projective transformation} if $g$ lifts to a linear transformation of $F^2$. The automorphism group $G$ of $\Pbb^1(F)$ can thus be identified with $\PGL(2,F) = F^\times \lmod \GL(2,F)$. For a vector $(x,y) \in F ^2$ we let $ [x;y]$ denote the line $F^\times (x,y) \in \Pbb^1$. 
+%\end{definition}
+%\subsection{Coordinate patches}
+%The projective line $\Pbb^1(F)$ is covered by two copies of the affine line via the maps $\phi_0, \phi_\infty : \Abb^1(F) = F \to \Pbb^1$ sending $x \in F$ to the lines $[x;1]$ and $F^\times (x,1)$ respectively.     
+%Their images intersect along a copy of $\Gbb_m(F)= F^\times$ glued along the map $x \mapsto 1/x$.  In particular, $\Pbb ^1 \setminus  \phi_0(F) = \{\phi_\infty(0)\}$. Denoting the latter point by $\infty$, we obtain the familiar description $\Pbb^1 = F \sqcup \{ \infty \}$. The mapping $w:x \mapsto 1/x$ extends to an involution of $\Pbb^1$ by defining $w(0)= 1/0 = \infty$ and $w(\infty) = 1/\infty =0$. 
+%\begin{lemma}
+  %This extension $w : \Pbb^1 \to \Pbb^1$ is a projective transformation.
+  %\end{lemma}
+%\begin{proof}
+  %It is represented by any involutive linear transformation which takes the affine line $(0,1)+F(1,0)$ to the line $(1,0)+F(0,1)$ while fixing their point of intersection $(1,1)$: for example $\tbt{0}{-1}{1}{0}$. 
+%\end{proof}
+%\subsection{Homogeneous descriptions}
+%The automorphism group $G$ acts highly transitively on $\Pbb^1$, yielding several important descriptions, as in the following
+%\begin{lemma}
+          %The subgroup $G_0$  (resp. $G_\infty$) of $G$ that preserves the image of $\phi_0$ (resp. $\phi_\infty)$ is the pointwise stabilizer of $\infty$ (resp. $0$). The following diagram commutes:
+%% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXFBHTCgyLEYpIl0sWzAsMiwiXFxQYmJeMShGKVxcYXBwcm94IFxcUEdMKDIsRikvQl9cXGluZnR5Il0sWzIsMCwiXFxQYmJeMShGKVxcYXBwcm94IFxcUEdMKDIsRikvQl8wIl0sWzIsMiwiXFxQYmJeMShGKSJdLFswLDIsImcgXFxtYXBzdG8gZyhcXGluZnR5KSJdLFswLDEsImcgXFxtYXBzdG8gZygwKSIsMl0sWzEsMywidyIsMl0sWzIsMywidyJdXQ==
+%\[\begin{tikzcd}[column sep=scriptsize]
+  %{G} && {\Pbb^1(F)\approx G/G_0} \\
+  %\\
+  %{\Pbb^1(F)\approx G/G_\infty} && {\Pbb^1(F)}
+  %\arrow["{g \mapsto g(\infty)}", from=1-1, to=1-3]
+  %\arrow["{g \mapsto g(0)}"', from=1-1, to=3-1]
+  %\arrow["w"', from=3-1, to=3-3]
+  %\arrow["w", from=1-3, to=3-3]
+%\end{tikzcd}\]
+  %\end{lemma}
+  %\begin{lemma}
+          %\begin{itemize}
+                  %\item $G_0$ (resp. $G_\infty$) acts transitively on $\phi_0(F)$ (resp. on $\phi_\infty(F)$) by affine transformations, yielding an isomorphism $G_\infty \approx G_0 \approx \Aff(1,F)$.
+                  %\item The stabilizer in $G_0$ of $0$ coincides with the stabilizer in $G_\infty$ of $\infty$, and is consequently their intersection.
+                  %\item The intersection $A:=G_0 \cap G_\infty$ is isomorphic to $\Gbb_m(F)= F^\times$.             
+                  %\item Picking $\phi_0(0)$ (resp. $\phi_\infty(0)$) as the origin in $\phi_0(F)$ (resp. in $\phi_\infty(F)$), $A$ acts as linear transformations on $\phi_0(F)$ (resp. $\phi_\infty(F)$), hence simply transitively on their intersection $\phi_0(F) \cap \phi_\infty(F)$. 
+                  %\item $A$ is a normal subgroup of $G_0$ and $G_\infty$. The sequences
+                  %\begin{align*}
+                          %1 \to G_0 \to G \to G/G_0 \to 1 \\
+                          %1 \to G_\infty \to G \to G/G_\infty \to 1
+                  %\end{align*}
+                  %are split
+          %\end{itemize}
+          
+  %\end{lemma}
+
+%\begin{remark}
+  %The choice of $0$ and $\infty$ in the preceding discussion was arbitrary. In fact, the map $x \mapsto G_x = \Stab_G(x)$ from $\Pbb^1(F)$  to the set of subgroups of $G$ intertwines the action of $G$ on $\Pbb^1$ by projective transformations and the action of $G$ on the set of its subgroups by conjugation. In particular, for any pair of distinct points $x,y \in \Pbb^1(F)$, one obtains a covering by affine lines, preserved by subgroups $G_x$ and $G_y$, on which they act by affine transformations. Their intersection $G_x\cap G_y$ acts on affine line linearly, simply and transitively on their intersection. 
+%\end{remark}
+%% 
+%% \begin{corollary}
+%%     The group $G = \PGL(2,F)$ acts simply and transitively on triples of distinct points in $\Pbb^1(F)$. 
+%% \end{corollary} 
+%% 
+
+
+%The following lemma provides a dictionary between properties of projective transformations and their lifts. 
+%\begin{lemma}
+%Let $g\in \PGL(2,F)$, $g \neq 1$. Then   
+%\begin{itemize}
+%\item[H] $g$ has two distinct fixed points on $\Pbb^1(F)$ if and only if any lift $\tilde{g}$ of $g$ is semi-simple, split over $F$ and has distinct eigenvalues if and only if $P_{\tilde{g}}(x)$ has two roots in $F$
+%\item[P] $g$ has exactly one fixed point on $\Pbb^1(F)$ if and only if any lift of $g$ is not semi-simple if and only if $P_{\tilde{g}}(x)$ has a repeated root 
+%\end{itemize}
+%\end{lemma}
+%\begin{proof}
+%The fixed points of a matrix acting on $\Pbb^1(F)$ are its eigenlines. 
+%\end{proof}
+
+
+
+%\begin{thm}
+  %Let $H$ be a subgroup of $\SL(2,\Ocal)$ such that $\Tr(H)  \subset \Tr(K_n)$, then there exists an $h\in \GL(2,K)$ such that $h H h^\inv \leq K_n$. 
+%\end{thm}
+%\begin{proof}
+%\begin{itemize}
+  %\item First, 
+%\end{itemize}
+%%     \begin{definition}
+%%         Let $F$ be a field, and $g \in \Aut(\Pbb^1(F))$. Say 
+%%         \begin{itemize}
+%%             \item[(I)] $g$ is trivial if $g$ acts by the identity
+%%             \item[(H)] $g$ is hyperbolic if it has exactly two fixed points
+%%             \item[(P)] $g$ is parabolic if it has exactly one fixed point
+%%             \item[(E)] $g$ is elliptic if it has no fixed points.
+%%         \end{itemize}
+%%     \end{definition}
+%% \begin{lemma}[Classification of projective transfomations over a field] 
+%%     Let $P$ denote the projection $\GL(2,F) \to \Aut(\Pbb^1(F))$. 
+%%      \begin{itemize}
+%%         \item $g$ is trivial if and only if  any lift of $g$ under $P$ is central (i.e. scalar). 
+%%         \item $g$ is hyperbolic if and only if  any lift of $g$ under $P$ semi-simple, split over $F$, and has distinct eigenvalues. 
+%%         \item $g$ is parabolic if and only if  any lift of $g$ under $P$ is not semi-simple
+%%         \item $g$ is elliptic if and only if  any lift of $g$ under $P$ is semi-simple, but not split over $F$. 
+%%     \end{itemize}
+%%     \end{lemma}
+%\end{proof}
+
+%\begin{lemma}\label{lemma:modncommutes}
+%Let $g\in \GL(2,K)$ stabilize a lattice $L \leq K^2$. Then $\tr(g), \det(g) \in \Ocal$. Let $\rho_{L,n} : \Aut(L) \to \Aut(L/ \pi^n L) \approx \GL(2,\Ocal/\wp^n)$. Then for all $n>0$, the following equality holds in $\Ocal/\Pcal^n [t]$. 
+  %\begin{align*}
+                  %\det(g - t \id) \mod \wp^n = \det ( \rho_{L,n}(g) - t \id).
+  %\end{align*}
+%\end{lemma}
+%Let $g$ and $L$ be as above. Let $\Pbb(L/\pi^n L)$ denote the set of cyclic $\Ocal/\wp^n$ submodules of $L/\pi^nL$ which are direct factors. Let $q = |\Ocal/ \Pcal|$. Then $\Pbb(L/\pi^n L) = q^{n-1}(q+1)$.   
+%\claim Suppose $\tr(g) = 2 \mod \wp^{2n}$ and $\det(g) = 1$. Then there exists a lattice $M$ containing $L$ with $M/L$ a cyclic $\Ocal/ \Pcal^k$ module for some $k \leq n$ and $\rho_{M , n} (g) = \id \in \Aut(M/\pi^n M)$. 
+%(Base case $n=1$) Suppose $g$ stabilizes a lattice $L$, $\det g =1 $ and $\tr(g) =2  \mod \wp^2$. By Lemma \ref{lemma:modncommutes}, the characteristic polynomial of $\rho_{1,L}(g)$ acting on $L/\pi^2 L$ is $(t-1)^2 \in \Ocal/\Pcal^2[t]$. If $\rho_{1,L}(g) = \id $ then we're done, so assume otherwise.  Then $\rho_{1,L}(g)$ fixes exactly one point $\ell' \in \Pbb^1(L/\pi L)$. Let $L'$ be a lift of $\ell'$ to a lattice satisfying $L < L' < \pi^\inv L$. Considering the 
+
+%For each $n>0$ there is a canonical surjection $\Pbb(L/\pi^n L) \to \Pbb(L/\pi^{n-1} L)$. 
+

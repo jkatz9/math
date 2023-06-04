@@ -1,0 +1,20 @@
+# Fdb version 4
+["pdflatex"] 1685845990 "/Users/jukatz/Documents/Math/test/main.tex" "main_out/main.pdf" "main" 1685845990 0
+  "/Users/jukatz/Documents/Math/test/main.tex" 1685845987 85 e96363566c1bfaaae64b1c039a55b695 ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls" 1667332637 20144 d5ecf0a5140c8d8d8b72cbe86e320eff ""
+  "/usr/local/texlive/2023/texmf-dist/tex/latex/base/size11.clo" 1667332637 8464 63bf71cc1214ffdd38288da73a7ca182 ""
+  "/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1673989714 30429 213676d4c7327a21d91ddaed900e7b81 ""
+  "/usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1677365944 40745 87bb86a62d462f93a1efc6b0c65c872e ""
+  "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1684096177 4623355 b8cad38412faebe1ce5b780a45db67bd ""
+  "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1684096165 7883456 ddce1eb46f42a241110ef4c7fb6ae3bc ""
+  "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
+  "main.tex" 1685845987 85 e96363566c1bfaaae64b1c039a55b695 ""
+  "main_out/main.aux" 1685845990 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  (generated)
+  "main_out/main.aux"
+  "main_out/main.log"
+  "main_out/main.pdf"
+  (rewritten before read)

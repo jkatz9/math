@@ -1,0 +1,46 @@
+\documentclass[a4paper,oneside,10pt]{letter}
+\makeatletter
+\renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
+  \stopbreaks
+  \noindent
+  \ifx\@empty\fromaddress\else
+  \hspace*{\longindentation}\fi
+  \parbox{\indentedwidth}{\raggedright
+       \ignorespaces #1\\[2\medskipamount]%
+       \ifx\@empty\fromsig
+           \fromname
+       \else \fromsig \fi\strut}%
+   \par}
+\makeatother
+% Some of the article customisations are relevant for this class
+
+\signature{Justin Katz \\
+Mathematics Department\\
+Purdue University\\
+1610 Purdue Mall\\
+West Lafayette, IN 47907\\
+(219) 210-9452 \\jukatz93@gmail.com\\
+} % Goes after the closing (ie at the end of the letter, with space for a signature)
+\address{640 Ferry Street \\ Lafayette, Indiana  47901 \\ USA}
+\date{}
+% Alternatively, these may be set on an individual basis within each letter environment.
+
+\begin{document}
+\begin{letter}{}
+
+\opening{To whom it may concern,} % eg Hello.
+I am writing to apply for the position as an instructor associated to the R.H. Bing Faculty Fellowship (position ID #21420) in the Department of Mathematics at the University of Texas in Austin.  
+
+I am a Ph.D. candidate at Purdue University, under the direction of D.B. McReynolds. I expect to complete my degree by May of 2023. My research interests include geometry and topology, spectral theory, number theory, representation theory, harmonic analysis, and interactions thereof. My thesis work concerns an absolute spectral rigidity result, which applies to a large class of arithmetic hyperbolic 2 and 3 manifolds.  One application of this theorem proves that all principal congruence Hurwitz surfaces are spectrally rigid. I have also co-authored a paper in which we construct large collections of algebraic and differential geometric objects which are indistinguishable by means of various invariants.
+
+ I consider teaching to be an essential role of the mathematician, and am committed to fostering a safe, inclusive, and open environment for students. 
+
+Please find my curriculum vitae and research and teaching statements attached. Letters in support of my application, written by D.B. McReynolds, M. Stover, J. LaFont, A. Reid, and J. Chen, will be submitted through the forms on mathjobs.com.  Please contact me for any further information. 
+
+
+
+\closing{Sincerely,} % eg Regards,
+
+
+\end{letter}
+\end{document}

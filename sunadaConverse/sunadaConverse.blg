@@ -1,54 +1,48 @@
 This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: sunadaConverse.aux
-The style file: plainurl.bst
-Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
-Reallocated global_strs (elt_size=200001) to 20 items from 10.
-Reallocated glb_str_end (elt_size=4) to 20 items from 10.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Database file #1: bigBib.bib
-Warning--empty journal in sunada1985
-Warning--empty year in sunada1985
-You've used 1 entry,
-            2882 wiz_defined-function locations,
-            629 strings with 5160 characters,
-and the built_in function-call counts, 466 in all, are:
-= -- 44
-> -- 9
+I found no \citation commands---while reading file sunadaConverse.aux
+I found no \bibdata command---while reading file sunadaConverse.aux
+I found no \bibstyle command---while reading file sunadaConverse.aux
+You've used 0 entries,
+            0 wiz_defined-function locations,
+            83 strings with 502 characters,
+and the built_in function-call counts, 0 in all, are:
+= -- 0
+> -- 0
 < -- 0
-+ -- 3
-- -- 2
-* -- 33
-:= -- 87
-add.period$ -- 4
-call.type$ -- 1
-change.case$ -- 4
++ -- 0
+- -- 0
+* -- 0
+:= -- 0
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 11
-empty$ -- 44
-format.name$ -- 2
-if$ -- 108
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 0
+format.name$ -- 0
+if$ -- 0
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 1
-newline$ -- 9
-num.names$ -- 2
-pop$ -- 10
-preamble$ -- 1
-purify$ -- 3
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 0
+num.names$ -- 0
+pop$ -- 0
+preamble$ -- 0
+purify$ -- 0
 quote$ -- 0
-skip$ -- 27
+skip$ -- 0
 stack$ -- 0
-substring$ -- 30
-swap$ -- 2
+substring$ -- 0
+swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
-warning$ -- 2
-while$ -- 4
-width$ -- 2
-write$ -- 13
-(There were 2 warnings)
+type$ -- 0
+warning$ -- 0
+while$ -- 0
+width$ -- 0
+write$ -- 0
+(There were 3 error messages)

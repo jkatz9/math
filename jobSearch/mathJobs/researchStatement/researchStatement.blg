@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/Homebrew)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: researchStatement.aux
+The style file: plain.bst
+Database file #1: zotbib.bib
+Warning--I'm ignoring perlis1977's extra "journal" field
+--line 123820 of file zotbib.bib
+Warning--I didn't find a database entry for "selberg1956harmonic"
+Warning--empty year in arapura2019
+Warning--there's a number but no volume in borel1989
+Warning--empty year in borel1989
+Warning--empty year in funakura1978
+Warning--empty year in gassmann1926
+Warning--empty year in huber1959
+Warning--empty year in margulis1969
+Warning--empty year in milnor1964
+Warning--empty year in prasad2017
+Warning--empty year in sarnak1981
+Warning--empty year in scott1993integral
+Warning--empty year in sunada1985
+Warning--empty year in vigneras1980
+Warning--empty year in wolpert1978
+You've used 14 entries,
+            2118 wiz_defined-function locations,
+            588 strings with 6263 characters,
+and the built_in function-call counts, 4101 in all, are:
+= -- 417
+> -- 120
+< -- 0
++ -- 52
+- -- 36
+* -- 318
+:= -- 685
+add.period$ -- 42
+call.type$ -- 14
+change.case$ -- 60
+chr.to.int$ -- 0
+cite$ -- 28
+duplicate$ -- 153
+empty$ -- 353
+format.name$ -- 36
+if$ -- 816
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 14
+newline$ -- 74
+num.names$ -- 28
+pop$ -- 59
+preamble$ -- 2
+purify$ -- 46
+quote$ -- 0
+skip$ -- 83
+stack$ -- 0
+substring$ -- 354
+swap$ -- 14
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 56
+warning$ -- 14
+while$ -- 53
+width$ -- 16
+write$ -- 144
+(There were 16 warnings)

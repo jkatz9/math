@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1 in]{geometry}
+\usepackage[indent=0 em]{parskip}
+\usepackage{mathptmx,amsmath,amscd,amssymb,amsthm,xspace}
+\usepackage{titlesec, graphics,epsfig,wrapfig,verbatim,syntonly}
+\usepackage{hyperref,amssymb,color, url,fancyhdr,mdframed, cleveref}
+\usepackage{mycros}
+
+\newtheorem{question}{Question}
+\title{Research Statement}
+\date{}
+\author{Justin Katz}
+\begin{document} 
+\begin{comment}
+	This is a concise summary of the research you’ve
+	done so far and what you plan to do in the next few years. The total length is
+	usually on the order of 5 pages. 
+	
+	The basic rule here is to keep it straightforward –
+	it will probably be read by someone who is not an expert in your particular field,
+	and who has hundreds of applications to get through. 
+	
+	It’s thus more important
+	to indicate clearly how your research accomplishments and goals fit into the broad
+	scheme of things, than to give all the technical details. 
+	
+	Try to format the research
+	statement so that it can be easily skimmed: for example, you might put the most
+	important problems and your most important results in bold. 	
+\end{comment}
+
+	\maketitle
+	\paragraph{Introduction}\label{intro} The primary focus of my research is the spectral geometry of Riemannian manifolds, with an emphasis on the locally symmetric spaces associated to arithmetic lattices in Lie groups. My work makes essential use of geometric topology, harmonic analysis, algebraic groups, number theory, arithmetic/algebraic/differential geometry, and automorphic  forms. This topic interacts with class field theory, Galois cohomology and $K–$forms of linear algebraic groups, Bruhat–Tits theory, and the geometry/topology of symmetric and locally symmetric spaces. It has direct connections to Riemannian geometry, geometric analysis, algebraic/arithmetic geometry, and the Langlands’ program.
+	
+	\paragraph{Background}\label{bg}The interplay of number theory and Riemanian geometry has a long history of producing incisive results in both fields. Underlying many of these interactions is a rich analogy between on the one hand: \emph{a compact negatively curved Riemannian manifold $M$ along with its system of finite covering spaces}; and on the other:  \emph{a ring  $\obf$ of integers inside an algebraic number field $\kbf$, along with their finite extensions}. Under this analogy \emph{the prime ideals $\pbf$ of $\obf$ } find their geometric counterparts among \emph{the primitive closed geodesics $\gamma$ in $M$} .  Just as one can \emph{measure  the size of a prime $\pbf$ in $\obf$} via the absolute norm map $N_\kbf(\pbf) =\# \left(\obf /\pbf\right) $ , so too can one \emph{measure the  size of a closed geodesic $\gamma$  on $M$}, via its length $\ell_M(\gamma)$.
+	
+	Associated to such an  $\obf \leq \kbf$, one introduces the {\bf Dedekind zeta function,}  defined in a suitable right half-plane as a product over prime ideals $\pbf$ in $\obf$ 
+	\[ \zeta_\kbf (s)  = \prod_{\pbf} 	( 1 - N_\kbf (\pbf)^{-s})^\inv, \]   
+	which encodes structural information about the asymptotics of the \emph{prime counting function} $ \pi_\kbf (x) = \# \{ \pbf : N_\kbf(\pbf) < x\}$  in terms of the nature of the singularity of $\zeta_\kbf (s)$ at $s=1$. This amounts to the Landau's extension of Euler's prime number theorem:  $\pi_\kbf(x)$ is asympotically $x/\log x$.   In his epoch-making paper \cite{selberg1956harmonic}, Selberg introduced a zeta function associated to a compact negatively curved riemannian manifold $M$, defined entirely by analogy, for $s$ in a suitable right half plane, as a product over the set of primitive closed geodesics $\gamma$ on $M$:
+	\[	\zeta_M(s) = \prod_{\gamma} \prod_{k=0}^\infty   ( 1 -  \exp^{-(s+k) \ell_M(\gamma) }  ) .\label{szf}\]
+	Exactly as before, one finds that the asymptotics of the \emph{primitive geodesic counting function} $\pi_M(x) = \# \{ \gamma : \ell_M (\gamma)  < x\}$ are encoded in the behavior of $\zeta_M(s)$ as $s$  approaches the abcissa of absolute convergence of $\zeta_M$.  As an inaugural application of his trace formula, he showed that for $M$ a compact Riemann surface, one has a \emph{prime geodesic theorem}: just as for primes in number fields, one has asymptotically $\pi_M(x) = x / \log x$. In the intervening years, Huber \cite{huber1959}, Sarnak \cite{sarnak1981}, and Margulis \cite{margulis1969} proved, for increasingly general $M$, that these prime geodesic theorems persist. 
+	
+	The analytic properties of number theoretic zeta and $L$ functions are deeply mysterious. Many foundational questions  (some of which are several centuries  old, and carry a hefty monetary bounty on their solution) remain unanswered.  By contrast, the analytic properties of Selberg's zeta functions are inherent to their design. In particular, there is a structural description of the zeroes of $\zeta_M(s)$  in terms of the harmonic analysis on $M$. If $\Delta_M$ is the Laplace-Beltrami operator on $M$, then for $s \in \Cbb$ away from the spectrum of $\Delta_M$, the resolvent $ (\Delta _M- s )^\inv$  is a compact, self adjoint operator for $s$ away from the spectrum of $\Delta_M$.  Selberg's insight in  \cite{selberg1956harmonic} is that, up to some topological fudge-factors,  his zeta function $\zeta_M(s)$ is precisely the Fredholm determinant $\det(\Delta_M - s)^\inv )$.  Many analytic features of $\zeta_M(s)$ are now evident: at least formally, 
+	\[ \zeta_M(s) = \det(\Delta_M - s)^\inv \label{fredet} \] 
+	is the reciprocal of the characteristic polynomial  of $\Delta_M$. One expects, and indeed it is so, that the poles of $\zeta_M(s)$ must then occur at the eigenvalues of  $\Delta_M$, with the order at a pole $\lambda$  coniciding with the dimension of the eigenspace $E_\lambda$.  A convenient outcome of this simultaneous description of $\zeta_M(s)$  in terms of its Euler product \ref{szf} and as a Fredholm determinant \ref{fredet}  is that two (compact negatively curved) Riemannian manifolds $M_1,M_2$, are Laplace-isospectral (i.e.  the functions $s \mapsto \dim \ker(\Delta_{M_1}  - s)$ and $s \mapsto \dim \ker(\Delta_{M_2}  - s)$ coincide identically on $\Cbb$)   if and only if their Selberg zeta functions coincide (i.e.  the characteristic polynomials of $\Delta_{M_1}$ and $\Delta_{M_2}$ coincide). 
+	
+	
+	In terms of Selberg's zeta function, the problem of spectral rigidity is easily posed: 
+	\begin{mdframed}
+		Suppose $M_1$ and $M_2$ are two Riemannian manifolds such that their Selberg zeta functions coincide identically, i.e.  $\zeta_{M_1}= \zeta_{M_2}$ as meromorphic functions.  Must $M_1$ and $M_2$ be isometric? 	
+	\end{mdframed}
+	Thinking of the assignment $\zeta_\cdot : M \mapsto \zeta_M$ as a meromorphic-function-valued function on the space of isometry classes of closed Riemannian manifolds, we say that $M$ is {\bf spectrally rigid} if $\zeta_\cdot $ is injective at $M$.  Riemannian manifolds $M$ which are not spectrally rigid are {\bf spectrally flexible}. For flexible $M$, one wishes to understand the fiber of the $\zeta_\cdot $ at $M$. For example, what additional invariants must you compute in order to distinguish $M$ from its spectral companions?
+	
+	\paragraph{Past work: flexibility} The failure of spectral rigidity was first observed in Milnor in 1964 \cite{milnor1964}, where he constructed a pair of isospectral, nonisometric $16$ dimensional flat tori. In a sweeping generalization of Milnor's construction,  Vignéras in \cite{vigneras1980}  described a procedure for producing infinite families of compact hyperbolic $2$ and $3$  manifolds which fail to be spectrally rigid. Her methodology  exploits  a  particular mode of failure of the local-to-global principle for rational conjugacy classes of maximal orders in a quaternion algebra over a number field with sufficiently complicated arithmetic.  A critical step in her argument is an application of the Selberg trace formula to relate the eigenvalue spectrum on the associated locally symmetric spaces with their respective geodesic length spectrum; which in turn is closely related to the solution of an explicit family of diophantine equations.  As her examples are arithmetic, it follows from work of Borel \cite{borel1989} that only finitely such pairs from her construction can have genus at most $g$.
+	
+	In $1985$, Sunada \cite{sunada1985}  constructed many more examples of isospectral, non-isometric manifolds; his construction produces positive dimensional subspaces of the moduli space of Riemann surfaces of genus $g$ that fail to be spectrally rigid provided $g$ is sufficiently large (e.g. if $g > 168$). His construction was motivated by an old construction by Gassman \cite{gassmann1926}. The
+	construction is elementary, using finite covers and the existence of groups with pairs of subgroups satisfying a condition called {\bf almost conjugate}. 
+	
+	In my first paper \cite{arapura2019} , in collaboration with Donu Arapura, Partha Solapurkar, and Ben McReynolds, we applied a refined notion of almost conjugacy to  constructed locally symmetric manifolds and complex projective surfaces that share many algebraic and analytic invariants. For example, we produce non-isometric closed hyperbolic n-manifolds, as covers of a fixed manifold, that have isomorphic integral cohomology in such a way that the isomorphism commute with the natural maps induced by the cover. We also produced arbitrarily large collections of pairwise non-isomorphic smooth projective surfaces where the isomorphisms are natural with respect to the Hodge structure, or as Galois modules. In particular, the projective surface have isomorphic Picard and Albanese varieties, and have isomorphic effective Chow motives. All of these examples also have the same eigenvalue and geodesic length spectrum for their associated Riemannian structures. The construction based on a refinement of Sunada's method, based on examples first discovered by L. Scott \cite{scott1993integral}   and recently used by D. Prasad \cite{prasad2017}, in a construction that partly motivated ours.
+	
+	
+	\paragraph{Current work: spectral rigidity}
+	Despite the failure of spectral rigidity, there have been several positive results. In 1982, Wolpert  \cite{wolpert1978}  proved that a generic (in the Baire sense) Riemann surface is determined by its spectrum. Generalizing work of Kneser for flat tori, Wolpert proved that for a fixed Riemann surface, there are only finitely many Riemann surfaces with the same eigenvalue spectrum. In 1992, Reid proved that if $X$ is an arithmetic Riemann surface, then any Riemann surface $Y$ that is isospectral to $X$ must be commensurable with $X$. In particular, $Y$ must be arithmetic. The content of my thesis is the determination of a particular collection of arithmetic  hyperbolic surfaces which are, in fact, spectrally rigid. Before I can state my theorem, we need some terminology. 
+	
+	First,  we define arithmetic hyperbolic surfaces. Let  $\kbf$ be a totally real number field with ring of integers $\obf$,  and $\Bbf$ an indefinite quaternion algebra over $\kbf$ which is split at a unique real place of $\kbf$. That is to say, among all of the inclusions $\rho:  \kbf \to \Rbb$, there is a unique  one $\rho_o$ such that $\Bbf \otimes_{\kbf}  \kbf_{\rho_o} $ is isomorphic to the algebra of two by two matrices over $\kbf_{\rho_o} =\Rbb$, the completion of $\kbf$ at $\rho_o$.  We will also use the symbol $\rho_o$ to denote the resulting inclusion $\Bbf \to \Bbf \otimes_{\kbf}  \kbf_{\rho_o} $. An {\bf order} $\Obf$ in $\Bbf$ is an $\obf$ subalgebra of $\Bbf$ of maximal rank.  Let $\Obf^1$ denote the multiplicative subgroup  of $\Obf$ consisting of elements of reduced norm  $1$.  Then $\rho_o$ yields an identification $\Obf^1$ with a lattice $\Gamma_\Obf$ in $\SL(2,\Rbb)$.  We say that a lattice $\Lambda$ in $\SL(2,\Rbb)$ is {\bf arithmetic}  if there exists some $\Obf$ in some $\Bbf$ over some $\kbf$ such that some $\GL(2,\Rbb)$ conjugate of $\Lambda$ is commensurable with $\Gamma_{\Obf}$.  For any lattice $\Lambda$ in $\SL(2,\Rbb)$, we let $X(\Lambda)$ denote the associated hyperbolic orbifold  $\Lambda \lmod \SL(2,\Rbb) \rmod  \SO(2)$. By the uniformization theorem, every hyperbolic surface $M$ can be realized as a $X(\Lambda)$ for some $\Lambda \leq \SL(2,\Rbb)$, unique up to $\GL(2,\Rbb)$  conjugation. Consequently arithmeticity is a well defined property of the underlying hyperbolic orbifold.  We say that a quaternion algebra $\Bbf$ over $\kbf$ has {\bf type number one} if it has a unique $\Bbf^\times$ conjugacy class of maximal orders.  Let $\Ibf$ be an ideal in $\obf$, and for any subgroup  $\Lambda$ of $\Gamma_\Obf$, let $\Lambda(\Ibf)$ be the kernel of the reduction-mod -$\Ibf$ map $\Gamma_\Obf \to \SL(2,\obf/\Ibf),$  restricted to $\Lambda$.  In particular $\Gamma_\Obf(\Ibf) \leq \Gamma_\Obf$ is the {\bf principal congruence kernel mod } $\Ibf$ . Note that normal inclusion of $\Gamma_\Obf(\Ibf)$ in $\Gamma_\Obf$ induces a regular cover $X(\Gamma_\Obf(\Ibf))$ over $X(\Gamma_\Obf(\Ibf))$, with deck group isomorphic to  $\Gamma_\Obf(\Ibf)  \lmod \Gamma_\Obf = \SL(2,\obf /\Ibf).$  We are now prepared to state the theorem:
+	\begin{thm}
+		Let $\kbf, \obf, \Bbf$ be as above. Suppose further that $\Bbf$ has {\bf type number $1$}. Let $\Obf$ be a representative of the single conjugacy class of maximal orders in $\Bbf$. Then for any ideal $\Ibf$, not divisble by any prime over which $\Bbf$ is ramified,  the surface $X(\Gamma_\Obf(\Ibf))$  is absolutely spectrally rigid. 
+	\end{thm}
+	This theorem is the first, to my knowledge, which  produces infinitely many infinite families of Riemannnian manifolds which are demonstrably spectrally rigid. By carefully  choosing $\kbf,$ and $\Bbf,$ one can  apply this theorem to the principal congruence Hurwitz surfaces, partially confirming a conjecture of Alan Reid. 
+	
+\paragraph{Future projects:}
+	
+	To study the relationship among Dedekind zeta functions of number fields, number theorists study their factorizations into Artin $L$-functions associated to Galois representations representations. Following their lead, we introduce the analogous $L$ functions and study factorizations of Selberg's zeta function. Fix a compact negatively curved Riemannian manifold $M$, with fundamental group $\Gamma$. Let $\rho: \Gamma \to U(V)$ be a unitary representation on a finite dimensional Hilbert space $V$. Let
+	\[	L_{M,\rho}(s) = \prod_{\gamma} \prod_{k=0}^\infty   \det ( \id_V -  \rho(\gamma)\exp^{-(s+k) \ell_M(\gamma) }  ) .\label{slf}\]
+	These functions satisfy the so-called Artin-Takgai formalism: for a cover $M' \to M$ :
+	\begin{enumerate}
+		
+		\item  For $\rho$ a unitary representation of $\Gamma' = \pi_1( M' ) \leq \Gamma$, 
+		\[ L_{M',\rho} (s)  = L_{M, \ind_{\Gamma'}^{\Gamma_o} \rho} (s),
+		\]  
+		and for a unitary representation $\sigma$ of $\Gamma$,
+		\[ L_{M,\sigma} (s)  = L_{M',\res_{\Gamma'}^{\Gamma}\sigma} (s). \]
+		\item For a pair $\sigma, \sigma'$ of unitary representations of $\Gamma$, 
+		\[ L_{M,\sigma \oplus \sigma' }(s) = L_{M,\sigma}(s) L_{M,\sigma'}(s) \]
+	\end{enumerate}
+	Applying the second property above, we may extend the function $L_{M,\cdot} (s)$ from the set ${\rm URep}(M)$ of unitary reps of $\pi_1(M)$ to the additive group ${\rm VURep}(\pi_1(M))$ of virtual unitary representations. Let $T(M)$ be some reasonable space of negatively curved metrics on $M$. Then we may view the assignment $(\mu,\rho) \mapsto L_{\mu,\rho}$ as a meromorphic-function valued function on the space $T(M) \times {\rm VURep(M)}$ which is a homomorphism in the second variable. 
+	
+	\begin{question}\label{q:multind}
+		For which metrics $\mu$ is the homomorphism $L_{\mu, \cdot}$ injective? When it isn't injective, how large is its kernel? 
+	\end{question} 
+	
+	This question has a meaningful analogue in number theory, whereat the answer is positive \cite{funakura1978}. It has as an immediate consequence that all arithmetically equivalent number fields arise from Gassman equivalence\cite{perlis1977}. A positive answer to \cref{q:multind} will show that all instances of isospectrality within a commensurability class must arise from Sunada's construction. 
+	
+	\begin{question}
+		Fix a twist $\rho$. For which spaces of metrics $T(M)$ on $M$ is the function $L_{\cdot, \rho}$ injective on $T(M)$?
+	\end{question}
+	When $M$ is a compact surface of genus $g>1$, a natural candidate is the space $\Mcal_g$ of hyperbolic metrics.
+	
+	Inside of ${\rm VURep(M)}$ is the subgroup ${\rm FVUrep(M)}$ consisting of those virtual representations which admit a continuous extension to the profinite completion of $\pi_1(M)$). 
+	\begin{question}\label{q:multind2}
+		Supposing the answer to \cref{q:multind} is negative, must the kernel intersect ${\rm FVURep(M)}$ nontrivially? 
+	\end{question}
+	Now suppose that $M$ is an arithmetic hyperbolic $2$ or $3$ manifold of the form $ \mathbf{G}(k) \lmod \mathbf{G}(\Abb_k) / \prod_{\pfrak<\infty} \mathbf{G}(\Ocal_\pfrak) $  for some inner form $\mathbf{G}$ of $\SL_2$ and write $\Gamma $ for the corresponding  Fuchsian or Kleinian lattice in $G:= \mathbf{G}(k^\infty)$. The unitary representations of $\Gamma$ which factor through a finite \emph{congruence quotient} are precisely those which extend continuously to $K:= \prod_{\pfrak<\infty} \mathbf{G}(\Ocal_\pfrak)$. Write $\mathrm{CFVURep}(M)$ the subgroup of $\mathrm{FVURep}(M)$ generated by these representations.  
+	\begin{question}\label{q:multind3}
+		Supposing the answer to \cref{q:multind2} is negative, must the kernel intersect ${\rm CFVURep(M)}$ nontrivially? 
+	\end{question}
+	
+	As mentioned in \cref{par:specrigidity}, Alan Reid proved that isospectral arithmetic hyperbolic $2$ and $3$ manifolds must be commensurable.  
+	\begin{question}
+		Let $M$ and $M'$ be isospectral nonarithmetic hyperbolic $2$ or $3$ manifolds
+		$M$ and $M'$ be commensurable?  
+	\end{question}
+	If this is so, then if paired with a positive answer to \cref{q:multind}, one would have a complete characterization of isospectrality for such manifolds. 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	\newpage
+	
+	\bibliographystyle{plain} 
+	\bibliography{zotbib}
+	
+\end{document}
+
+
+\end{document}		

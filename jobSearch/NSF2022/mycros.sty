@@ -1,1 +1,1125 @@
-/Users/jukatz/Dropbox/Ben/jobSearch/NSF2022/mycros.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mycros}
+
+\newcommand{\mf}{\mathfrak}
+\newcommand{\ON}{\operatorname}
+%\newcommand{\ti}{\widetilde}
+
+
+\newcommand{\diag}{\ON{diag}}
+\newcommand{\dop}{\,{\rm d}}
+\newcommand{\epi}{\twoheadrightarrow}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inv}{{-1}}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\lmod}{\backslash}
+\newcommand{\Stab}{\ON{Stab}}
+\newcommand{\Aff}{\ON{Aff}}
+\newcommand{\spec}{\ON{spec}}
+
+\newcommand{\mono}{\hookrightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\partone}[1]{\frac{\partial}{\partial x_{#1}}}
+\newcommand{\parttwo}[1]{\frac{\partial^{2}}{\partial x_{#1}^{2}}}
+\newcommand{\rest}{\big|}
+\newcommand{\rmod}{/}
+\newcommand{\sch}{\mathscr{S}}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\til}[1]{\ti{#1}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\sl}{\mathfrak{sl}}
+
+\newcommand{\Sig}{\Sigma}
+\newcommand{\sig}{\sigma}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\nrm}[1]{\lVert #1 \rVert}
+\newcommand{\del}{\partial}
+\newcommand{\kron}[2]{\left( \frac{#1}{#2}\right)}
+\newcommand{\Ad}{\ON{Ad}}
+\newcommand{\Ann}{\ON{Ann}}
+\newcommand{\Aut}{\ON{Aut}}
+\newcommand{\Ch}{\ON{Ch}}
+\newcommand{\Com}{\ON{Com}}
+\newcommand{\Cont}{\ON{Cont}}
+\newcommand{\Diff}{\ON{Diff}}
+\newcommand{\End}{\ON{End}}
+\newcommand{\Exp}[1]{\ON{exp} \left( #1 \right)}
+\newcommand{\Fix}{\ON{Fix}}
+\newcommand{\GL}{\ON{GL}}
+\newcommand{\Gal}{\ON{Gal}}
+\newcommand{\Graph}{\ON{graph}}
+\newcommand{\Hex}{\ON{Hex}}
+\newcommand{\Hom}{\ON{Hom}}
+\newcommand{\Ind}{\ON{Ind}}
+\newcommand{\Inn}{\ON{Inn}}
+\newcommand{\Invo}{\ON{Inv}}
+\newcommand{\Isom}{\ON{Isom}}
+\newcommand{\Lie}{\ON{Lie}}
+\newcommand{\MCG}{\ON{MCG}}
+\newcommand{\Ord}{\ON{Ord}}
+\newcommand{\PGL}{\ON{PGL}}
+\newcommand{\PSL}{\ON{PSL}}
+\newcommand{\Rep}{\ON{Rep}}
+\newcommand{\Res}{\ON{Res}}
+\newcommand{\Ric}{\ON{Ric}}
+\newcommand{\SL}{\ON{SL}}
+\newcommand{\SO}{\ON{SO}}
+\newcommand{\SU}{\ON{SU}}
+\newcommand{\Spec}{\ON{Spec}}
+\newcommand{\Sym}{\ON{Sym}}
+\newcommand{\Tr}{\ON{tr}}
+\newcommand{\arccosh}{\ON{arccosh}}
+\newcommand{\dom}{\ON{dom}}
+\newcommand{\fp}{\ON{f.p.}}
+\newcommand{\frob}[1]{\ON{frob}(#1)}
+\newcommand{\grad}{\ON{grad}}
+\newcommand{\id}{\ON{id}}
+\newcommand{\image}{\ON{Im}}
+\newcommand{\im}{\ON{Im}}
+\newcommand{\inc}{\ON{inc}}
+\newcommand{\ind}{\ON{ind}}
+\newcommand{\infl}{\ON{Infl}}
+\newcommand{\mhaar}[1]{\frac{\ON{d}#1}{#1}}
+\newcommand{\ord}{\ON{ord}}
+\newcommand{\proj}{\ON{proj}}
+\newcommand{\res}{\ON{res}}
+\newcommand{\re}{\ON{Re}}
+\newcommand{\stab}{\ON{stab}}
+\newcommand{\trace}{\ON{Tr}}
+\newcommand{\vchar}{\ON{Vchar}}
+\newcommand{\vol}{\ON{vol}}
+\renewcommand{\O}{\ON{O}}
+
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\newcommand{\Abar}{\overline{A}}
+\newcommand{\abar}{\overline{a}}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Acalbar}{\overline{\Acal}}
+\newcommand{\Abb}{\mathbb{A}}
+\newcommand{\Abbar}{\overline{\Abb}}
+\newcommand{\Afrak}{\mathfrak{A}}
+\newcommand{\afrak}{\mathfrak{a}}
+\newcommand{\Afrakbar}{\overline{\Afrak}}
+
+\newcommand{\Bbar}{\overline{B}}
+\newcommand{\bbar}{\overline{b}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Bcalbar}{\overline{\Bcal}}
+\renewcommand{\Bbb}{\mathbb{B}}
+\newcommand{\Bbbar}{\overline{\Bbb}}
+\newcommand{\Bfrak}{\mathfrak{B}}
+\newcommand{\bfrak}{\mathfrak{b}}
+\newcommand{\Bfrakbar}{\overline{\Bfrak}}
+
+\newcommand{\Cbar}{\overline{C}}
+\newcommand{\cbar}{\overline{c}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Ccalbar}{\overline{\Ccal}}
+\newcommand{\Cbb}{\mathbb{C}}
+\newcommand{\Cbbar}{\overline{\Cbb}}
+\newcommand{\Cfrak}{\mathfrak{C}}
+\newcommand{\cfrak}{\mathfrak{c}}
+\newcommand{\Cfrakbar}{\overline{\Cfrak}}
+
+\newcommand{\Dbar}{\overline{D}}
+\newcommand{\dbar}{\overline{d}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Dcalbar}{\overline{\Dcal}}
+\newcommand{\Dbb}{\mathbb{D}}
+\newcommand{\Dbbar}{\overline{\Dbb}}
+\newcommand{\Dfrak}{\mathfrak{D}}
+\newcommand{\dfrak}{\mathfrak{d}}
+\newcommand{\Dfrakbar}{\overline{\Dfrak}}
+
+\newcommand{\Ebar}{\overline{E}}
+\newcommand{\ebar}{\overline{e}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Ecalbar}{\overline{\Ecal}}
+\newcommand{\Ebb}{\mathbb{E}}
+\newcommand{\Ebbar}{\overline{\Ebb}}
+\newcommand{\Efrak}{\mathfrak{E}}
+\newcommand{\efrak}{\mathfrak{e}}
+\newcommand{\Efrakbar}{\overline{\Efrak}}
+
+\newcommand{\Fbar}{\overline{F}}
+\newcommand{\fbar}{\overline{f}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Fcalbar}{\overline{\Fcal}}
+\newcommand{\Fbb}{\mathbb{F}}
+\newcommand{\Fbbar}{\overline{\Fbb}}
+\newcommand{\Ffrak}{\mathfrak{F}}
+\newcommand{\ffrak}{\mathfrak{f}}
+\newcommand{\Ffrakbar}{\overline{\Ffrak}}
+
+\newcommand{\Gbar}{\overline{G}}
+\newcommand{\gbar}{\overline{g}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Gcalbar}{\overline{\Gcal}}
+\newcommand{\Gbb}{\mathbb{G}}
+\newcommand{\Gbbar}{\overline{\Gbb}}
+\newcommand{\Gfrak}{\mathfrak{G}}
+\newcommand{\gfrak}{\mathfrak{g}}
+\newcommand{\Gfrakbar}{\overline{\Gfrak}}
+
+\newcommand{\Hbar}{\overline{H}}
+\renewcommand{\hbar}{\overline{h}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Hcalbar}{\overline{\Hcal}}
+\newcommand{\Hbb}{\mathbb{H}}
+\newcommand{\Hbbar}{\overline{\Hbb}}
+\newcommand{\Hfrak}{\mathfrak{H}}
+\newcommand{\hfrak}{\mathfrak{h}}
+\newcommand{\Hfrakbar}{\overline{\Hfrak}}
+
+\newcommand{\Ibar}{\overline{I}}
+\newcommand{\ibar}{\overline{i}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Icalbar}{\overline{\Ical}}
+\newcommand{\Ibb}{\mathbb{I}}
+\newcommand{\Ibbar}{\overline{\Ibb}}
+\newcommand{\Ifrak}{\mathfrak{I}}
+\newcommand{\ifrak}{\mathfrak{i}}
+\newcommand{\Ifrakbar}{\overline{\Ifrak}}
+
+\newcommand{\Jbar}{\overline{J}}
+\newcommand{\jbar}{\overline{j}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Jcalbar}{\overline{\Jcal}}
+\newcommand{\Jbb}{\mathbb{J}}
+\newcommand{\Jbbar}{\overline{\Jbb}}
+\newcommand{\Jfrak}{\mathfrak{J}}
+\newcommand{\jfrak}{\mathfrak{j}}
+\newcommand{\Jfrakbar}{\overline{\Jfrak}}
+
+\newcommand{\Kbar}{\overline{K}}
+\newcommand{\kbar}{\overline{k}}
+\newcommand{\Kcal}{\mathcal{K}}
+\newcommand{\Kcalbar}{\overline{\Kcal}}
+\newcommand{\Kbb}{\mathbb{K}}
+\newcommand{\Kbbar}{\overline{\Kbb}}
+\newcommand{\Kfrak}{\mathfrak{K}}
+\newcommand{\kfrak}{\mathfrak{k}}
+\newcommand{\Kfrakbar}{\overline{\Kfrak}}
+
+\newcommand{\Lbar}{\overline{L}}
+\newcommand{\lbar}{\overline{l}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Lcalbar}{\overline{\Lcal}}
+\newcommand{\Lbb}{\mathbb{L}}
+\newcommand{\Lbbar}{\overline{\Lbb}}
+\newcommand{\Lfrak}{\mathfrak{L}}
+\newcommand{\lfrak}{\mathfrak{l}}
+\newcommand{\Lfrakbar}{\overline{\Lfrak}}
+
+\newcommand{\Mbar}{\overline{M}}
+\newcommand{\mbar}{\overline{m}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Mcalbar}{\overline{\Mcal}}
+\newcommand{\Mbb}{\mathbb{M}}
+\newcommand{\Mbbar}{\overline{\Mbb}}
+\newcommand{\Mfrak}{\mathfrak{M}}
+\newcommand{\mfrak}{\mathfrak{m}}
+\newcommand{\Mfrakbar}{\overline{\Mfrak}}
+
+\newcommand{\Nbar}{\overline{N}}
+\newcommand{\nbar}{\overline{n}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Ncalbar}{\overline{\Ncal}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Nbbar}{\overline{\Nbb}}
+\newcommand{\Nfrak}{\mathfrak{N}}
+\newcommand{\nfrak}{\mathfrak{n}}
+\newcommand{\Nfrakbar}{\overline{\Nfrak}}
+
+\newcommand{\Obar}{\overline{O}}
+\newcommand{\obar}{\overline{o}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\Ocalbar}{\overline{\Ocal}}
+\newcommand{\Obb}{\mathbb{O}}
+\newcommand{\Obbar}{\overline{\Obb}}
+\newcommand{\Ofrak}{\mathfrak{O}}
+\newcommand{\ofrak}{\mathfrak{o}}
+\newcommand{\Ofrakbar}{\overline{\Ofrak}}
+
+\newcommand{\Pbar}{\overline{P}}
+\newcommand{\pbar}{\overline{p}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Pcalbar}{\overline{\Pcal}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\Pbbar}{\overline{\Pbb}}
+\newcommand{\Pfrak}{\mathfrak{P}}
+\newcommand{\pfrak}{\mathfrak{p}}
+\newcommand{\Pfrakbar}{\overline{\Pfrak}}
+
+\newcommand{\Qbar}{\overline{Q}}
+\newcommand{\qbar}{\overline{q}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\Qcalbar}{\overline{\Qcal}}
+\newcommand{\Qbb}{\mathbb{Q}}
+\newcommand{\Qbbar}{\overline{\Qbb}}
+\newcommand{\Qfrak}{\mathfrak{Q}}
+\newcommand{\qfrak}{\mathfrak{q}}
+\newcommand{\Qfrakbar}{\overline{\Qfrak}}
+
+\newcommand{\Rbar}{\overline{R}}
+\newcommand{\rbar}{\overline{r}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Rcalbar}{\overline{\Rcal}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Rbbar}{\overline{\Rbb}}
+\newcommand{\Rfrak}{\mathfrak{R}}
+\newcommand{\rfrak}{\mathfrak{r}}
+\newcommand{\Rfrakbar}{\overline{\Rfrak}}
+
+\newcommand{\Sbar}{\overline{S}}
+\newcommand{\sbar}{\overline{s}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Scalbar}{\overline{\Scal}}
+\newcommand{\Sbb}{\mathbb{S}}
+\newcommand{\Sbbar}{\overline{\Sbb}}
+\newcommand{\Sfrak}{\mathfrak{S}}
+\newcommand{\sfrak}{\mathfrak{s}}
+\newcommand{\Sfrakbar}{\overline{\Sfrak}}
+
+\newcommand{\Tbar}{\overline{T}}
+\newcommand{\tbar}{\overline{t}}
+\newcommand{\Tcal}{\mathcal{T}}
+\newcommand{\Tcalbar}{\overline{\Tcal}}
+\newcommand{\Tbb}{\mathbb{T}}
+\newcommand{\Tbbar}{\overline{\Tbb}}
+\newcommand{\Tfrak}{\mathfrak{T}}
+\newcommand{\tfrak}{\mathfrak{t}}
+\newcommand{\Tfrakbar}{\overline{\Tfrak}}
+
+\newcommand{\Ubar}{\overline{U}}
+\newcommand{\ubar}{\overline{u}}
+\newcommand{\Ucal}{\mathcal{U}}
+\newcommand{\Ucalbar}{\overline{\Ucal}}
+\newcommand{\Ubb}{\mathbb{U}}
+\newcommand{\Ubbar}{\overline{\Ubb}}
+\newcommand{\Ufrak}{\mathfrak{U}}
+\newcommand{\ufrak}{\mathfrak{u}}
+\newcommand{\Ufrakbar}{\overline{\Ufrak}}
+
+\newcommand{\Vbar}{\overline{V}}
+\newcommand{\vbar}{\overline{v}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Vcalbar}{\overline{\Vcal}}
+\newcommand{\Vbb}{\mathbb{V}}
+\newcommand{\Vbbar}{\overline{\Vbb}}
+\newcommand{\Vfrak}{\mathfrak{V}}
+\newcommand{\vfrak}{\mathfrak{v}}
+\newcommand{\Vfrakbar}{\overline{\Vfrak}}
+
+\newcommand{\Wbar}{\overline{W}}
+\newcommand{\wbar}{\overline{w}}
+\newcommand{\Wcal}{\mathcal{W}}
+\newcommand{\Wcalbar}{\overline{\Wcal}}
+\newcommand{\Wbb}{\mathbb{W}}
+\newcommand{\Wbbar}{\overline{\Wbb}}
+\newcommand{\Wfrak}{\mathfrak{W}}
+\newcommand{\wfrak}{\mathfrak{w}}
+\newcommand{\Wfrakbar}{\overline{\Wfrak}}
+
+\newcommand{\Xbar}{\overline{X}}
+\newcommand{\xbar}{\overline{x}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Xcalbar}{\overline{\Xcal}}
+\newcommand{\Xbb}{\mathbb{X}}
+\newcommand{\Xbbar}{\overline{\Xbb}}
+\newcommand{\Xfrak}{\mathfrak{X}}
+\newcommand{\xfrak}{\mathfrak{x}}
+\newcommand{\Xfrakbar}{\overline{\Xfrak}}
+
+\newcommand{\Ybar}{\overline{Y}}
+\newcommand{\ybar}{\overline{y}}
+\newcommand{\Ycal}{\mathcal{Y}}
+\newcommand{\Ycalbar}{\overline{\Ycal}}
+\newcommand{\Ybb}{\mathbb{Y}}
+\newcommand{\Ybbar}{\overline{\Ybb}}
+\newcommand{\Yfrak}{\mathfrak{Y}}
+\newcommand{\yfrak}{\mathfrak{y}}
+\newcommand{\Yfrakbar}{\overline{\Yfrak}}
+
+\newcommand{\Zbar}{\overline{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Zcal}{\mathcal{Z}}
+\newcommand{\Zcalbar}{\overline{\Zcal}}
+\newcommand{\Zbb}{\mathbb{Z}}
+\newcommand{\Zbbar}{\overline{\Zbb}}
+\newcommand{\Zfrak}{\mathfrak{Z}}
+\newcommand{\zfrak}{\mathfrak{z}}
+\newcommand{\Zfrakbar}{\overline{\Zfrak}}
+
+
+
+
+
+
+
+
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+\newtheorem{thm}{Theorem}
+\newtheorem{problem}{Problem}
+\newtheorem{prop}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+
+%
+
+
+\newcommand{\ati}{\ti{a}}
+\newcommand{\bti}{\ti{b}}
+\newcommand{\cti}{\ti{c}}
+\newcommand{\dti}{\ti{d}}
+\newcommand{\eti}{\ti{e}}
+\newcommand{\fti}{\ti{f}}
+\newcommand{\gti}{\ti{g}}
+\newcommand{\hti}{\ti{h}}
+\newcommand{\iti}{\ti{i}}
+\newcommand{\jti}{\ti{j}}
+\newcommand{\kti}{\ti{k}}
+\newcommand{\lti}{\ti{l}}
+\newcommand{\mti}{\ti{m}}
+\newcommand{\nti}{\ti{n}}
+\newcommand{\oti}{\ti{o}}
+\newcommand{\pti}{\ti{p}}
+\newcommand{\qti}{\ti{q}}
+\newcommand{\rti}{\ti{r}}
+\newcommand{\sti}{\ti{s}}
+\newcommand{\tti}{\ti{t}}
+\newcommand{\uti}{\ti{u}}
+\newcommand{\vti}{\ti{v}}
+\newcommand{\wti}{\ti{w}}
+\newcommand{\xti}{\ti{x}}
+\newcommand{\yti}{\ti{y}}
+\newcommand{\zti}{\ti{z}}
+\newcommand{\Ati}{\ti{A}}
+\newcommand{\Bti}{\ti{B}}
+\newcommand{\Cti}{\ti{C}}
+\newcommand{\Dti}{\ti{D}}
+\newcommand{\Eti}{\ti{E}}
+\newcommand{\Fti}{\ti{F}}
+\newcommand{\Gti}{\ti{G}}
+\newcommand{\Hti}{\ti{H}}
+\newcommand{\Iti}{\ti{I}}
+\newcommand{\Jti}{\ti{J}}
+\newcommand{\Kti}{\ti{K}}
+\newcommand{\Lti}{\ti{L}}
+\newcommand{\Mti}{\ti{M}}
+\newcommand{\Nti}{\ti{N}}
+\newcommand{\Oti}{\ti{O}}
+\newcommand{\Pti}{\ti{P}}
+\newcommand{\Qti}{\ti{Q}}
+\newcommand{\Rti}{\ti{R}}
+\newcommand{\Sti}{\ti{S}}
+\newcommand{\Tti}{\ti{T}}
+\newcommand{\Uti}{\ti{U}}
+\newcommand{\Vti}{\ti{V}}
+\newcommand{\Wti}{\ti{W}}
+\newcommand{\Xti}{\ti{X}}
+\newcommand{\Yti}{\ti{Y}}
+\newcommand{\Zti}{\ti{Z}}
+% ------------------------------------
+% \newcommand{\abar}{\bar{a}}
+% \newcommand{\bbar}{\bar{b}}
+% \newcommand{\cbar}{\bar{c}}
+% \newcommand{\dbar}{\bar{d}}
+% \newcommand{\ebar}{\bar{e}}
+% \newcommand{\fbar}{\bar{f}}
+% \newcommand{\gbar}{\bar{g}}
+% \newcommand{\hbar}{\bar{h}}
+% \newcommand{\ibar}{\bar{i}}
+% \newcommand{\jbar}{\bar{j}}
+% \newcommand{\kbar}{\bar{k}}
+% \newcommand{\lbar}{\bar{l}}
+% \newcommand{\mbar}{\bar{m}}
+% \newcommand{\nbar}{\bar{n}}
+% \newcommand{\obar}{\bar{o}}
+% \newcommand{\pbar}{\bar{p}}
+% \newcommand{\qbar}{\bar{q}}
+% \newcommand{\rbar}{\bar{r}}
+% \newcommand{\sbar}{\bar{s}}
+% \newcommand{\tbar}{\bar{t}}
+% \newcommand{\ubar}{\bar{u}}
+% \newcommand{\vbar}{\bar{v}}
+% \newcommand{\wbar}{\bar{w}}
+% \newcommand{\xbar}{\bar{x}}
+% \newcommand{\ybar}{\bar{y}}
+% \newcommand{\zbar}{\bar{z}}
+% \newcommand{\Abar}{\bar{A}}
+% \newcommand{\Bbar}{\bar{B}}
+% \newcommand{\Cbar}{\bar{C}}
+% \newcommand{\Dbar}{\bar{D}}
+% \newcommand{\Ebar}{\bar{E}}
+% \newcommand{\Fbar}{\bar{F}}
+% \newcommand{\Gbar}{\bar{G}}
+% \newcommand{\Hbar}{\bar{H}}
+% \newcommand{\Ibar}{\bar{I}}
+% \newcommand{\Jbar}{\bar{J}}
+% \newcommand{\Kbar}{\bar{K}}
+% \newcommand{\Lbar}{\bar{L}}
+% \newcommand{\Mbar}{\bar{M}}
+% \newcommand{\Nbar}{\bar{N}}
+% \newcommand{\Obar}{\bar{O}}
+% \newcommand{\Pbar}{\bar{P}}
+% \newcommand{\Qbar}{\bar{Q}}
+% \newcommand{\Rbar}{\bar{R}}
+% \newcommand{\Sbar}{\bar{S}}
+% \newcommand{\Tbar}{\bar{T}}
+% \newcommand{\Ubar}{\bar{U}}
+% \newcommand{\Vbar}{\bar{V}}
+% \newcommand{\Wbar}{\bar{W}}
+% \newcommand{\Xbar}{\bar{X}}
+% \newcommand{\Ybar}{\bar{Y}}
+% \newcommand{\Zbar}{\bar{Z}}
+% ------------------------------------
+\newcommand{\ahat}{\hat{a}}
+\newcommand{\bhat}{\hat{b}}
+\newcommand{\chat}{\hat{c}}
+\newcommand{\dhat}{\hat{d}}
+\newcommand{\ehat}{\hat{e}}
+\newcommand{\fhat}{\hat{f}}
+\newcommand{\ghat}{\hat{g}}
+\newcommand{\hhat}{\hat{h}}
+\newcommand{\ihat}{\hat{i}}
+\newcommand{\jhat}{\hat{j}}
+\newcommand{\khat}{\hat{k}}
+\newcommand{\lhat}{\hat{l}}
+\newcommand{\mhat}{\hat{m}}
+\newcommand{\nhat}{\hat{n}}
+\newcommand{\ohat}{\hat{o}}
+\newcommand{\phat}{\hat{p}}
+\newcommand{\qhat}{\hat{q}}
+\newcommand{\rhat}{\hat{r}}
+\newcommand{\shat}{\hat{s}}
+\newcommand{\that}{\hat{t}}
+\newcommand{\uhat}{\hat{u}}
+\newcommand{\vhat}{\hat{v}}
+\newcommand{\what}{\hat{w}}
+\newcommand{\xhat}{\hat{x}}
+\newcommand{\yhat}{\hat{y}}
+\newcommand{\zhat}{\hat{z}}
+\newcommand{\Ahat}{\hat{A}}
+\newcommand{\Bhat}{\hat{B}}
+\newcommand{\Chat}{\hat{C}}
+\newcommand{\Dhat}{\hat{D}}
+\newcommand{\Ehat}{\hat{E}}
+\newcommand{\Fhat}{\hat{F}}
+\newcommand{\Ghat}{\hat{G}}
+\newcommand{\Hhat}{\hat{H}}
+\newcommand{\Ihat}{\hat{I}}
+\newcommand{\Jhat}{\hat{J}}
+\newcommand{\Khat}{\hat{K}}
+\newcommand{\Lhat}{\hat{L}}
+\newcommand{\Mhat}{\hat{M}}
+\newcommand{\Nhat}{\hat{N}}
+\newcommand{\Ohat}{\hat{O}}
+\newcommand{\Phat}{\hat{P}}
+\newcommand{\Qhat}{\hat{Q}}
+\newcommand{\Rhat}{\hat{R}}
+\newcommand{\Shat}{\hat{S}}
+\newcommand{\That}{\hat{T}}
+\newcommand{\Uhat}{\hat{U}}
+\newcommand{\Vhat}{\hat{V}}
+\newcommand{\What}{\hat{W}}
+\newcommand{\Xhat}{\hat{X}}
+\newcommand{\Yhat}{\hat{Y}}
+\newcommand{\Zhat}{\hat{Z}}
+% ------------------------------------
+\newcommand{\acheck}{\check{a}}
+\newcommand{\bcheck}{\check{b}}
+\newcommand{\ccheck}{\check{c}}
+\newcommand{\dcheck}{\check{d}}
+\newcommand{\echeck}{\check{e}}
+\newcommand{\fcheck}{\check{f}}
+\newcommand{\gcheck}{\check{g}}
+\newcommand{\hcheck}{\check{h}}
+\newcommand{\icheck}{\check{i}}
+\newcommand{\jcheck}{\check{j}}
+\newcommand{\kcheck}{\check{k}}
+\newcommand{\lcheck}{\check{l}}
+\newcommand{\mcheck}{\check{m}}
+\newcommand{\ncheck}{\check{n}}
+\newcommand{\ocheck}{\check{o}}
+\newcommand{\pcheck}{\check{p}}
+\newcommand{\qcheck}{\check{q}}
+\newcommand{\rcheck}{\check{r}}
+\newcommand{\scheck}{\check{s}}
+\newcommand{\tcheck}{\check{t}}
+\newcommand{\ucheck}{\check{u}}
+\newcommand{\vcheck}{\check{v}}
+\newcommand{\wcheck}{\check{w}}
+\newcommand{\xcheck}{\check{x}}
+\newcommand{\ycheck}{\check{y}}
+\newcommand{\zcheck}{\check{z}}
+\newcommand{\Acheck}{\check{A}}
+\newcommand{\Bcheck}{\check{B}}
+\newcommand{\Ccheck}{\check{C}}
+\newcommand{\Dcheck}{\check{D}}
+\newcommand{\Echeck}{\check{E}}
+\newcommand{\Fcheck}{\check{F}}
+\newcommand{\Gcheck}{\check{G}}
+\newcommand{\Hcheck}{\check{H}}
+\newcommand{\Icheck}{\check{I}}
+\newcommand{\Jcheck}{\check{J}}
+\newcommand{\Kcheck}{\check{K}}
+\newcommand{\Lcheck}{\check{L}}
+\newcommand{\Mcheck}{\check{M}}
+\newcommand{\Ncheck}{\check{N}}
+\newcommand{\Ocheck}{\check{O}}
+\newcommand{\Pcheck}{\check{P}}
+\newcommand{\Qcheck}{\check{Q}}
+\newcommand{\Rcheck}{\check{R}}
+\newcommand{\Scheck}{\check{S}}
+\newcommand{\Tcheck}{\check{T}}
+\newcommand{\Ucheck}{\check{U}}
+\newcommand{\Vcheck}{\check{V}}
+\newcommand{\Wcheck}{\check{W}}
+\newcommand{\Xcheck}{\check{X}}
+\newcommand{\Ycheck}{\check{Y}}
+\newcommand{\Zcheck}{\check{Z}}
+% ------------------------------------
+\newcommand{\abf}{\mathbf{a}}
+\newcommand{\bbf}{\mathbf{b}}
+\newcommand{\cbf}{\mathbf{c}}
+\newcommand{\dbf}{\mathbf{d}}
+\newcommand{\ebf}{\mathbf{e}}
+\newcommand{\fbf}{\mathbf{f}}
+\newcommand{\gbf}{\mathbf{g}}
+\newcommand{\hbf}{\mathbf{h}}
+\newcommand{\ibf}{\mathbf{i}}
+\newcommand{\jbf}{\mathbf{j}}
+\newcommand{\kbf}{\mathbf{k}}
+\newcommand{\lbf}{\mathbf{l}}
+\newcommand{\mbf}{\mathbf{m}}
+\newcommand{\nbf}{\mathbf{n}}
+\newcommand{\obf}{\mathbf{o}}
+\newcommand{\pbf}{\mathbf{p}}
+\newcommand{\qbf}{\mathbf{q}}
+\newcommand{\rbf}{\mathbf{r}}
+\newcommand{\sbf}{\mathbf{s}}
+\newcommand{\tbf}{\mathbf{t}}
+\newcommand{\ubf}{\mathbf{u}}
+\newcommand{\vbf}{\mathbf{v}}
+\newcommand{\wbf}{\mathbf{w}}
+\newcommand{\xbf}{\mathbf{x}}
+\newcommand{\ybf}{\mathbf{y}}
+\newcommand{\zbf}{\mathbf{z}}
+\newcommand{\Abf}{\mathbf{A}}
+\newcommand{\Bbf}{\mathbf{B}}
+\newcommand{\Cbf}{\mathbf{C}}
+\newcommand{\Dbf}{\mathbf{D}}
+\newcommand{\Ebf}{\mathbf{E}}
+\newcommand{\Fbf}{\mathbf{F}}
+\newcommand{\Gbf}{\mathbf{G}}
+\newcommand{\Hbf}{\mathbf{H}}
+\newcommand{\Ibf}{\mathbf{I}}
+\newcommand{\Jbf}{\mathbf{J}}
+\newcommand{\Kbf}{\mathbf{K}}
+\newcommand{\Lbf}{\mathbf{L}}
+\newcommand{\Mbf}{\mathbf{M}}
+\newcommand{\Nbf}{\mathbf{N}}
+\newcommand{\Obf}{\mathbf{O}}
+\newcommand{\Pbf}{\mathbf{P}}
+\newcommand{\Qbf}{\mathbf{Q}}
+\newcommand{\Rbf}{\mathbf{R}}
+\newcommand{\Sbf}{\mathbf{S}}
+\newcommand{\Tbf}{\mathbf{T}}
+\newcommand{\Ubf}{\mathbf{U}}
+\newcommand{\Vbf}{\mathbf{V}}
+\newcommand{\Wbf}{\mathbf{W}}
+\newcommand{\Xbf}{\mathbf{X}}
+\newcommand{\Ybf}{\mathbf{Y}}
+\newcommand{\Zbf}{\mathbf{Z}}
+% ------------------------------------
+\newcommand{\amathbb}{\mathbb{a}}
+\newcommand{\bmathbb}{\mathbb{b}}
+\newcommand{\cmathbb}{\mathbb{c}}
+\newcommand{\dmathbb}{\mathbb{d}}
+\newcommand{\emathbb}{\mathbb{e}}
+\newcommand{\fmathbb}{\mathbb{f}}
+\newcommand{\gmathbb}{\mathbb{g}}
+\newcommand{\hmathbb}{\mathbb{h}}
+\newcommand{\imathbb}{\mathbb{i}}
+\newcommand{\jmathbb}{\mathbb{j}}
+\newcommand{\kmathbb}{\mathbb{k}}
+\newcommand{\lmathbb}{\mathbb{l}}
+\newcommand{\mmathbb}{\mathbb{m}}
+\newcommand{\nmathbb}{\mathbb{n}}
+\newcommand{\omathbb}{\mathbb{o}}
+\newcommand{\pmathbb}{\mathbb{p}}
+\newcommand{\qmathbb}{\mathbb{q}}
+\newcommand{\rmathbb}{\mathbb{r}}
+\newcommand{\smathbb}{\mathbb{s}}
+\newcommand{\tmathbb}{\mathbb{t}}
+\newcommand{\umathbb}{\mathbb{u}}
+\newcommand{\vmathbb}{\mathbb{v}}
+\newcommand{\wmathbb}{\mathbb{w}}
+\newcommand{\xmathbb}{\mathbb{x}}
+\newcommand{\ymathbb}{\mathbb{y}}
+\newcommand{\zmathbb}{\mathbb{z}}
+\newcommand{\Amathbb}{\mathbb{A}}
+\newcommand{\Bmathbb}{\mathbb{B}}
+\newcommand{\Cmathbb}{\mathbb{C}}
+\newcommand{\Dmathbb}{\mathbb{D}}
+\newcommand{\Emathbb}{\mathbb{E}}
+\newcommand{\Fmathbb}{\mathbb{F}}
+\newcommand{\Gmathbb}{\mathbb{G}}
+\newcommand{\Hmathbb}{\mathbb{H}}
+\newcommand{\Imathbb}{\mathbb{I}}
+\newcommand{\Jmathbb}{\mathbb{J}}
+\newcommand{\Kmathbb}{\mathbb{K}}
+\newcommand{\Lmathbb}{\mathbb{L}}
+\newcommand{\Mmathbb}{\mathbb{M}}
+\newcommand{\Nmathbb}{\mathbb{N}}
+\newcommand{\Omathbb}{\mathbb{O}}
+\newcommand{\Pmathbb}{\mathbb{P}}
+\newcommand{\Qmathbb}{\mathbb{Q}}
+\newcommand{\Rmathbb}{\mathbb{R}}
+\newcommand{\Smathbb}{\mathbb{S}}
+\newcommand{\Tmathbb}{\mathbb{T}}
+\newcommand{\Umathbb}{\mathbb{U}}
+\newcommand{\Vmathbb}{\mathbb{V}}
+\newcommand{\Wmathbb}{\mathbb{W}}
+\newcommand{\Xmathbb}{\mathbb{X}}
+\newcommand{\Ymathbb}{\mathbb{Y}}
+\newcommand{\Zmathbb}{\mathbb{Z}}
+% ------------------------------------
+\newcommand{\amathcal}{\mathcal{a}}
+\newcommand{\bmathcal}{\mathcal{b}}
+\newcommand{\cmathcal}{\mathcal{c}}
+\newcommand{\dmathcal}{\mathcal{d}}
+\newcommand{\emathcal}{\mathcal{e}}
+\newcommand{\fmathcal}{\mathcal{f}}
+\newcommand{\gmathcal}{\mathcal{g}}
+\newcommand{\hmathcal}{\mathcal{h}}
+\newcommand{\imathcal}{\mathcal{i}}
+\newcommand{\jmathcal}{\mathcal{j}}
+\newcommand{\kmathcal}{\mathcal{k}}
+\newcommand{\lmathcal}{\mathcal{l}}
+\newcommand{\mmathcal}{\mathcal{m}}
+\newcommand{\nmathcal}{\mathcal{n}}
+\newcommand{\omathcal}{\mathcal{o}}
+\newcommand{\pmathcal}{\mathcal{p}}
+\newcommand{\qmathcal}{\mathcal{q}}
+\newcommand{\rmathcal}{\mathcal{r}}
+\newcommand{\smathcal}{\mathcal{s}}
+\newcommand{\tmathcal}{\mathcal{t}}
+\newcommand{\umathcal}{\mathcal{u}}
+\newcommand{\vmathcal}{\mathcal{v}}
+\newcommand{\wmathcal}{\mathcal{w}}
+\newcommand{\xmathcal}{\mathcal{x}}
+\newcommand{\ymathcal}{\mathcal{y}}
+\newcommand{\zmathcal}{\mathcal{z}}
+\newcommand{\Amathcal}{\mathcal{A}}
+\newcommand{\Bmathcal}{\mathcal{B}}
+\newcommand{\Cmathcal}{\mathcal{C}}
+\newcommand{\Dmathcal}{\mathcal{D}}
+\newcommand{\Emathcal}{\mathcal{E}}
+\newcommand{\Fmathcal}{\mathcal{F}}
+\newcommand{\Gmathcal}{\mathcal{G}}
+\newcommand{\Hmathcal}{\mathcal{H}}
+\newcommand{\Imathcal}{\mathcal{I}}
+\newcommand{\Jmathcal}{\mathcal{J}}
+\newcommand{\Kmathcal}{\mathcal{K}}
+\newcommand{\Lmathcal}{\mathcal{L}}
+\newcommand{\Mmathcal}{\mathcal{M}}
+\newcommand{\Nmathcal}{\mathcal{N}}
+\newcommand{\Omathcal}{\mathcal{O}}
+\newcommand{\Pmathcal}{\mathcal{P}}
+\newcommand{\Qmathcal}{\mathcal{Q}}
+\newcommand{\Rmathcal}{\mathcal{R}}
+\newcommand{\Smathcal}{\mathcal{S}}
+\newcommand{\Tmathcal}{\mathcal{T}}
+\newcommand{\Umathcal}{\mathcal{U}}
+\newcommand{\Vmathcal}{\mathcal{V}}
+\newcommand{\Wmathcal}{\mathcal{W}}
+\newcommand{\Xmathcal}{\mathcal{X}}
+\newcommand{\Ymathcal}{\mathcal{Y}}
+\newcommand{\Zmathcal}{\mathcal{Z}}
+% ------------------------------------
+\newcommand{\amathfrak}{\mathfrak{a}}
+\newcommand{\bmathfrak}{\mathfrak{b}}
+\newcommand{\cmathfrak}{\mathfrak{c}}
+\newcommand{\dmathfrak}{\mathfrak{d}}
+\newcommand{\emathfrak}{\mathfrak{e}}
+\newcommand{\fmathfrak}{\mathfrak{f}}
+\newcommand{\gmathfrak}{\mathfrak{g}}
+\newcommand{\hmathfrak}{\mathfrak{h}}
+\newcommand{\imathfrak}{\mathfrak{i}}
+\newcommand{\jmathfrak}{\mathfrak{j}}
+\newcommand{\kmathfrak}{\mathfrak{k}}
+\newcommand{\lmathfrak}{\mathfrak{l}}
+\newcommand{\mmathfrak}{\mathfrak{m}}
+\newcommand{\nmathfrak}{\mathfrak{n}}
+\newcommand{\omathfrak}{\mathfrak{o}}
+\newcommand{\pmathfrak}{\mathfrak{p}}
+\newcommand{\qmathfrak}{\mathfrak{q}}
+\newcommand{\rmathfrak}{\mathfrak{r}}
+\newcommand{\smathfrak}{\mathfrak{s}}
+\newcommand{\tmathfrak}{\mathfrak{t}}
+\newcommand{\umathfrak}{\mathfrak{u}}
+\newcommand{\vmathfrak}{\mathfrak{v}}
+\newcommand{\wmathfrak}{\mathfrak{w}}
+\newcommand{\xmathfrak}{\mathfrak{x}}
+\newcommand{\ymathfrak}{\mathfrak{y}}
+\newcommand{\zmathfrak}{\mathfrak{z}}
+\newcommand{\Amathfrak}{\mathfrak{A}}
+\newcommand{\Bmathfrak}{\mathfrak{B}}
+\newcommand{\Cmathfrak}{\mathfrak{C}}
+\newcommand{\Dmathfrak}{\mathfrak{D}}
+\newcommand{\Emathfrak}{\mathfrak{E}}
+\newcommand{\Fmathfrak}{\mathfrak{F}}
+\newcommand{\Gmathfrak}{\mathfrak{G}}
+\newcommand{\Hmathfrak}{\mathfrak{H}}
+\newcommand{\Imathfrak}{\mathfrak{I}}
+\newcommand{\Jmathfrak}{\mathfrak{J}}
+\newcommand{\Kmathfrak}{\mathfrak{K}}
+\newcommand{\Lmathfrak}{\mathfrak{L}}
+\newcommand{\Mmathfrak}{\mathfrak{M}}
+\newcommand{\Nmathfrak}{\mathfrak{N}}
+\newcommand{\Omathfrak}{\mathfrak{O}}
+\newcommand{\Pmathfrak}{\mathfrak{P}}
+\newcommand{\Qmathfrak}{\mathfrak{Q}}
+\newcommand{\Rmathfrak}{\mathfrak{R}}
+\newcommand{\Smathfrak}{\mathfrak{S}}
+\newcommand{\Tmathfrak}{\mathfrak{T}}
+\newcommand{\Umathfrak}{\mathfrak{U}}
+\newcommand{\Vmathfrak}{\mathfrak{V}}
+\newcommand{\Wmathfrak}{\mathfrak{W}}
+\newcommand{\Xmathfrak}{\mathfrak{X}}
+\newcommand{\Ymathfrak}{\mathfrak{Y}}
+\newcommand{\Zmathfrak}{\mathfrak{Z}}
+% ------------------------------------
+
+% \newcommand{\ati}{\ti{a}}
+% \newcommand{\bti}{\ti{b}}
+% \newcommand{\cti}{\ti{c}}
+% \newcommand{\dti}{\ti{d}}
+% \newcommand{\eti}{\ti{e}}
+% \newcommand{\fti}{\ti{f}}
+% \newcommand{\gti}{\ti{g}}
+% \newcommand{\hti}{\ti{h}}
+% \newcommand{\iti}{\ti{i}}
+% \newcommand{\jti}{\ti{j}}
+% \newcommand{\kti}{\ti{k}}
+% \newcommand{\lti}{\ti{l}}
+% \newcommand{\mti}{\ti{m}}
+% \newcommand{\nti}{\ti{n}}
+% \newcommand{\oti}{\ti{o}}
+% \newcommand{\pti}{\ti{p}}
+% \newcommand{\qti}{\ti{q}}
+% \newcommand{\rti}{\ti{r}}
+% \newcommand{\sti}{\ti{s}}
+% \newcommand{\tti}{\ti{t}}
+% \newcommand{\uti}{\ti{u}}
+% \newcommand{\vti}{\ti{v}}
+% \newcommand{\wti}{\ti{w}}
+% \newcommand{\xti}{\ti{x}}
+% \newcommand{\yti}{\ti{y}}
+% \newcommand{\zti}{\ti{z}}
+% \newcommand{\Ati}{\ti{A}}
+% \newcommand{\Bti}{\ti{B}}
+% \newcommand{\Cti}{\ti{C}}
+% \newcommand{\Dti}{\ti{D}}
+% \newcommand{\Eti}{\ti{E}}
+% \newcommand{\Fti}{\ti{F}}
+% \newcommand{\Gti}{\ti{G}}
+% \newcommand{\Hti}{\ti{H}}
+% \newcommand{\Iti}{\ti{I}}
+% \newcommand{\Jti}{\ti{J}}
+% \newcommand{\Kti}{\ti{K}}
+% \newcommand{\Lti}{\ti{L}}
+% \newcommand{\Mti}{\ti{M}}
+% \newcommand{\Nti}{\ti{N}}
+% \newcommand{\Oti}{\ti{O}}
+% \newcommand{\Pti}{\ti{P}}
+% \newcommand{\Qti}{\ti{Q}}
+% \newcommand{\Rti}{\ti{R}}
+% \newcommand{\Sti}{\ti{S}}
+% \newcommand{\Tti}{\ti{T}}
+% \newcommand{\Uti}{\ti{U}}
+% \newcommand{\Vti}{\ti{V}}
+% \newcommand{\Wti}{\ti{W}}
+% \newcommand{\Xti}{\ti{X}}
+% \newcommand{\Yti}{\ti{Y}}
+% \newcommand{\Zti}{\ti{Z}}
+
+
+% % ------------------------------------
+
+
+% \newcommand{\abar}{\bar{a}}
+% \newcommand{\bbar}{\bar{b}}
+% \newcommand{\cbar}{\bar{c}}
+% \newcommand{\dbar}{\bar{d}}
+% \newcommand{\ebar}{\bar{e}}
+% \newcommand{\fbar}{\bar{f}}
+% \newcommand{\gbar}{\bar{g}}
+% \newcommand{\hbar}{\bar{h}}
+% \newcommand{\ibar}{\bar{i}}
+% \newcommand{\jbar}{\bar{j}}
+% \newcommand{\kbar}{\bar{k}}
+% \newcommand{\lbar}{\bar{l}}
+% \newcommand{\mbar}{\bar{m}}
+% \newcommand{\nbar}{\bar{n}}
+% \newcommand{\obar}{\bar{o}}
+% \newcommand{\pbar}{\bar{p}}
+% \newcommand{\qbar}{\bar{q}}
+% \newcommand{\rbar}{\bar{r}}
+% \newcommand{\sbar}{\bar{s}}
+% \newcommand{\tbar}{\bar{t}}
+% \newcommand{\ubar}{\bar{u}}
+% \newcommand{\vbar}{\bar{v}}
+% \newcommand{\wbar}{\bar{w}}
+% \newcommand{\xbar}{\bar{x}}
+% \newcommand{\ybar}{\bar{y}}
+% \newcommand{\zbar}{\bar{z}}
+% \newcommand{\Abar}{\bar{A}}
+% \newcommand{\Bbar}{\bar{B}}
+% \newcommand{\Cbar}{\bar{C}}
+% \newcommand{\Dbar}{\bar{D}}
+% \newcommand{\Ebar}{\bar{E}}
+% \newcommand{\Fbar}{\bar{F}}
+% \newcommand{\Gbar}{\bar{G}}
+% \newcommand{\Hbar}{\bar{H}}
+% \newcommand{\Ibar}{\bar{I}}
+% \newcommand{\Jbar}{\bar{J}}
+% \newcommand{\Kbar}{\bar{K}}
+% \newcommand{\Lbar}{\bar{L}}
+% \newcommand{\Mbar}{\bar{M}}
+% \newcommand{\Nbar}{\bar{N}}
+% \newcommand{\Obar}{\bar{O}}
+% \newcommand{\Pbar}{\bar{P}}
+% \newcommand{\Qbar}{\bar{Q}}
+% \newcommand{\Rbar}{\bar{R}}
+% \newcommand{\Sbar}{\bar{S}}
+% \newcommand{\Tbar}{\bar{T}}
+% \newcommand{\Ubar}{\bar{U}}
+% \newcommand{\Vbar}{\bar{V}}
+% \newcommand{\Wbar}{\bar{W}}
+% \newcommand{\Xbar}{\bar{X}}
+% \newcommand{\Ybar}{\bar{Y}}
+% \newcommand{\Zbar}{\bar{Z}}
+
+
+% % ------------------------------------
+
+
+% \newcommand{\ahat}{\hat{a}}
+% \newcommand{\bhat}{\hat{b}}
+% \newcommand{\chat}{\hat{c}}
+% \newcommand{\dhat}{\hat{d}}
+% \newcommand{\ehat}{\hat{e}}
+% \newcommand{\fhat}{\hat{f}}
+% \newcommand{\ghat}{\hat{g}}
+% \newcommand{\hhat}{\hat{h}}
+% \newcommand{\ihat}{\hat{i}}
+% \newcommand{\jhat}{\hat{j}}
+% \newcommand{\khat}{\hat{k}}
+% \newcommand{\lhat}{\hat{l}}
+% \newcommand{\mhat}{\hat{m}}
+% \newcommand{\nhat}{\hat{n}}
+% \newcommand{\ohat}{\hat{o}}
+% \newcommand{\phat}{\hat{p}}
+% \newcommand{\qhat}{\hat{q}}
+% \newcommand{\rhat}{\hat{r}}
+% \newcommand{\shat}{\hat{s}}
+% \newcommand{\that}{\hat{t}}
+% \newcommand{\uhat}{\hat{u}}
+% \newcommand{\vhat}{\hat{v}}
+% \newcommand{\what}{\hat{w}}
+% \newcommand{\xhat}{\hat{x}}
+% \newcommand{\yhat}{\hat{y}}
+% \newcommand{\zhat}{\hat{z}}
+% \newcommand{\Ahat}{\hat{A}}
+% \newcommand{\Bhat}{\hat{B}}
+% \newcommand{\Chat}{\hat{C}}
+% \newcommand{\Dhat}{\hat{D}}
+% \newcommand{\Ehat}{\hat{E}}
+% \newcommand{\Fhat}{\hat{F}}
+% \newcommand{\Ghat}{\hat{G}}
+% \newcommand{\Hhat}{\hat{H}}
+% \newcommand{\Ihat}{\hat{I}}
+% \newcommand{\Jhat}{\hat{J}}
+% \newcommand{\Khat}{\hat{K}}
+% \newcommand{\Lhat}{\hat{L}}
+% \newcommand{\Mhat}{\hat{M}}
+% \newcommand{\Nhat}{\hat{N}}
+% \newcommand{\Ohat}{\hat{O}}
+% \newcommand{\Phat}{\hat{P}}
+% \newcommand{\Qhat}{\hat{Q}}
+% \newcommand{\Rhat}{\hat{R}}
+% \newcommand{\Shat}{\hat{S}}
+% \newcommand{\That}{\hat{T}}
+% \newcommand{\Uhat}{\hat{U}}
+% \newcommand{\Vhat}{\hat{V}}
+% \newcommand{\What}{\hat{W}}
+% \newcommand{\Xhat}{\hat{X}}
+% \newcommand{\Yhat}{\hat{Y}}
+% \newcommand{\Zhat}{\hat{Z}}
+
+
+% % ------------------------------------
+
+
+% \newcommand{\acheck}{\check{a}}
+% \newcommand{\bcheck}{\check{b}}
+% \newcommand{\ccheck}{\check{c}}
+% \newcommand{\dcheck}{\check{d}}
+% \newcommand{\echeck}{\check{e}}
+% \newcommand{\fcheck}{\check{f}}
+% \newcommand{\gcheck}{\check{g}}
+% \newcommand{\hcheck}{\check{h}}
+% \newcommand{\icheck}{\check{i}}
+% \newcommand{\jcheck}{\check{j}}
+% \newcommand{\kcheck}{\check{k}}
+% \newcommand{\lcheck}{\check{l}}
+% \newcommand{\mcheck}{\check{m}}
+% \newcommand{\ncheck}{\check{n}}
+% \newcommand{\ocheck}{\check{o}}
+% \newcommand{\pcheck}{\check{p}}
+% \newcommand{\qcheck}{\check{q}}
+% \newcommand{\rcheck}{\check{r}}
+% \newcommand{\scheck}{\check{s}}
+% \newcommand{\tcheck}{\check{t}}
+% \newcommand{\ucheck}{\check{u}}
+% \newcommand{\vcheck}{\check{v}}
+% \newcommand{\wcheck}{\check{w}}
+% \newcommand{\xcheck}{\check{x}}
+% \newcommand{\ycheck}{\check{y}}
+% \newcommand{\zcheck}{\check{z}}
+% \newcommand{\Acheck}{\check{A}}
+% \newcommand{\Bcheck}{\check{B}}
+% \newcommand{\Ccheck}{\check{C}}
+% \newcommand{\Dcheck}{\check{D}}
+% \newcommand{\Echeck}{\check{E}}
+% \newcommand{\Fcheck}{\check{F}}
+% \newcommand{\Gcheck}{\check{G}}
+% \newcommand{\Hcheck}{\check{H}}
+% \newcommand{\Icheck}{\check{I}}
+% \newcommand{\Jcheck}{\check{J}}
+% \newcommand{\Kcheck}{\check{K}}
+% \newcommand{\Lcheck}{\check{L}}
+% \newcommand{\Mcheck}{\check{M}}
+% \newcommand{\Ncheck}{\check{N}}
+% \newcommand{\Ocheck}{\check{O}}
+% \newcommand{\Pcheck}{\check{P}}
+% \newcommand{\Qcheck}{\check{Q}}
+% \newcommand{\Rcheck}{\check{R}}
+% \newcommand{\Scheck}{\check{S}}
+% \newcommand{\Tcheck}{\check{T}}
+% \newcommand{\Ucheck}{\check{U}}
+% \newcommand{\Vcheck}{\check{V}}
+% \newcommand{\Wcheck}{\check{W}}
+% \newcommand{\Xcheck}{\check{X}}
+% \newcommand{\Ycheck}{\check{Y}}
+% \newcommand{\Zcheck}{\check{Z}}
+
+
+% ------------------------------------
+
+\newcommand{\adot}{\dot{a}}
+\newcommand{\bdot}{\dot{b}}
+%\newcommand{\cdot}{\dot{c}}
+%\newcommand{\ddot}{\dot{d}}
+\newcommand{\edot}{\dot{e}}
+\newcommand{\fdot}{\dot{f}}
+\newcommand{\gdot}{\dot{g}}
+\newcommand{\hdot}{\dot{h}}
+\newcommand{\idot}{\dot{i}}
+\newcommand{\jdot}{\dot{j}}
+\newcommand{\kdot}{\dot{k}}
+\newcommand{\ldot}{\dot{l}}
+\newcommand{\mdot}{\dot{m}}
+\newcommand{\ndot}{\dot{n}}
+%\newcommand{\odot}{\dot{o}}
+\newcommand{\pdot}{\dot{p}}
+\newcommand{\qdot}{\dot{q}}
+\newcommand{\rdot}{\dot{r}}
+\newcommand{\sdot}{\dot{s}}
+\newcommand{\tdot}{\dot{t}}
+\newcommand{\udot}{\dot{u}}
+\newcommand{\vdot}{\dot{v}}
+\newcommand{\wdot}{\dot{w}}
+\newcommand{\xdot}{\dot{x}}
+\newcommand{\ydot}{\dot{y}}
+\newcommand{\zdot}{\dot{z}}
+\newcommand{\Adot}{\dot{A}}
+\newcommand{\Bdot}{\dot{B}}
+\newcommand{\Cdot}{\dot{C}}
+%\newcommand{\Ddot}{\dot{D}}
+\newcommand{\Edot}{\dot{E}}
+\newcommand{\Fdot}{\dot{F}}
+\newcommand{\Gdot}{\dot{G}}
+\newcommand{\Hdot}{\dot{H}}
+\newcommand{\Idot}{\dot{I}}
+\newcommand{\Jdot}{\dot{J}}
+\newcommand{\Kdot}{\dot{K}}
+\newcommand{\Ldot}{\dot{L}}
+\newcommand{\Mdot}{\dot{M}}
+\newcommand{\Ndot}{\dot{N}}
+\newcommand{\Odot}{\dot{O}}
+\newcommand{\Pdot}{\dot{P}}
+\newcommand{\Qdot}{\dot{Q}}
+\newcommand{\Rdot}{\dot{R}}
+\newcommand{\Sdot}{\dot{S}}
+\newcommand{\Tdot}{\dot{T}}
+\newcommand{\Udot}{\dot{U}}
+\newcommand{\Vdot}{\dot{V}}
+\newcommand{\Wdot}{\dot{W}}
+\newcommand{\Xdot}{\dot{X}}
+\newcommand{\Ydot}{\dot{Y}}
+\newcommand{\Zdot}{\dot{Z}}
+
+
+% ------------------------------------
+
+
+
+
+
+
+
+
+\newcommand{\colvec}[2]{\left[ \begin{smallmatrix}
+           #1 \\
+           #2
+         \end{smallmatrix} \right] }
+
+\newcommand{\tbt}[4]{\left( \begin{smallmatrix}
+		#1 & #2 \\
+		#3 & #4
+	\end{smallmatrix} \right) }
+\newcommand{\Tbt}[4]{\left( \begin{matrix}
+		#1 & #2 \\
+		#3 & #4
+	\end{matrix} \right) }
+
+\newcommand{\nmat}[1]{\left[ \begin{smallmatrix}
+		1 & #1 \\
+		  & 1
+	\end{smallmatrix} \right] }
+\newcommand{\amat}[2]{\left[ \begin{smallmatrix}
+		#1 &    \\
+		   & #2
+	\end{smallmatrix} \right] }
+\newcommand{\umat}[3]{\left[ \begin{smallmatrix}
+		#1 & #2    \\
+		   & #3
+	\end{smallmatrix} \right] }
+
+

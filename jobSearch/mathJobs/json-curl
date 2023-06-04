@@ -1,0 +1,10 @@
+# Could combine these two steps but it seems easier to break them into pieces
+
+curl 'https://www.mathjobs.org/jobs/public_job_boards?limit=1068' > jobs.json
+
+jq -r '.["results"] | (.[0] | keys_unsorted) as $keys | $keys, map([.[$keys[]]])[] | @csv' jobs.json > jobs.csv
+
+
+# single step
+
+curl 'https://www.mathjobs.org/jobs/public_job_boards?limit=1068' | jq -r '.["results"] | (.[0] | keys_unsorted) as $keys | $keys, map([.[$keys[]]])[] | @csv' > jobs.csv

@@ -1,1 +1,5 @@
-/Users/jukatz/Dropbox/Ben/spectralRigidity/preliminaries
+In this paper, $k$ will denote a number field, and $\Ocal_k$ its ring of integers. We write $V_k $ for the set of places of $k$, and $V_k^\infty$ (resp. $V_k^{f}$) for its set of Archimedean (resp. finite) places. We identify $V_k^f$ with the set of prime ideals in $\Ocal_k$. 
+
+Next, we recall the construction of a arithmetic Fuchsian groups. Here, we let $k$ be a totally real field and $B$ be a quaternion algebra over $k$ which is unramified at a unique real place $\nu$ of $k$. Thus, we have an identification $B_\nu = B \otimes k_\nu$ with $M(2,\Rbb)$. Let $\Ocal$ be a maximal order in $B$, and $\Ocal^1$ its group of norm $1$ units. We denote by $\Gamma_\Ocal^1$ the image of $\Ocal^1$ in $\pm 1 \rmod B_\nu ^1$ (which we identify with $ \PSL(2,\Rbb)$). We say that a subgroup $\Gamma$ of $\PSL(2,\Rbb)$ is an arithmetic Fuchsian group if it is commensurable (in the wide sense) with some such $\Gamma_\Ocal ^1$. 
+
+Given two arithmetic Fuchsian groups $\Gamma_1$, $\Gamma_2$ arising from the data $(k_i,B_i)$, we know that $\Gamma_1$ and $\Gamma_2$ are commensurable in the wide sense if and only if $k_1 \approx k_2$ and $B_1 \approx B_2$. 
