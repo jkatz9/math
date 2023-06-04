@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.14)  3 JUN 2023 23:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.14)  3 JUN 2023 23:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -470,13 +470,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 LaTeX Font Info:    Trying to load font information for U+euf on input line 12.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 85.
-
-[3] [4] (structuralPGL2_out/structuralPGL2.aux) ) 
+) [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] (structuralPGL2_out/structuralPGL2.aux) ) 
 Here is how much of TeX's memory you used:
  16364 strings out of 476025
  329568 string characters out of 5790017

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1685849415 "/Users/jukatz/Documents/Math/spectralRigidity/structuralPGL2.tex" "structuralPGL2_out/structuralPGL2.pdf" "structuralPGL2" 1685849415 0
-  "/Users/jukatz/Documents/Math/spectralRigidity/structuralPGL2.tex" 1685849414 11284 83a9aefe62904fcee1e8eef731404f3b ""
+["pdflatex"] 1685849611 "/Users/jukatz/Documents/Math/spectralRigidity/structuralPGL2.tex" "structuralPGL2_out/structuralPGL2.pdf" "structuralPGL2" 1685849612 0
+  "/Users/jukatz/Documents/Math/spectralRigidity/structuralPGL2.tex" 1685849611 11283 fee63200e64ddf7f82ce090d7d0329e1 ""
   "/Users/jukatz/Library/texmf/tex/latex/mycros.sty" 1681163772 32746 cd8e343eba7998c85bbcf35ef61c94d0 ""
   "/Users/jukatz/Library/texmf/tex/latex/mythms.sty" 1685848023 597 6a01a97436cb5503dc306b782df26148 ""
   "/Users/jukatz/Library/texmf/tex/latex/quiver.sty" 1678327965 1606 0a56787eafe2108d7ab3bda12c3165bc ""
@@ -144,8 +144,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1684096177 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1684096165 7883456 ddce1eb46f42a241110ef4c7fb6ae3bc ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "structuralPGL2.tex" 1685849414 11284 83a9aefe62904fcee1e8eef731404f3b ""
-  "structuralPGL2_out/structuralPGL2.aux" 1685849415 613 50efe812e972506bf0577b7513c973a9 "pdflatex"
+  "structuralPGL2.tex" 1685849611 11283 fee63200e64ddf7f82ce090d7d0329e1 ""
+  "structuralPGL2_out/structuralPGL2.aux" 1685849612 613 50efe812e972506bf0577b7513c973a9 "pdflatex"
   (generated)
   "structuralPGL2_out/structuralPGL2.aux"
   "structuralPGL2_out/structuralPGL2.log"
