@@ -1,0 +1,201 @@
+\documentclass{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsthm,amssymb,amsmath,amsfonts}
+\usepackage[inline]{enumitem}
+\usepackage{mycros}
+\usepackage{comment}
+
+\input{macros.tex}
+\title{SL2}
+\author{justin katz}
+\date{March 2023}
+
+\setlength{\parindent}{1 em}
+\setlength{\parskip}{6 pt}
+\begin{document}
+
+When $F$ is a field and $a,b \in F^\times$ let $\hilbert{a}{b}{F}$ denote the quaternion algebra
+\begin{align*}
+    \left(\frac{a, b}{F}\right) = F + \mathbf{i}F + \mathbf{j}F + \mathbf{ij}F,
+\end{align*}
+over $F$, subject to the relations $\mathbf{i}^2 = a $, $\mathbf{j}^2 = b$ and $\mathbf{ij}+\mathbf{ji} =0$. This algebra is equipped with the anti-involution
+\begin{align*}
+    x = x_1+\mathbf{i} x_2+\mathbf{j} x_3+\mathbf{i j} x_4 \mapsto \bar{x} := x_1-\mathbf{i} x_2-\mathbf{j} x_3-\mathbf{i} \mathbf{j} x_4,
+\end{align*}
+with respect to which, one defines the (reduced) \textbf{trace} and \textbf{norm}:
+\begin{align*}
+    \trd x & = x+\bar{x} \\
+    \nrd x & = x\bar{x}.
+\end{align*},
+so that $x$ satisfies its \textbf{reduced characteristic polynomial}
+\begin{align*}
+    \chi_x(T) := T^2 -\trd x T + \nrd x.
+\end{align*}
+
+
+If $A$ is a quaternion algebra over $F$, and $E/F$ is an extension, set $A_E := A \otimes_F E$. We say that $A$ \textbf{splits over} $E$ if $A_E \approx M(2,E)$ as $E$-algebras. If $A$ does not split over $E$, then $A_E$ is a division quaternion algebra over $E$.
+
+Now let $k$ be a number field, and $A$ be a quaternion algebra over $k$. For each place $\nu \in \Sigma_k$, set $A_\nu := A_{k_\nu}$. If $k_\nu \neq \Cbb$, then there is a unique quaternion division algebra over $k_\nu$, which we write as $D_\nu$. We say that $A$ is \textbf{ramified} at $\nu$ if $A_\nu \approx D_\nu$, and write $\Ram A : = \{ \nu \in \Sigma_k : A_\nu \approx D_\nu\}$ for the set of places over which $A$ is ramified. Write $\Ram_f A = \Ram A \cap \Sigma_f$ and $\Ram_\infty A = \Ram A \cap \Sigma_\infty$.
+
+Define an algebraic group $PA^\times=A^\times/k^\times$ over $k$ by the rule
+\begin{align*}
+    PA^\times(L) = (A\otimes_k L)^\times/ L^\times
+\end{align*}
+for any $k$-algebra $L$. Note, in particular, that
+% \begin{align*}
+%     PA^\times(k_\nu) \approx
+%     \begin{cases}
+%         \PGL(2,k_\nu)           & if $\nu \notin \Ram A$ \\
+%         D^\times / k_\nu^\times & if $\nu \in \Ram A$.
+%     \end{cases}
+% \end{align*}
+
+We say an element $x\in A$ is semisimple (resp. regular semisimple) if it is diagonalizable in $A_{\bar{k}}\approx M(2,\bar{k})$ (resp. diagonalizable with distinct eigenvalues). The centralizer of a regular semisimple element $x\in A$ is $k[x]\subset A$, which is a seperable quadratic algebra over $k$. Consequently, $k[x]$ is either isomorphic to  $k\times k$, in which case we say  $x$ is $k$-\textbf{split},  or is isomorphic to quadratic field exension of $k$, in which case we say $x$ is $k$-\textbf{elliptic}. In either case, one has $\trd(x) = \tr_{k(x)/k}(x)$ and $\nrd(x) = N_{k(x)/k}(x)$. We say an element $\gamma \in PA^\times$ is semimple (resp. regular semisimple, split, or elliptic) if any of its lifts to $A^\times$ are.
+
+Fix $\Kbb = \Rbb$ or $\Cbb$. For a number field $k$, with archimedean places $\nu_1,\dots,\nu_s$, and a quaternion algebra $A$ over $k$, we say that the pair $(k,A)$ is \textbf{admissible} if $k_{\nu_1} \approx \Kbb$ and $A_{\nu_1} \approx M(2,\Kbb)$, while $k_{\nu_i} \approx \Rbb$ and $A_{\nu_i}\approx D_\Rbb$, for $i=2,\dots s$.
+
+With an admissible pair $(k,A)$ fixed, define the affine $k$-group scheme $\Gbf = PA^\times$. For each place $\nu \in \Sigma_k$, let $p_\nu : \Abb \to k_\nu$ denote the $\nu$-th coordinate projection of the adele ring $\Abb:=\Abb_k$ of $k$. We use the same letter to denote the induced projection $p_\nu: \Gbf(\Abb) \to \Gbf(k_\nu)$. Note that for all $\nu \in \Sigma_k$, the restriction $p_\nu$ to the diagonally embedded copy of $\Gbf(k)$ in $\Gbf(\Abb)$ is injective.
+
+For a compact open subgroup $V$ of $\Gbf(\Abb_f)$, the group
+\begin{align*}
+    \Gamma_V := \Gbf(k) \cap (\Gbf(\Abb_\infty)\times V),
+\end{align*}
+embeds via $p_{\nu_1}$ as a lattice in $\Gbf(k_{\nu_1}) \approx \PGL(2,\Kbb)$. When convenient, we will identify $\Gamma_V$ with its image $p_{\nu_1}(\Gamma_V)$ in $\PGL(2,\Kbb)$.
+
+\begin{proposition} %lemma 1 in zotero://select/library/items/FULIVRTB
+    \begin{enumerate}
+        \item $\Gamma_V$ is a congruence arithmetic lattice in $\PGL(2,\Kbb)$, and any congruence arithmetic lattice in $\PGL(2,\Kbb)$ is conjugate to one of the form $\Gamma_V$.
+        \item Every arithmetic lattice $\Gamma \leq \PGL(2,\Kbb)$ is contained in $\Gamma_U$ for some choice of admissible pair $(k,A)$ with $U$ a \emph{maximal compact open}  subgroup of $\Gbf(\Abb_f)$.
+    \end{enumerate}
+\end{proposition}
+
+\paragraph*{Maximal compact opens}
+A maximal compact open subgroup $U$ of $\Gbf(\Abb_f)$ decomposes as a product $U = \prod_{\pfrak \in \Sigma_f} U_\pfrak$ where $U_\pfrak$ is a maximal compact open subgroup of $\Gbf(k_\pfrak)$. For $\pfrak \in \Ram_f A$ there is a unique maximal compact subgroup of $\Gbf(k_\pfrak)$, namely $\Gbf(k_\pfrak)$ itself. For $\pfrak \notin \Ram_f A$, there are two conjugacy classes of maximal compact open subgroups in $\Gbb(k_\pfrak)$. If an isomorphism $\Gbb(k_\pfrak) \approx \PGL(2,k_\pfrak)$ is chosen, then representatives for these two classes are:
+\begin{align*}
+    U_\pfrak^0 & := \PGL(2,\ofrak_\pfrak)                                                                                                  \\
+    U_\pfrak^1 & := \left\langle\left(\begin{array}{ll}
+                                              0   & 1 \\
+                                              \pi & 0
+                                          \end{array}\right),\left(\begin{array}{cc}
+                                                                       \mathfrak{o}_{\mathfrak{p}}^{\times} & \mathfrak{o}_{\mathfrak{p}}          \\
+                                                                       \mathfrak{p}                         & \mathfrak{o}_{\mathfrak{p}}^{\times}
+                                                                   \end{array}\right)\right\rangle / k_{\mathfrak{p}}^{\times}
+\end{align*}
+
+
+
+
+\paragraph*{Trace Formula}
+Let $U$ be a maximal compact open subgroup of $\Gbf(\Abb_f)$
+Write $G = \PGL(2,\Kbb)$, so that $\Gbb(\Abb) = G \times \SO(3)^{s-1}\times \Gbb(\Abb_f)$.
+
+\section*{remarks}
+\begin{itemize}
+    \item If $A$ is a quat alg over a field $k$ char $0$ then  $A^1= [A^*,A^*]$.
+\end{itemize}
+
+\section*{Local analysis}
+% In this section, $F$ is non-archimedean local field, and $O$ is its ring of integers, $G = \GL_2$ (over $F$),$\Hcal$ is the algebra of compactly supported functions on $G(F)$ which are bi-$G(O)$ invariant, $A$ is the group of diagonal matrices, $X^*$ is its lattice of rational characters,  $X^*= \hom(X^*,\Zbb)$.
+
+% The lattice $X^*$ of characters of $A$ is freely generated by $\chi_1:\tbt{a}{}{}{b} \mapsto a$ and $\chi_2:\tbt{a}{}{}{b} \mapsto b$.
+
+% For $\gamma = \tbt{a}{}{}{b}$, set $\Delta(\gamma) = |\frac{(a-b)^2}{ab}|^{1/2}$. This is nonzero if and only if $\gamma$ is regular. For such $\gamma$, set
+% \begin{align*}
+%     F_f(\gamma) = \Delta(\gamma) = \int_{A(F)\lmod G(F)} f(g^\inv \gamma g) \dop g$.
+% \end{align*}
+% ...
+
+% ...
+For langlands, $\lambda(\gamma)= (k,k')$ means that $M_0/\gamma M_0 \approx O/\pfrak^k \oplus O/\pfrak^{k'}$ as $O$ modules, where $M_0$ is the standard lattice $O\oplus O$ in $F \oplus F$.
+
+Let $\Xcal$ be BT tree for $\SL(2,F)$. Write $M_0$ for the standard lattice $O\oplus O \subset F \oplus F$, and $p_0$ the corresponding vertex. Associated to the diagonal torus $A$ is the apartment $\Afrak= A(F)p_0$. This subtree is a line: every vertex lies on exactly two edges.
+
+For any two points $p_1,p_2$ in $X$, there is a $g\in G(F)$  and a $t\in A(F)$ such that $p_1 = g t p_0$ and $p_2 = gp_0$.
+
+Let $\Xcal'$ be the simplicial complex defined as follows: the points are lattices in $F^2$, and two lattices $M_1$ and $M_2$ are joined by an edge if $M_1>M_2 > \pi M_1$ or $M_2>M_1 > \pi M_2$.
+\section*{my thots}
+Let $G=\PGL(2,F)$ and consider the set $X$ of maximal compact open subgroups of $G$.
+\section*{notes on trees}
+
+If $A,B$ are two groups, and $R$ is the kernel of the canonical map $A*B \to A\times B$, then $R$ is a free group with free generating set consisting of elements $[a,b]=aba^\inv b^\inv $ for all $a\in A\setminus 1$ and $b\in B\setminus 1$.
+
+For serre, a graph $\Gamma$ is a pair of sets $X=V(\Gamma)$ and $Y=E(\Gamma)$ equipped with a map $Y\mapsto X\times X$, written $y \mapsto (o(y),t(y))$ and a map $Y\to Y$, written $y\mapsto \bar{y}$ satisfying the conditons:
+\begin{enumerate*}
+    \item $\bar{\cdot}$ is an involution on $Y$, acting without fixed point
+    \item for all $y\in Y$, one has $o(y) = t(\bar{y})$ (equiv. $(o,t)\circ \bar{\cdot}$ is $(t,o)$).
+\end{enumerate*}
+For an edge $y$, $t(y)$ and $o(y)$ are the terminus and origin of $y$ resp, and together they form the extremities of $y$. Two vertices are adjacent if there is an edge for which they form the extremities.
+
+An orientation on $\Gamma$ is a subset $Y_+$ of edges $Y$, such that $Y=Y_+\sqcup \overline{Y_+}$, the union being disjoint.
+
+To give an oriented graph is to give the set $X$ of vertices and the set $Y_+$ of positively oriented edges, along with a map $Y_+ \to X\times X$.
+
+For a graph $\Gamma = (X,Y,o,t,\bar{\cdot})$, consider the topological space defined as follows: give $X,Y$ the discrete topology, and let $T= X\sqcup (Y\times [0,1])$ and form the quotient by the relation $(y,t)\sim (\bar{y}, 1-t)$, $(y,0)\sim o(y)$, $(y,1)\sim t(y)$ for $y\in Y$ and $t\in [0,1]$. Then $real(\Gamma)= T/\sim$ is called the realization of $\Gamma$.
+
+\newcommand{\path}{\operatorname{path}}
+Let $path_n$ be the oriented graph with vertices $0,\dots,n$ and orientation given by the edges $[i,i+1]$ for $0\leq i <n$, where $o[i,i+1]=i$ and $t[i,i+1]=i+1$.
+
+A path of length $n$ in a graph is a morphism $c:\path_n\to \Gamma$. For a given length $n$ path $c$, the sequence of edges  $y_i=c[i-1,i]$ such that $t(y_i)=o(y_{i+1})$ for $1\leq i <n$ determines $c$ (and conversely). We identify $c$ with this sequence of edges. If $P_i=c(i)$, then we say $c$ is a path from $P_0$ to $P_n$, and that $P_0$, and $P_n$ are the extremities of $c$.
+
+A pair of the form  $(y_i,y_{i+1})=(y_i,\bar{y_i})$ in $c$ is called a backtracking. If $c$ backtracks, then we can construct a path of length $n-2$ from $P_0$ to $P_n$ by omiting the pair from the sequence. If there is a path from $p$ to $q$, then there is one without backtracking.
+
+The direct limit of the paths is $\path_\infty$.
+
+A simplicial complex of dimension $\leq 1$ is pair $(X,S)$ where $X$ is a set, and $S$ is a set of subsets of $X$ satisfying $|A|\leq 2$ for all $A\in S$, and such that $\{x\} \in S$ for all $x\in X$. For such a complex $(X,S)$, form the graph with vertex set $X$ and edge set consisting of pairs $(P,Q)$ of distinct elments of $X$ such that $\{ P,Q \} \in S$. In this graph, two edges with the same origin and terminus are equal. We say a graph satisfying this prop is combinatorial.
+
+In a combinatorial graph, a set $\{P,Q\}$ of adjacent vertices is called a geometric edge. Each geometric edge determines an $\overline{\cdot}$ orbit of an edge, and conversely. Evidently, a combinatorial graph is determined by its geometric edges and its vertices.
+
+A tree is a connected graph with no cycles. A geodesic in a tree is a path without backtracking. If $P,Q$ are vertices in a tree, then there is exactly one geodesic from $P$ to $Q$, and this path is injective.
+
+Fix a vertex $P$ in a tree $\Gamma$. For $n\geq 0$, let $X_n(P)$ be the set of vertices $Q$ s.t. $l(P,Q)=n$. If $Q \in X_n$ and $n\geq 1$, then there is exactly one vertex $Q'$ with $l(P,Q') <n$ which is adjacent to $Q$. Thus, there is a map $f_{n,P}:X_n(P)\to X_{n-1}(P)$ for each $n\geq 1$. For each $P$, the maps $f_{n,P}$ form an inverse system. This inverse system determines the tree: the vertices is the (disjoint) union of the $X_n(P)$, and the geometric edges are $\{Q,f_{n,P}(Q)\}$ if $Q \in X_n(P)$.
+
+This gives an equivalence between pointed trees and inverse systems of sets indexed by integers $\geq 1$.
+
+For a vertex $p$ in a graph $\Gamma=(X,Y,o,t,\bar{\cdot})$, let $Y_p$ be the set of edges with terminus at $p$. Then $|Y_p|$ is called the index of $p$ (or degree). If $n=0$, then $p$ is isolated. If $n\leq 1$, we say $p$ is a terminal vertex.
+
+If $\Gamma$ is a tree with diameter $n<\infty$, then $t(\Gamma)$ is nonempty. If $n\geq 2$, then $V(\Gamma)\setminus t(\Gamma)$ is the vertex set of a subtree of diameter $n-2$. If $\Gamma'$ is the subtree with vertex set $V(\Gamma)\setminus t(\Gamma)$, then $\Gamma'$ is preserved by every automorphism of $\Gamma$. By induction:
+
+\begin{lemma}
+    A tree of finite, even diameter (resp. odd diameter) has a vertex (resp. geometric edge) which is fixed by every automorphism.
+\end{lemma}
+
+If $\Gamma$ is a tree w/ finite diameter $n$, then all geodesics of $\Gamma$ with length $n$ have the same middle vertex if $n$ is odd, or the same middle geodesic edge if $n$ is even (is this backwards?)
+
+If $\Gamma$ is a connected graph with finitely many vertices. Set $s= |V(\Gamma)|$ and $a=|E(\Gamma)|/2$. Then $a\geq s-1$ with equality if and only if $\Gamma$ is a tree.
+
+A graph of groups $(G,T)$ consists of a graph $T$, and a family of groups $G_p$ for vertices $p$, and  $G_y$ for edges $y$, along with injections $G_y \to G_{t(y)}$ (written as $a \mapsto a^y)$ such that $G_y = G_{\bar{y}}$ for all edges $y$.
+
+If $s \in \Aut(X)$ fixes a point then for any vertex $P$, one has $d(P,sP) \in 2\Zbb$ and if $P'$ satisfies $d(P,P')=d(P',sP)$ (i.e. if $P'$ is midpoint of $P-sP$) then $sP'=P'$.
+
+If $s$ acts without fixed pts (say $s$ is hyperbolic ), then \begin{enumerate*}
+    \item  $m = \inf_{p \in V(X)} d(p,sp) \geq 1$
+    \item  $T = \{p \in V(X): d(p,sp)=m\}$ is a doubly infinite path
+    \item $s$ acts on $T$ as translation w/ magnitude $m$
+    \item any subtree of $X$ which is table under $s$ and $s^\inv$ contains $T$
+    \item if $d(q,T)=d$, then $d(q,sq)=m+2d$.
+\end{enumerate*}
+
+If $m$ is translation length of hyperbolic elt $s$,  and $\Gamma = \langle s \rangle$ then its axis $T$ projects to a cycle of length $m$ in $\Gamma \lmod X$, and this is the unique cycle in $\Gamma \lmod X$.
+
+
+\begin{proposition}
+    Let  $G$ be a group generated by elements $\{a_i,b_j: i \in I,j\in J\}$, set $A=\langle a_i : i \in I\rangle $, $B=\langle b_j:j\in J \rangle$. Suppose $G$ acts on a tree $X$ such that $X^A\neq \emptyset$, $X^B\neq \emptyset$, and that for all $i \in I,j\in J$  the automorphism $a_ib_j$ has a fixed point. Then $G$ has a fixed point.
+\end{proposition}
+
+If $G$ is finitely generated, and each of its elements has a fixed point, then in fact $G$ has a fixed point. This should probably be true if $G$ is topologically finitely generated.
+
+If $V$ is a $K$-vectorspace, write $\GL(V)$ for $\Aut_K(V)$. Its center is $K^\times$ which acts by scalars on $V$. The subgroup $\SL(V)$ can be charactarized in several ways: it is
+\begin{itemize}
+    \item its the subgroup of $\GL(V)$ generated by unipotent elements
+    \item it is the commutator subgroup of $\GL(V)$
+    \item it is the kernel of the determinant map $\det:\GL(V) \to K^\times$.
+\end{itemize}
+
+The composition $\nu \circ \det $ is a homomorphism $\GL(V) \to \Zbb$. Write $\GL(V)^0$ for its kernel, and let $\GL(V)^+$ denote the kernel of the composition $(\mod 2) \circ \nu \circ \det$. Then we have
+\begin{align*}
+    \SL(V) \leq \GL(V)^0\leq \GL(V)^{+} \leq \GL(V).
+\end{align*}
+
+For any two lattices $L,L'$ in $V$, set $\chi(L,L')= \ell(L/L'')- \ell (L'/L'')$ where $L''$ is any lattice contained in $L\cap L'$, and $\ell$ denotes the length of a module (the maximum length of a chain of submodules).
+
+\end{document}

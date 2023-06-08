@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsthm,amssymb,amsmath,amsfonts,braket}
+\usepackage{mycros}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{todonotes}
+\usepackage{mathtools,thmtools}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{comment}
+
+\input{macros.tex}
+\title{tree}
+\author{justin katz}
+\date{March 2023}
+
+\setlength{\parindent}{0 em}
+\setlength{\parskip}{6 pt}
+\begin{document}
+
+Let $A$ be a quaternion algebra over a number field $k$, and let $\Ocal$ be a maximal order in $A$. For each finite place $\pfrak$ of $k$ over which $A$ is split, pick an isomorphism of $A_\pfrak =A\otimes_k k_\pfrak$ with $M(2,k_\pfrak)$ such that $\Ocal_\pfrak = \Ocal \otimes_R R_\pfrak$ maps to $M(2,R_\pfrak)$ and write $\rho_\pfrak:A^\times \to \GL(2,k_\pfrak)$ for the composition of the natural embedding $A^\times \to (A\otimes_k k_\pfrak)^\times$ followed by our chosen isomorphism $A_\pfrak^\times \approx \GL(2,k_\pfrak)$. 
+
+\paragraph*{p-adic computation}
+\begin{definition}[Bruhat-Tits tree]
+The Bruhat-Tits tree $\Tcal$ for $\GL(2,k)$ is the following graph: the vertices of $\Tcal$ are homothety classes of $R$-lattices in $k^2$.
+If $L$ is a lattice in $k^2$, we write $[L]$ for its homothety class. 
+
+Two vertices $\Lambda_1,\Lambda_2 $ of $\Tcal$ are adjacent if there are representative lattices $L_i \in \Lambda_i$ such that $\pi L_1 < L_2 < L_1$ with each inclusion proper.
+
+We write $V(\Tcal)$ for the vertices of $\Tcal$, and $E(\Tcal)$ for the edges of $\Tcal$ (which consist of ordered pairs of adjacent vertices.)
+\end{definition}
+
+ We regard $k^2$ as a space of column vectors, with distinguished basis vectors $e_1,e_2$. We write $L_0 = Re_1+Re_2$ and refer to this as our distinguished lattice, and refer to its homothety class $\Lambda_0 = [L_0]$ as our distingushed vertex.  
+ 
+$\GL(2,k)$ acts on the set of lattices in $k^2$: for $g\in \GL(2,k)$ and a lattice $L$, the set $gL = \{ g v : v \in L\}$ is also a lattice in $k^2$. This action is transitive: given a lattice $L$, pick an $R$ basis $(v,w)$ for $L$ and define $g_L$ by the assignment $ge_1 = v$ and $ge_2 = w$. Then $g_L L_0 =L$ 
+ 
+
+
+\paragraph*{Local Computations} 
+For now, let $k$ nonarchimedian local field of characteristic $0$, with ring of integers $R$ and maximal ideal $\pfrak$, with uniformizer $\pi$. Let $V$ be a two dimensional $k$-vectorspace, and $A = \End_k(V)$. Then every maximal order in $A$ takes the form 
+\begin{align*}
+    \End_R(L) = \{ x \in A : xL\leq L\}
+\end{align*}
+where $L$ is a free $R$-module of rank $2$ in $V$. If $M = xL$ for some $x\in A^\times = \Aut_k(V)$, then $\End_R(M) = x\End_R(L)x^\inv$. As $A^\times$ acts transitively on the set of lattices in $V$ (by left-translation), it acts transitively on the set of maximal orders in $A$ (by conjugation). Further, if $\End_R(L)=\End_R(M)$ for two lattices $L,M$ in $V$, then there exists an $x \in k^\times$ such that $L = x M$. In this case, we say $L$ and $M$ are homothetic, and conclude that there is an $k^\times \lmod A^\times = \PGL(V)$ equivariant bijection between homothety classes of lattices in $V$ and maximal orders in $A$. 
+
+Given two lattices $L$ and $M$ in $V$, there exists a basis $u,v$ of $L$ such that $\pi^a u , \pi^b v$ is a basis for $M$ (elementary divisor theorem) and we set $d(L,M) = |a-b|$. If $x,y\in k^\times$ then $d(xL,yM)=d(L,M)$ so that $d$ descends to a function on homothety classes, or equivalently a function on maximal orders. a
+
+\end{document}

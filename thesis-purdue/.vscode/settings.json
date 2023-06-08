@@ -1,0 +1,21 @@
+{
+  "files.exclude": {
+    "*.bbl": true,
+    "*.blg": true,
+    "*.fdb_latexmk": true,
+    "*.gz": true,
+    "**/.DS_Store": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/*.aux": true,
+    "**/*.bbl": true,
+    "**/*.blg": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.fls": true,
+    "**/*.gz": true,
+    "**/*.log": true,
+    "**/CVS": true,
+    "**/Thumbs.db": true,
+  },
+  "explorerExclude.backup": {},
+}

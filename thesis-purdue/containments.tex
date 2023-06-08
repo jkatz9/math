@@ -1,0 +1,219 @@
+\documentclass{book}
+\usepackage{amsthm,amssymb,amsmath,amsfonts}
+\usepackage{mycros}
+\usepackage[inline]{enumitem}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{todonotes}
+\usepackage{mathtools,thmtools}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{comment}
+
+% \usepackage{hyperref}
+% \hypersetup{
+%     colorlinks,
+%     citecolor=black,
+%     filecolor=black,
+%     linkcolor=black,
+%     urlcolor=black
+% }
+\input{macros.tex}
+\hfuzz=5.1pt 
+\title{Containments, conjugacy}
+\author{justin katz}
+\date{March 2023}
+
+\setlength{\parindent}{12 pt}
+\setlength{\parskip}{12 pt}
+\begin{document}
+% \maketitle
+% %\tableofcontents
+% \newpage
+
+% \bibliography{references}{}
+% \bibliographystyle{plain}
+
+
+Let $k$ be a nonarchimedean local field of characteristic $0$, and residue characteristic $p$. Write $\nu: k^\times \to \Zbb$ for its additive valuation, and write
+\begin{align*}
+    R      & = \{ x \in k: \nu(x) \geq 0\} \\
+    \pfrak & = \{ x \in k: \nu(x) > 0\}    \\
+    \ffrak & = R/\pfrak,
+\end{align*}
+for the ring of integers in $k$, its unique maximal ideal, and its residue field. Write $q$ for the cardinality of the residue field $\ffrak$, so that $q=p^f$ where $f$ is the degree of $\ffrak$ over its prime field. Take as a normalized absolute value $|x| = q^{-{\nu(x)}}$. Pick a uniformizer $\pi$ for $\pfrak$.
+
+\section*{groups}
+
+If $\Hbf$ is an algebraic group defined over $k$, we write $H=\Hbf(k)$ for its group of $k$-valued points. Write $\Zbf_\Hbf$ and $\Hbf'$ for the center and derived subgroups of $\Hbf$, each of which being closed, normal, algebraic subgroups of $\Hbf$, defined over $k$. Set $\Pbf \Hbf = \Zbf_\Hbf \ \Hbf$, and let $P: H \to PH$ be the projection at the level of $k$-valued points.
+
+Let $\Gbf = \GL_2$, so that $\Gbf'=\SL_2$, and $\Zbf_\Gbf \approx \Gbb_m$ embedded as scalar matrices. Then $G=\GL(2,k)$, $G'=\SL(2,k)$, and $Z = k^\times \cdot \id$, and $PG = \PGL(2,k)= Z\lmod G$.
+
+Let $\Abf \leq \Gbf$ denote the maximal (split) torus of diagonal matrices in $\Gbf$,and let $\lambda_1,\lambda_2 : k^\times \to A$ be the cocharacters
+\begin{align*}
+    \lambda_1(x)=\tbt{x}{}{}{1},\quad \lambda_2(x) = \tbt{1}{}{}{x},
+\end{align*}
+and $\chi_1,\chi_2 : A \to k^\times$ the (dual) characters
+\begin{align*}
+    \chi_1(\tbt{a}{}{}{d})=a,\quad \chi_2(\tbt{a}{}{}{d})=d.
+\end{align*}
+Then the cocharacters $z(x) = \lambda_1(x)\lambda_2(x)$ and $a(x) = \lambda_1(x)\lambda_2(x^\inv)$ are such that \begin{enumerate*}
+    \item  $z: k^\times \to Z$, and $a:k^\times \to (A\cap G') =: T $ are isomorphisms, and
+    \item the character $\alpha : T \to k^\times$ dual to $a$ is a simple root for $T$ in $G'$.
+\end{enumerate*}
+
+Let $\Bbf$ the upper triangular Borel containing $\Abf$, and $\Ubf$ its unipotent radical. Define the 1-psg $u:k \to U$ by
+\begin{align*}
+    u(x) = \tbt{1}{x}{0}{1}.
+\end{align*}
+If $t \in A$, then for all $x \in k$, one has $t u(x) t^\inv = u(\alpha(t) x)$.
+
+
+For $g\in G$, let $p_g(x) = \det(g - x \cdot \id ) = x^2 - \tr(g) x + \det(g)$ be its characteristic polynomial, which has discriminant $\disc(g)= \tr(g)^2 - 4 \det(g)$.
+
+
+\subsubsection*{integral points}
+Set $K= G \cap \GL(2,R)$, $K' = K \cap G' = \SL(2,R)$, and $PK=P(K)$ which is isomorphic to $\PGL(2,R)= R^\times \lmod \GL(2,R)$, which are maximal compact open subgroups of $G,G'$ and $PG$ respectively.
+
+For $n>0$, let $\rho_n :  K \to \GL(2,R/\pfrak^n)$ be the homomorphism induced by the reduction map $R \to R /\pfrak^n$, and set $K(n)= \ker \rho_n$. Define $K_0(n)$, (resp. $K_1(n)$) as the preimage of $\Bbf(R/\pfrak^n)$ (resp. $\Ubf(R/\pfrak^n)$) in $K$ under $\rho_n$.  Thus an element $\tbt{a}{b}{c}{d}$ of $\GL(2,R)$ lies in $K(n)$ if and only if $a,d \in 1 + \pfrak^n$ and $b,c \in  \pfrak^n$, in $K_0(n)$ if and only if $c \in \pfrak ^n$, and in $K_1(n)$ if and only if $a,d \in 1+ \pfrak^n$ and $c \in \pfrak^n$.
+
+
+If $\Hbf$ is an algebraic subgroup of $\Gbf=\GL_2$, (resp. $\Gbf'$, resp. $\Pbf \Gbf$,) we set $\Hbf(R) = \Hbf(k) \cap K$ (fresp. $\cap K'$, resp. $\cap PK$.)
+
+\subsubsection*{$\SL_2$-centric computations}
+Recall:
+\begin{itemize}
+    \item $T$ is the maximal split torus in $\SL_2(k)$ consisting of diagonal matrices,
+    \item $\alpha : T \to k^\times$ is the root $\alpha(\tbt{t}{}{}{t^\inv}) = t^2$,
+    \item $B$, the borel of upper triangular elements, is associated to the choice of positive root $\alpha$ for $T$ in $G$: $B = TU$ where $U$ is the group of upper triangular unipotent elements, $u_\alpha = u : k \to U$ is a 1psg such that $g u(x) g^\inv = u(\alpha(g) x)$ for all $g\in T$ and $x \in k$.
+    \item $N = N_{\SL_2(k)}(T)$ is the group of monomial matrices, the Weyl group $W=N/T$ (for $T$ in $\SL_2(k)$) has order $2$, and $w_0 = \tbt{}{-1}{1}{}$  satisfies $N = T \sqcup Tw$.
+    \item The affine weyl group $\tilde{W} = N/T(R)$, is an infinite dihedral group, generated by the images $s_0$ of $w_0$  and  $s_1$ of $w_1 = \tbt{}{\pi^\inv}{-\pi}{}$ in $\tilde{W}$. One has a presentation: $\tilde{W}= \langle s_0,s_1:  s_0^2 = s_1^2 = 1\rangle$.
+    \item The element $w_0 w_1 = \tbt{\pi}{}{}{\pi^\inv}$ of $N$ has infinite order modulo $T(R)$, and generates a normal subgroup of index $2$ in $\tilde{W}$.
+\end{itemize}
+
+\subsubsection*{Lattices in $k^2$}
+\begin{itemize}
+    \item We consider $k^2$ as a space of column vectors, so that $\GL(2,k)$ acts on $k^2$ from the left. We write $e_0,e_1$ for the standard basis vectors.
+    \item Recall that an $R$-lattice in a $k$-vectorspace $V$ is a finitely generated $R$-submodule of $V$ which contains a $k$-basis of $V$.
+    \item Since $k$ is a local field, $R$ is a PID, so all $R$-lattices in $k^2$ constitute a single $\GL(2,k)$ orbit: any two are isomorphic as abstract $R$-modules, and any choice of $R$-module isomorphism extends uniquely to an automorphism of $k^2$
+    \item For vectors $v,w \in k^2$, write $[v,w]:= Rv+Rw$ for the $R$-submodule they span. This is a lattice in $k^2$ if and only if $v,w$ are $k$-linearly independent.
+    \item We write $L_0 = [e_1e_2]$ and refer to this as our standard lattice. If $g \in \GL(2,k)$, then $gL_0 = [ge_1,ge_2]$ is the lattice spanned by the columns of $g$. This defines a left-action of $\GL(2,k)$ on the set of $R$-lattices in $k^2$.
+    \item If $S$ is the stabilizer of a lattice $L$ in $\GL(2,k)$, then the stabilizer of $gL$ is $gSg^\inv$. The stabilizer of the standard lattice $L_0$ in $\GL(2,k)$ is the standard maximal compact open $\GL(2,R)$.
+    \item Define a relation on on the set of lattices in $k^2$ by $L\sim L'$ if there exists a scalar matrix $z \in \GL(2,k)$ such that $zL=L'$. Since $k^\times = R^\times \cdot \pi^\Zbb$ and $R^\times L= L$ for any lattice $L$, observe that $L\sim L'$ iff $L = \pi^n L'$ for some $n\in \Zbb$. If $L\sim L'$ then $\Stab_{\GL(2,k)} L =\Stab_{\GL(2,k)} L'$.
+    \item The action of $\SL(2,k)$ on the set of equivalence classees of lattices in $k^2$ has exactly two orbits: representatives for these orbits are the classes of $L_0 = [e_1,e_2]$ and $L_1 = [e_1,\pi e_2]$. The stabilizer $K_0$ in $\SL(2,k)$ of $L_0$ is $\SL(2,R)$ and $K_1$ of $L_1$ is $\tbt{1}{}{}{pi}K \tbt{1}{}{}{\pi}^\inv$. That is, $g \in \SL(2,k)$ satisfies $gL_0 = L_0$ if and only if all of its entries are in $R$, while $gL_1 = L_1$ if and only if $ge_1 = a e_1 + b e_2$ and $ge_2 = c e_1 +d e_2$ where $a,d \in R$ and $c \in \pi R\subset R$, while $b \in \pi^\inv R\supset R$.
+    \item Set $J_0 = K_0 \cap K_1$, the joint stabilizer of $L_0$ and $L_1$. An element $g = \tbt{a}{b}{c}{d} \in \SL(2,k)$ lies in $J_0$ if and only if $a,d \in R^\times$, $b \in R$, and $c \in \pi R$.
+\end{itemize}
+\begin{proposition}
+    \begin{enumerate}
+        \item $\SL(2,k)$ is generated by $N=T\cup w_0 T = N_{\SL(2,k)}(T)$ and $J_0$.
+        \item $J_0 \cap N = T(R)$ is normal in $N$
+        \item For $w=w_i T(R) \in  \tilde{W} = N/T(R)$, then for $j=0,1$, one has
+              \begin{align*}
+                  w_j J_0 & \subset J_0 w \cup J_0 w_j w J_0               \\
+                  w_j J_0 & \subset J_0 w_i T(R) \cup J_0 w_jw_i T(R) J_0.
+              \end{align*}
+        \item For $j=0,1$, one has $w_j J_0 w_j \not\subset J_0$.
+    \end{enumerate}
+\end{proposition}
+
+Let $\bar{U}$ be the unipotent opposite to $U$.
+\begin{lemma}
+    $J_0 = \overline{U}(\pfrak) T(R) U(R) = U(R) T(R) \overline{U}(\pfrak)$ with uniqueness of expression.
+\end{lemma}
+For if $ad-bc=1$ with $a,d \in R^\times$, $b \in R$ and $c \in \pi R$, then
+\begin{align*}
+    \tbt{a}{b}{c}{d} & = \tbt{1}{0}{ca^\inv}{1}\tbt{a}{0}{0}{a^\inv}\tbt{1}{ba^\inv}{0}{1} \\
+                     & = \overline{u}(ca^\inv)d(a)u(ba^\inv)
+\end{align*}
+is the decomposition claimed.
+
+
+\begin{lemma}
+    For $i =0,1$ , one has
+    \begin{align*}
+        K_i & = J_0 \cup J_0 w_i J_0                                \\
+            & = (K_0\cap K_1) \cup (K_0 \cap K_1) w_i (K_0\cap K_1)
+    \end{align*}
+\end{lemma}
+For $i=0$, this follows from the Bruhat decomposition in $\SL(2,\ffrak)$.
+The matrix $g = \tbt{0}{1}{\pi}{0}$ normalizes $J_0$, and satisfies $g L_0 = L_1$, so that $gK_0g^\inv = K_1$.
+
+\begin{lemma}
+    Suppose $H$ is a proper subgroup of $\SL(2,k)$ containing $J_0 = K_1 \cap K_2$. Then $H = K_1$, $K_2$, or $J_0$.  Each of $K_1,K_2$,$J_0$ is equal to its normalizer in $\SL(2,k)$.
+\end{lemma}
+
+\begin{lemma}[Iwaswa decomposition]
+    $\SL(2,k) = K_0 \tbt{\pi}{}{}{\pi^\inv}^\Zbb U$: each $g \in \SL(2,k)$ has a unique factorization as $g=k_0(g) \tbt{\pi}{}{}{\pi^\inv}^{i(g)}u(x(g))$ where $k_0(g) \in K_0$, $i(g) \in \Zbb$, and $x(g) \in k$.
+\end{lemma}
+
+
+\section*{tree stuff}
+Fix $x\in k$, and write, for $m,n \in \Zbb$,
+\begin{align*}
+    g(x,m,n) & = \left[\begin{array}{cc}
+                               \varpi^m & x        \\
+                               \circ    & \varpi^n
+                           \end{array}\right]                                                \\
+             & =\left[\begin{array}{ll}
+                              1     & x \\
+                              \circ & 1
+                          \end{array}\right]\left[\begin{array}{cc}
+                                                      \varpi^{m-n} & \circ \\
+                                                      \circ        & 1
+                                                  \end{array}\right]\left[\begin{array}{cc}
+                                                                              \varpi^n & \circ    \\
+                                                                              \circ    & \varpi^n
+                                                                          \end{array}\right]
+\end{align*}
+Then $g(x,m,n)v_0 = \left\langle\left\langle\varpi^m e_1, e_2+x e_1\right\rangle\right\rangle$. For any fixed $n$, as $m\to \infty$, the sequence of vertices $g(x,m,n)v_0$ converges to the point $x=(1:x) \in \Pbb^1(k)$, and as $m \to -\infty$, $g(x,m,n)v_0$ converges to $\infty = (0:1) \in \Pbb^1(k)$. As $m$ varies along $\Zbb$, the vertices $g(x,m,n)v_0 = L_m^0(x)$ vary along the apartment $L^0(x)$ between the ends $\infty$ and $x$ in $\Pbb^1(k)$.
+
+Note that $L^0(0)$ is the standard apartment $\Acal$, connecting $0$ and $\infty$. If $x \neq 0$ has $\ord x = m$, then $L_n^0(x) \in \Acal$ if and only if $n \leq m$.
+
+\subsection{notation}
+For a lattice $L$, write $\sdang{L}$ for the corresponding node in BT tree.
+
+If $\{u,v\}$ is a basis of $k^2$, write $\left[ \left[ u,v \right] \right]$ for the lattice they span, and $\sdang{u,v}$ for the corresponding node.
+
+
+For a field $F$, we describe $\Pbb^1(F)$ as follows: we embed $F$ in $\Pbb^1(F)$ by sending $x\in F$ to the line through $(x,1)$ and write $\infty$ for the line through $(1,0)$. Then $\Pbb^1(F) = F \cup \infty$.
+
+The neighbors of a node $\sdang{u,v}$, take the form $\sdang{\pi u , x u + v}$ for $x\in R/\pfrak$ along with $\sdang{u,\pi v}$.
+
+Set $u_0 = (1,0)$ and $v_0 = (0,1)$, and define the sequence of nodes $\nu_m=\left\langle\left\langle\varpi^m u_0, v_0\right\rangle\right\rangle=\left\langle\left\langle u_0, \varpi^{-m} v_0\right\rangle\right\rangle$ for $m \in \Zbb$.
+
+\subsubsection*{fixed subtrees}
+Let $[x,y]$ be a geodesic segment of length $\ell$. Pick a basis $(u,v)$ for a lattice $L_x$ representing $x$ so that the lattice spanned by $(u,\pi^\ell v)$ represents $y$. In this basis, the stabilizer of the $r$-ball $B([x,y],r)$ about $[x,y]$ in $\GL(2,k)$ is
+\begin{align*}
+    \Gamma(B([x,y],r)) & =k^\times \{ \tbt{a}{b}{c}{d}\in \GL(2,R): a-1=d-1=b=0 \mod \pfrak^r, c=0\mod \pfrak^{r+\ell} \} \\
+                       & = \Gamma(\pfrak^r) \cap \Gamma_0(\pfrak^{r+\ell})
+\end{align*}
+
+
+
+
+
+
+
+\section*{actions}
+\subsection*{representations}
+Let $V=k^2$ and set $V^*=\Hom(V,k)$, and for nonzero $v\in V$ we let $v^* \in V^*$ be the functional satisfying $v^*(v) = 1$ and $v^*(w) = 0$ if $w \notin kv$.
+
+We let $g$ act on $V$ from the left, and on $V^*$ from the right, so that $\lambda (g v) = (\lambda g)(v)$ for all $g\in G$, $v\in V$, $\lambda \in V^*$.
+
+
+
+Let $p: k^2\setminus \{ 0 \} \to \Pbb(k^2)$ be the canonical projection, sending a nonzero vector in $k^2$ to the $k$-linear subspace that it spans.
+
+
+
+\section*{claims}
+
+\begin{proposition}
+    Suppose $H$ is a subgroup of $\SL(2,R)$ such that, for all $h\in H$, one has $\tr(h)^2 - 4 \mod \pfrak^n$ is a square (potentially $0$). Then there exists an element $g \in \GL(2,k)$ such that $gHg^\inv \leq K_0(\pfrak^n)$.
+\end{proposition}
+
+
+
+
+\end{document}

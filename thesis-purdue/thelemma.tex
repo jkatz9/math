@@ -1,0 +1,36 @@
+
+
+\begin{itemize}
+    \item $G$ is a compact subgroup of $\SL(2,k)$.
+    \item $\Lcal$ is the set of lattices in $k^2$
+    \item Say $L,L' \in \Lcal$ are homothetic, written $L \sim L'$, if there exists a $\lambda \in k^\times$ so that $L = \lambda L'$. For a lattice $L$ write $[L]$ for its homothety class.  Write $\Xcal$ for the set of homothety classes of lattices in $k^2$.
+    \item Fix a lattice $L \in k^2$. Then for any class $x \in \Xcal$, there is a unique lattice $L_x$ maximal in its homothety class subject to the requirement $L_x \leq L$.
+    \item If $u,v \in k^2$ are linearly indepedent, then $\langle u,v \rangle$ is the lattice $Ru+Rv$ they span. We write $[u,v]$ for $[\langle u,v \rangle]$ for the homothety class of the lattice they span.
+    \item If $L$ is a lattice, and $L'$ is a sublattice, then there exists a basis $u,v$ for $k^2$ and a unique pair $m,n$ of nonnegative integers such that $L=\langle u, v \rangle$ and $L' = \langle \pi^m u, \pi^{m+n} \rangle$. In this case, the distance between the homothety classes $[L],[L']$ is $n$ and if $x = [L'] \in \Xcal$ then $L_x = \pi^{-m}L'$.
+    \item For a lattice $L$ and a positive integer $m$, set $L[m]= L/\pi^m L$ and let $\rho_{L,m}: \Aut_R(L) \to \Aut_{R/\pi^m}(L[m])$.
+\end{itemize}
+
+\begin{lemma}
+    Suppose $g\in \SL(2,k)$ and $L \in \Lcal$ is a lattice such that $gL\leq L$. Then $gL=L$.
+\end{lemma}
+\begin{proof}
+    Let $\mu$ be a haar measure on $k^2$. Then for any $g \in \GL(2,k)$, and any subset $A$  of $k^2$, one has $\mu (gA) =|\det (g)|^\inv \mu(A)$. Thus, if $g \in \SL_2(k)$ and $L$ is a lattice in $k^2$ such that $gL\leq L$, one has $|L:gL|=\mu(L)/\mu(gL) = 1$, as claimed.
+\end{proof}
+\begin{corollary}
+    If $g \in \SL(2,k)$ and $x\in \Xcal$ satisfies $gx=x$, then for any lattice $L \in x$ one has $gL=L$.
+\end{corollary}
+
+Suppose $g \in \SL(2,k)$  and $x,y \in \Xcal$ satisfy $gx=x$ and $gy=y$ and $d(x,y)=m$. Pick a lattice $L \in x$ and let $L_y$ be the representative of $y$ as above. Then we have a short exact sequence of free modules over $R/\pi^m$:
+\begin{align*}
+    0 \to L_y/\pi^mL \to L/\pi^m L \to L/L_y \to 0
+\end{align*}
+where $L_y/\pi^mL$ and $ L/L_y$ are rank $1$ and $L/\pi^m L$ is rank $2$. Since $gL=L$ and $gL_y=L_y$, the action of $g$ on $L/\pi^m L$ induces actions on $L_y/\pi^m L$ and $L/L_y$. Thus, there are elements $\chi_{L_y/\pi^m L}(g) \in (R/\pi^m)^\times = \Aut(L_y/\pi^m L)$ and $\chi_{L/L_y}(g) \in (R/\pi^m)^\times = \Aut(L/L_y)$. It follows that the characteristic polynonmial of $\rho_{L[m]}(g) \in R/p^m [T]$ factors as:
+\begin{align*}
+    \det(T\cdot \id-\rho_{L[m]}(g)) =\left(T-\chi_{L_y/\pi^m L}(g)\right)\left(T-\chi_{L/L_y}(g)\right) \quad \text{ in $R/\pi^m [T]$}
+\end{align*}
+
+
+
+
+
+Then there is a basis $u,v$ of $L$ such that $L_y= \langle u , \pi^n v \rangle$,

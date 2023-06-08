@@ -1,0 +1,55 @@
+\documentclass{book}
+\usepackage{amsthm,amssymb,amsmath,amsfonts}
+\usepackage{mycros}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{todonotes}
+\usepackage{mathtools,thmtools}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{comment}
+
+% \usepackage{hyperref}
+% \hypersetup{
+%     colorlinks,
+%     citecolor=black,
+%     filecolor=black,
+%     linkcolor=black,
+%     urlcolor=black
+% }
+\input{macros.tex}
+\hfuzz=5.1pt 
+\title{questions}
+\author{justin katz}
+\date{March 2023}
+
+\setlength{\parindent}{0 em}
+\setlength{\parskip}{6 pt}
+\begin{document}
+
+\begin{itemize}
+  \item If $G$ is an open subgroup of $\Gamma_1(\mfrak)$, is $G$ uniformly pro-p?
+\end{itemize}
+
+\paragraph*{2023-05-03 11:49:15}
+For now $k=\Qbb$, and $S_0$ is a finite set of rational primes.
+
+$\Gbf\leq \GL_r$ is a connected simply-connected, simple LAG over $\Qbb$, and $\Gamma = \Gbf(\Zbb_S)$ (so that, in fact, $\Gbf \leq \SL_r$.). Write $d$ for the dimension of $\Gbf$.
+
+Write $\Gbf(\Zbb/m\Zbb)$ for the image in $\GL_r(\Zbb/m\Zbb)$ of $\Gbf(\Zbb_S)$ (so long as $m$ is coprime to $S$).
+
+\begin{proposition}
+  Let $H$ be a congruence subgroup of $\Gamma$. Then there exists an $m \in \Zbb$ and a constant $c=c(\Gbf)$ such that $\Gamma(m)\leq H$ where $m \leq c \cdot |\Gamma:H|$.
+
+  Paraphrase: the level of a congruence subgroup is bounded by (a constant times) its index.
+\end{proposition}
+
+% \maketitle
+% %\tableofcontents
+% \newpage
+
+% \bibliography{references}{}
+% \bibliographystyle{plain}
+
+\end{document}

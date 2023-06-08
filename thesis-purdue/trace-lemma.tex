@@ -1,0 +1,66 @@
+\begin{lemma}\label{lemma:MangosteenPicosdeEuropa}
+	Let $A$ be a quaternion algebra over a number field $k$ with ring of integers $R$, and let $O$ be a maximal order in $A$.
+	Let $\pfrak$ be a prime ideal of $R$ over which $A$ is unramified.
+	Suppose $\Lambda$ be a subgroup of $O^1$ satisfying
+	\begin{align}\label{eq:trace}
+		\tr g \equiv 2 \mod \pfrak^2, \quad \text{for all $g \in \Lambda$}.
+	\end{align}
+	then there exists an $\alpha \in A^\times$ such that $\alpha \Lambda \alpha^\inv \subset O^1(\pfrak)$.
+\end{lemma}
+\begin{proof}
+	For a positive integer $n$, recall that $\pi_{\pfrak^n}: O^1 \to O^1[\pfrak^n]=O^1/O^1(\pfrak^n)$ is the reduction map.
+
+
+	First, we suppose that $A$ is unramified at $\pfrak$.
+	Thus
+	\begin{align}\label{eq:split}
+		O^1 \otimes R_\pfrak \approx SL(2,R_\pfrak)
+	\end{align}, and $O^1[\pfrak^n] \approx \SL(2,R/\pfrak^n)$. Fixing an isomorphism in as \ref{eq:split}, we identify $O^1$ with a group of matrices $g = \tbt{a}{b}{c}{d}$ with entries $a,b,c,d \in \R_k$. Picking a uniformizer $\varpi \in R_\pfrak$ for $\pfrak$, each $g\in O^1$ admits a unique decomposition
+	\begin{align}\label{eq:decomposition}
+		% g                & = g_0 + g_1 \varpi + g_2 \varpi^2 + \dots                                                                \\
+		\Tbt{a}{b}{c}{d} & =  \Tbt{a_0}{b_0}{c_0}{d_0} +\Tbt{a_1}{b_1}{c_1}{d_1} \varpi + \Tbt{a_2}{b_2}{c_2}{d_2} \varpi^2 + \dots
+	\end{align}
+	% $O^1[\pfrak] \approx \SL(2,\kfrak_\pfrak)$
+	for matrices $g_n \in M(2,R_\pfrak)$ at least one of each is not in $\pfrak$.
+
+
+	Write $\Lambda[\pfrak] = \pi_{\pfrak}(\Lambda)\leq \SL(2,\kfrak_\pfrak)$. Now, as $\tr g \equiv 2 \mod \pfrak$ for all $g \in \Lambda$, it follows that each $h \in \Lambda[\pfrak]$ is unipotent.
+	Indeed, by Cayley-Hamilton (in $M(2,\kfrak_\pfrak)$) each element $h$ satisfies its characteristic polynomial $p(x;h)=x^2 - \tr h x + 1= (x-1)^2$.
+	It follows that $\Lambda[\pfrak]$ is conjugate in $\SL(2,\kfrak_\pfrak)$ to a subgroup of the group $U(\kfrak_\pfrak)$ of upper triangular unipotent matrices.
+
+	Thus, without loss of generality, we may assume that each $g$ in $\Lambda$ may be written as
+	\begin{align*}
+		g = \Tbt{1+\varpi a}{b}{\varpi c}{1+\varpi d}
+	\end{align*}
+	where $a,b,c,d \in R_\pfrak$.
+	Since $\Lambda \leq O^1$, one has $\det g = 1 $ for all $g\in \Lambda$, thus
+	\begin{align*}
+		1 = 1 + (a+d - bc) \varpi + ad \varpi^2
+	\end{align*}
+	so that
+	\begin{align}\label{eq:MandarinLeyden}
+		(a+d - bc) \varpi + ad \varpi^2 =0.
+	\end{align}
+	By hypothesis (\ref{eq:trace}), we have $(a+d)\varpi = \tr g -2 \equiv 0 \mod \pfrak^2$ so that $a+d \in \pfrak$. Consequently, $bc \in \pfrak$. As $\pfrak$ is prime, it follows that at least one of $b,c$ lies in $\pfrak$. If $b \in \pfrak$, then $g \in O^1(\pfrak)$. If this is so for all $g \in \Lambda$ then the claim is proven. Supposing otherwise, there exists a $g=\tbt{1+\varpi a}{b}{\varpi c}{1+\varpi d} \in \Lambda$ for which $b \in R_\pfrak^\times$. In this case one has $c \in \pfrak$. Let $\alpha_o = \Tbt{\varpi}{0}{0}{1}$. Then
+	\begin{align*}
+		\alpha_o g\alpha_o^\inv  = \Tbt{1+\varpi a}{b\varpi}{c}{1+\varpi d}
+	\end{align*}
+	lies in $O^1(\pfrak)$.
+
+
+	To prove the claim, we must prove that there exists an element $\alpha \in A^\times $ such that $\alpha g \alpha^\inv =  \alpha_o g \alpha_o^\inv$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{proof}

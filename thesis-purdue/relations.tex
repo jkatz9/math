@@ -1,0 +1,179 @@
+\section{relations among congruence subgroups}
+
+Let $R$ be a commutative ring with $1$, let $M(R)$ be the associative algebra of $2\times 2$ matrices with coefficients in $R$, and define functions $a,b,c,d$ on $M(R)$ so that
+\begin{align*}
+  g = \Tbt{a_g}{b_g}{c_g}{d_g}
+\end{align*}
+Define multiplicative subgroups of $M(R)$ by
+\begin{align*}\label{groups}
+  \mathbf{G}(R) & =\{g:a_g,b_g,c_g,d_g \in R, a_gd_g-b_gc_g=1 \} \\
+  \mathbf{A}(R) & =\{g \in \mathbf{G}(R) : b_g=c_g = 0\}         \\
+  \mathbf{B}(R) & =\{g\in \mathbf{G}(R) : c_g = 0\}              \\
+  \mathbf{U}(R) & =\{g \in \mathbf{G}(R) : a_g-1=d_g-1=c_g = 0\}
+\end{align*}
+\begin{lemma}
+  Let $R$ be a commutative ring.
+  \begin{enumerate}
+    \item The functions $a$ and $d$ restrict to $\mathbf{A}(R)$ to give isomorphisms $A(R) \approx R^\times$. Write $\alpha,\delta: R^\times \to \mathbf{G}(R)$ for their respective inverses
+    \item The function $b$ restricts to $\mathbf{U}(R)$ to give an isomorphism $\mathbf{U}(R) \to R$. Write $\beta  R \to \mathbf{G}(R)$ for the inverse to $b$.
+    \item $\mathbf{A}(R)$ normalizes $\mathbf{U}(R)$; if $t\in \mathbf{A}(R)$ and $u \in \mathbf{U}(R)$, then $b_{tut^\inv} = a_t/d_t \cdot b_u = a_t^2 b_u$
+  \end{enumerate}
+\end{lemma}
+
+
+Fix a nonarchimedian local field $k$ of characteristic $0$, with residue field $\ffrak$ of cardinality $q= p^f$ where $p$ is an odd prime. Let $R$ denote the ring of integers in $R$ and $\pfrak$ its unique maximal ideal, and choose a uniformizer $\varpi$ for $\pfrak$. Denote by $\pi_n : R \to R/\pfrak^n$ the reduction map.
+
+For any of the groupschemes $\Hbf$ defined above, we let $H$ denote $H(R)$, set $H(n):=\Hbf(R/\pfrak^n)$, and set $H[n]:= \ker \left( H \to H[n]\right)$. Thus, for each $n$, there is an exact sequence
+\begin{align}
+  1 \to H[n]\to H \to H(n) \to 1
+\end{align}
+induced by applying $\Hbf$ to the morphism $\pi_m : R \to R/\pfrak^n$.
+
+
+\section*{computations}
+For $g,h \in \GL_2(k)$ and $x \in M_2(k)$, we write $\Ad(g)x=gxg^\inv$ and $[g,h]=ghg^\inv h^\inv$.
+
+For $n \in \Nbb$, set
+\begin{align*}
+  \mathcal{B}_(n)=\left\{x \in \mathrm{SL}_2\left(R\right) \mid x \equiv \operatorname{Id} \quad\left(\bmod \pfrak^n\right)\right\}
+\end{align*}
+
+For $a,b,c \in k$, with $c\neq -1$,  define elements
+\begin{align*}
+  L_a=\left(\begin{array}{ll}
+              1 & 0 \\
+              a & 1
+            \end{array}\right), R_b=\left(\begin{array}{ll}
+                                            1 & b \\
+                                            0 & 1
+                                          \end{array}\right), D_c=\left(\begin{array}{cc}
+                                                                          1+c & 0             \\
+                                                                          0   & \frac{1}{1+c}
+                                                                        \end{array}\right), w=\left(\begin{array}{rr}
+                                                                                                      0  & 1 \\
+                                                                                                      -1 & 0
+                                                                                                    \end{array}\right)
+\end{align*}
+of $\SL_2(k)$ These matrices satisfy the relations:
+\begin{align*}
+  \Ad(D_c)R_b & =R_{b(1+c)^2}                            \\
+  \Ad(D_c)L_a & =L_{a(1+c)^{-2}}                         \\
+  \Ad(w)R_b   & = L_{-b}                                 \\
+  \Ad(w)L_a   & = R_{-a}                                 \\
+  D_c         & = L_{-(c-1)^\inv}R_{c-1}w R_{(c-1)^\inv}
+\end{align*}
+
+
+
+
+\begin{lemma}[lemma 3.3 in \cite{morraExplicitDescriptionIrreducible2011}]
+  For $n\geq 1$, one has
+  \begin{align*}
+    B(n)=\langle L_x,R_y,D_z : x,y,z \in \pfrak^n \rangle
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  Let $g = \tbt{a}{b}{c}{d} \in B(n)$. As $a \in 1+\pfrak^n$, the element $x = -c/a$ satisfies $\nu(x)=\nu(c)\geq n$, and
+  \begin{align*}
+    L_x g = \Tbt{a}{b}{0}{xb+d}.
+  \end{align*}
+  Likewise, setting $y = -b/a \in \pfrak^n$ we have
+  \begin{align*}
+    L_x g R_y = \Tbt{a}{}{}{d+b*x}.
+  \end{align*}
+  Observe that $d+b*x = d -cb/a = (ad-bc)/a =1/a$ as $\det g =1$. Thus, with $z = a-1 \in \pfrak^n$ we have
+  \begin{align*}
+    g = L_{c/a}D_{a-1}R_{b/a}
+  \end{align*}
+\end{proof}
+
+For a real number $x$, the generalized binomial coefficient is
+\begin{align*}
+  {x \choose k} =\frac{1}{k !} \prod_{i=0}^{k-1}\left(x-i\right).
+\end{align*}
+
+\begin{lemma}
+  The sequence of functions $psi_n(x):=\sum_{k=0}^n{1/2 \choose k} x^k$ converges on $\pfrak$ to a function $\psi$ sastifying:
+  \begin{enumerate}
+    \item $\psi(x)^2 = 1+x$,
+    \item $\psi(x) \equiv 1 \mod \pfrak$,
+    \item $\nu(\psi(x)-1)=\nu(x)$,
+  \end{enumerate}
+  for all $x\in \pfrak$.
+\end{lemma}
+
+\begin{lemma}
+  For $n\geq 1$, we have $B(2n)\leq [B(n),B(n)]$.
+\end{lemma}
+\begin{proof}
+
+
+  It suffices to show that $R_b,L_a,D_c\in [B(n),B(n)]$ for all $a,b,c\in \pfrak^{2n}$. Write $b = \pi^{n}b'$ with $b' \in \pfrak^n$. Then $\psi(b')^2=1+b'$  and $\psi(b')\equiv 1 \mod \pfrak^n$. Then
+  \begin{align*}
+    [\Tbt{\psi(b')}{}{}{1/\psi(b')},\Tbt{1}{\pi^n}{0}{1}] = \Tbt{1}{\pi^n(\psi(b')^2-1)}{0}{1} =\Tbt{1}{b}{0}{1},
+  \end{align*}
+  so that $R_b \in [B(n),B(n)]$. The same argument shows that $L_b \in [B(n),B(n)]$.
+
+  Now suppose $c\in \pfrak^{2n}$. Then
+  \begin{align*}
+    [\Tbt{\psi(c)}{0}{-c/\pi^n\psi(c)}{-1/\psi(c)}, \Tbt{1}{\pi^n}{c/\pi^n}{c+1}] = D_c,
+  \end{align*}
+  and since $\psi(c)=1 \mod \pi^n$, these matrices are in $B(n)$, showing $D_c \in [B(n),B(n)] $ as desired.
+\end{proof}
+% \begin{align}
+%   \left(\begin{array}{ll}
+%           d & 0 \\
+%           0 & 1
+%         \end{array}\right)\left(\begin{array}{ll}
+%                                   x & y \\
+%                                   z & w
+%                                 \end{array}\right)\left(\begin{array}{cc}
+%                                                           1 / d & 0 \\
+%                                                           0     & 1
+%                                                         \end{array}\right)=\left(\begin{array}{cc}
+%                                                                                    x     & d y \\
+%                                                                                    z / d & w
+%                                                                                  \end{array}\right)
+% \end{align}
+
+
+% \section*{Hecke Operators}
+% Let $k$ be a positive integer. For $F : \hfrak \to \Cbb$, and $\Tbt{a}{b}{c}{d} \in \SL(2,\Rbb)$ write
+% \[F|_k\Tbt{a}{b}{c}{d} (z) = (ad-bc)^{k/2} (cz+d)^{-k}F(\frac{az+b}{cz+d}).\]
+
+
+% Let $M,N$ be positive integers, and set
+% \begin{align*}
+%   \Gamma_0(M,N) & := \left\{\left(\begin{array}{ll}
+%                                       a & b \\
+%                                       c & d
+%                                     \end{array}\right) \in \operatorname{SL}(2, \mathbb{Z})|M| c, N \mid b\right\}  \\
+%   \Gamma(M, N)  & :=\left\{\left(\begin{array}{ll}
+%                                      a & b \\
+%                                      c & d
+%                                    \end{array}\right) \in \Gamma_0(M, N) \mid a \equiv d \equiv 1 \bmod M N\right\}
+% \end{align*}
+% so that $\Gamma_0(M,1) = \Gamma_0(M)$, $\Gamma(M,1)=\Gamma_1(M)$, and $\Gamma(M,M) = \Gamma(M)$ in the traditional notation. 
+
+% For an integer $d$, let $B_d = \Tbt{d}{}{}{1}$ and $W_d = \Tbt{1}{}{}{d}$. 
+
+
+% \section*{remarks}
+% Define a set $W$ of $q+1$ elements of $\GL(2,k)$ by:
+% \begin{align}
+%   \gamma_0 = \Tbt{\pi}{}{}{1},\quad \gamma_c = \Tbt{1}{c}{}{\pi}
+% \end{align}
+% where $c$ varies through a set of representatives for $R/\pfrak R$
+
+% \begin{lemma}
+%   Fix a maximal order $\Ocal_0$ in $M(2,k)$. There is a bijection between nonbacktracking paths starting at $\Ocal_0$ of length $n$ with words $c_1...c_n$ of length $n$ in the letters of $W$, subject to the condition that $c_jc_{j+1}\notin \pi M(2,R)$. The $j$-th vertex in the path corresponding to a word $c_1...c_n$ is $\Ocal_0^{c_jc_{j-1}...c_1}$  (where $\Ocal_0^g = g^\inv \Ocal_0 g$).
+% \end{lemma}
+
+
+
+% Fix a maximal order $\Ocal_0$ in $M(2,k)$. 
+
+
+
+
+%For an ideal $\afrak$ of $R$ and $X$ a group scheme over $R$, write $G[\afrak]$ for $G[R/\afrak]$ and $G(\afrak)$ for the kernel of $G(R) \to G[\afrak]$.

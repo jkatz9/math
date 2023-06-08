@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{amsthm,amssymb,amsmath,amsfonts,braket}
+\usepackage{mycros}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{todonotes}
+\usepackage{mathtools,thmtools}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{comment}
+
+\input{macros.tex}
+\title{SL2}
+\author{justin katz}
+\date{March 2023}
+
+\setlength{\parindent}{0 em}
+\setlength{\parskip}{6 pt}
+\begin{document}
+Notation as in \cite{sallyFourierTransformOrbital1983}:
+\begin{itemize}
+    \item $k$ p-adic fifeld, $R$ ring of integers, $P$ prime ideal, $q$ cardinality of residue field, $U = R^\times$ and $U_n = 1 + P^n$, $\dop x$ an additive haar measure with $\int_R \dop x =1$, define $|\cdot|$ on $k$ by: if $a\in k^\times$ then $\dop(ax) = |x| \dop x$ and $|0|=0$. 
+    \item $\tau$ is a prime elemenmt, and $\eps$ is a fixed primitive $q-1$st root of $1$. 
+    \item $G = \SL(2,k)$, and $G'$ the set of regular elements in $G$. 
+\end{itemize}
+
+For $\gamma \in G'$ or unipotent, an \textbf{orbital integral} is
+\begin{align*}
+    I_f(\gamma) = \int_{G/G_\gamma}f(x \gamma x^\inv)\dop \dot{x} 
+\end{align*}
+for $f$ locally constant compactly supported on $G$, and $\dop \dot{x}$ is left $G$ invariant measure on $G/G_\gamma$. When $\gamma \in G'$, then $G_\gamma =T$ is a maximal torus in $G$, and the \textbf{invariant integral} of $f$ relative $T$ is 
+\begin{align*}
+    F_f^T(t) = |D(t)|^{1/2} \int_{G/T} f(xtx^\inv)\dop \dot{x}
+\end{align*}
+for $t\in T' = T\cap G'$, where $D(x) = (\lambda-\lambda^\inv)^2$, if $\lambda^{\pm 1}$ are eigenvalues of $x$, is the \textbf{weyl discriminant}. 
+
+For fixed $\gamma$, the map $f\mapsto I_f(\gamma)$ is a $G$-conjugation invariant distribution. 
+
+Define subgroups of $G=\SL(2,k)$:
+
+\begin{align*}
+    A &= \set{\Tbt{x}{}{}{x^\inv}: x \in k^\times},\quad  & \cdots   \\
+    T_\tau &= \set{\Tbt{x}{y}{\tau y}{x}: x,y \in k^\times},   T_\tau^\# &= \set{\Tbt{x}{\eps y}{\tau\eps^\inv y}{x}: x,y \in k^\times} \\
+    T_\tau &= \set{\Tbt{x}{y}{\tau y}{x}: x,y \in k^\times}, T_\tau^\# &= \set{\Tbt{x}{\eps y}{\tau\eps^\inv y}{x}: x,y \in k^\times} 
+\end{align*}
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,25 @@
+Let $\Zbb_\lambda = \Zbb/p^\lambda\Zbb$, and for $k\leq \lambda$  set $G= \Zbb_\lambda \times \Zbb_{\lambda-k}$.
+
+Pick integers $\sigma \in \Zbb\setminus p\Zbb$ and $\Delta = p^k \Delta'$ with $\Delta'$ coprime to $p$. Define a bilinear function $G\times G \to \mu[p^\lambda]$ by $\ip{u}{v} = \exp( 2\pi i \sigma \frac{2 u_1 v_1 + \Delta u_2 v_2}{p^\lambda})$ for $u=(u_1,u_2)$ and $v=(v_1,v_2)$.
+
+Then $G$ evidently is self dual with respect to this form.
+
+For each $\alpha \in \Zbb$, let $m_\alpha : (u_1,u_2)\mapsto (\alpha u_1,\alpha u_2)$, which is an endormorphism of $G$.
+
+Let $H= L^2(G)$, a finite dimensional hilbert space. Define for $\alpha \in \Zbb_\lambda^\times$ and $\beta \in \Zbb_\lambda$, operators on $H$:
+\begin{align}
+    A(\alpha)\phi(u) & = \chi_p(u\alpha)^k\phi(u\alpha)                                                  \\
+    B(\beta)\phi(u)  & =\exp( 2\pi i \beta  \frac{u_1^2 + \Delta u_2^2}{p^\lambda})\phi(u)               \\
+    W\phi(u)         & = c \sum_{t\in G}\phi(v)\exp(-4\pi \sigma\frac{u_1v_1+\Delta u_2 v_2}{p^\lambda})
+\end{align}
+where $c =p^{-\lambda+k/2}\chi_p(\Delta')^{\lambda - k}\chi_p(\sigma)^k\eps$.
+
+Define elements $d_\alpha = \tbt{\alpha}{}{}{\alpha^\inv}$ and $\zeta_\beta = \tbt{1}{\beta}{}{1}$ for $\alpha,\beta$ as above, and set $w = \tbt{}{-1}{1}{}$.
+
+
+\begin{lemma}
+    If $g=\tbt{a}{b}{c}{d} \in \SL(2,\Zbb_\lambda)$ satisfies $c\neq 0$ mod $p$ then
+    \[g =\zeta_{a/c}w d_{c} \zeta_{dc}\]
+    and if $c= 0$ mod $p$ then  $a \in \Zbb_\lambda^\times$ and
+    \[g = w \zeta_{-c/a}wd_{-a}\zeta_{b/a}\].
+\end{lemma}

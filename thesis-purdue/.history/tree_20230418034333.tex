@@ -1,0 +1,86 @@
+\documentclass[draft]{article}
+\usepackage{amsthm,amssymb,amsmath,amsfonts,braket}
+\usepackage[inline]{enumitem}
+\usepackage{mycros}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{todonotes}
+\usepackage{mathtools,thmtools}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{comment}
+
+\input{macros.tex}
+\title{tree}
+\author{justin katz}
+\date{March 2023}
+
+\setlength{\parindent}{0 em}
+\setlength{\parskip}{6 pt}
+\begin{document}
+
+Let $A$ be a quaternion algebra over a number field $k$, and let $\Ocal$ be a maximal order in $A$. For each finite place $\pfrak$ of $k$ over which $A$ is split, pick an isomorphism of $A_\pfrak =A\otimes_k k_\pfrak$ with $M(2,k_\pfrak)$ such that $\Ocal_\pfrak = \Ocal \otimes_R R_\pfrak$ maps to $M(2,R_\pfrak)$ and write $\rho_\pfrak:A^\times \to \GL(2,k_\pfrak)$ for the composition of the natural embedding $A^\times \to (A\otimes_k k_\pfrak)^\times$ followed by our chosen isomorphism $A_\pfrak^\times \approx \GL(2,k_\pfrak)$. 
+
+\paragraph*{p-adic computation}
+\begin{definition}[Bruhat-Tits tree]
+The Bruhat-Tits tree $\Tcal$ for $\GL(2,k)$ is the following graph: the vertices of $\Tcal$ are homothety classes of $R$-lattices in $k^2$.
+If $L$ is a lattice in $k^2$, we write $[L]$ for its homothety class. 
+
+Two vertices $\Lambda_1,\Lambda_2 $ of $\Tcal$ are adjacent if there are representative lattices $L_i \in \Lambda_i$ such that $\pi L_1 < L_2 < L_1$ with each inclusion proper.
+
+We write $V(\Tcal)$ for the vertices of $\Tcal$, and $E(\Tcal)$ for the edges of $\Tcal$ (which consist of ordered pairs of adjacent vertices.)
+\end{definition}
+
+We regard $k^2$ as a space of column vectors, with distinguished basis vectors $e_1,e_2$. We write $L_0 = Re_1+Re_2$ and refer to this as the \textbf{distinguished lattice}, and refer to its homothety class $\Lambda_0 = [L_0]$ as the \textbf{distingushed vertex} of $\Tcal$. We let $L_1 = Re_1 + \pfrak e_2$, and set $\Lambda_1 = [L_1]$ and refer to $C=(\Lambda_0,\Lambda_1)$ as the \textbf{distinguished edge} of $\Tcal$. 
+ 
+$\GL(2,k)$ acts on the set of lattices in $k^2$: for $g\in \GL(2,k)$ and a lattice $L$, the set $gL = \{ g v : v \in L\}$ is also a lattice in $k^2$. This action is transitive: given a lattice $L$, pick an $R$ basis $(v,w)$ for $L$ and define $g_L$ by the assignment $ge_1 = v$ and $ge_2 = w$. Then $g_L L_0 =L$, where $L_0$ is our distinguished lattice $R^2$ in $k^2$ as above. Under this action, the stabilizer of $L_0$ is $\GL(2,R)$. \footnote{If $L= gL_0$ is any other lattice, then its stabilizer in $\GL(2,k)$ is $\Aut_R(L)=g \GL(2,R)g^\inv$}. Thus, the orbit map $g \mapsto gL_0$ induces a bijection $\GL(2,k)/ \GL(2,R)$ with the set of lattices in $k^2$. 
+
+Under this bijection, the map $L\mapsto [L]$ sending a lattice to its homothety class, corresponds to the quotient $\GL(2,k) / \GL(2,R) \to k^\times \lmod \GL(2,k) \rmod \GL(2,R)$ with $k^\times$ acting by scaling. Thus, we have an identification of 
+\begin{align*}
+	V(\Tcal) \approx k^\times \lmod \GL(2,k)/\GL(2,R).
+\end{align*} 
+As this action of $k^\times$ on $\GL(2,k)$ is central, this quotient can be identified with $\GL(2,k)/k^\times\GL(2,R)$, or with $\PGL(2,k)/\PGL(2,R)$. We remark that the action of $\GL(2,k)$ on $\Tcal$ factors through an effective action by $\PGL(2,k)$ which is transitive both on vertices and ordered edges. The stabilizer in $\GL(2,k)$ of the distinguished vertex $\Lambda_0$ is $k^\times \cdot \GL(2,R)$, and the stabilizer of the distinguished edge $C = (\Lambda_0,\Lambda_1)$ is $k^\times \Gamma_0(\pfrak)$ where $\Gamma_0(\pfrak)=\GL(2,R)\cap \tbt{1}{0}{0}{\pi}\GL(2,R)\tbt{1}{0}{0}{\pi}^\inv$ consists of those $\tbt{a}{b}{c}{d} \in \GL(2,R)$  with $c \in \pfrak$. Thus, we obtain an identification 
+\begin{align*}
+    E(\Tcal)\approx  \GL(2,k) / k^\times \Gamma_0(\pfrak). 
+\end{align*}
+
+\paragraph*{Invariant subtrees}
+Let $G$ be a group, and $\rho: G \to \GL(2,k)$ be a representation. Then $G$ acts (through $\rho$) on $\Tcal$, and the set of fixed points $\Tcal(\rho)$ is a (possibly empty) connected subtree of $\Tcal$. First, observe the following:
+\begin{proposition}
+The following are equivalent:
+\begin{enumerate}
+    \item $\Tcal(\rho)$ is nonempty.
+    \item the image of $\rho(G)$ in $\PGL(2,k)$ is relatively compact
+    \item the image of $\rho(G)$ in $\PGL(2,k)$ is bounded
+    \item for all $g\in G$,  $\frac{(\tr\rho(g))^2}{\det \rho (g)}-4 \in R$
+    \item there is an equivalent representation $\rho': G \to \GL(2,k)$ such that the image of $\rho'(G)$ in $\PGL(2,k)$ is contained in $\PGL(2,R)$ or the normalizer of $\Gamma_0(\pfrak)$.
+\end{enumerate}    
+\end{proposition}
+A theorem of \cite{bellaicheSousgroupesGLArbres2014} demonstrates that $\Tcal(\rho)$ must take a highly restricted form:
+\begin{proposition}
+    
+\end{proposition}
+
+% \begin{remark}
+%     \begin{enumerate*}
+%         \item The action of the center $k^\times$ of $\GL(2,k)$ on lattices $L$ factors through $R^\times \lmod k^\times $, as $xL = L$  if (and only if) $x \in R^\times$. 
+%     \end{enumerate*}
+% \end{remark}
+ 
+
+
+\paragraph*{Local Computations} 
+For now, let $k$ nonarchimedian local field of characteristic $0$, with ring of integers $R$ and maximal ideal $\pfrak$, with uniformizer $\pi$. Let $V$ be a two dimensional $k$-vectorspace, and $A = \End_k(V)$. Then every maximal order in $A$ takes the form 
+\begin{align*}
+    \End_R(L) = \{ x \in A : xL\leq L\}
+\end{align*}
+where $L$ is a free $R$-module of rank $2$ in $V$. If $M = xL$ for some $x\in A^\times = \Aut_k(V)$, then $\End_R(M) = x\End_R(L)x^\inv$. As $A^\times$ acts transitively on the set of lattices in $V$ (by left-translation), it acts transitively on the set of maximal orders in $A$ (by conjugation). Further, if $\End_R(L)=\End_R(M)$ for two lattices $L,M$ in $V$, then there exists an $x \in k^\times$ such that $L = x M$. In this case, we say $L$ and $M$ are homothetic, and conclude that there is an $k^\times \lmod A^\times = \PGL(V)$ equivariant bijection between homothety classes of lattices in $V$ and maximal orders in $A$. 
+
+Given two lattices $L$ and $M$ in $V$, there exists a basis $u,v$ of $L$ such that $\pi^a u , \pi^b v$ is a basis for $M$ (elementary divisor theorem) and we set $d(L,M) = |a-b|$. If $x,y\in k^\times$ then $d(xL,yM)=d(L,M)$ so that $d$ descends to a function on homothety classes, or equivalently a function on maximal orders. 
+
+
+\cite{sallyFourierTransformOrbital1983}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{amsthm,amssymb,amsmath,amsfonts,braket}
+\usepackage{mycros}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{todonotes}
+\usepackage{mathtools,thmtools}
+\usepackage{tikz-cd}
+\usepackage{quiver}
+\usepackage{comment}
+
+\input{macros.tex}
+\title{SL2}
+\author{justin katz}
+\date{March 2023}
+
+\setlength{\parindent}{0 em}
+\setlength{\parskip}{6 pt}
+\begin{document}
+\begin{itemize}
+    \item The function $t \mapsto \left(\frac{1-t^2}{1+t^2}, \frac{2 t}{1+t^2}\right)$ is a parameterization of $S^1 \setminus \{(-1,0)\} = \{(x,y): x^2+y^2=1,\, x\neq -1\}$ by $\Rbb$.
+    \item ``As with other properties shared between the trigonometric functions and the hyperbolic functions, it is possible to use Tangent half-angle formula to construct a similar form of the substitution, $t = \tanh \tfrac x2$
+          \begin{align}
+               & \sinh x = \frac{2t}{1 - t^2}, \qquad \cosh x = \frac{1 + t^2}{1 - t^2}, \qquad \tanh x = \frac{2t}{1 + t^2},                             \\[6pt]
+               & \coth x = \frac{1 + t^2}{2t}, \qquad \operatorname{sech} x = \frac{1 - t^2}{1 + t^2}, \qquad \operatorname{csch} x = \frac{1 - t^2}{2t}, \\[6pt]
+               & \text{and} \qquad dx = \frac{2}{1- t^2}\,dt.
+          \end{align}
+          Geometrically, this change of variables is a one-dimensional analog of the projection."
+    \item  
+
+\end{itemize}
+
+\end{document}

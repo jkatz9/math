@@ -1,0 +1,38 @@
+Let $L_i = \pfrak^i \sl_2(R)$ with bracket $[x,y]=xy-yx$ and $L_k^i = L_i/L_k$.
+
+We denote the reduction map $R \to R/\pfrak^j$ by $\rho_j$, and use the same symbol to denote the coordinatwise reduction map on matrices.
+
+Write $\omega:\ffrak^\times \to R^\times$ for the Teichmuller character, which we extend to $0\in \ffrak$ by $\omega(0)=0 \in R$. Set $\Omega=\omega(\ffrak) \subset R$.
+
+Each $A$ in $L_i$ has a unique expansion $A = \sum_j \pi^j A_j$, where each $A_j$ has entries lying in $\Omega$, and $A_j = \bm{0}_2$ for $j< i$. Set $\nu(A) = \inf\{j| A_j \neq \bm{0}_2\}$, and write $\bar{A}=A_{\nu(A)}$ for the leading term of $A$. Note that $\bar{A}$ has entries in $\Omega$, and that $\omega^\inv(\bar{A})=\rho_1(\bar{A})$.
+
+In $L_k^i$, if $\nu(A) \geq k$, then $A=\bm{0}_2$, and if $A\neq 0$ in $L_k^i$ then its order is $q^{k-\nu(A)}$, and $\bar{A} = \bar{\pi^j A}$ for $j < k - \nu(A)$.
+
+As an additive group, $L_k^i$ is isomorphic to $(R/\pfrak^{k-i})^3$.
+
+\begin{lemma}
+    Let $B=\tbt{b_1}{b_2}{b_3}{-b_1}$, $C=\tbt{c_1}{c_2}{c_3}{-c_1}$  be  nonzero elements of $\sl_2(\ffrak)$  Then
+    \begin{enumerate}
+        \item The image of $\ad C: \sl_2(\ffrak) \to \sl_2(\ffrak)$ consists of those  $X=\tbt{x_1}{x_2}{x_3}{x_1}$ with $2c_1 x_1 + c_3x_2 + c_2x_3 =0$. Consequently, there exists an $X$ such that $[C,X]=C$ if and only if $2c_1^2 +2c_3c_2=-2\det C =0$.
+        \item If $\det C =0$ then $\ad C$ is nilpotent and $\dim \im \ad C =2$.
+        \item Suppose that $\det C =0$. Then $C$ is an eigenvector of $\ad B$ if and only if $B \in \im \ad C$ if and only if $2c_1b_1+c_3b_2+c_2b_3 =0$. In this case, the eigenvalue is nonzero if $\{B,C\}$ are linearly independent. In this case, $\{B,C\}$ span the image of $\ad C$.
+        \item If $\det C \neq 0$, then $\ad C$ is diagonalizable (over an algebraic closure of $\ffrak$), with eigenvalues $0$ and $\pm 2 \sqrt{- \det C}$. In this case, if $\ad C$ is an eigenvector for $\ad B$, then $B=aC$ for some $a\in \ffrak$, and the corresponding eigenvalue is $0$.
+    \end{enumerate}
+\end{lemma}
+
+
+We conclude: Let $L$ be the plane in $\sl_2(\ffrak)$ consisting of those $X=\tbt{x_1}{x_2}{x_3}{x_1}$ cut out by the equation $2c_1 x_1 + c_3x_2 + c_2x_3 =0$. Then
+
+\begin{enumerate}
+    \item if $C \in L$, then the set $\{A,B,[A,B]\}$ is linearly independent for any distinct $A,B \in L$
+    \item If $C\not\in L$ and $\{A,B\}$ is linearly independent with $A,B \in L$, then $\{A,B,[A,B]\}$ spans $\sl_2(\ffrak)$.
+\end{enumerate}
+
+With respect to the basis $\{h,x,y\}$ the action of $\ad C$ is given by
+\begin{align*}
+    \left(\begin{array}{ccc}
+              0      & c_3    & -c_2  \\
+              2 c_2  & -2 c_1 & 0     \\
+              -2 c_3 & 0      & 2 c_1
+          \end{array}\right)
+\end{align*}
