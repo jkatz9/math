@@ -18,4 +18,5 @@
     "**/Thumbs.db": true,
   },
   "explorerExclude.backup": {},
+  "gitdoc.enabled": true,
 }
