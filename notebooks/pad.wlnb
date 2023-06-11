@@ -1,0 +1,128 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "(* f[x_]:= x^2;\nMap[f,g,2]; *)",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "Basic info on wl language:\n### [Functions](https://reference.wolfram.com/language/ref/Function.html)\nThe following are equivalent:\n-   `Function[u, 3 + u][x]`\n-   `(3 + #) &[x]`\n-   `3+x`\n\nLikewise:\n-   `Function[{u, v}, u^2 + v^4][x, y]`\n-   `(#1^2 + #2^4) &[x, y]`\n-   `x^2 + y^4`\n\n\n### [Map](https://reference.wolfram.com/language/ref/Map.html)\nTFAE:\n-   `Map[f, {a, b, c, d, e}]`\n-   `f /@ {a, b, c, d, e}`\n-   `{f[a],f[b],f[c],f[d]}`\n\n### [Replace](https://reference.wolfram.com/language/ref/ReplaceAll.html)\nTFAE:\n-   `{x, x^2, y, z} /. x -> 1`\n-   `ReplaceAll[{x,x^2,y,z}, x-> 1]`\n-   `{1,1,y,z}`\n\nAnother example:\n-   `{x, x^2, y, z} /. x -> {a, b}`\n-   `{{a, b}, {a^2 , b^2 }, y, z}`\n### [Apply](https://reference.wolfram.com/language/ref/Apply.html)\n`f@@expr` or `Apply[f,expr]`\n\nreplaces the head of expr by f. \n\nTFAE\n\n- `Apply[f, {a, b, c, d}]` \n- `f @@ {a, b, c, d}`\n- `f[a,b,c,d]`. \n\n",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(* $PrePrint=. *)\n$PrePrint = (TraditionalForm@HoldForm[In[line] = #] /. line -> $Line /. DownValues[In]) &;\nprec=10;\nAd[g_]:=Function[x,g.x.Inverse[g]];\nLieBracket[x_,y]:=x.y-y.x;\nCommutator[x_,y_]:=x.y.Inverse[x].Inverse[y];\nTheta[x_]:=x-DiagonalMatrix[{Tr[x]/2,Tr[x]/2}];\nsqrt[a_,e_:prec]:=Sum[ Binomial[1/2,i]*a^i,{i,0,e}];\nU[x_]:=sqrt[Tr[x^2]/2];\nPsi[u_]:=u+U[u]*IdentityMatrix[2];\nstar[x_,y_]:=U[x]*y+U[y]*x;\n\n\nlog[t_]:=Sum[(-1)^(n-1) (1-t)^n/n,{n,1,prec}];\nexp[t_]:=Sum[t^n/Factorial[n],{n,0,prec}];\nPE[a_]:=Sum[Subscript[a,i] p^i,{i,0,4}];\n\n(* invo[g_]:=Tr[g]*id-g; *)\n(* $Assumptions=Det[g1]==1&&Det[g2]==1; *)\nR[r_]:={{1,r},{0,1}};\nL[r_]:={{1,0},{r,1}};\nW={{0,1},{-1,0}};\n(* DD[c_]:=DiagonalMatrix[{1+c,1/(1+c)}]; *)\n(* W.R[1/b].W //MatrixForm; *)\n(* R[b].W.R[1/b] // MatrixForm; *)",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1686204992712,
+     "endTime": 1686204993729
+    },
+    "executionOrder": 85,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(* g = {{1+p a,p b},{p c,1+p d}}; *)\na=PE[\\[Alpha]];\nb=PE[\\[Beta]];\nc=PE[\\[Gamma]];\nd=PE[\\[Delta]];\n$Assumptions={Subscript[\\[Alpha],0]==1}\n(* a\nb\nc\nd *)\ng={{a,b},{c,d}};\n(* g *)\nA = {{p^j,0},{0,1}};\ndet=Ad[A][g] //Det;\nCollect[g,p]\nCollect[det,p]\n(* \\[Beta] = \\[Alpha].W; *)\n(* \\[Gamma] = {{1,0},{0,p}}; *)\n(* \\[Delta] = \\[Gamma].W; *)\n(* \\[Alpha] *)\n(* Ad[\\[Alpha]//Inverse]; *)\n(* Ad[\\[Alpha]//Inverse][g]; *)\n(* alpha\nbeta  *)\n(* gamma *)\n(* delta *)\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow style=\"font-family:&quot;Times&quot;;\"><w></w><wrow><w></w><wrow><w></w><wb>(</wb><wrow><w></w><w>$Assumptions</w><w>=</w><wrow><w></w><wb>{</wb><wrow><w></w><wsub><w></w><w>α</w><w><w>0</w></w></wsub><w class=\"symbol\"></w><w>1</w></wrow><wb>}</wb></wrow></wrow><wb>)</wb></wrow><w>=</w><wrow><w></w><wb>{</wb><wrow><w></w><wsub><w></w><w>α</w><w><w>0</w></w></wsub><w class=\"symbol\"></w><w>1</w></wrow><wb>}</wb></wrow></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "BoxData[TagBox[RowBox[{RowBox[{\"(\", RowBox[{\"$Assumptions\", \"=\", RowBox[{\"{\", RowBox[{SubscriptBox[\"α\", \"0\"], \"\", \"1\"}], \"}\"}]}], \")\"}], \"=\", RowBox[{\"{\", RowBox[{SubscriptBox[\"α\", \"0\"], \"\", \"1\"}], \"}\"}]}], HoldForm], TraditionalForm]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "4e8fa73b-a845-4a91-9698-897db0d90288",
+     "metadata": {
+      "cellLabel": "Out[138]= ",
+      "isBoxData": true
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow style=\"font-family:&quot;Times&quot;;\"><w></w><wrow><w></w><wrow><w></w><w>Collect</w><wrow><w></w><wb>[</wb><wrow><w></w><w class=\"italic\">g</w><w>,</w><w class=\"italic\">p</w></wrow><wb>]</wb></wrow></wrow><w>=</w><wrow><w></w><wb>(</wb><w>⁠</w><wgrid style=\"grid-template-columns:repeat(2,max-content);\"><w><wrow><w></w><wsub><w></w><w>α</w><w><w>0</w></w></wsub><w>+</w><wrow><w></w><w class=\"italic\">p</w><w></w><wsub><w></w><w>α</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>2</w></w></wsup><w></w><wsub><w></w><w>α</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>3</w></w></wsup><w></w><wsub><w></w><w>α</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>4</w></w></wsup><w></w><wsub><w></w><w>α</w><w><w>4</w></w></wsub></wrow></wrow></w><w><wrow><w></w><wsub><w></w><w>β</w><w><w>0</w></w></wsub><w>+</w><wrow><w></w><w class=\"italic\">p</w><w></w><wsub><w></w><w>β</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>2</w></w></wsup><w></w><wsub><w></w><w>β</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>3</w></w></wsup><w></w><wsub><w></w><w>β</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>4</w></w></wsup><w></w><wsub><w></w><w>β</w><w><w>4</w></w></wsub></wrow></wrow></w><w><wrow><w></w><wsub><w></w><w>γ</w><w><w>0</w></w></wsub><w>+</w><wrow><w></w><w class=\"italic\">p</w><w></w><wsub><w></w><w>γ</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>2</w></w></wsup><w></w><wsub><w></w><w>γ</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>3</w></w></wsup><w></w><wsub><w></w><w>γ</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>4</w></w></wsup><w></w><wsub><w></w><w>γ</w><w><w>4</w></w></wsub></wrow></wrow></w><w><wrow><w></w><wsub><w></w><w>δ</w><w><w>0</w></w></wsub><w>+</w><wrow><w></w><w class=\"italic\">p</w><w></w><wsub><w></w><w>δ</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>2</w></w></wsup><w></w><wsub><w></w><w>δ</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>3</w></w></wsup><w></w><wsub><w></w><w>δ</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>4</w></w></wsup><w></w><wsub><w></w><w>δ</w><w><w>4</w></w></wsub></wrow></wrow></w></wgrid><w>⁠</w><wb>)</wb></wrow></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "BoxData[TagBox[RowBox[{RowBox[{\"Collect\", \"[\", RowBox[{\"g\", \",\", \"p\"}], \"]\"}], \"=\", RowBox[{\"(\", \"⁠\", GridBox[{{RowBox[{SubscriptBox[\"α\", \"0\"], \"+\", RowBox[{\"p\", \" \", SubscriptBox[\"α\", \"1\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"2\"], \" \", SubscriptBox[\"α\", \"2\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"3\"], \" \", SubscriptBox[\"α\", \"3\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"4\"], \" \", SubscriptBox[\"α\", \"4\"]}]}], RowBox[{SubscriptBox[\"β\", \"0\"], \"+\", RowBox[{\"p\", \" \", SubscriptBox[\"β\", \"1\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"2\"], \" \", SubscriptBox[\"β\", \"2\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"3\"], \" \", SubscriptBox[\"β\", \"3\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"4\"], \" \", SubscriptBox[\"β\", \"4\"]}]}]}, {RowBox[{SubscriptBox[\"γ\", \"0\"], \"+\", RowBox[{\"p\", \" \", SubscriptBox[\"γ\", \"1\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"2\"], \" \", SubscriptBox[\"γ\", \"2\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"3\"], \" \", SubscriptBox[\"γ\", \"3\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"4\"], \" \", SubscriptBox[\"γ\", \"4\"]}]}], RowBox[{SubscriptBox[\"δ\", \"0\"], \"+\", RowBox[{\"p\", \" \", SubscriptBox[\"δ\", \"1\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"2\"], \" \", SubscriptBox[\"δ\", \"2\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"3\"], \" \", SubscriptBox[\"δ\", \"3\"]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"4\"], \" \", SubscriptBox[\"δ\", \"4\"]}]}]}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center], \"⁠\", \")\"}]}], HoldForm], TraditionalForm]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "cb508e18-b0eb-45a7-9d65-5769b45ae7b7",
+     "metadata": {
+      "cellLabel": "Out[142]= ",
+      "isBoxData": true
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow style=\"font-family:&quot;Times&quot;;\"><w></w><wrow><w></w><wrow><w></w><w>Collect</w><wrow><w></w><wb>[</wb><wrow><w></w><w>det</w><w>,</w><w class=\"italic\">p</w></wrow><wb>]</wb></wrow></wrow><w>=</w><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>0</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>0</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>0</w></w></wsub></wrow><w>+</w><wrow><w></w><w class=\"italic\">p</w><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>1</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>0</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>0</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>1</w></w></wsub></wrow></wrow><wb>)</wb></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>2</w></w></wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>2</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>0</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>1</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>0</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>2</w></w></wsub></wrow></wrow><wb>)</wb></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>3</w></w></wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>3</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>0</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>1</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>2</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>0</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>3</w></w></wsub></wrow></wrow><wb>)</wb></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>4</w></w></wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>4</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>0</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>1</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>2</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>3</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>4</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>4</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>0</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>0</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>4</w></w></wsub></wrow></wrow><wb>)</wb></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>5</w></w></wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>4</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>1</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>2</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>3</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>4</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>4</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>1</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>1</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>4</w></w></wsub></wrow></wrow><wb>)</wb></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>6</w></w></wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>4</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>2</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>3</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>4</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>4</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>2</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>2</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>4</w></w></wsub></wrow></wrow><wb>)</wb></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>7</w></w></wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>4</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>3</w></w></wsub></wrow><w>-</w><wrow><w></w><wsub><w></w><w>β</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>γ</w><w><w>4</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>4</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>3</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>3</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>4</w></w></wsub></wrow></wrow><wb>)</wb></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w class=\"italic\">p</w><w><w>8</w></w></wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><wsub><w></w><w>β</w><w><w>4</w></w></wsub></wrow><w></w><wsub><w></w><w>γ</w><w><w>4</w></w></wsub></wrow><w>+</w><wrow><w></w><wsub><w></w><w>α</w><w><w>4</w></w></wsub><w></w><wsub><w></w><w>δ</w><w><w>4</w></w></wsub></wrow></wrow><wb>)</wb></wrow></wrow></wrow></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "BoxData[TagBox[RowBox[{RowBox[{\"Collect\", \"[\", RowBox[{\"det\", \",\", \"p\"}], \"]\"}], \"=\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"0\"]}], \" \", SubscriptBox[\"γ\", \"0\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"0\"], \" \", SubscriptBox[\"δ\", \"0\"]}], \"+\", RowBox[{\"p\", \" \", RowBox[{\"(\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"1\"]}], \" \", SubscriptBox[\"γ\", \"0\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"0\"], \" \", SubscriptBox[\"γ\", \"1\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"1\"], \" \", SubscriptBox[\"δ\", \"0\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"0\"], \" \", SubscriptBox[\"δ\", \"1\"]}]}], \")\"}]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"2\"], \" \", RowBox[{\"(\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"2\"]}], \" \", SubscriptBox[\"γ\", \"0\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"1\"], \" \", SubscriptBox[\"γ\", \"1\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"0\"], \" \", SubscriptBox[\"γ\", \"2\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"2\"], \" \", SubscriptBox[\"δ\", \"0\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"1\"], \" \", SubscriptBox[\"δ\", \"1\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"0\"], \" \", SubscriptBox[\"δ\", \"2\"]}]}], \")\"}]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"3\"], \" \", RowBox[{\"(\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"3\"]}], \" \", SubscriptBox[\"γ\", \"0\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"2\"], \" \", SubscriptBox[\"γ\", \"1\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"1\"], \" \", SubscriptBox[\"γ\", \"2\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"0\"], \" \", SubscriptBox[\"γ\", \"3\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"3\"], \" \", SubscriptBox[\"δ\", \"0\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"2\"], \" \", SubscriptBox[\"δ\", \"1\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"1\"], \" \", SubscriptBox[\"δ\", \"2\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"0\"], \" \", SubscriptBox[\"δ\", \"3\"]}]}], \")\"}]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"4\"], \" \", RowBox[{\"(\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"4\"]}], \" \", SubscriptBox[\"γ\", \"0\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"3\"], \" \", SubscriptBox[\"γ\", \"1\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"2\"], \" \", SubscriptBox[\"γ\", \"2\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"1\"], \" \", SubscriptBox[\"γ\", \"3\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"0\"], \" \", SubscriptBox[\"γ\", \"4\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"4\"], \" \", SubscriptBox[\"δ\", \"0\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"3\"], \" \", SubscriptBox[\"δ\", \"1\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"2\"], \" \", SubscriptBox[\"δ\", \"2\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"1\"], \" \", SubscriptBox[\"δ\", \"3\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"0\"], \" \", SubscriptBox[\"δ\", \"4\"]}]}], \")\"}]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"5\"], \" \", RowBox[{\"(\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"4\"]}], \" \", SubscriptBox[\"γ\", \"1\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"3\"], \" \", SubscriptBox[\"γ\", \"2\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"2\"], \" \", SubscriptBox[\"γ\", \"3\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"1\"], \" \", SubscriptBox[\"γ\", \"4\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"4\"], \" \", SubscriptBox[\"δ\", \"1\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"3\"], \" \", SubscriptBox[\"δ\", \"2\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"2\"], \" \", SubscriptBox[\"δ\", \"3\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"1\"], \" \", SubscriptBox[\"δ\", \"4\"]}]}], \")\"}]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"6\"], \" \", RowBox[{\"(\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"4\"]}], \" \", SubscriptBox[\"γ\", \"2\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"3\"], \" \", SubscriptBox[\"γ\", \"3\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"2\"], \" \", SubscriptBox[\"γ\", \"4\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"4\"], \" \", SubscriptBox[\"δ\", \"2\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"3\"], \" \", SubscriptBox[\"δ\", \"3\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"2\"], \" \", SubscriptBox[\"δ\", \"4\"]}]}], \")\"}]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"7\"], \" \", RowBox[{\"(\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"4\"]}], \" \", SubscriptBox[\"γ\", \"3\"]}], \"-\", RowBox[{SubscriptBox[\"β\", \"3\"], \" \", SubscriptBox[\"γ\", \"4\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"4\"], \" \", SubscriptBox[\"δ\", \"3\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"3\"], \" \", SubscriptBox[\"δ\", \"4\"]}]}], \")\"}]}], \"+\", RowBox[{SuperscriptBox[\"p\", \"8\"], \" \", RowBox[{\"(\", RowBox[{RowBox[{RowBox[{\"-\", SubscriptBox[\"β\", \"4\"]}], \" \", SubscriptBox[\"γ\", \"4\"]}], \"+\", RowBox[{SubscriptBox[\"α\", \"4\"], \" \", SubscriptBox[\"δ\", \"4\"]}]}], \")\"}]}]}]}], HoldForm], TraditionalForm]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "4f959027-7328-466e-8ec0-adc0e50b6c32",
+     "metadata": {
+      "cellLabel": "Out[143]= ",
+      "isBoxData": true
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1686205421516,
+     "endTime": 1686205422376
+    },
+    "executionOrder": 134,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(* a\nb\nc\nd *)\ng={{a,b},{c,d}};\n(* g *)\nA = {{p^j,0},{0,1}};\ndet=Ad[A][g] //Det;\nCollect[g,p]\nCollect[det,p]\n(* \\[Beta] = \\[Alpha].W; *)\n(* \\[Gamma] = {{1,0},{0,p}}; *)\n(* \\[Delta] = \\[Gamma].W; *)\n(* \\[Alpha] *)\n(* Ad[\\[Alpha]//Inverse]; *)\n(* Ad[\\[Alpha]//Inverse][g]; *)\n(* alpha\nbeta  *)\n(* gamma *)\n(* delta *)\n",
+   "languageId": "wolfram",
+   "mime": "text/plain",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

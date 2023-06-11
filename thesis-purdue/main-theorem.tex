@@ -15,19 +15,19 @@ For an order  $\Ocal \subset A$ in $A$, write $\Ocal^1 = A^1 \cap \Ocal$. We cal
 
 We write this group as $\Gamma_{k,A,\psi,\Ocal}$, or just by $\Gamma_\Ocal$ if $k,A,\psi$ are fixed. A fuchsian group is \textbf{arithmetic} provided it is commensurable to one of the form $\Gamma_{k,A,\psi,\Ocal}$, and say that it is \textbf{derived} from the quaternion algebra $A$ if is a subgroup of some $\Gamma_{k,A,\psi,\Ocal}$.
 
-\begin{rem}
-	Some comments about this definition:
-	\begin{enumerate}
-		\item Given any Fuchsian group $\Lambda$, there is at most one number field $k$, and quaternon algebra $A$ over $k$, such that $\Lambda$ is commensurable to $\psi(\Ocal^1)$ for some order $\Ocal$ in $A$. Thus, for arithmetic Fuchsian groups, the pair $(k,A)$ is a complete invariant of commensurability classes.
-		\item If $\Lambda$ is an arithmetic lattice derived from the quaternion algebra $k,A$, then there are only finitely many orders $\Ocal$ in $A$ such that $\Lambda$ is contained in $\psi(\Ocal^1)$.
-		\item For any order $\Ocal$ in a quaterion algebra $A$, the set of maximal orders containing $\Ocal$ is finite and nonempty.
-	\end{enumerate}
-\end{rem}
+% \begin{rem}
+% 	Some comments about this definition:
+% 	\begin{enumerate}
+% 		\item Given any Fuchsian group $\Lambda$, there is at most one number field $k$, and quaternon algebra $A$ over $k$, such that $\Lambda$ is commensurable to $\psi(\Ocal^1)$ for some order $\Ocal$ in $A$. Thus, for arithmetic Fuchsian groups, the pair $(k,A)$ is a complete invariant of commensurability classes.
+% 		\item If $\Lambda$ is an arithmetic lattice derived from the quaternion algebra $k,A$, then there are only finitely many orders $\Ocal$ in $A$ such that $\Lambda$ is contained in $\psi(\Ocal^1)$.
+% 		\item For any order $\Ocal$ in a quaterion algebra $A$, the set of maximal orders containing $\Ocal$ is finite and nonempty.
+% 	\end{enumerate}
+% \end{rem}
 
 For an integral ideal $\afrak$ in $R$, the map $\pi_\alpha: \Ocal \to \Ocal \otimes_R R/\afrak$ is a surjective ring homomorphism.
 the \textbf{principal congruence subgroup } of level $\afrak$ in an order $\Ocal$ is the subgroup of $\Ocal^1$ given by
 \begin{align*}
-	\Ocal^1(\afrak) = \{ x \in \Ocal^1 : x - 1 \in \afrak \Ocal^1\}.
+  \Ocal^1(\afrak) = \{ x \in \Ocal^1 : x - 1 \in \afrak \Ocal^1\}.
 \end{align*}
 
 We let $\pi_\afrak$ denote the projection $\Ocal^1 \to (\Ocal \otimes_R R/\afrak)^1$.   % there is a short exact sequence  \begin{align*} 1 \to \Ocal^1(\afrak) \to \Ocal^1 \to (\Ocal \otimes_R R/\afrak)^1 \to 1 \end{align*}
@@ -36,7 +36,7 @@ If $\Lambda$ is any subgroup of $\PSL(2,\Rbb)$ which is commensurable to $\psi(\
 \[\ker \pi_\alpha \vert_\Lambda = \Lambda \cap \psi(\Ocal^1(\afrak)) =\{g \in \Lambda: g \equiv 1 \mod \alpha\}\]
 and write $\Lambda[\afrak]$ for its image. Thus,
 \begin{align*}
-	\Lambda / \Lambda(\afrak) =	\Lambda[\afrak] \leq O^1[\afrak]= O^1/O^1(\afrak)
+  \Lambda / \Lambda(\afrak) =	\Lambda[\afrak] \leq O^1[\afrak]= O^1/O^1(\afrak)
 \end{align*}
 
 
@@ -44,61 +44,61 @@ and write $\Lambda[\afrak]$ for its image. Thus,
 
 
 \begin{thm}
-	Let $\Gamma=\Gamma_{k,A,O}$ denote a maximal arithmetic lattice in $G=\PSL(2,\Rbb)$, arising from the arithmetic datum $(k,A,O)$ (as above) such that $A$ has type number $1$. Let $\afrak$ be a squarefree ideal in $R_k$ which are not divisible by any prime over which $A$ ramifies, nor any dividing $2$ or $3$, the hyperbolic surface $X(\afrak)=\Gamma(\afrak) \lmod G \rmod K$ is absolutely spectrally rigid.
+  Let $\Gamma=\Gamma_{k,A,O}$ denote a maximal arithmetic lattice in $G=\PSL(2,\Rbb)$, arising from the arithmetic datum $(k,A,O)$ (as above) such that $A$ has type number $1$. Let $\afrak$ be a squarefree ideal in $R_k$ which are not divisible by any prime over which $A$ ramifies, nor any dividing $2$ or $3$, the hyperbolic surface $X(\afrak)=\Gamma(\afrak) \lmod G \rmod K$ is absolutely spectrally rigid.
 \end{thm}
 \begin{proof}
-	In what follows, we suppose $M$ is a closed Riemannian manifold which is isospectral to $X(\afrak)$.
+  In what follows, we suppose $M$ is a closed Riemannian manifold which is isospectral to $X(\afrak)$.
 
-	\begin{claim}\label{claim:heat}
-		The dimension, volume, and mean scalar curvature of $M$ and $X(I)$ coincide.
-	\end{claim}
-
-
-
-	\begin{lemma}
-		Let $X$ be a Riemannian manifold, with Laplace spectrum $0\geq \lambda_0 \geq \lambda_1 \geq \cdots$, and let $K_X(t)=\sum_{i=1}^\infty e^{\lambda_i t}$. Then $K_X(t)$ admits an asymptotic expansion as $t\to 0^+$ of the form
-		\[ K_X(t) \sim (4\pi t)^{-\dim(X)/2} \sum_{n=0}^\infty a_n(X) t^n \]
-		for constants $a_i(X)$ which are integrals over $X$ of polynomials in the entries of the curvature tensor of $X$ and its covariant derivatives. The first two are:
-		\[a_0(X) = \Vol(X),\quad a_1(X) = \frac{1}{6} \int_X \tr {\rm Ricc} (x) \dop \Vol(x).\]
-	\end{lemma}
-
-	Indeed, since $K_M(t) = K_{X(I)}(t)$ identically, we may read off the invariants in the claim from their common asymptotic expansions as $t\to 0^+$.
-	\begin{rem}
-		The total scalar curvature of a smooth, closed surface is its Euler characteristic by Gauss-Bonnet. As the euler characteristic is a complete invariant of the diffeomorphism type for closed surfaces, we may thus conclude that $M$ and $X(I)$ are in fact diffeomorphic.
-	\end{rem}
-
-	[TODO]: argue that $M$ must have constant negative curvature $=-1$. We'll do so either via one of the following routes:
+  \begin{claim}\label{claim:heat}
+    The dimension, volume, and mean scalar curvature of $M$ and $X(I)$ coincide.
+  \end{claim}
 
 
-	As $M$ is a compact hyperbolic $2$-manifold, it admits a Fuchsian uniformization $M \approx \Lambda \lmod \Hbb^2$, where $\Lambda$ is a uniform lattice in $\PSL(2,\Rbb)$.
-	\begin{claim}
-		After conjugating by an element of $\PSL(2,\Rbb)$ we may take $\Lambda$ to be a finite index subgroup of $\Gamma = \rho(O^1) \leq  \PSL(2,\Rbb)$.
-	\end{claim}
-	\begin{proof}
-		This claim follows from two theorems.
 
-		First, we apply the following theorem to conclude that $\Lambda$ is arithmetic.
-		\begin{thm}[Takeuchi \cite{takeuchiCharacterizationArithmeticFuchsian1975}]\label{thm:takeuchi}
-			Let $\Gamma$ be a Fuchsian group of the first kind. Then $\Gamma$ is an arithmetic Fuchsian group derived from a quaternion algebra if and only if $\Gamma$ satisfies the following conditions
-			\begin{enumerate}
-				\item The subfield $k$ of $\Cbb$, generated over $\Qbb$ by the traces of elements of $\Gamma$, has finite degree over $\Qbb$
-				\item $\tr(\Gamma)$ is contained in the ring of integers $R_{k}$ of $k$
-				\item For any isomorphism $\phi: k \to \Cbb$ such that $\phi \neq \id$, the set $\phi(\tr(\Gamma))$ is bounded in $\Cbb$.
-			\end{enumerate}
-		\end{thm}
-		As these conditions are satisfied for $\Gamma(I)$, and $\tr(\Gamma(I)) = \tr(\Lambda)$, there are also satisfied for $\Lambda$. Thus, $\Lambda$ is a finite index subgroup of the norm one units of \emph{some} maximal order in \emph{some} quaternion algebra over $k$.
+  \begin{lemma}
+    Let $X$ be a Riemannian manifold, with Laplace spectrum $0\geq \lambda_0 \geq \lambda_1 \geq \cdots$, and let $K_X(t)=\sum_{i=1}^\infty e^{\lambda_i t}$. Then $K_X(t)$ admits an asymptotic expansion as $t\to 0^+$ of the form
+    \[ K_X(t) \sim (4\pi t)^{-\dim(X)/2} \sum_{n=0}^\infty a_n(X) t^n \]
+    for constants $a_i(X)$ which are integrals over $X$ of polynomials in the entries of the curvature tensor of $X$ and its covariant derivatives. The first two are:
+    \[a_0(X) = \Vol(X),\quad a_1(X) = \frac{1}{6} \int_X \tr {\rm Ricc} (x) \dop \Vol(x).\]
+  \end{lemma}
 
-		The second theorem demonstrates that this quaternion algebra is in fact $A$.
-		\begin{thm}[Reid \cite{reidIsospectralityCommensurabilityArithmetic1992}]
-			Let $M_1$ and $M_2$ be isospectral arithmetic hyperbolic $2$ or $3$ manifolds. Then $M_1$ and $M_2$ are commensurable.
-		\end{thm}
-		For arithmetic hyperbolic $2$- and $3$-manifolds, commsurability is tantamount to an isomorphism of invariant quaternion algebras.
+  Indeed, since $K_M(t) = K_{X(I)}(t)$ identically, we may read off the invariants in the claim from their common asymptotic expansions as $t\to 0^+$.
+  \begin{rem}
+    The total scalar curvature of a smooth, closed surface is its Euler characteristic by Gauss-Bonnet. As the euler characteristic is a complete invariant of the diffeomorphism type for closed surfaces, we may thus conclude that $M$ and $X(I)$ are in fact diffeomorphic.
+  \end{rem}
 
-		From theorem \ref{thm:takeuchi}, $\Lambda$ is contained in $\rho(O'^1)$ for some maximal order $O'$ in $A$. Since $A$ has type number $1$, all maximal orders in $A$ are conjugate (by an element of $A^\times$). Consequently we may take $O'=O$, so that $\Lambda \leq \Gamma = \rho(O^1)$ as claimed.
+  [TODO]: argue that $M$ must have constant negative curvature $=-1$. We'll do so either via one of the following routes:
 
 
-	\end{proof}
+  As $M$ is a compact hyperbolic $2$-manifold, it admits a Fuchsian uniformization $M \approx \Lambda \lmod \Hbb^2$, where $\Lambda$ is a uniform lattice in $\PSL(2,\Rbb)$.
+  \begin{claim}
+    After conjugating by an element of $\PSL(2,\Rbb)$ we may take $\Lambda$ to be a finite index subgroup of $\Gamma = \rho(O^1) \leq  \PSL(2,\Rbb)$.
+  \end{claim}
+  \begin{proof}
+    This claim follows from two theorems.
 
-	\input{trace-lemma.tex}
+    First, we apply the following theorem to conclude that $\Lambda$ is arithmetic.
+    \begin{thm}[Takeuchi \cite{takeuchiCharacterizationArithmeticFuchsian1975}]\label{thm:takeuchi}
+      Let $\Gamma$ be a Fuchsian group of the first kind. Then $\Gamma$ is an arithmetic Fuchsian group derived from a quaternion algebra if and only if $\Gamma$ satisfies the following conditions
+      \begin{enumerate}
+        \item The subfield $k$ of $\Cbb$, generated over $\Qbb$ by the traces of elements of $\Gamma$, has finite degree over $\Qbb$
+        \item $\tr(\Gamma)$ is contained in the ring of integers $R_{k}$ of $k$
+        \item For any isomorphism $\phi: k \to \Cbb$ such that $\phi \neq \id$, the set $\phi(\tr(\Gamma))$ is bounded in $\Cbb$.
+      \end{enumerate}
+    \end{thm}
+    As these conditions are satisfied for $\Gamma(I)$, and $\tr(\Gamma(I)) = \tr(\Lambda)$, there are also satisfied for $\Lambda$. Thus, $\Lambda$ is a finite index subgroup of the norm one units of \emph{some} maximal order in \emph{some} quaternion algebra over $k$.
+
+    The second theorem demonstrates that this quaternion algebra is in fact $A$.
+    \begin{thm}[Reid \cite{reidIsospectralityCommensurabilityArithmetic1992}]
+      Let $M_1$ and $M_2$ be isospectral arithmetic hyperbolic $2$ or $3$ manifolds. Then $M_1$ and $M_2$ are commensurable.
+    \end{thm}
+    For arithmetic hyperbolic $2$- and $3$-manifolds, commsurability is tantamount to an isomorphism of invariant quaternion algebras.
+
+    From theorem \ref{thm:takeuchi}, $\Lambda$ is contained in $\rho(O'^1)$ for some maximal order $O'$ in $A$. Since $A$ has type number $1$, all maximal orders in $A$ are conjugate (by an element of $A^\times$). Consequently we may take $O'=O$, so that $\Lambda \leq \Gamma = \rho(O^1)$ as claimed.
+
+
+  \end{proof}
+
+  \input{trace-lemma.tex}
 
 \end{proof}
