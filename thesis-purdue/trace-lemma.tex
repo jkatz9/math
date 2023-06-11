@@ -3,13 +3,12 @@
 	Let $\pfrak$ be a prime ideal of $R$ over which $A$ is unramified.
 	Suppose $\Lambda$ be a subgroup of $O^1$ satisfying
 	\begin{align}\label{eq:trace}
-		\tr g \equiv 2 \mod \pfrak^2, \quad \text{for all $g \in \Lambda$}.
+		\tr g \equiv 2 \mod \pfrak^{2n}, \quad \text{for all $g \in \Lambda$}.
 	\end{align}
-	then there exists an $\alpha \in A^\times$ such that $\alpha \Lambda \alpha^\inv \subset O^1(\pfrak)$.
+	then there exists an $\alpha \in A^\times$ such that $\alpha \Lambda \alpha^\inv \subset O^1(\pfrak^n)$.
 \end{lemma}
 \begin{proof}
 	For a positive integer $n$, recall that $\pi_{\pfrak^n}: O^1 \to O^1[\pfrak^n]=O^1/O^1(\pfrak^n)$ is the reduction map.
-
 
 	First, we suppose that $A$ is unramified at $\pfrak$.
 	Thus
@@ -22,6 +21,8 @@
 	\end{align}
 	% $O^1[\pfrak] \approx \SL(2,\kfrak_\pfrak)$
 	for matrices $g_n \in M(2,R_\pfrak)$ at least one of each is not in $\pfrak$.
+
+	We will argue by induction. For the base case, suppose $n=1$ so that $\tr(g) \equiv 2 \mod \pfrak^2$ for all $g \in \Lambda$.
 
 
 	Write $\Lambda[\pfrak] = \pi_{\pfrak}(\Lambda)\leq \SL(2,\kfrak_\pfrak)$. Now, as $\tr g \equiv 2 \mod \pfrak$ for all $g \in \Lambda$, it follows that each $h \in \Lambda[\pfrak]$ is unipotent.
@@ -49,6 +50,10 @@
 
 	To prove the claim, we must prove that there exists an element $\alpha \in A^\times $ such that $\alpha g \alpha^\inv =  \alpha_o g \alpha_o^\inv$.
 
+	To this end, we apply the following form of strong approximation:
+	\begin{proposition}[Strong Approximation Theorem \cite{maclachlanArithmeticHyperbolic3Manifolds2003}]
+		Let $A$ be a quaternion algebra over a number field $k$, and let $S$ be a finite set of places of $k$ such that $S\cap \Omega_\infty \neq \emptyset$ and, for at least one $v_o \in S$, $v_o \notin \Ram(A)$. Then $A^1_k A^1_S $ is dense in $A^1_{\Abb_k}$.
+	\end{proposition}
 
 
 
