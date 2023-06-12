@@ -1,0 +1,196 @@
+\begin{lemma}\label{lemma:MangosteenPicosdeEuropa}
+    Let $A$ be a quaternion algebra over a number field $k$ with ring of integers $R$, and let $O$ be a maximal order in $A$.
+    Let $\pfrak$ be a prime ideal of $R$ over which $A$ is unramified.
+    Suppose $\Lambda$ be a subgroup of $O^1$ satisfying
+    \begin{align}\label{eq:trace}
+        \tr g \equiv 2 \mod \pfrak^{2n}, \quad \text{for all $g \in \Lambda$}.
+    \end{align}
+    then there exists an $\alpha \in A^\times$ such that $\alpha \Lambda \alpha^\inv \subset O^1(\pfrak^n)$.
+\end{lemma}
+\begin{proof}
+    For a positive integer $n$, recall that $\pi_{\pfrak^n}: O^1 \to O^1[\pfrak^n]=O^1/O^1(\pfrak^n)$ is the reduction map.
+
+    First, we suppose that $A$ is unramified at $\pfrak$.
+    Thus
+    \begin{align}\label{eq:split}
+        O^1 \otimes R_\pfrak \approx SL(2,R_\pfrak)
+    \end{align}, and $O^1[\pfrak^n] \approx \SL(2,R/\pfrak^n)$. Fixing an isomorphism in as \ref{eq:split}, we identify $O^1$ with a group of matrices $g = \tbt{a}{b}{c}{d}$ with entries $a,b,c,d \in \R_k$. Picking a uniformizer $\varpi \in R_\pfrak$ for $\pfrak$, each $g\in O^1$ admits a unique decomposition
+    \begin{align}\label{eq:decomposition}
+        % g                & = g_0 + g_1 \varpi + g_2 \varpi^2 + \dots                                                                \\
+        \Tbt{a}{b}{c}{d} & =  \Tbt{a_0}{b_0}{c_0}{d_0} +\Tbt{a_1}{b_1}{c_1}{d_1} \varpi + \Tbt{a_2}{b_2}{c_2}{d_2} \varpi^2 + \dots
+    \end{align}
+    % $O^1[\pfrak] \approx \SL(2,\kfrak_\pfrak)$
+    for matrices $g_n \in M(2,R_\pfrak)$ at least one of each is not in $\pfrak$.
+
+    We will argue by induction. For the base case, suppose $n=1$ so that $\tr(g) \equiv 2 \mod \pfrak^2$ for all $g \in \Lambda$.
+
+
+    Write $\Lambda[\pfrak] = \pi_{\pfrak}(\Lambda)\leq \SL(2,\kfrak_\pfrak)$. Now, as $\tr g \equiv 2 \mod \pfrak$ for all $g \in \Lambda$, it follows that each $h \in \Lambda[\pfrak]$ is unipotent.
+    Indeed, by Cayley-Hamilton (in $M(2,\kfrak_\pfrak)$) each element $h$ satisfies its characteristic polynomial $p(x;h)=x^2 - \tr h x + 1= (x-1)^2$.
+    It follows that $\Lambda[\pfrak]$ is conjugate in $\SL(2,\kfrak_\pfrak)$ to a subgroup of the group $U(\kfrak_\pfrak)$ of upper triangular unipotent matrices.
+
+    Thus, without loss of generality, we may assume that each $g$ in $\Lambda$ may be written as
+    \begin{align*}
+        g = \Tbt{1+\varpi a}{b}{\varpi c}{1+\varpi d}
+    \end{align*}
+    where $a,b,c,d \in R_\pfrak$.
+    Since $\Lambda \leq O^1$, one has $\det g = 1 $ for all $g\in \Lambda$, thus
+    \begin{align*}
+        1 = 1 + (a+d - bc) \varpi + ad \varpi^2
+    \end{align*}
+    so that
+    \begin{align}\label{eq:MandarinLeyden}
+        (a+d - bc) \varpi + ad \varpi^2 =0.
+    \end{align}
+    By hypothesis (\ref{eq:trace}), we have $(a+d)\varpi = \tr g -2 \equiv 0 \mod \pfrak^2$ so that $a+d \in \pfrak$. Consequently, $bc \in \pfrak$. As $\pfrak$ is prime, it follows that at least one of $b,c$ lies in $\pfrak$. If $b \in \pfrak$, then $g \in O^1(\pfrak)$. If this is so for all $g \in \Lambda$ then the claim is proven. Supposing otherwise, there exists a $g=\tbt{1+\varpi a}{b}{\varpi c}{1+\varpi d} \in \Lambda$ for which $b \in R_\pfrak^\times$. In this case one has $c \in \pfrak$. Let $\alpha_o = \Tbt{\varpi}{0}{0}{1}$. Then
+    \begin{align*}
+        \alpha_o g\alpha_o^\inv  = \Tbt{1+\varpi a}{b\varpi}{c}{1+\varpi d}
+    \end{align*}
+    lies in $O^1(\pfrak)$.
+
+    To complete the proof of the base case, we must prove that there exists an element $\alpha \in A^\times $ such that $\alpha g \alpha^\inv =  \alpha_o g \alpha_o^\inv$. Note that multiplying $\alpha_o$ on the left by an element of $\GL(2,R_\pfrak)$ preserves the condition that $\alpha_o g \alpha_o^\inv \in O^1(\pfrak)$, so it suffices to prove that the intersection $\alpha_o \GL(2,R_\pfrak) \cap A^\times $ is nonempty. This, in turn, follows from the fact that $A^\times$ is dense in $\GL(2,k_\pfrak)$ and that the coset  $\alpha_o \GL(2,R_\pfrak)$ is open in $\GL(2,k_\pfrak)$.
+
+    Before we proceed, we need the following lemmata:
+    \begin{lemma}\label{lemma:iso}
+        Suppose $n\geq 2$. Then there is an isomorphism of $O^1(\pfrak^{n-1}) / O^1(\pfrak^{n})$ with the underlying additive group of $\sl(2,\kfrak_\pfrak)$ which intertwines the conjugation action of $O^1$ on the former with the adjoint action of $O^1$ on the latter.
+    \end{lemma}
+    \begin{proof}
+        The isomorphism is given by composing the map $g = 1 + \varpi^{n-1}\gamma \mapsto \gamma$  of $O^1(\pfrak^{n-1}) \to M(2,R_\pfrak)$ with reduction modulo $\pfrak$.
+    \end{proof}
+
+    \begin{lemma}\label{lemma:killingform}
+        Let $Q: \sl(2,\kfrak_\pfrak) \to \kfrak_\pfrak$ be the quadratic form $Q(x) = \det X$.
+        \begin{itemize}
+            \item If $a \in \kfrak_\pfrak^\times$, then $\{x \in \sl(2,\kfrak_\pfrak): Q(x) = a\}$ is a single $\Ad \SL(2,\kfrak_\pfrak)$ orbit.
+            \item Let $\Ncal$ be the image of $\{x \in \sl(2,\kfrak_\pfrak) \setminus 0:  Q(x)=0\}$ in $\Pbb(\sl(2,\kfrak_\pfrak))\approx \Pbb^2(\kfrak_\pfrak)$, then $\Ncal$ is a single orbit under the projective action of $\Ad \SL(2,\kfrak_\pfrak)$.
+        \end{itemize}
+
+    \end{lemma}
+    Now suppose that $\tr g \equiv 2 \mod \pfrak^{2n}$ for every $g\in \Lambda$. By inductive hypothesis, after conjugating by an element of $A^\times$ if necessary, we may assume $\Lambda \leq O^1(\pfrak^{n-1})$.
+
+    Thus, each element $g\in \Lambda$ can be written as
+    \begin{align}\label{eq:AppleWensleydale}
+        g = \id +\varpi^{n-1} \gamma
+    \end{align}
+    for some $\gamma \in M(2, R_\pfrak)$, and the assignment $g \mapsto \gamma \mod \pfrak$ identifies $\Lambda[n] = \Lambda /\Lambda \cap O^1(\pfrak^n)$ with a subspace of  $\sl(2,\kfrak_\pfrak)$.
+
+    \begin{claim}\label{claim:BreadfruitDessertnyjBelyj}
+        Let $Q:\sl(2,\kfrak_\pfrak) \to \kfrak_\pfrak$ be the quadratic form $x \mapsto -\det x$.
+    \end{claim}
+
+    Note that since $\tr g \equiv 2 \mod \pfrak^{2n}$, one has $\tr(\gamma) \equiv 0 \mod \pfrak^{n+1}$.
+    Computing determinants as in \ref{eq:AppleWensleydale},
+    \begin{align*}
+        1 & = \det g                                                  \\
+          & = 1 + \varpi^{n-1} \tr \gamma + \varpi^{2n-2}\det \gamma,
+    \end{align*}
+    and since $\det g =1$, we find $\tr \gamma +\varpi^{n-1}\det \gamma =0$. From $\tr \gamma  \equiv 0 \mod \pfrak^{n+1}$ we find $ \varpi^{n-1}\det \gamma \equiv 0 \mod \pfrak^{n+1}$, so that $\det \gamma \equiv 0 \mod \pfrak^2$.
+
+
+
+
+    % To proceed, we need the following lemmata
+    % \begin{lemma}[Lemma 4.1 in \cite{leiningerLengthEigenvalueEquivalence2007}]
+    % 	Suppose $n \geq 1$. There is an exact sequence
+    % 	\begin{align*}
+    % 		1 \to \sl(2,R_\pfrak/\pfrak^n) \to \SL(2,R_\pfrak/ \pfrak^{2n}) \to \SL(2,R_\pfrak/\pfrak^n) \to 1
+    % 	\end{align*}
+    % 	The conjugation action of $\SL(2,R_\pfrak/\pfrak^n)$ on $\sl(2,R_\pfrak/\pfrak^n)$ induced by this sequence is the adjoint action.
+    % \end{lemma}
+    % \begin{proof}
+    % 	The inclusion $R_\pfrak/\pfrak^n \to R_\pfrak / \pfrak^{2n}$ by $a \mapsto \varpi^n a$ induces an inclusion of $M(2, R_\pfrak/\pfrak^n) \to M(2,R_\pfrak/\pfrak^{2n})$ by $X \mapsto \varpi^n X$.
+
+    % 	Reduction modulo $\pfrak^n$ induces a surjection $\pi : \SL(2,R_\pfrak/\pfrak^{2n}) \to \SL(2,R_\pfrak/\pfrak^n)$ which has kernel
+    % 	\begin{equation}\label{eq:kerpi}
+    % 		\ker \pi = \{ \id + \varpi^n X : \det(\id + \varpi^n X)=1\}.
+    % 	\end{equation}
+    % 	Compute, for $\id + \varpi^n X \in \ker \pi$:
+    % 	\begin{equation*}\det(\id + \varpi^n X) = 1 + \varpi^n \tr X +\varpi^{2n} \det X =1 + \varpi^n \tr X \in R_\pfrak / \pfrak^{2n}\end{equation*}
+    % 	so that $\tr X = 0 \in R_\pfrak/ \pfrak^n$, which is to say $X \in \sl(2,R_\pfrak/\pfrak^n)$.
+
+    % 	Last, observe that the map $X \mapsto 1 + \varpi^n X$ is indeed a homomorphism $\sl(2,R_\pfrak/\pfrak^n) \to \SL(2,R_\pfrak / \pfrak^{2n})$: for  $X,Y \in \sl(2,R/\pfrak^n)$ compute
+    % 	\begin{align*}
+    % 		(1+\varpi^n X)(1+\varpi^n Y) = 1 + \varpi^n (X+Y) + \varpi^{2n}(XY) = 1 + \varpi^n (X+Y)
+    % 	\end{align*}
+    % 	in $\SL(2,R_\pfrak/\pfrak^{2n})$, as claimed.
+    % \end{proof}
+    \newpage
+    % \begin{lemma}
+    % 	For each $n>1$, and each prime $\pfrak$ over which $A$ is unramified, the map
+    % 	\begin{align}\label{eq:liealgebra}
+    % 		g \mapsto (g - 1)/\varpi^n
+    % 	\end{align}
+    % 	induces an isomorphism $O^1(\pfrak^n)/O^1(\pfrak^{n+1}) \approx \sl(2,\kfrak_\pfrak)$. The action of $O^1$ on $O^1(\pfrak^n)/O^(\pfrak^{n+1})$ by conjugation factors through the quotient $O^1[\pfrak] \approx \SL(2,\kfrak_\pfrak)$, and the isomorphism induced by \ref{eq:liealgebra} intertwines the conjugation action with the adjoint action.
+    % \end{lemma}
+
+    % \begin{lemma}
+    % 	The quadratic form $X \mapsto \det x$ on $\sl(2,\kfrak_\pfrak)$ is invariant under the adjoint action of $\SL(2,\kfrak_\pfrak)$. Let $\Ncal$ denote the
+    % \end{lemma}
+
+
+    % If each $g\in \Lambda$ is such that $\gamma \in \pfrak M(2,\R_\pfrak)$, then the claim is proven. Supposing otherwise. 
+
+    % To this end, we apply the following form of strong approximation:
+
+    % \begin{proposition}[Strong Approximation Theorem \cite{maclachlanArithmeticHyperbolic3Manifolds2003}]
+    % 	Let $A$ be a quaternion algebra over a number field $k$, and let $S$ be a finite set of places of $k$ such that $S\cap V_k^\infty \neq \emptyset$ and, for at least one $v_o \in S$, $v_o \notin \Ram(A)$. Then $A^1_k A^1_S $ is dense in $A^1_{\Abb_k}$.
+    % \end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{proof}
+
+\paragraph{finite computations}
+In this section $\kfrak$ is a finite field. Set
+\begin{align*}
+    \SL(2,\kfrak) = \{ x \in M(2,\kfrak) : \det x =1 \}
+\end{align*}
+and
+\begin{align*}
+    \sl(2,\kfrak) = \{ x \in M(2,\kfrak) : \tr x = 0 \}.
+\end{align*}
+The adjoint representation is
+\begin{align*}
+    \Ad : \SL(2,\kfrak) \to \Aut(\sl(2,\kfrak)) \\
+    \Ad(g):  X \mapsto  g X g^\inv.
+\end{align*}
+
+\paragraph{Local Computations}
+In this section, $K$ is a nonarchimedian local field of characteristic $0$, with ring of integers $R$, maximal ideal $\pfrak$, with uniformizer $\varpi$ and residue field $k = R/\pfrak$ of cardinality $q$.
+
+We let $\tilde{K}$ denote the maximal unramified extension of $K$ in some fixed algebraic closure, $\tilde{R}$ its ring of integers, and $\tilde{k}$ its residue field. We note that $\varpi \in R$ generates the maximal ideal of $\tilde{R}$, and that $\tilde{k}$ is an algebraic closure of $k$.
+
+For $r\geq 1$, we write $R_r$ for $R/\varpi^r R$ and $\tilde{R}_r = \tilde{R}/\pi^r \tilde{R}$ and write $\eta_r : \tilde{R} \to \tilde{R}_r$ for the natural projection.
+
+There is an automorphism $\sigma \in \Gal(\tilde{K}/K)$ which induces the frobenius automorphism $x \mapsto x^q$  of $\tilde{k}/k$. The subfield $\tilde{K}^\sigma $ of $\tilde{K}$ fixed by $\sigma$ is $K$.
+
+
+As $\sigma$ preserves $\tilde{R}$ and $\pi \tilde{R}$, it induces automorphisms of each $\tilde{R}_r$ which we still denote by $\sigma$. For each $r\geq 1$ one has $\tilde{R}_r^\sigma = R_r$.
+
+The Teichmuller character $s: \kti^\times \to \Rti^\times$ is characterized by the conditions:
+\begin{enumerate}
+    \item $s(ab)=s(a)s(b)$ for all $a,b\in \kti^\times$
+    \item $\sigma s(a)=s(a^q)$ for all $a\in \kti^\times$
+    \item $\eta_1 s(a) = a$ for all $a\in \kti^\times$.
+\end{enumerate}
+We extend $s$ to $\kti^\times$ by $s(0)=0$ and write $s_r = \eta_r \circ s : \kti \to \Rti_r$. Then each $x \in \Rti$ admits a unique representation as $x = \sum_{i\geq 0} s(x_i)\varpi^i$ for some $x_i \in \kti$. Likewise, each $x \in \Rti_r$ admits a unique representation $x = \sum_{i=0}^{r-1} s_r(x_i)(\pi +\pi^r \Rti)^i$.
+
+Set $\Gbf = \GL_n (\Rti)$ and $\Gbf(r) = \GL_n(\Rti_r)$ for $r\geq 1$. For $i\geq 1$, write $\eta_i : \Gbf \to \Gbf(i)$ for the natural projection, and set $\Kbf_i = \ker \eta_i \leq \Gbf$. For $i\geq r \geq 1$,
+
+
+
+Let $G = \SL(2,R)$ and for $r>0$, set $G(r) = \SL(2,R/\pfrak^r)$ and write $\eta_r: G \to G(r)$ for the natural projection, and set $K_r = \ker \eta_r \leq G$. For $r \geq i \geq 1$, we write $\eta_i^r$ for the natural map $G(r) \to G(i)$ and write $K_i(r) = \ker \eta_i^r \leq G(r)$.
+% \begin{align*}
+% 	\tilde{G} = \GL(2,k), \quad G = \SL(2,k), \quad \bar{G}  = \PGL(2,k)
+% \end{align*}
+\cite{leiningerLengthEigenvalueEquivalence2007}
+\cite{voightQuaternionAlgebras2021}

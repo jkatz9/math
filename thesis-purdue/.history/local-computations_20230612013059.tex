@@ -1,0 +1,26 @@
+\paragraph{Local Computations}[\cite{hillRegularElementsRegular1995}]
+In this section, $K$ is a nonarchimedian local field of characteristic $0$, with ring of integers $R$, maximal ideal $\pfrak$, with uniformizer $\varpi$ and residue field $k = R/\pfrak$ of cardinality $q$.
+
+We let $\tilde{K}$ denote the maximal unramified extension of $K$ in some fixed algebraic closure, $\tilde{R}$ its ring of integers, and $\tilde{k}$ its residue field. We note that $\varpi \in R$ generates the maximal ideal of $\tilde{R}$, and that $\tilde{k}$ is an algebraic closure of $k$.
+
+For $r\geq 1$, we write $R_r$ for $R/\varpi^r R$ and $\tilde{R}_r = \tilde{R}/\pi^r \tilde{R}$ and write $\eta_r : \tilde{R} \to \tilde{R}_r$ for the natural projection.
+
+There is an automorphism $\sigma \in \Gal(\tilde{K}/K)$ which induces the frobenius automorphism $x \mapsto x^q$  of $\tilde{k}/k$. The subfield $\tilde{K}^\sigma $ of $\tilde{K}$ fixed by $\sigma$ is $K$.
+
+
+As $\sigma$ preserves $\tilde{R}$ and $\pi \tilde{R}$, it induces automorphisms of each $\tilde{R}_r$ which we still denote by $\sigma$. For each $r\geq 1$ one has $\tilde{R}_r^\sigma = R_r$.
+
+The Teichmuller character $s: \kti^\times \to \Rti^\times$ is characterized by the conditions:
+\begin{enumerate}
+    \item $s(ab)=s(a)s(b)$ for all $a,b\in \kti^\times$
+    \item $\sigma s(a)=s(a^q)$ for all $a\in \kti^\times$
+    \item $\eta_1 s(a) = a$ for all $a\in \kti^\times$.
+\end{enumerate}
+We extend $s$ to $\kti^\times$ by $s(0)=0$ and write $s_r = \eta_r \circ s : \kti \to \Rti_r$. Then each $x \in \Rti$ admits a unique representation as $x = \sum_{i\geq 0} s(x_i)\varpi^i$ for some $x_i \in \kti$. Likewise, each $x \in \Rti_r$ admits a unique representation $x = \sum_{i=0}^{r-1} s_r(x_i)(\pi +\pi^r \Rti)^i$.
+
+Set $\Gbf = \GL(n, \Rti)$. For $r\geq 1$, set $\Gbf(r) = \GL(n,\Rti_r)$. We write $\eta_r: \Gbf \to \Gbf(r)$ for the natural projection, and set $\Kbf_r  = \ker \eta_r \leq \Gbf$.  For $r \geq i \geq 1$  write $\eta_i^r : \Gbf(r) \to \Gbf(i)$ for the natural projection, and set $\Kbf_r^i = \ker \eta_r^i \leq \Gbf(r)$.
+
+The automorphism $\sigma \in \Gal(\Kti/K)$ induces an automorpshim, also denoted $\sigma$, of $\Gbf$ (resp. $\Gbf(r)$) with fixed group $G = \GL(n,R)$ (resp. $G(r) = \GL(n,R_r)$).
+
+
+Let $G = \SL(2,R)$ and for $r>0$, set $G(r) = \SL(2,R/\pfrak^r)$ and write $\eta_r: G \to G(r)$ for the natural projection, and set $K_r = \ker \eta_r \leq G$. For $r \geq i \geq 1$, we write $\eta_i^r$ for the natural map $G(r) \to G(i)$ and write $K_i(r) = \ker \eta_i^r \leq G(r)$.
