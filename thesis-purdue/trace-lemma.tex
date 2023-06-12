@@ -48,13 +48,43 @@
 	\end{align*}
 	lies in $O^1(\pfrak)$.
 
-	To prove the claim, we must prove that there exists an element $\alpha \in A^\times $ such that $\alpha g \alpha^\inv =  \alpha_o g \alpha_o^\inv$.
+	To complete the proof of the base case, we must prove that there exists an element $\alpha \in A^\times $ such that $\alpha g \alpha^\inv =  \alpha_o g \alpha_o^\inv$. Note that multiplying $\alpha_o$ on the left by an element of $\GL(2,R_\pfrak)$ preserves the condition that $\alpha_o g \alpha_o^\inv \in O^1(\pfrak)$, so it suffices to prove that the intersection $\alpha_o \GL(2,R_\pfrak) \cap A^\times $ is nonempty. This, in turn, follows from the fact that $A^\times$ is dense in $\GL(2,k_\pfrak)$ and that the coset  $\alpha_o \GL(2,R_\pfrak)$ is open in $\GL(2,k_\pfrak)$.
 
-	To this end, we apply the following form of strong approximation:
-	\begin{proposition}[Strong Approximation Theorem \cite{maclachlanArithmeticHyperbolic3Manifolds2003}]
-		Let $A$ be a quaternion algebra over a number field $k$, and let $S$ be a finite set of places of $k$ such that $S\cap \Omega_\infty \neq \emptyset$ and, for at least one $v_o \in S$, $v_o \notin \Ram(A)$. Then $A^1_k A^1_S $ is dense in $A^1_{\Abb_k}$.
-	\end{proposition}
+	Now suppose that $\tr g \equiv 2 \mod \pfrak^{2n}$ for every $g\in \Lambda$. By inductive hypothesis, after conjugating if necessary, we may assume $\Lambda \leq O^1(\pfrak^{n-1})$. Thus, each element $g\in \Lambda$ can be written as
+	\begin{align*}\label{eq:AppleWensleydale}
+		g = \id +\varpi^{n-1} \gamma
+	\end{align*}
+	for some $\gamma \in M(2, R_\pfrak)$. Note that since $\tr g \equiv 2 \mod \pfrak^{2n}$, one has $\tr(\gamma) \equiv 0 \mod \pfrak^{n+1}$. Computing determinants in \ref{eq:AppleWensleydale},
+	\begin{align*}
+		1 & = \det g                                                  \\
+		  & = 1 + \varpi^{n-1} \tr \gamma + \varpi^{2n-2}\det \gamma,
+	\end{align*}
+	and since $\det g =1$, we find $\tr \gamma +\varpi^{n-1}\det \gamma =0$. From $\tr \gamma  \equiv 0 \mod \pfrak^{n+1}$ we find $ \varpi^{n-1}\det \gamma \equiv 0 \mod \pfrak^{n+1}$, so that $\det \gamma \equiv 0 \mod \pfrak^2$.
 
+
+	To proceed, we need the following lemmata
+
+
+	\begin{lemma}
+		For each $n>1$, and each prime $\pfrak$ over which $A$ is unramified, the map
+		\begin{align}\label{eq:liealgebra}
+			g \mapsto (g - 1)/\varpi^n
+		\end{align}
+		induces an isomorphism $O^1(\pfrak^n)/O^1(\pfrak^{n+1}) \approx \sl(2,\kfrak_\pfrak)$. The action of $O^1$ on $O^1(\pfrak^n)/O^(\pfrak^{n+1})$ by conjugation factors through the quotient $O^1[\pfrak] \approx \SL(2,\kfrak_\pfrak)$, and the isomorphism induced by \ref{eq:liealgebra} intertwines the conjugation action with the adjoint action.
+	\end{lemma}
+
+	\begin{lemma}
+		The quadratic form $X \mapsto \det x$ on $\sl(2,\kfrak_\pfrak)$ is invariant under the adjoint action of $\SL(2,\kfrak_\pfrak)$. Let $\Ncal$ denote the
+	\end{lemma}
+
+
+	% If each $g\in \Lambda$ is such that $\gamma \in \pfrak M(2,\R_\pfrak)$, then the claim is proven. Supposing otherwise. 
+
+	% To this end, we apply the following form of strong approximation:
+
+	% \begin{proposition}[Strong Approximation Theorem \cite{maclachlanArithmeticHyperbolic3Manifolds2003}]
+	% 	Let $A$ be a quaternion algebra over a number field $k$, and let $S$ be a finite set of places of $k$ such that $S\cap V_k^\infty \neq \emptyset$ and, for at least one $v_o \in S$, $v_o \notin \Ram(A)$. Then $A^1_k A^1_S $ is dense in $A^1_{\Abb_k}$.
+	% \end{proposition}
 
 
 
@@ -68,3 +98,40 @@
 
 
 \end{proof}
+
+\paragraph{finite computations}
+In this section $\kfrak$ is a finite field. Set
+\begin{align*}
+	\SL(2,\kfrak) = \{ x \in M(2,\kfrak) : \det x =1 \}
+\end{align*}
+and
+\begin{align*}
+	\sl(2,\kfrak) = \{ x \in M(2,\kfrak) : \tr x = 0 \}.
+\end{align*}
+The adjoint representation is
+\begin{align*}
+	\Ad : \SL(2,\kfrak) \to \Aut(\sl(2,\kfrak)) \\
+	\Ad(g):  X \mapsto  g X g^\inv.
+\end{align*}
+
+\begin{lemma}
+
+\end{lemma}
+
+
+\paragraph{Local Computations}
+In this section, $k$ is a nonarchimedian local field of characteristic $0$, with ring of integers $R$, maximal ideal $\pfrak$, with uniformizer $\varpi$.
+
+Set $G = \SL(2,k)$ and let $K = \SL(2,R)$. For $n>0$, we set
+\begin{align*}
+	K(n) = \{ g \in K : g \equiv \id \mod \pfrak^n\},
+\end{align*}
+and
+\begin{align*}
+	K[n] = K/K(n) \approx \SL(2,R/\pfrak^n).
+\end{align*}
+% \begin{align*}
+% 	\tilde{G} = \GL(2,k), \quad G = \SL(2,k), \quad \bar{G}  = \PGL(2,k)
+% \end{align*}
+\cite{leiningerLengthEigenvalueEquivalence2007}
+\cite{voightQuaternionAlgebras2021}

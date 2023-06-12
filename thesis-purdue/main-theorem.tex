@@ -13,6 +13,17 @@ For an integral ideal $\afrak$ in $R$, we write $\pi_\afrak : R \to R/\afrak$ fo
 \subsubsection{Theorem}
 Let $k \leq \Rbb$ be a totally real number field, and $A$ a quaternion algebra over $k$ which is unramified over the identity embedding $k\to \Rbb$, and ramified over all other infinite places.
 If $B$ is a subring of $A$, we write $B^1$ for the multiplicative subgroup of $A^\times$ consisting of elements of $B$ with reduced norm $1$.
+
+We associate to the quaternion algebra $A$ the algebraic groups over $k$ defined by
+\begin{align*}
+	\tilde{\Gbf}(E) = (A\otimes_k E)^\times,\quad \Gbf (E) = (A\otimes_k E)^1,\quad  \bar{\Gbf}(E) = E^\times \lmod (A\otimes_k E)^\times
+\end{align*}
+for any commutative $k$-algebra $E$. Note that at each place $\nu \in V_k \setminus \Ram(A)$ one has isomorphisms
+\begin{align*}
+	\tilde{\Gbf}(k_\nu)\approx \GL(2,k_\nu),\quad \Gbf(k_\nu) \approx \SL(2,k_\nu), \bar{\Gbf}(k_\nu) \approx \PGL(2,k_\nu).
+\end{align*}
+
+
 An isomorphism $\phi : A\otimes_k \Rbb \to M(2,\Rbb)$ of algebras, restricts to an isomorphism $(A\otimes_k \Rbb)^1 \to \SL(2,\Rbb)$ of groups. Composing $\phi$ with the canonical projection $\SL(2,\Rbb)  \to \PSL(2,\Rbb)$ we obtain a homomorphism $\psi : A^1 \to \PSL(2,\Rbb)$ which factors through $\pm 1 \lmod A^1$.
 
 For an order  $\Ocal \subset A$ in $A$, write $\Ocal^1 = A^1 \cap \Ocal$. We call the subgroup $\psi(\Ocal^1)\leq \PSL(2,\Rbb)$ the arithmetic Fuchsian group associated to the datum $k$,$A$,$\psi$,$\Ocal$.
