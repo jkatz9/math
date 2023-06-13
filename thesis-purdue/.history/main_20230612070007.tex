@@ -1,6 +1,7 @@
 \documentclass{reedthesis}
 \usepackage{amsthm,amssymb,amsmath,amsfonts}
 \usepackage{mycros,mythms}
+\usepackage{mycros,mythms}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{url}
 \usepackage{verbatim}
@@ -10,29 +11,29 @@
 \usepackage{quiver}
 \usepackage{comment}
 \usepackage{bm}
+\usepackage{titlesec}      
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
 \usepackage{tikz-cd}
 \usepackage{quiver}
 \usepackage{comment}
 \usepackage{bm}
 \input{macros.tex}
 
-\usepackage{titlesec}      
-\titleformat{\section}
-  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
 \hfuzz=5.1pt 
-\setlength{\parindent}{0 em}
-\setlength{\parskip}{6 pt}
 \title{thesis}
 \author{justin katz}
 \date{March 2023}
 
+\setlength{\parindent}{0 em}
+\setlength{\parskip}{6 pt}
 \begin{document}
 
 %\maketitle
 %\tableofcontents
 \newpage
 %\input{introduction.tex}
-\input{geometric-prelim.tex}
+
 \input{main-theorem.tex}
 %\input{subgroup-zeta.tex}
 % \input{thelemma.tex}

@@ -1,0 +1,62 @@
+\section{Geometric Preliminaries}
+\paragraph{Laplace-spectrum}
+Let $(M,g)$ be a $d$-dimensional closed Riemannian manifold without boundary.  Letting $\dop \Vol_g$ denote the measure on $M$ associated to the volume form of $(M,g)$, we equip the space $C^\infty(M)$ of smooth complex valued functions on $M$ with the inner product
+\begin{align}\label{eq:ip}
+    \ip{f}{g} = \int_M f(x) \overline{g}(x) \dop \Vol_g(x)
+\end{align}
+and let $L^2(M,g)$ denote the completion of $C^\infty(M)$ with respect to the resulting norm.
+
+The \textbf{Laplace-Beltrami operator} $\Delta$ acts on $C^\infty(M)$, in local coordinates $(x_1,\dots,x_d)$, by the formula
+\begin{align}
+    \Delta(f) = -\frac{1}{\sqrt{g}} \sum_{i,j=1}^d \frac{\partial \sqrt{g} g^{ij} (\partial f / \partial x_i)}{\partial x^j}
+\end{align}
+where $g = \det(g_{ij})$ and $(g^{ij})$ denotes the inverse of the matrix $(g_{ij})$. With respect to the inner product in \ref{eq:ip}, $\Delta$ is symmetric:
+\begin{align*}
+    \ip{\Delta f}{g} =\ip{ f}{\Delta g}, \quad \text{ for all $f,g \in C^\infty(M)$,}
+\end{align*}
+negative:
+\begin{align*}
+    \ip{\Delta f }{f} \leq 0, \quad \text{ for all $f \in C^\infty(M)$.}
+\end{align*}
+and unbounded. As $M$ is compact and without boundary, $\Delta$ admits a unique maximal extension to a negative, self-adjoint, unbounded operator  $\tilde{\Delta}$ on $L^2(M,g)$ with compact resovent.
+
+By the spectral theorem for the latter class of operators, it follows that the resolvent set
+\begin{align*}
+    \sigma(\tilde{\Delta}) = \{ \lambda \in \Cbb : \tilde{\Delta} - \lambda \id \text{ is not invertible on $L^2(M,g)$}\}
+\end{align*}
+is a discrete set of nonnegative real numbers, accumulating at $-\infty$, and consists of eigenvalues of $\tilde{\Delta}$ with finite multiplicites. By elliptic regularity, any eigenfunction of $\tilde{\Delta}$ is smooth, and thus lies in the original domain $C^\infty(M)$ of $\Delta$. Consequently, $\sigma(\tilde{\Delta})$ coincides with the set
+\begin{align*}
+    \sigma(\Delta) = \{\lambda \in \Cbb : \Delta f  = \lambda f \text{ admits a nonzero  solution  $f \in C^\infty(M)$}.
+\end{align*}
+Set $E(\lambda) = \ker \Delta - \lambda \id$ and set $m(\lambda) = \dim E(\lambda)$. [TODO:finish rambling]
+
+\paragraph{Heat kernel}
+Let $\phi_0=\Vol(M)^{-1},\phi_1,\phi_2,\cdots$ be an orthonormal sequence of eigenfunctions for $\Delta$ corresponding to eigenvalues $\lambda_0=0 <\lambda_1 \leq \lambda_2 \leq \dots$. For $t >0$, the \textbf{heat kernel}
+\begin{align}\label{eq:heatdef}
+    K_t(x,y):= \sum_{j\geq 0} e^{-t\lambda_j} \phi_j(x)\phi_j(y)
+\end{align}
+is the unique function $k:\Rbb_{\geq 0} \times M \times M \to \Rbb$ satisfying the properties
+\begin{enumerate}
+    \item For each fixed $y\in M$, one has $\left(\frac{\partial}{\partial t} + \Delta \right)k_t(x,y) = 0$
+    \item For each $u\in C^\infty(M)$, one has $ \int_M k_t(x,y) u(y)  \dop \Vol_g (x)(y) \to u(x)$  as $t \to 0^+$, uniformly in $x$
+    \item $k_t(\cdot,\cdot)$ is $C^2$ in $(x,y)$ for each $t$
+    \item $k_\cdot( x,y)$ is $C^1$  in $t$ for each $(x,y)$.
+\end{enumerate}
+In particular, the heat kernel $K_t(x,y)$ is independent of the choice of orthonormal basis of eigenfunctions in the defining equation \ref{eq:heatdef}.
+
+\begin{proposition}\label{prop:asymptoticExpansion}
+
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+

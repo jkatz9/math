@@ -1,0 +1,240 @@
+\chapter{Introduction}
+\section{background}
+\subsubsection{notation}
+\begin{itemize}
+    \item For a bundle $\pi : E \to B$, we write $E_x$ for the fiber $\pi^\inv (x) \subset E$ over a point $x\in B$. We denote the space of (global) sections by $\Gamma(E)$.
+    \item For a smooth manifold $M$, we denote by $TM,T^*M$ the tangent and cotangent bundles, respectively. Linear algebraic constructions applied applied to vector bundles over $M$ are understood to be defined. We refer to elements of $\Gamma(\bigwedge^k T^*M)$ as $k$-forms on $M$.
+    \item
+\end{itemize}
+\subsubsection{Riemannian geometry}
+Given a smooth manifold $M$ a Riemannian metric on $M$ is a choice of positive definite symmetric bilinear forms
+\[g_x{\cdot}{\cdot}: T_x M \otimes T_x M, \to \Rbb\]
+on the tangent space $T_x M$ to $M$, which varies smoothly relative to $x\in M$. We call to the pair $(M,g)$ a Riemannian manifold, or a Riemannian structure on $M$.
+%     Fixing $(M,g)$ introduces several canonically associated fobjects, as follows:
+% \subfsection{length} 
+%     For a curve $\gamma$ on $M$, define its length:
+%         \[ \ell_g(\gamma) = \int_{a}^{b} g_{r(t)}(r'(t),r'(t)) \dop t, \]
+%     where $r:[a,b] \to \gamma$ is any smooth parameterization of $\gamma$.  
+Canonically ssociated to a metric $g$ on $M$ are several objects:
+\begin{description}
+    \item[\textbf{gradient}] The gradient is an operator $\nabla: C^\infty(M) \to  \Gamma(TM)$ sending a smooth function $f$ to the vector field $\nabla f$ characterized by the condition: \[ g_x(\nabla f(x),X(x))=X_x(f) \]
+        for all vectorfields $X \in \Gamma(TM)$.
+    \item[\textbf{codifferential}] $\delta$
+    \item[\textbf{hodge star}] $*:\bigwedge^k T^* M \to \bigwedge^{\dim M - k} T^*M$
+    \item[textbf{volume form}] $\dop \vol : \bigwedge^{\dim M} T^* M \to \Rbb$
+    \item[\textbf{density}] $|\dop \vol|$
+    \item[Laplacian] $\Delta$
+\end{description}
+
+
+\section{Spectral geometry}
+\subsection{Laplace spectrum}
+Using the Riemannian density, we equip $C^\infty_c(M)$ with an inner product:
+\[ \ip{\phi}{\psi} = \int_M f(x) \overline{g(x)} |\dop \Vol|(x). \]
+We define $L^2(M)$ to be the completion of $C^\infty(M)$ with respect to this inner product.
+
+On $C^\infty(M)$ the Laplace operator $\Delta$ is a densely defined, negative semi-definite, and symmetric:
+\[ \ip{\Delta \phi}{\psi} = - \ip{\phi}{\Delta \psi} \]
+unbounded operator on $L^2(M)$. Consequently, $\Delta$ admits a canonical (though, not necessarily unique, if $M$ is not compact) to a an unbounded operator $\tilde{\Delta}$ defined on a dense subspace of $L^2(M)$ on which it is \textit{self-adjoint}. If we assume further that $M$ is closed, then the $\tilde{\Delta}$ has \textit{compact} resolvent. By the spectral theorem for compact self adjoint operators, there exists an orthonormal basis $1=\psi_1,\psi_2,\cdots$ of eigenfunctions for $\tilde{\Delta}$ with real, nonpositive eigenvalues $0=\lambda_1>\lambda_2>\cdots$. By elliptic regularity, the eigenfunctions $\psi_i$ of the extension $\tilde{\Delta}$ are actually smooth, thus lie in the original domain $C^\infty(M)$ of $\Delta$.
+
+We refer the sequence $\lambda_i$ of eigenvalues for $\Delta$ as the \textbf{Laplace-spectrum} of $M$ and write it as $\LaSpec(M)$.
+
+It will be useful to encode $\LaSpec(M)$ in various other forms.
+\begin{description}
+    \item[multiplicity function] Denote by $m_M: \Cbb \to \Zbb_{\geq 0}$ the function which assigns to a complex number $\lambda$ the number of indices $i\in \Zbb_{\geq 0}$ such that $\lambda_i = \lambda$; an alternative description is:
+        \[m_M(\lambda) = \dim \ker_{C^\infty(M)}( \Delta - \lambda) \]
+    \item[spectral measure] Letting $\delta_x$ denote the dirac delta distribution on $C^\infty(\Cbb)$ based at $x$, we set
+        \begin{align*}
+            \dop m_M = \sum_{i=1}^\infty \delta_{\lambda_i}.
+        \end{align*}
+    \item[theta] Define $\Theta_M: \Rbb_{>0} \to \Rbb$ by
+        \begin{align*}
+            \Theta_M(t) & = \sum_{i=1}^\infty e^{t\lambda_i}           \\
+                        & = \int_\Cbb e^{t \lambda} \dop m_M (\lambda)
+        \end{align*}
+    \item[Minakshisundaram--Pliejel zeta] Define, for $s$ in a suitable right half-plane,
+        \begin{align*}
+            \zeta_M(s) & = \sum_{i=1}^\infty \lambda_{i}^{-s}        \\
+                       & = \int_\Cbb \lambda^{-s} \dop m_M(\lambda).
+        \end{align*}
+\end{description}
+\subsection{Length spectrum}
+In this section, we suppose that the Riemannian metric $g$ on $M$ has strictly negative curvature.
+
+In this case, within each free homotopy class of curve on $M$, there is a unique element with minimal length with respect to $g$. This representative is a geodesic on $M$, and we refer to it as the \textbf{geodesic representative} of a free homotopy class of curve. For any point $x_o \in M$, there is an identification of the set of free homotopy classes of curves with conjugacy classes in the fundamental group $\pi_1(M,x_o)$ based at $x_o$. Consequently, the Riemannian metric induces a class function $\ell_g: \pi_1(M,x_o) \to \Rbb$.
+
+
+% \subsubsection{topological preliminaries}
+%     For a connected, locally simply connected topological spaces $X$, we let $\tilde{X}$ denote the universal cover. For each point $x_o \in X$ the fundamental group $\pi_1(X,x_o)$ acts freely on $\tilde{X}$ by homeomorphisms preserving the fibers of $\tilde{X} \to X$. It follows that the projection $\tilde{X} \to X$ induces a homeomorphism $\pi(X,x_o)\lmod \tilde{X} \to X$. Consequently, for any topological space $Y$, we may identify $C(X,Y)$ with the subpsace $C(\tilde{X} , Y)^{\pi_1(X)}$ of $C(X,Y)$ of functions on $\tilde{X}$ invariant under $\pi_1(X)$. If $f \in C(X,Y)$ is a function, we write $\tilde{f}$ for the corresponding function on $\tilde{X}$. 
+
+%     When $(M,g)$ is a Riemannian manifold, the lift $\tilde{g}$ of the metric to $\tilde{M}$ is the unique one such that the universal covering map $\tilde{M} \to M$ is a local isometry. 
+% Taking $\Rbb/\Zbb$ as a model for the circle $S^1$, we identify the space $\Lcal(M)$ of continuous maps $S^1 \to M$ with the space $C(\Rbb,M)^\Zbb$ of continuous functions $f: \Rbb \to M$ which are invariant under the action of $\Zbb$ (by precomposition with translation). The Riemannian metric $g$ on $M$ induces a  \textbf{length function} $\ell_g : \Lcal(M) \to \Rbb_{\geq 0}$. 
+
+% Fixing a point $x_o \in M$, let $\Lcal_{x_o} (M)$ denote the subspace of $\Lcal(M)$ consisting of those $f$ satisfying $f(0)=x_o$. We refer to elements of $\Lcal_{x_o} (M)$ as \textit{loops based at $x_o$}. For loops $\gamma,\gamma':\Lcal_{x_o}(M)$, define their concatenation $\gamma \cdot \gamma' \in \Lcal_{x_o} (M)$ by the rule 
+% \begin{align}
+%     \left(\gamma \cdot \gamma' \right)(t)=   \begin{cases}\gamma_0(2 t) & 0 \leq t \leq \frac{1}{2} \\ \gamma_1(2 t-1) & \frac{1}{2} \leq t < 1\end{cases}
+% \end{align}
+% defined initially on $[0,1)$, extended by $\Zbb$ invariance to $\Rbb$. 
+
+
+
+
+
+
+
+\subsection{relationships between spectra}
+\subsection{Behavior under covers}
+\subsection{twisting(by flat vector bundles)}
+\subsection{Artin Takagai formalism}
+\subsection{Isospectrality(of various forms)}
+\section{Arithmetic locally symmetric spaces}
+This section will follow the presentation in \cite{helgasonDifferentialGeometryLie2001}.
+\subsection{Locally symmetric spaces}
+Let $(M,g)$ be a Riemannian manifold, and $x\in M$. Let $N_0 \subset (T M)_x$ denote a neighborhood of $0$ which is stable under the map $v \mapsto -v$ and set $N_x = \exp_x N_0$ and small enough so that the map $\exp_x: N_0 \to N_p$ is a diffeomorphism.  For each point $y \in N_x$, let $\gamma_{x,y} : [0,1] \to N_p$ denote the unique geodesic segment satisfying $\gamma_{x,y}(0)=x$ and $\gamma_{x,y}(1)=y$. Set $s_x(y) = \gamma_{x,y}(-1)$. The map $s_x$ is a diffeomorphic involution on $N_x$, which we call the \textbf{geodesic symmetry} with respect to $x$. By design, it satisfies $(ds_x)_x = -\id \in \Aut((TM)_x)$.
+\begin{defn}
+    A Riemannian manifold $M$ is a \textbf{locally symmetric space} if each point $x\in M$ admits a neighborhood on which the geodesic symmetry $s_x$ is an isometry. A locally symmetric space is \textbf{globally symmetric} if for each point $x\in M$, the geodesic symmetry $s_x$ extends to a global isometry of $M$.
+\end{defn}
+When $(M,g)$ is Riemannian locally symmetric space for which the metric $g$ is complete, its universal cover $\tilde{M}$, when equipped with the pullback metric $\tilde{g}$, is globally symmetric. For any $x\in M$, the action of the fundamental group $\pi_1(M,x)$ on $\tilde{M}$ as group $\Gamma$ of deck transformations of $\tilde{M} \to M$ is by isometries (with respect to $\tilde{g}$, and induces an isomtery $\Gamma \lmod \tilde{M}\to M$. To summarize, all locally symmetric spaces arise as quotients $\Gamma \lmod X$ of globally symmetric spaces, where $\Gamma < \Isom(X)$ is a discrete subgroup acting freely on $X$.
+
+As discussed in the next section,  we may realize any globally symmetric space $X$ as a quotient $G/K$ for a semisimple Lie group $G$ and a compact subgroup $K$.
+Combining this claim with the preceeding paragraph, we conclude:
+\begin{thm}
+    Let $(M,g)$ be a locally symmetric space. Then there exists a semisimple Lie group $G$, a compact subgroup $K$, and a discrete subgroup $\Gamma$ of $G$ such that $(M,g)$ is isometric to $(\Gamma \lmod G \rmod K , B)$ where $B$ is a  $G$ invariant Riemannian metric on $G\rmod K$.
+\end{thm}
+
+
+
+\subsection{Symmetric spaces}
+
+A Riemannian symmetric space is a Riemannian manifold $M$ such that, for each point $x\in M$, there exists a global involutive isometry $s_x \in \Isom(M)$ which fixes $x$ and induces the map $v \mapsto -v$ on the tangent space $(TM)_x$ at $x$. In this case, the group $G=\Isom(M)$
+\begin{itemize}
+    \item acts transitively on $M$,
+    \item admits a unique structure as a smooth manifold, making it into a Lie group,
+    \item if, for a point $x \in M$, we write $K_x$ for its stabilizer in $G$, then $K$ is a compact subgroup and the orbit map $G \to M$ sending $g$ to $gx$ induces a diffeomorphism $G/K_x \to M$,
+    \item the map $\sigma_x: G \to G$ defined by $g \mapsto s_x g s_x$ is an involutory automorphism of $G$ such that $(G^{\sigma_x})^\circ \leq K_x \leq G^{\sigma_x}$ where $G^{\sigma_x}$ is the group of fixed points of $\sigma_x$, and $(G^{\sigma_x})^\circ$ its connected component containing the identity.
+\end{itemize}
+Fix $x \in M$ and supress it from the notation for $K$, $\sigma$, and $s$. Let $\gfrak$ be the Lie algebra of $G$. As $\sigma \in \Aut(G)$ is an involution, the eigenvalues $\lambda$ of $(d\sigma)_e \in \Aut(\gfrak)$ and $\gfrak = \ker ((d\sigma)_e-1)\oplus \ker ((d\sigma)_e+1).$  From the third property above, one finds that the Lie algebra $\kfrak$ of $K$ is precisely the $+1$ eigenspace of $(d \sigma)_e$. Let $\pfrak$ denote the $-1$ eigenspace.
+
+Letting $\pi : G \to M$ denote the orbit map $g \mapsto gx$ one finds that $\ker (d\pi)_e = \kfrak$, and it maps $\pfrak$ isomorphically to $T_x M$.  In particular, if $v \in \pfrak$, then the geodesic based at $x$ with tangent vector $(\dop \pi)_e v$ is given by $t \mapsto \exp (t v) x$. %Furhtermore, for $w \in (TM)_x$ the parallel translate of $w$ along this geodesic is given by $(d \exp (tv) )_x (w) $
+
+Consequently the study of Riemannian globally symmetric spaces is tantamount to the study of \textbf{symmetric pairs} $(G,H)$, where $G$ is a connected Lie group, $H$ a compact subgroup such that there exists an involutory automorphism $\sigma \in \Aut(G)$ such that $(G^\sigma)^\circ \leq H \leq G^\sigma$.
+
+
+
+\subsection{Arithmetic locally symmetric spaces}
+% Arithmetic locally symmetric spaces are those which arise from a certain construction, which I now outline. First, we need some algebro-geometric background.
+% \subsubsection{Affine schemes}
+%    Let $R$ be a commutative ring with $1$. We associate to $R$ the topological space $X=\spec(R)$ defined as follows: 
+%    \begin{itemize}
+%        \item The elements of $X$ are prime ideals $\pfrak \leq R$. 
+%        \item For each ideal $\afrak\leq R$, let $V(\afrak)$ denote the set of prime ideals $\pfrak$ containing $\afrak$. Then we take the sets $V(\afrak)$ as the closed sets of $X$. Alternatively, if one defines, for $f\in R$, the set $D_f$ of prime ideals not containing $f$, one may take the set $\{D_f: f\in R\}$ as  basis for the topology on $X$. 
+%    \end{itemize}
+%    We equip the topological space $X=\spec (R)$ with a sheaf $O_{X}$ of rings, defined by specifying sections on the open sets $D_f$ as $\Gamma(D_f,O_X) = R_f$, the localization of $R$ with respect to the powers of $f$.
+%    \begin{defn}
+%        A pair $(X,O_X)$ consisting of a topological space $X$ and a sheaf of rings $O_X$ on $X$ is an \textbf{affine scheme} if $X=\spec(R)$ for some ring $R$.
+%    \end{defn}
+
+%    \begin{example}
+%        The closure of a singleton $
+%        \{\pfrak\} \subset X = \spec R$ is the set of prime ideals $\pfrak'$ containing $\pfrak$. It follows that the set $\{\pfrak\}$ is closed in $X$ if and only if $\pfrak$ is a maximal ideal of $R$.  
+%    \end{example}
+%    \begin{example}
+%         For any ring $R$, the affine scheme $\Abb^n_R:=\spec(R[x_1,...,x_n])$ is called the $n$-dimensional affine space over $R$. There is a subset of $\Abb_R^n$ which may be identified with the familiar $R^n$, by associating to an $n$-tuple $(a_1,...,a_n)\in R^n$ the maximal ideal $\langle x_1 - a_1 , ...,x_n-a_n\rangle \in \Abb_n^R$. There are, however, always more points than these in $\Abb^n_R$.
+%         % When $R=F$ is an algebraically closed field, the maximal ideals of $F[x_1,...,x_n]$ take the form $\langle x_1-a_1, ....,x_n-a_n\rangle$ for some $n$-tuple of elements $(a_1,...,a_n) \in F^n$.  Thus, only the \textit{closed points} of $\Abb^n_F$ may be identified with $F^n$.
+%    \end{example}
+% \subsubsection{General Schemes}
+
+%    More generally, a \textbf{scheme} is a pair $(X,O_X)$ where $X$ is a topological space and $O_X$ is a sheaf of rings such that $X$ admits a covering $X = \bigcup_i U_i$ by open sets $U_i$ which are affine schemes. 
+
+
+\section{Algebraic groups}
+In this section $F$ is an arbitrary field.
+\begin{defn}
+    An algebraic group $\Gbf$ over $F$ is a group object in the category of schemes over $F$.
+\end{defn}
+We will freely identify such a $\Gbf$ with its \textbf{functor of points}:
+\begin{align}
+    X \mapsto \Gbf(X) = \Hom_F(X,\Gbf),
+\end{align}
+for any scheme $X$ over $F$. When $X=\spec A$ for $A$ a commutative $F$-algebra, then we abuse notation in writing $\Gbf(A)$ for $\Gbf(\spec(A))$.
+Thus, we think of $\Gbf$ as a family of groups $\Gbf(A)$ parameterized by commutative $F$-algebras $A$, such that each $A \to B$ of $F$-algebras induces a group homomorphism $\Gbf(A)\to \Gbf(B)$.
+In particular, the canonical inclusion $x\mapsto x \cdot 1_A \in A$ defining $A$ as an $F$-algebra, induces a canonical map $\Gbf(F) \to \Gbf(A)$.
+
+\paragraph{$\Gbb_a,\Gbb_m$} The fundamental building blocks for linear algebraic groups over $F$ are the \textbf{additive group} $\Gbb_a$ and and \textbf{multiplicative group} $\Gbb_m$, which are defined by via their functor of points:
+\begin{align}
+    \Gbb_a(A)= (A,+),\quad \Gbb_m(A)=(A^\times,\cdot), \quad \text{for any $F$-algebra $A$.}
+\end{align}
+
+\paragraph{$\Autbf$:} if $\Gbf$ is any algebraic group over $F$, then the assignment
+\begin{align}
+    A\mapsto \Aut_{gp}(\Gbf(A))
+\end{align}
+defines an algebraic group, which we'll call $\Autbf_{gpsch}(\Gbf)$ [TODO: think about whether these automorphisms should fix/stabilize $\Gbf(F)$.]
+
+The multiplicative structure of an algebra $A$ allows for a \textbf{canonical} inclusion $A^\times \to \Aut((A,+))$, which in turn yeilds a map of algebraic groups $\Gbf_m \to \Autbf(\Gbb_a)$.
+\begin{rem}
+    If one forgets about the group structure on $\Gbb_a$ and just considers it as a scheme, then one obtains the \textbf{affine line} $\Abb^1 = \spec(F[x])$  over $F$. The algebraic group $\Autbf_{sch}(\Abb^1)$ defined by $A \mapsto \Aut_{sch}(\Abb^1(F))$ is larger than $\Autbf_{gpsch}(\Gbb_a)$.
+\end{rem}
+
+The natural action of $A^\times$ on $A$ induces a homomorphism $\Gbb_m \to \Aut(\Gbb_a)$, of algebraic groups.
+\subsection{foo}
+\paragraph{Over a field}
+Let $F$ be any field.
+
+\paragraph{Over a nonarchimedian local field}
+
+\paragraph{Over an archimedian local field}
+
+\paragraph{Over a number field}
+
+\subsubsection{Some comments on integral structures}
+
+\chapter{Results}
+\section{Spectral flexibility}
+
+\section{Spectral Rigidity}
+\subsection{Commensurability invariants of hyperbolic surfaces}
+\subsubsection{Trace fields and quaternion algebras}
+\begin{defn}
+    Let $\Gamma$ be a nonelemnentary subgroup of $\PSL(2,\Cbb)$ and let $\hat{\Gamma} = P^\inv (\Gamma)$, where $P:\SL(2,\Cbb) \to \PSL(2,\Cbb)$. The \textbf{trace field} $\Qbb(\tr \Gamma)$ of $\Gamma$ is the field
+    \begin{align*}
+        \Qbb(\tr \hat{\gamma}: \hat{\gamma} \in \hat{\Gamma}).
+    \end{align*}
+\end{defn}
+\begin{rem}
+    If $M$ is a finite volume hyperbolic $2$- or $3$-manifold, then there exists a lattice $\Gamma$ in $\PSL(2,\Rbb)$ or $\PSL(2,\Cbb)$ such that $M$ is isometric to $\Gamma \lmod \Hbb^2$ or $\Gamma \lmod \Hbb^3$, and the set of such $\Gamma$ consitutes a full $\PSL(2,\Rbb)$ or $\PSL(2,\Cbb)$ conjugacy class. Since $\Qbb(\tr \Gamma)$ is a conjugcay invariant of $\Gamma$, we may understand it as an invariant of the Riemannian manifold $M$.
+\end{rem}
+\begin{def/prop}
+For a nonelementary subgroup $\Gamma \leq \PSL(2,\Cbb)$, let $A_0\Gamma\subset M(2,\Cbb)$ denote the algebra generated over $\Qbb(\tr \Gamma)$ by the elements $\hat{\gamma}$ for $\hat{\gamma} \in \hat{\Gamma}$. Then, in fact, $A_0\Gamma$ is a quaternion algebra over $\Qbb(\tr \Gamma)$.
+\end{def/prop}
+\begin{rem}
+    As before, the isomorphism type of $A_0 \Gamma$ as a quaternion algebra over $\Qbb(\tr \Gamma)$ is an invariant of the hyperbolic $2$- or $3$-manifold that $\Gamma$ uniformizes.
+\end{rem}
+\subsubsection{Invariant trace fields and quaternion algebras}
+While the trace field $\Qbb(\tr \Gamma)$, and the quaternion algebra $A_0 \Gamma$ over it, are invariants of the isometry class of the hyperbolic manifold associated to $\Gamma$, they are not constant along the commensurability class of $\Gamma$. The following construction refines the preceeding one to get a genuine commensurability invariant.
+\begin{def/prop}
+Let $\Gamma$ be a finitely generated non-elementaryy subgroup of $\PSL(2,\Cbb)$ and let $\Gamma^{(2)}$ denote the subgroup of $\Gamma$ generated by squares of elements of $\Gamma$. The trace field $\Qbb(\tr\Gamma^{(2)})$ of $\Gamma^{(2)}$ is an invariant of the commensurability class of $\Gamma$. We refer to it as the \textbf{invariant trace field} of $\Gamma$, and write it as $k\Gamma$.
+
+Furthermore, the quaternion algebra $A_0\Gamma^{(2)}$ over $k\Gamma$ is an invariant of the commensurability class of $\Gamma$. We refer to it as the \textbf{invariant quaternion algebra} of $\Gamma$, and denote it by $A\Gamma$.
+\end{def/prop}
+
+
+
+\subsection{Arithmeticity}
+Historically, arithmeticity of a lattice $\Gamma$ in a semisimple Lie group $G$ was defined by stipulating that $\Gamma$ be commensurable with groups arising from a particular construction, which we will detail in a moment.
+
+This definition of arithmeticity for a lattice does not clearly reflect the sense in which it is an intrinsic property of the Riemannian geometry of the locally symmetric space that it uniformizes.
+
+The following celebrated theorem of Margulis characterizes arithmeticity in terms of the existence of an abundant group of \textbf{virtual symmetries}.
+
+To state this theorem, we first recall that the commensurator $\Comm_G(\Gamma)$ of a subgroup $\Gamma$ of a group $G$ is the group of elements $g\in G$ such that $g\Gamma g^\inv \cap \Gamma$ has finite index in both $\Gamma$ and $g\Gamma g^\inv $.
+
+\begin{rem}\label{remark:hiddensymm}
+    If $M=\Gamma \lmod G \rmod K$ is a locally symmetric space, then for an element $g \in \Comm_G(\Gamma)$, let $M' = (g\Gamma g^\inv) \cap \Gamma \lmod G / K$.  Then $M' \to M$ is a Riemannian cover, and $g$ induces an isometry of $M'$. When $g \notin N_G(\Gamma) \leq \Comm_G(\Gamma)$, then this isometry is not the lift one on $M$. In this case, following \cite{farbHiddenSymmetryArithmetic2004}, we say $g$ is a hidden symmetry of $M$.
+\end{rem}
+
+\begin{thm}%[Theorem (1) of \cite{margulisDiscreteSubgroupsSemisimple1991b}]
+    Let $G =\PSL(2,\Rbb)$ or $G= \PSL(2,\Cbb)$. A lattice $\Gamma\leq G$ is arithmetic if and only if $\Comm_G(\Gamma)$ is dense in $G$. Equivalently, $\Gamma$ is arithmetic if it has infinite index in $\Comm_G(\Gamma)$.
+\end{thm}
+\subsection{Arithmetic lattices in SL(2,R)}
+In this section, we will identify a particular representative of each commensurability class of arithmetic lattice in $\SL(2,\Rbb)$ or $\SL(2,\Cbb)$. Each of these represenatives will be maximal lattices, and will be uniquely detemrined by an explicit tuple of arithmetic datum. The main theorem will identify specific subgroups of these represenatives which are spectrally rigid, provided certain conditions on the arithemtic data are met.

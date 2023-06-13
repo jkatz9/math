@@ -1,0 +1,20 @@
+\section{Geometric Preliminaries}
+Let $(M,g)$ be a $d$-dimensional closed Riemannian manifold without boundary.  Letting $\dop \Vol_g$ denote the measure on $M$ associated to the volume form of $(M,g)$, we equip the space $C^\infty(M)$ of smooth complex valued functions on $M$ with the inner product
+\begin{align}\label{eq:ip}
+    \ip{f}{g} = \int_M f(x) \overline{g}(x) \dop \Vol_g(x)
+\end{align}
+and let $L^2(M,g)$ denote the completion of $C^\infty(M)$ with respect to the resulting norm.
+
+The \textbf{Laplace-Beltrami operator} $\Delta$ acts on $C^\infty(M)$, in local coordinates $(x_1,\dots,x_d)$, by the formula
+\begin{align}
+    \Delta(f) = -\frac{1}{\sqrt{g}} \sum_{i,j=1}^d \frac{\partial \sqrt{g} g^{ij} (\partial f / \partial x_i)}{\partial x^j}
+\end{align}
+where $g = \det(g_{ij})$ and $(g^{ij})$ denotes the inverse of the matrix $(g_{ij})$. With respect to the inner product in \ref{eq:ip}, $\Delta$ is symmetric:
+\begin{align*}
+    \ip{\Delta f}{g} =\ip{ f}{\Delta g}, \quad \text{ for all $f,g \in C^\infty(M)$,}
+\end{align*}
+negative:
+\begin{align*}
+    \ip{\Delta f }{f} \leq 0, \quad \text{ for all $f \in C^\infty(M)$.}
+\end{align*}
+and unbounded. As $M$ is compact and without boundary, $\Delta$ admits a unique maximal extension to a negative, self-adjoint, unbounded operator on $L^2(M,g)$ with compact resolvent. By the spectral theorem for the latter class of operators, it follows that the

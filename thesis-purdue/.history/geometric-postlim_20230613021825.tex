@@ -1,0 +1,33 @@
+Given $x\in M$, let $\rho_x(y)$ denote the distance from $x$ to $y$ relative to the metric induced by $g$.  Then one may express the heat invariants $a_n(x)$ by the formulae \cite[Theorem 1.2.1]{polterovichHeatInvariantsRiemannian2000}:
+\begin{align}
+    a_n(x) = \left.(4 \pi)^{-d / 2}(-1)^n \sum_{j=0}^{3 n}\left(\begin{array}{c}
+                                                                        3 n+\frac{d}{2} \\
+                                                                        j+\frac{d}{2}
+                                                                    \end{array}\right) \frac{1}{4^j j !(j+n) !} \Delta^{j+n}\left(\rho_x(y)^{2 j}\right)\right|_{y=x}
+\end{align}
+
+
+\newpage
+
+Let $(M,g)$ be a closed Riemannian manifold of dimension $n$, and let $\Gamma(TM)$ denote the real vector space of smooth vecotr fields on $M$. For $X,Y \in \Gamma(TM)$, let $(X|Y) \in C^\infty(M)$ be given by $(X|Y)(p) = g_p(X_p,Y_p)$ for $p \in M$. Then the pairing
+\begin{align*}
+    \ip{X}{Y} = \int_M (X|Y) \dop v_g
+\end{align*}
+makes $\Gamma(TM)$ into a pre-hilbert space.
+
+More generally if $E \to M$ is a vector bundle, which is equipped with an inner product $(\cdot | \cdot)_p$ on its fibers $E_p$, we can similarly define an inner product $\ip{\cdot}{\cdot}$ on the space $\Gamma(E)$ of smooth section of $E$.
+
+\newpage
+A vector field $X \in \Gamma(TM)$ ammounts to an operator $C^\infty(M) \to C^\infty(M)$ such that $X(fg)= X(f)g+fX(g)$ in the sense that $X(fg)\vert_m = X(f)\vert_m g(m) + f(m) X(g)\vert_m$ for all $m \in M$. Note That the composition of two vector fields $X,Y$, as endomorphisms of $C^\infty(M)$ will not itself be a vector field. Nonetheless, the operator $f \mapsto X(Y(f)) - Y(X(f))$ is a vector field.
+
+If $V$ is a vectorspace, then a tensor of type $(0,s)$ over $V$ is a an $s$-multilinear form on $V\times\dots \times V$ and a tensor of type $(r,0)$ is just an element of $V \otimes \dots \otimes V$.
+
+A quadratic form on $V$ is a $(0,2)$ tensor which is moreover symmetric.
+
+The curvature tensor is a $(1,3)$ form, but can be changed into a $(0,4)$ tensor. The former perspective allows for the interpretation of the curvature tensor as an exterior $2$-form valued in $\End(TM) = \Otimes^{1,1} TM$ ``since 3=1+2''.
+
+To check that a multilinear form $m \mapsto \alpha(X_1,\dots X_k)(m)$ depends only on the values $X_1(m),\dots X_k(m)$ (and not on derivatives of such elements), it suffices to check that $\alpha(X_1 ,\dots, fX_i,\dots, X_k) = f \alpha(X_1 ,\dots, X_i,\dots, X_k)$ for every $i$ and any $f\in C^\infty(M)$.
+
+Now suppose $g$ is a Riemannian metric on $M$, For a vector $v$ define a $1$-form $v^*$ by the rule $v^*(x)=g(v,x)$ for all vectors $x$, and for a $1$-form $\alpha$, define a vector $\alpha_*$ by the condition$ \alpha(v)=g(\alpha_*,v)$ for any vector $v$.
+
+The gradient of a function is given by $\nabla f = (df)^* \in \Gamma(TM)$ (as $df \in \Gamma(T^*M)$), which is to say $g(\nabla f, x) = \dop f (x)$

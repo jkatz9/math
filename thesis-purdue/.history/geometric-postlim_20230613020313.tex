@@ -1,0 +1,23 @@
+Given $x\in M$, let $\rho_x(y)$ denote the distance from $x$ to $y$ relative to the metric induced by $g$.  Then one may express the heat invariants $a_n(x)$ by the formulae \cite[Theorem 1.2.1]{polterovichHeatInvariantsRiemannian2000}:
+\begin{align}
+    a_n(x) = \left.(4 \pi)^{-d / 2}(-1)^n \sum_{j=0}^{3 n}\left(\begin{array}{c}
+                                                                        3 n+\frac{d}{2} \\
+                                                                        j+\frac{d}{2}
+                                                                    \end{array}\right) \frac{1}{4^j j !(j+n) !} \Delta^{j+n}\left(\rho_x(y)^{2 j}\right)\right|_{y=x}
+\end{align}
+
+
+\newpage
+
+Let $(M,g)$ be a closed Riemannian manifold of dimension $n$, and let $\Gamma(TM)$ denote the real vector space of smooth vecotr fields on $M$. For $X,Y \in \Gamma(TM)$, let $(X|Y) \in C^\infty(M)$ be given by $(X|Y)(p) = g_p(X_p,Y_p)$ for $p \in M$. Then the pairing
+\begin{align*}
+    \ip{X}{Y} = \int_M (X|Y) \dop v_g
+\end{align*}
+makes $\Gamma(TM)$ into a pre-hilbert space.
+
+More generally if $E \to M$ is a vector bundle, which is equipped with an inner product $(\cdot | \cdot)_p$ on its fibers $E_p$, we can similarly define an inner product $\ip{\cdot}{\cdot}$ on the space $\Gamma(E)$ of smooth section of $E$.
+
+\newpage
+A vector field $X \in \Gamma(TM)$ ammounts to an operator $C^\infty(M) \to C^\infty(M)$ such that $X(fg)= X(f)g+fX(g)$ in the sense that $X(fg)\vert_m = X(f)\vert_m g(m) + f(m) X(g)\vert_m$ for all $m \in M$. Note That the composition of two vector fields $X,Y$, as endomorphisms of $C^\infty(M)$ will not itself be a vector field. Nonetheless, the operator $f \mapsto X(Y(f)) - Y(X(f))$ is a vector field.
+
+If $V$ is a vectorspace, then a tensor of type $(0,s)$ over $V$ is a multilinear form $\Otimes^s V \to \Rbb$.
