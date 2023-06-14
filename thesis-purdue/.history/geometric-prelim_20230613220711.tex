@@ -1,0 +1,157 @@
+% !TeX root = main.tex
+\section{Geometric Preliminaries}
+\paragraph{Laplace-spectrum}
+Let $(M,g)$ be a compact Riemannian manmifold. The eigenvalues of the Laplace operator of the Laplace operator $\Delta_{M,g}$ acting on $L^2(M,\dop \Vol_g)$ form a discrete sequence of nonnegative real numbers which we encode via the discrete measure $\spec_{M,g}$ on $\Rbb$ which assigns to each $\lambda \in \Rbb$, the dimension of the $\lambda$-eigenspace $E_{M,g}(\lambda)=\ker (\Delta_{M,g}- \lambda \id)$ in $L^2(M, \dop \Vol_g)$. The pectrum $\spec_{M,g}$ is an invariant of the Riemannian structure on $M$.
+
+We say that two Riemannian manifolds $(M,g)$ and $(M',g')$ are \textbf{isospectral} if $\spec_{M,g} = \spec_{M,g'}$. We say that $(M,g)$ is \textbf{spectrally rigid} in the absolute sense, if any Riemannian manifold which isospectral to $(M,g)$ is in fact isometric to $(M,g)$.
+
+\paragraph{Hyperbolic $2$- and $3$-manifolds}
+
+\subparagraph{Surfaces}
+We take the upper half plane
+\begin{align*}
+    \Hfrak = \{ x+iy \in \Cbb : y >0\}
+\end{align*}
+equipped with the Riemannian metric
+\begin{align*}
+    g_\hyp = \frac{\dop x^2 +\dop y^2}{y^2}
+\end{align*}
+is a model for the hyperbolic plane. The invariant volume element for this metric is given by
+\begin{align*}
+    \dop \vol_{g_\hyp} = \frac{\dop x \dop y}{y^2},
+\end{align*}
+and the Laplace operator is
+\begin{align*}
+    \Delta_{g_\hyp} = \frac{1}{y^2}\left( \frac{\partial^2 }{\partial x^2}+ \frac{\partial^2 }{\partial y^2} \right)
+\end{align*}
+
+The group
+\begin{align*}
+    \SL(2,\Rbb) = \left\{ \Tbt{a}{b}{c}{d}: ad-bc =1 \right\}
+\end{align*}
+acts isometrically and transitively on $(\Hfrak,\dop s^2)$ by linear fractional transformations
+\begin{align*}
+    \Tbt{a}{b}{c}{d} z = \frac{az+b}{cz+d} = \frac{ac |z|^2 +(ad+bc)\re z  +bd}{|cz+d|^2} + i \frac{\im z}{|cz+d|^2}
+\end{align*}
+where $\tbt{a}{b}{c}{d} \in \SL(2,\Rbb)$ and $|\cdot|$ is the usual absolute value on $\Cbb$. This action factors through $\PSL(2,\Rbb)$ which can be identified with the full group of orientation preserving isometries of $(\Hfrak,\dop s^2)$. The stabilizer of $i$ in $\SL(2,\Rbb)$ is
+\begin{align*}
+    \SO(2) = \{\Tbt{c}{s}{-s}{c}: c^2 + s^2 =1\}
+\end{align*}
+so that the map $g \mapsto g i$ establishes an identification $\SL(2,|Rbb) / \SO(2) \approx \Hfrak$.
+% Under this identification,the tangent space $T_i \Hfrak$ is identified with the quotient $\sl(2,\Rbb) / \so(2)$ where
+% \begin{align*}
+%     \sl(2,\Rbb) = \{ X \in M(2,\Rbb) : \tr X =0 \}
+% \end{align*}
+% and
+% \begin{align*}
+%     \so(2) = \{ X \in \sl(2,\Rbb) : X + ^t X = 0\}
+% \end{align*}
+
+% [OVEREXPOSITING?]
+
+If $(M,g)$ is a compact Riemannian manifold let
+\begin{align}\label{eq:universalCover}
+    \tilde{M} \to M
+\end{align}
+be its universal cover, and let $g^*$ be the metric on $\Mti$ pulled back along \ref{eq:universalCover}. Then $\pi_1(M)$ acts freely and properly discontinuously on $(\Mti,g^*)$ by isometries, transitively on the fibers of \ref{eq:universalCover}. Consequently, one has an isometric identification
+\begin{align}
+    \pi_1(M) \lmod \tilde{M} \approx M.
+\end{align}
+
+If $M$ is a surface, and $g$ has constant scalar curvature $-1$, then there exists an isometry
+\begin{align}\label{eq:uniformization}
+    (\tilde{M},g^*) \to (\Hfrak , g_\hyp)
+\end{align}
+Pushing forward the action of $\pi_1(M)$ on $\Mti$ through the isometry \ref{eq:uniformization}, one obtains a homomorphism $\rho: \pi_1(M) \to \PSL(2,\Rbb) =\Isom(\Hfrak,g_\hyp)$ which induces an isometry 
+
+
+
+\paragraph{3-manifolds}
+% Note that at each place $\nu \in V_k \setminus \Ram(A)$ one has isomorphisms
+% \begin{align*}
+%     \tilde{\Gbf}(k_\nu)\approx \GL(2,k_\nu),\quad \Gbf(k_\nu) \approx \SL(2,k_\nu), \bar{\Gbf}(k_\nu) \approx \PGL(2,k_\nu).
+% \end{align*}
+
+
+
+\newpage
+Let $(M,g)$ be a $d$-dimensional closed Riemannian manifold without boundary.  Letting $\dop \Vol_g$ denote the measure on $M$ associated to the volume form of $(M,g)$, we equip the space $C^\infty(M)$ of smooth complex valued functions on $M$ with the inner product
+\begin{align}\label{eq:ip}
+    \ip{f}{g} = \int_M f(x) \overline{g}(x) \dop \Vol_g(x)
+\end{align}
+and let $L^2(M,g)$ denote the completion of $C^\infty(M)$ with respect to the resulting norm.
+
+The \textbf{Laplace-Beltrami operator} $\Delta$ acts on $C^\infty(M)$, in local coordinates $(x_1,\dots,x_d)$, by the formula
+\begin{align}
+    \Delta(f) = -\frac{1}{\sqrt{g}} \sum_{i,j=1}^d \frac{\partial \sqrt{g} g^{ij} (\partial f / \partial x_i)}{\partial x^j}
+\end{align}
+where $g = \det(g_{ij})$ and $(g^{ij})$ denotes the inverse of the matrix $(g_{ij})$. With respect to the inner product in \ref{eq:ip}, $\Delta$ is symmetric:
+\begin{align*}
+    \ip{\Delta f}{g} =\ip{ f}{\Delta g}, \quad \text{ for all $f,g \in C^\infty(M)$,}
+\end{align*}
+negative:
+\begin{align*}
+    \ip{\Delta f }{f} \leq 0, \quad \text{ for all $f \in C^\infty(M)$.}
+\end{align*}
+and unbounded. As $M$ is compact and without boundary, $\Delta$ admits a unique maximal extension to a negative, self-adjoint, unbounded operator  $\tilde{\Delta}$ on $L^2(M,g)$ with compact resovent.
+
+By the spectral theorem for the latter class of operators, it follows that the resolvent set
+\begin{align*}
+    \sigma(\tilde{\Delta}) = \{ \lambda \in \Cbb : \tilde{\Delta} - \lambda \id \text{ is not invertible on $L^2(M,g)$}\}
+\end{align*}
+is a discrete set of nonnegative real numbers, accumulating at $-\infty$, and consists of eigenvalues of $\tilde{\Delta}$ with finite multiplicites. By elliptic regularity, any eigenfunction of $\tilde{\Delta}$ is smooth, and thus lies in the original domain $C^\infty(M)$ of $\Delta$. Consequently, $\sigma(\tilde{\Delta})$ coincides with the set
+\begin{align*}
+    \sigma(\Delta) = \{\lambda \in \Cbb : \Delta f  = \lambda f \text{ admits a nonzero  solution  $f \in C^\infty(M)$}.
+\end{align*}
+Set $E(\lambda) = \ker \Delta - \lambda \id$ and set $m(\lambda) = \dim E(\lambda)$. [TODO:finish rambling]
+
+\paragraph{Heat kernel}
+Let $\phi_0=\Vol(M)^{-1},\phi_1,\phi_2,\cdots$ be an orthonormal sequence of eigenfunctions for $\Delta$ corresponding to eigenvalues $\lambda_0=0 <\lambda_1 \leq \lambda_2 \leq \dots$. For $t >0$, the \textbf{heat kernel}
+\begin{align}\label{eq:heatdef}
+    K_t(x,y):= \sum_{j\geq 0} e^{-t\lambda_j} \phi_j(x)\phi_j(y)
+\end{align}
+is the unique function $k:\Rbb_{\geq 0} \times M \times M \to \Rbb$ satisfying the properties
+\begin{enumerate}
+    \item For each fixed $y\in M$, one has $\left(\frac{\partial}{\partial t} + \Delta \right)k_t(x,y) = 0$
+    \item For each $u\in C^\infty(M)$, one has $ \int_M k_t(x,y) u(y)  \dop \Vol_g (x)(y) \to u(x)$  as $t \to 0^+$, uniformly in $x$
+    \item $k_t(\cdot,\cdot)$ is $C^2$ in $(x,y)$ for each $t$
+    \item $k_\cdot( x,y)$ is $C^1$  in $t$ for each $(x,y)$.
+\end{enumerate}
+In particular, the heat kernel $K_t(x,y)$ is independent of the choice of orthonormal basis of eigenfunctions in the defining equation \ref{eq:heatdef}.
+
+\begin{proposition}\label{prop:asymptoticExpansion}
+    Let $(M,g)$ be a compact $d$-dimensional Riemanniannian manifold without boundary, and let $K_t(x,y)$ be its heat kernel.  There exist a sequence of smooth functions $\abf_0,\abf_1, \abf_2,\cdots$ on $M$ such that
+    \begin{align}\label{eq:asymptoticExpansion}
+        K(t,x,x) \sim t^{-d/2}\left(\abf_0(x)+ \abf_1(x) t + \abf_2(x) t^2 +\cdots  \right)
+    \end{align}
+    as $t \to 0^+$. For each $n$, the function $\abf_n$ is a homogeneous polynonmial of degree $2n$ in the derivatives of the metric $g$.
+    In particular,
+    \begin{align}
+        \abf_0 & = 1,                                                       \\
+        \abf_1 & =\frac{1}{6} \tau,                                         \\
+        \abf_2 & =\frac{1}{360}\left( 5\tau^2 - 2 |\rho|^2 +2 |R|^2 \right)
+    \end{align}
+    where $\tau \in C^\infty(M)$ is the scalar curvature,j
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+

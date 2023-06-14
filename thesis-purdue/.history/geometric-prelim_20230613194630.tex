@@ -1,0 +1,154 @@
+% !TeX root = main.tex
+\section{Geometric Preliminaries}
+\paragraph{Laplace-spectrum}
+Let $(M,g)$ be a compact Riemannian manmifold. The eigenvalues of the Laplace operator of the Laplace operator $\Delta_{M,g}$ acting on $L^2(M,\dop \Vol_g)$ form a discrete sequence of nonnegative real numbers which we encode via the discrete measure $\spec_{M,g}$ on $\Rbb$ which assigns to each $\lambda \in \Rbb$, the dimension of the $\lambda$-eigenspace $E_{M,g}(\lambda)=\ker (\Delta_{M,g}- \lambda \id)$ in $L^2(M, \dop \Vol_g)$. The pectrum $\spec_{M,g}$ is an invariant of the Riemannian structure on $M$.
+
+We say that two Riemannian manifolds $(M,g)$ and $(M',g')$ are \textbf{isospectral} if $\spec_{M,g} = \spec_{M,g'}$. We say that $(M,g)$ is \textbf{spectrally rigid} in the absolute sense, if any Riemannian manifold which isospectral to $(M,g)$ is in fact isometric to $(M,g)$.
+
+\paragraph{Arithmetic $2-$ and $3-$ manifolds}
+Throughout $k$ will denote a number field, and $R$ its ring of integers. We write $V_k$ for its set of places, and write $\nu \in V_k^\infty$ (resp. $\nu \in V_k^f$) if $\nu$ is archimedian (resp. nonarchimedian).
+We identify nonarchimedian places $\nu \in V_k^f$ with discrete valuations $\nu : k \to \Zbb$ on $k$ and in turn, prime ideals $\pfrak = \{ x \in k: \nu(x) > 0\}$ in $R$.
+For a place $\nu \in V_k$ we write $k_\nu$ for the corresponding local field, and if $\nu \in V_k^f$ corresponding to a prime ideal $\pfrak$ of $R$ we write $R_\nu$ or $R_\pfrak$ for the closure of $R$ in $k_\nu$.
+We say $\nu \in V_k^\infty$ is real (resp. complex) and write $\nu \in V_k^{\infty,\Rbb}$ (resp. $V_k^{\infty,\Cbb}$) if $k_\nu \approx \Rbb$ (resp. $\Cbb$)
+% We denote by $\Abb_k$ the ring of adeles of $k$. 
+
+Let $A$ be a quaternion algebra over $k$. We say that $A$ \textbf{ramifies} over a place $\nu \in V_k$, and write $\nu \in \Ram A$, if $A_\nu = A \otimes_k k_\nu$ is a division algebra, and otherwise \textbf{unramified} in which case $A_\nu \approx M(2,k_\nu)$.
+By class field theory, the set $\Ram A$ of places over which $A$ ramifies is a finite set with even cardinality. Conversely, given any finite set $S \subset V_k$ of even cardinality and such that $S\cap V_k^{\infty,\Cbb}=\emptyset$ there is a unique quaternion algebra $A$ with $\Ram A = S$, up to isomorphism. $A$ is a division algebra if and only if $\Ram A$ is nonempty, wheras $\Ram A = \emptyset$ if and only if $A$ is isomorphic to $M(2,k)$.
+
+Associate to  the quaternion algebra $A$ the algebraic groups over $k$ defined by
+\begin{align*}
+    \tilde{\Gbf}(E) = (A\otimes_k E)^\times,\quad \Gbf (E) = (A\otimes_k E)^1,\quad  \bar{\Gbf}(E) = E^\times \lmod (A\otimes_k E)^\times
+\end{align*}
+for any commutative $k$-algebra $E$. If $\Hbf$ is any of $\Gbf$, $\tilde{\Gbf}$, or $\bar{\Gbf}$, we write $H$ for $\Hbf(k)$, $H_\nu$ for $\Hbf(k_\nu)$, and $H_{\Abb_k}$ for $\Hbf(\Abb_k)$.
+
+\begin{definition}
+    We say $A$ is of
+    \begin{itemize}
+        \item    \textbf{Fuchsian-type} if: $k$ is totally real, and $A$ is unramified over exactly one real place $\nu_o$. In thise case, we use $\nu_o$ to identify $k$ with a subfield of $\Rbb$, and replace $\nu_o$-subscripts with $\Rbb$. Thus if $A$ is of fuchsian type, one has
+              \begin{align}\label{eq:Fuchsian}
+                  G_\Rbb \approx \GL(2,\Rbb),\quad G_\Rbb \approx \SL(2,\Rbb),\quad  \bar{G}_\Rbb \approx \PGL(2,\Rbb)
+              \end{align}
+        \item \textbf{Kleinian-type} if: $k$ has exactly one complex place $\nu_o$, and $A$ is ramified over all real places. In this case, use $\nu_o$ to identify $k$ with a subfield of $\Cbb$, and replace $\nu_o$-subscripts with $\Cbb$. Thus if $A$ is of Kleinian type, one has
+              \begin{align}\label{eq:Kleinian}
+                  G_\Cbb \approx \GL(2,\Cbb),\quad G_\Cbb \approx\SL(2,\Cbb),\quad  \bar{G}_\Cbb \approx \PGL(2,\Cbb)
+              \end{align}
+    \end{itemize}
+\end{definition}
+If $A$ is a quaternion algebra of Fuchsian or Kleinian type, we pick once and for all the isomorphisms in \ref{eq:Fuchsian} and \ref{eq:Kleinian}  respectively. sarn
+
+
+
+Recall that an order in a quaternion algebra $A$ over $k$ is a subring $O$ containing $R$ such that $kO = A$. For any order $O$, we affine group schemes over $R$ by
+\begin{align*}
+    \Gambfti_O(S) = (O\otimes_R S)^\times, \quad \Gambf_0(S) = (O\otimes_R S)^1, \quad \Gambfbar_O = S^\times \lmod (O\otimes_R S)^\times
+\end{align*}
+for any $R$-algebra $S$. Using the inclusion $R \to k$, we identify $\Gambf_O(R)$ with a subgroup $\Gamma_O$ of $G=\Gambf_O(k)$ and, in turn, a subgroup of $G_\nu$ for any place $\nu$.
+\begin{proposition}
+    Let $A$ be a quaternion algebra over a number field $k$, and $O$ an order in $A$. If $A$ is of Fuchsian (resp. Kleinian) type , then $\Gamma_O$ is a lattice in $G_\Rbb  \approx \SL(2,\Rbb)$ (reps. in $G_\Cbb\approx \SL(2,\Rbb)$). In either case, $\Gamma_O$ is a cocompact lattice if and only if $A$ is a division algebra.
+\end{proposition}
+
+
+For an ideal $\afrak$ of $R$, the reduction map $R \to R/\afrak$ induces an epimorpshim of groups $\Gamma \to \Gambf (R/\afrak)$. We write $\Gamma_O(\afrak)$ for the kernel, and refer to it as the \textbf{principal congruence subgroup of level } $\afrak$ in $\Gamma_O$. To summarize, for each ideal $\afrak$ of $R$, there is a short exact sequence of groups
+\begin{align*}
+    1 \to \Gamma_O (\afrak) \to \Gamma_O=\Gambf_O(R) \to \Gambf (R/\afrak) \to 1.
+\end{align*}
+where
+\begin{align*}
+    \Gamma_O(\afrak) = \{ g \in O^1: g \in 1 + \afrak O\}
+\end{align*}
+and $\Gambf (R/\afrak)$ is a fintie group. We define principal congruence subgroups $\Gamti$ and $\Gambar$ similarly.
+
+
+
+We say that $O$ is a maximal order in $A$ if it is not properly contained in any other order. Maximal orders exist in any quaternion algebra over $k$. The group $\Gti = A^\times$ (through its quotient $\Gbar = k^\times \lmod A^\times$) on the set of maximal orders in $A$. We say that $A$ has  \textbf{type-number 1} if this action is transitive, i.e. all maximal orders in $A$ are conjugate by an element of $A^\times$.
+
+
+
+% Note that at each place $\nu \in V_k \setminus \Ram(A)$ one has isomorphisms
+% \begin{align*}
+%     \tilde{\Gbf}(k_\nu)\approx \GL(2,k_\nu),\quad \Gbf(k_\nu) \approx \SL(2,k_\nu), \bar{\Gbf}(k_\nu) \approx \PGL(2,k_\nu).
+% \end{align*}
+
+
+
+\newpage
+Let $(M,g)$ be a $d$-dimensional closed Riemannian manifold without boundary.  Letting $\dop \Vol_g$ denote the measure on $M$ associated to the volume form of $(M,g)$, we equip the space $C^\infty(M)$ of smooth complex valued functions on $M$ with the inner product
+\begin{align}\label{eq:ip}
+    \ip{f}{g} = \int_M f(x) \overline{g}(x) \dop \Vol_g(x)
+\end{align}
+and let $L^2(M,g)$ denote the completion of $C^\infty(M)$ with respect to the resulting norm.
+
+The \textbf{Laplace-Beltrami operator} $\Delta$ acts on $C^\infty(M)$, in local coordinates $(x_1,\dots,x_d)$, by the formula
+\begin{align}
+    \Delta(f) = -\frac{1}{\sqrt{g}} \sum_{i,j=1}^d \frac{\partial \sqrt{g} g^{ij} (\partial f / \partial x_i)}{\partial x^j}
+\end{align}
+where $g = \det(g_{ij})$ and $(g^{ij})$ denotes the inverse of the matrix $(g_{ij})$. With respect to the inner product in \ref{eq:ip}, $\Delta$ is symmetric:
+\begin{align*}
+    \ip{\Delta f}{g} =\ip{ f}{\Delta g}, \quad \text{ for all $f,g \in C^\infty(M)$,}
+\end{align*}
+negative:
+\begin{align*}
+    \ip{\Delta f }{f} \leq 0, \quad \text{ for all $f \in C^\infty(M)$.}
+\end{align*}
+and unbounded. As $M$ is compact and without boundary, $\Delta$ admits a unique maximal extension to a negative, self-adjoint, unbounded operator  $\tilde{\Delta}$ on $L^2(M,g)$ with compact resovent.
+
+By the spectral theorem for the latter class of operators, it follows that the resolvent set
+\begin{align*}
+    \sigma(\tilde{\Delta}) = \{ \lambda \in \Cbb : \tilde{\Delta} - \lambda \id \text{ is not invertible on $L^2(M,g)$}\}
+\end{align*}
+is a discrete set of nonnegative real numbers, accumulating at $-\infty$, and consists of eigenvalues of $\tilde{\Delta}$ with finite multiplicites. By elliptic regularity, any eigenfunction of $\tilde{\Delta}$ is smooth, and thus lies in the original domain $C^\infty(M)$ of $\Delta$. Consequently, $\sigma(\tilde{\Delta})$ coincides with the set
+\begin{align*}
+    \sigma(\Delta) = \{\lambda \in \Cbb : \Delta f  = \lambda f \text{ admits a nonzero  solution  $f \in C^\infty(M)$}.
+\end{align*}
+Set $E(\lambda) = \ker \Delta - \lambda \id$ and set $m(\lambda) = \dim E(\lambda)$. [TODO:finish rambling]
+
+\paragraph{Heat kernel}
+Let $\phi_0=\Vol(M)^{-1},\phi_1,\phi_2,\cdots$ be an orthonormal sequence of eigenfunctions for $\Delta$ corresponding to eigenvalues $\lambda_0=0 <\lambda_1 \leq \lambda_2 \leq \dots$. For $t >0$, the \textbf{heat kernel}
+\begin{align}\label{eq:heatdef}
+    K_t(x,y):= \sum_{j\geq 0} e^{-t\lambda_j} \phi_j(x)\phi_j(y)
+\end{align}
+is the unique function $k:\Rbb_{\geq 0} \times M \times M \to \Rbb$ satisfying the properties
+\begin{enumerate}
+    \item For each fixed $y\in M$, one has $\left(\frac{\partial}{\partial t} + \Delta \right)k_t(x,y) = 0$
+    \item For each $u\in C^\infty(M)$, one has $ \int_M k_t(x,y) u(y)  \dop \Vol_g (x)(y) \to u(x)$  as $t \to 0^+$, uniformly in $x$
+    \item $k_t(\cdot,\cdot)$ is $C^2$ in $(x,y)$ for each $t$
+    \item $k_\cdot( x,y)$ is $C^1$  in $t$ for each $(x,y)$.
+\end{enumerate}
+In particular, the heat kernel $K_t(x,y)$ is independent of the choice of orthonormal basis of eigenfunctions in the defining equation \ref{eq:heatdef}.
+
+\begin{proposition}\label{prop:asymptoticExpansion}
+    Let $(M,g)$ be a compact $d$-dimensional Riemanniannian manifold without boundary, and let $K_t(x,y)$ be its heat kernel.  There exist a sequence of smooth functions $\abf_0,\abf_1, \abf_2,\cdots$ on $M$ such that
+    \begin{align}\label{eq:asymptoticExpansion}
+        K(t,x,x) \sim t^{-d/2}\left(\abf_0(x)+ \abf_1(x) t + \abf_2(x) t^2 +\cdots  \right)
+    \end{align}
+    as $t \to 0^+$. For each $n$, the function $\abf_n$ is a homogeneous polynonmial of degree $2n$ in the derivatives of the metric $g$.
+    In particular,
+    \begin{align}
+        \abf_0 & = 1,                                                       \\
+        \abf_1 & =\frac{1}{6} \tau,                                         \\
+        \abf_2 & =\frac{1}{360}\left( 5\tau^2 - 2 |\rho|^2 +2 |R|^2 \right)
+    \end{align}
+    where $\tau \in C^\infty(M)$ is the scalar curvature,j
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
