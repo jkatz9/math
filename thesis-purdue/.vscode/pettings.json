@@ -1,0 +1,53 @@
+{ // Latex Workshop plugin
+  "latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.nav",
+    "*.dvi",
+    "*.synctex.gz",
+  ],
+  // "latex-workshop.latex.recipes": [
+  //   {
+  //       "name": "my-latexmk",
+  //        "tools": [
+  //            "my-latexmk"
+  //        ],
+  //   },
+  // ],
+  // "latex-workshop.latex.tools": [
+  //   {
+  //       "name": "my-latexmk",
+  //       "command": "latexmk",
+  //       "args": [
+  //           "-r", "%DIR%/.latexmkrc",
+  //           "-gg",
+  //           "-pvc",
+  //           "-emulate-aux-dir",
+  //           // "-pdfdvi",
+  //         //   "-silent",
+  //           "%DOC%"
+  //       ],
+  //   },
+  // ],
+  "typescript.suggest.completeFunctionCalls": true,
+  "latex-workshop.latex.outDir": "%DIR%/build/out",
+}

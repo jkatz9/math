@@ -1,0 +1,110 @@
+% and
+% \begin{align}
+%   Q_{hijk} = g\left(\Riem(\frac{\partial}{\partial x_h},\frac{\partial}{\partial x_i})\frac{\partial}{\partial x_j}, \frac{\partial}{\partial x_k}\right) = \sum_l g_{lk}\Riem_{jhi}^l.
+% \end{align}
+
+% \begin{comment}
+% This
+
+
+% \paragraph{Fundamnetal quadratic forms}
+% Let $M$ be a smooth manifold. A \textbf{linear connection} on $M$ is an $\Rbb$-bilinear pairing $(X,Y) \mapsto D_X Y$ from $\Gamma(TM)\times \Gamma(TM) \to \Gamma(TM)$ such that
+% \begin{enumerate}
+%   \item[CL.2] for all $X,Y \in \Gamma(TM)$ and $f\in C^\infty(M)$, one has $D_{fX} Y = f\cdot D_X Y$
+%   \item[CL.3] For all $X,Y\in |Gamma(TM)$ and $f\in C^\infty (M)$, one has  $D_{X}fY = f\cdot D_X Y+ (Xf)\cdot Y$.
+% \end{enumerate}
+
+% Let $M$ be a smooth manifold, and write $\Xcal(M) = \Gamma(TM)$ for the $C^\infty(M)$ module of vectorfields on $M$. A $p$-multilinear form on $\Xcal(M)$ is an element of $\Gamma(\bigotimes^p T^*M)$ if and only if it is $p$-multilinear over $C^\infty(M)$. For $X,Y\in \Xcal(M)$, the map $(X,Y) \to D_X Y$ is $C^\infty(M)$ linear in $X$ but not in $Y$.
+
+% \begin{description}
+%   \item[torsion] $T(X,Y) = D_X Y - D_Y X - [X,Y]$ for all $X,Y \in \Xcal(M)$
+%   \item[curvature ($(3,1)$ form)] $R(X,Y) \in \End(\Gamma(TM))$ is $Z \mapsto  D_Y D_X Z - D_X D_Y Z + D_{[X,Y]}Z$ for all $X,Y,Z \in \Xcal(M)$
+%   \item[curvature ($(4,0)$ form)] $R(X,Y,Z,T) = g(R(X,Y)Z,T)$ for all $X,Y,Z,T \in \Gamma(TM)$.
+% \end{description}
+% The $(4,0)$ form of the curvature satisfies the following properties:
+% \begin{description}
+%   \item[TC.1,2] For each $m \in M$ and $X,Y,Z,T \in \Gamma(TM)$
+%     \begin{align}
+%       R_m(X,Y,Z,T) & = - R_m(Y,X, Z,T) = -R_m(X,Y,T,Z)
+%       R_m(X, Y, Z, T)=R_m(Z, T, X, Y)
+%     \end{align}
+% \end{description}
+% \paragraph{Sectional curvature}
+% Let $G^2 M $ be the fiber bundle over $M$ such that the fiber $G_m^2 M$ over a point $m$ is the Grassmanian of $2$-planes in $T_m M$.
+
+% Fix a point $m\in M$, and let $P \in G_m^2 M$ be a $2$-plane in $T_mM$. Pick a basis $\{x,y\}$ for $P$ and define the sectional curvature of of $P$ as
+% \begin{align}
+%   \sigma(P) = \frac{R(x,y,x,y)}{|x \wedge y|^2}.
+% \end{align}
+
+% \paragraph{Ricci curvature, scalar curvature}
+% Let $E$ be a euclidean space, and let $\Tcal$ be the subspace of $\bigotimes^4 E^*$ of forms satisfying TC1,2,3. That is, quadralinear forms on $E$ which are alternating in the first pair and second pair of variables (separatly), symmetric under swapping the first pair and second, and satisfying the Jacobi identitity.
+
+% Let $\Scal$ be the subspace of $\bigotimes^2 E^*$ of symmetric tensors.
+
+% \paragraph{quadratic forms on $\Tcal$}
+% Let $e_i$ be an orthonormal basis for $E$.  If $A \in \End E$ then $\tr A = \sum_i (Ae_i \vert e_i)$.  Then for $x,y\in E$, one has
+% \begin{align*}
+%   \rho(R) (x,y) & = \sum_i R(x,e_i,y,e_i)          \\
+%   \tau(R)       & = \sum_{i,j} R(e_j,e_i,e_j,e_i)  \\
+%                 & = \sum_{i\neq j} \sigma(e_i,e_j) \\
+%                 & = \sum_{i,j} R_{ijij}
+% \end{align*}
+
+% and
+% \begin{align*}
+%   |R|^2        & = \sum_{i,j,k,l} R_{ijkl}^2                   \\
+%   |\rho (R)|^2 & = \sum_{j,k} \left( \sum_i R_{ijik} \right)^2 \\
+%   |\tau(R)|^2  & = \left( \sum_{i,j} R_{ijij} \right)^2.
+% \end{align*}
+
+% If $\dim M =2$, then the for each $m\in M$ only nonzero components of $R_m$ are $R_{1212}$ and $\sigma_m$ is the Gaussian curvature. One has
+% \begin{align*}
+%   \rho(R)_m (x,y) & = \sigma_m \cdot g_m(x,y) \\
+%   \tau(R)_m       & = 2 \sigma_m              \\
+%   |R|^2_m         & = 4 \sigma^2_m            \\
+%   |\rho(R)|^2_m = 2\sigma_m^2                 \\
+%   |\tau(R)|_m^2 = 4 \sigma^2_m.
+% \end{align*}
+% \paragraph{\cite{Villani-[RicciCurvature]2009}}
+% If $\nabla_X$ stands for the covariant derivative along a vector field $X$, then
+% \begin{align*}
+%   {\rm Riem}(X,Y)= \nabla_Y \nabla_X - \nabla_X\nabla_Y +\nabla_{[X,Y]}.
+% \end{align*}
+
+% if $e$ is a given unit vector in $T_xM$ and $(e,e_2,\dots,e_n)$ is a completion to an ONB, then
+% \begin{align*}
+%   \Ricci_x(e,e) = \sum_j \sigma_x(P_j)
+% \end{align*}
+% where $\sigma_x $ is sectional curvature at $x$ and $P_j$ is the plane spanned by $e,e_j$. The scalar curvature is the trace of the Ricci curvature.
+
+% For a surface $M$ embedded in $\Rbb^3$, in a nbd of $x\in M$, pick a unit normal vector $n=n(y)$. Then $n: U_x \to S^2 \subset \Rbb^3$ where $u_x$ is a nbd of $x$. Then $T_xM$ and $T_{n(x)} S^2$
+
+% If $\gamma_0 = x$ and $\dot{\gamma_0} =v \in T_x M$, then
+% \begin{align*}
+%   f(\gamma_t) = f(x) + t \ip{\nabla f(x)}{ v} + \frac{t^2}{2} \ip{\nabla^2 f(x)\cdot v}{v} + o(t^2).
+% \end{align*}
+% \hrule
+% Let $p \in M$ and $U_p \subset M$ be a neighborhood on which geodesic normal coordinates can be defined $(x^1,...,x^d) :  B \to U_p$ where $B$ is a ball about $0$ in $\Rbb^d$. In this coordinate system, $g_{ij} = \delta_{ij} + O(|x|^2)$ and
+% \begin{align*}
+%   g_{ij} = \delta_{ij} - \sum_{k,l}\frac{1}{3} R_{ikjl}x^kx^l + O(|x|^3)
+% \end{align*}
+% and
+% \begin{align}
+%   \dop v_g = \left[ 1 - \frac{1}{6}\sum_{j,k}R_jk x^j x^k + O(|x|^3 \right] \dop v_{euc}
+% \end{align}
+% \hrule
+% The condition
+% \begin{align*}
+%   \begin{array}{l}
+%     % R(u, v)=-R(v, u) \\
+%     \langle R(u, v) w, z\rangle=-\langle R(u, v) z, w\rangle \\
+%     % R(u, v) w+R(v, w) u+R(w, u) v=0
+%   \end{array}
+% \end{align*}
+% says that for each $p \in M$, the endomorphism $R_p (u_p,v_p) \in \gl(T_pM)$ lies in $\so(T_p M , \ip{}{}_p )$. The property $R(u, v)=-R(v, u)$ says that $R_p: T_pM \times T_pM \to \gl T_pM$ is alternating, so factors thru $T_pM \wedge T_pM \to \gl T_p M$.
+% \hrule
+% One can think of curvature as an operator $Q \in \End \bigwedge^2 TM $  given by
+% \begin{align*}
+%   \ip{Q(u\wedge v)}{w\wedge z} = \ip{R(u,v)z}{w}
+% \end{align*}

@@ -1,0 +1,102 @@
+% !TeX root = main.tex
+Throughout $k$ will denote a number field, and $R$ its ring of integers. We write $V_k$ for its set of places, and write $\nu \in V_k^\infty$ (resp. $\nu \in V_k^f$) if $\nu$ is archimedian (resp. nonarchimedian).
+We identify nonarchimedian places $\nu \in V_k^f$ with discrete valuations $\nu : k \to \Zbb$ on $k$ and in turn, prime ideals $\pfrak = \{ x \in k: \nu(x) > 0\}$ in $R$.
+For a place $\nu \in V_k$ we write $k_\nu$ for the corresponding local field, and if $\nu \in V_k^f$ corresponding to a prime ideal $\pfrak$ of $R$ we write $R_\nu$ or $R_\pfrak$ for the closure of $R$ in $k_\nu$.
+We say $\nu \in V_k^\infty$ is real (resp. complex) and write $\nu \in V_k^{\infty,\Rbb}$ (resp. $V_k^{\infty,\Cbb}$) if $k_\nu \approx \Rbb$ (resp. $\Cbb$)
+% We denote by $\Abb_k$ the ring of adeles of $k$. 
+
+Let $A$ be a quaternion algebra over $k$. We say that $A$ \textbf{ramifies} over a place $\nu \in V_k$, and write $\nu \in \Ram A$, if $A_\nu = A \otimes_k k_\nu$ is a division algebra, and otherwise \textbf{unramified} in which case $A_\nu \approx M(2,k_\nu)$.
+By class field theory, the set $\Ram A$ of places over which $A$ ramifies is a finite set with even cardinality. Conversely, given any finite set $S \subset V_k$ of even cardinality and such that $S\cap V_k^{\infty,\Cbb}=\emptyset$ there is a unique quaternion algebra $A$ with $\Ram A = S$, up to isomorphism. $A$ is a division algebra if and only if $\Ram A$ is nonempty, wheras $\Ram A = \emptyset$ if and only if $A$ is isomorphic to $M(2,k)$.
+
+Associate to the quaternion algebra $A$ the algebraic groups over $k$ defined by
+\begin{align*}
+    \tilde{\Gbf}(E) = (A\otimes_k E)^\times,\quad \Gbf (E) = (A\otimes_k E)^1,\quad  \bar{\Gbf}(E) = E^\times \lmod (A\otimes_k E)^\times
+\end{align*}
+for any commutative $k$-algebra $E$. If $\Hbf$ is any of $\Gbf$, $\tilde{\Gbf}$, or $\bar{\Gbf}$, we write $H$ for $\Hbf(k)$, $H_\nu$ for $\Hbf(k_\nu)$, and $H_{\Abb_k}$ for $\Hbf(\Abb_k)$.
+
+\section{Arithmetic $2-$ and $3-$ manifolds}
+\begin{definition}
+    We say $A$ is of
+    \begin{itemize}
+        \item    \textbf{Fuchsian-type} if: $k$ is totally real, and $A$ is unramified over exactly one real place $\nu_o$. In thise case, we use $\nu_o$ to identify $k$ with a subfield of $\Rbb$, and replace $\nu_o$-subscripts with $\Rbb$. Thus if $A$ is of fuchsian type, one has
+              \begin{align}\label{eq:Fuchsian}
+                  G_\Rbb \approx \GL(2,\Rbb),\quad G_\Rbb \approx \SL(2,\Rbb),\quad  \bar{G}_\Rbb \approx \PGL(2,\Rbb)
+              \end{align}
+        \item \textbf{Kleinian-type} if: $k$ has exactly one complex place $\nu_o$, and $A$ is ramified over all real places. In this case, use $\nu_o$ to identify $k$ with a subfield of $\Cbb$, and replace $\nu_o$-subscripts with $\Cbb$. Thus if $A$ is of Kleinian type, one has
+              \begin{align}\label{eq:Kleinian}
+                  G_\Cbb \approx \GL(2,\Cbb),\quad G_\Cbb \approx\SL(2,\Cbb),\quad  \bar{G}_\Cbb \approx \PGL(2,\Cbb)
+              \end{align}
+    \end{itemize}
+\end{definition}
+If $A$ is a quaternion algebra of Fuchsian or Kleinian type, we pick once and for all the isomorphisms in \ref{eq:Fuchsian} and \ref{eq:Kleinian}  respectively.
+
+
+
+
+
+
+
+
+
+If $A$ is of Fuchsian (resp. Kleinian) type then  for any order $O$,   $\Gamma_O$ is a lattice in $G_\Rbb  \approx \SL(2,\Rbb)$ (reps. in $G_\Cbb\approx \SL(2,\Rbb)$). We call $\Gamma_O$ the \textbf{arithmetic lattice associated to} $O$. Let $\Hbb$ be hyperbolic $2$- or $3$-space, according to whether $A$ is Fuchsian or Kleinian. Then $\Gamma_O$ acts on $\Hbb$ properly discontinuously by isometries, and we write $X(\Gamma_O)$ for the quotient orbifold $\Gamma_O \lmod \Hbb$.
+
+
+
+
+\paragraph{Principal congruence subgroups}
+For an ideal $\afrak$ of $R$, the reduction map $R \to R/\afrak$ induces an epimorpshim of groups $\Gamma \to \Gambf (R/\afrak)$. We write $\Gamma_O(\afrak)$ for the kernel, and refer to it as the \textbf{principal congruence subgroup of level } $\afrak$ in $\Gamma_O$. To summarize, for each ideal $\afrak$ of $R$, there is a short exact sequence of groups
+\begin{align*}
+    1 \to \Gamma_O (\afrak) \to \Gamma_O \to \Gambf (R/\afrak) \to 1.
+\end{align*}
+where
+\begin{align*}
+    \Gamma_O(\afrak) = \{ g \in O^1: g \in 1 + \afrak O\}
+\end{align*}
+and $\Gambf_O (R/\afrak)$ is a finite group. We define principal congruence subgroups of  $\Gamti$ and $\Gambar$ similarly.
+
+\paragraph{Type number}
+We say that $O$ is a maximal order in $A$ if it is not properly contained in any other order. Maximal orders exist in any quaternion algebra over $k$. The group $\Gti = A^\times$ (through its quotient $\Gbar = k^\times \lmod A^\times$) on the set of maximal orders in $A$. We say that $A$ has  \textbf{type-number 1} if this action is transitive, i.e. all maximal orders in $A$ are conjugate by an element of $A^\times$.
+\begin{remark}\label{remark:classnum}
+    The number conjugacy classes of maximal orders in a quaternion algebra $A$ over a number field $k$ is always finite, and divides the order of the $2$-torsion subgroup of the class group of $k$. If $k$ class number $1$, or more generally if it has odd class number, then any quaternion algebra over $k$ will have type number $1$.  In particular, any quaternion algebra $\Qbb$ has type number $1$.
+\end{remark}
+
+\begin{definition}.\linebreak
+    \begin{enumerate}
+        \item     A subgroup $\Lambda$ of $\SL(2,\Rbb)$ (resp. $\SL(2,\Cbb)$) is \textbf{arithmetic} if there exists a quaternion algebra $A$ over a number field $k$ of Fuchsian (resp. Kleinian) type and an order $O$ in $A$ such that $\Lambda$ is commensurable (in the wide sense) with the arithmetic lattice $\Gamma_{O}$ associated to $O$.
+        \item  We say that $\Lambda$ is \textbf{derived from} $O$ if it is conjugate in $\SL(2,\Rbb)$ (resp. $\SL(2,\Cbb)$) to a subgroup of $\Gamma_O$.
+        \item Say that $\Lambda$ is \textbf{derived from} $A$ if it is derived from some order in $A$. If $M$ is a hyperbolic $- or $- manifold, we say that $M$ is arithmetic (resp. derived from an order $O$ or a quaternion algebra $A$) if there exists an arithmetic lattice $\Lambda$  such that $M$ is isometric to $\Lambda \lmod \Hbb$ for some arithmetic lattfice $\Lambda$ (resp. arithmetic lattice derived from $O$ or $A$).
+    \end{enumerate}
+\end{definition}
+
+\paragraph{Invariants of arithmetic Fuchsian and Kleinian groups}
+Let $\Lambda$ be a subgroup of $\SL(2,\Cbb)$.  Write $\tr \Lambda$ for the set $\{\tr g : g\in \Lambda\} \subset \Cbb$ and  $\Qbb(\tr \Lambda)$ for the \textbf{trace field of $\Lambda$}, the subfield of $\Cbb$ generated by $\tr \Lambda$. We write
+\begin{align*}
+    A_0\Lambda = \{ \sum_i a_i g_i : a_i \in \Qbb \tr \Lambda, g_i \in \Lambda\},
+\end{align*}
+for the subring of $M(2,\Cbb)$ generated by $\Lambda$ as an algebra over $\Qbb \tr \Lambda$. Then we have
+\begin{proposition}
+    Suppose $\Lambda$ is a finitely generated, nonelementary subgroup of $\SL(2,\Cbb)$. Then $A_0\Lambda$ is a quaternion algebra over $\Qbb \tr \Gamma$. Furthermore
+    \begin{enumerate}
+        \item If $\Lambda$ is a lattice in $\SL(2,\Cbb)$ or an arithmetic lattice in $\SL(2,\Rbb)$ then $\Qbb \tr \Lambda$ is a number field.
+        \item $\Lambda$ is conjugate to a subgroup of $\SL(2,\Rbb)$ if and only if $\Qbb \tr \Lambda$ is contained $\Rbb \subset \Cbb$.
+        \item If $\Lambda$ is an arithmetic lattice in $\SL(2,\Cbb)$ or $\SL(2,\Rbb)$, then $\Lambda$ is derived from $A_0 \Lambda$ if and only if $\tr \Lambda$ consists of algebraic integers in $\Qbb \tr \Lambda$.
+    \end{enumerate}
+\end{proposition}
+
+
+
+The following basic facts will be used in what follows.
+\begin{proposition}
+    % Let $A$ be a quaternion algebra of Fuchsian or Kleinian type.
+    \begin{enumerate}
+        Let $\Kbb = \Rbb$ or $\Cbb$.
+        \item\label{item:orders} If $O,O'$ are two orders in a quaternion algebra $A$, then $\Gamma_O$ and $\Gamma_{O'}$ are commensurable in $G=A^1$. Consequently, the property of being commensurable in $G_\Kbb$ to an order in $A$ depends only on $A$.
+        \item If $O,O'$ are orders in quaternion algebras $A,A'$ over number fields $k,k'$ with $A_\Kbb = A'_\Kbb$ such that $\Gamma_O$ is commensurable to $\Gamma_O'$ in $A_\Kbb^1 = {A^1}{\Kbb}^1$ then $k=k'$ and $A = A'$. Consequently, the quaternion algebra is an invariant of the commensurability class of an arithmetic lattice in $\SL(2,\Kbb)$.
+        \item The quaternion algebra of an arithmetic lattice in $\SL(2,\Kbb)$ is a complete invariant of its commensurability class.
+        \item An arithmetic lattice is cocompact if and only if its quaternion algebra is a division algebra.
+    \end{enumerate}
+\end{proposition}
+
+
+
+\newpage

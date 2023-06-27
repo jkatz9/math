@@ -1,0 +1,357 @@
+\section{Geometric Preliminaries}
+Let $(M,g)$ be a compact Riemannian manmifold.
+\paragraph{Laplace-spectrum}
+The eigenvalues of the Laplace operator of the Laplace operator $\Delta_{M,g}$ acting on $L^2(M,\dop \Vol_g)$ form a discrete set $\spec_{M,g}$ of nonnegative real numbers, tending to $\infty$. For each $\lambda \in \spec_{M,g}$, the dimension $m_{\Delta_{M,g}}(\lambda)$ of the $\lambda$-eigenspace $E_{M,g}(\lambda)=\ker (\Delta_{M,g}- \lambda \id)$ in $L^2(M, \dop \Vol_g)$ is finite. We encode the this data in the \textbf{Laplace-spectral counting function}, defined for $x\in \Rbb_{\geq 0}$ by
+\begin{align}
+  \pi_{\Delta_{M,g}}(x) = \sum_{\lambda \in \spec(\Delta_{M,g}) \cap [0,x]} \dim \ker (\Delta_{M,g} - \lambda \id )
+\end{align}
+
+% We say that two Riemannian manifolds $(M,g)$ and $(M',g')$ are Laplace-\textbf{isospectral} if $\spec_{M,g} = \spec_{M,g'}$. We say that $(M,g)$ is \textbf{Laplace-spectrally rigid} in the absolute sense, if any Riemannian manifold which isospectral to $(M,g)$ is in fact isometric to $(M,g)$.
+
+\paragraph{Length spectrum}
+Within each free homotopy class $\gamma$ of closed curves on $M$ there is a geodesic representative of minimal length; we write $\ell_g(\gamma)$ for that length. For a positive real number $l$, we write $\Lspec_{M,g}(\ell)$ for the number of free homotopy classes $\gamma$ of closed curves in $M$ for which $\ell_g(\gamma) = l$.
+
+
+Two compact Riemannian manifolds $(M,g)$, $(M',g')$  are said to be \textbf{Laplace-isospectral} (resp. \textbf{length-isospectral})  if $\spec_{M,g} = \spec_{M',g'}$ (resp.  if $\Lspec_{M,g}=\Lspec_{M',g'}$). We say that $(M,g)$ is Laplace- (resp. length-) spectrally rigid if any $(M',g')$ to which it is Laplace- (resp. length-)isospectral, is in fact isometric to $(M,g)$.
+
+\paragraph{Fundamnetal quadratic forms}
+Let $M$ be a smooth manifold, and write $\Xcal(M) = \Gamma(TM)$ for the $C^\infty(M)$ module of vectorfields on $M$. A $p$-form on $\Xcal(M)$ is an element of $\Gamma(\bigotimes^p T^*M)$
+
+\paragraph{Heat kernel}
+The heat \textbf{heat kernel} on $M$ is the fundamental solution to the \textbf{heat equation} on $M$. That is,  it is the unique smooth function $K_M:M\times M \times \Rbb_{>0} \to \Rbb$ such that:  Given any initial data $f: M \to \Rbb$, the solution $F:M\times \Rbb_{>0} \to \Rbb$ of the heat equation
+\begin{align}
+  \Delta F & = - \frac{\partial F}{\partial t} \\
+  F(x,0)   & = f(x)
+\end{align}
+is given by
+\begin{align}
+  F(x,t) = \int_M K_M(x,y,t)f(x) \dop \vol_M(x)
+\end{align}
+
+
+By a theorem of Minakshisundaram and Pleijel \cite{Minakshisundaram.Pleijel-[PropertiesEigenfunctionsLaplaceoperator]1949} there exist a sequence of functions $u_{M,k} : M \to \Rbb$ such that for each $x \in M$, the value $u_{M,k}(x)$ is given by universal formulae in terms of the curvature tensor of $M$ and its covariant derivatives at $x$ such that
+\begin{align}\label{eq:heatAsymptoticM}
+  K_M(x,x,t) \sim \frac{1}{(4\pi t)^{\dim M /2 }} \sum_{k=0}^\infty u_{M,k}(x)t^k t, \quad \text{ as $t\to 0^+$.}
+\end{align}
+In particular, \cite[page 398]{Berger-[PanoramicViewRiemannian]2003} one has
+\begin{align}
+  u_{M,0} (x) & = 1                            \label{eq:heatzero}                                                     \\
+  u_{M,1}(x)  & = \frac{1}{6} \label{eq:heatone}\scalar(x)                                                             \\
+  u_{M,2}(x)  & = \frac{1}{360} \left( 2\Norm{R(x)}^2 -2 \Norm{\Ricci(x)}^2 +5 \scalar^2(x) \right) \label{eq:heattwo}
+\end{align}
+where $\scalar$, $\Ricci$, and $R$ are the scalar, Ricci, and Riemannian curvature tensors.
+
+\begin{proposition}
+  Suppose $(M,g)$ and $(M',g')$ are isospectral closed Riemannian manifolds.  Then for all $t>0$, one has $\int_M K_M(x,x,t) \dop \vol_M(x) = \int_{M'} K_{M'}(x,x,t)\dop \vol_{M'}(x)$.
+\end{proposition}
+Let $\phi_0,\phi_1,\phi_2,\cdots$ be an orthonormal sequence of eigenfunctions for $\Delta$ corresponding to eigenvalues $\lambda_0=0 <\lambda_1 \leq \lambda_2 \leq \dots$ repeated according to multiplicity.  Then one has the following expression for the heat kernel:
+\begin{align}\label{eq:heatdef}
+  K_M(t,x,y):= \sum_{j\geq 0} e^{-t\lambda_j} \phi_j(x)\phi_j(y)
+\end{align}
+Note, however, that the heat kernel $K_t(x,y)$ is independent of the choice of orthonormal basis of eigenfunctions in the equation \ref{eq:heatdef}.
+\begin{corollary}
+  If $(M,g)$ and $(M',g')$ are isospectral then for all $k\geq 0$, one has
+  \begin{align}
+    \int_M u_{M,k}(x) \dop \vol_g(x)  = \int_{M'} u_{M',k}(x) \dop \vol_{g'}(x).
+  \end{align}
+  In particular: the dimension, volume, and total scalar curvature for $(M,g)$ and $(M',g')$ coincide. If $\dim M = \dim M' = 2$, then by Gauss-Bonet, the Euler-characteristics of $M$ and $M'$ coincide.  Consequently, $M$ and $M'$ are homeomorphic.
+\end{corollary}
+
+\begin{proposition}[prop. E.IV.15 in]\cite{Berger.Gauduchon.Mazet-[SpectreVarieteRiemannienne]1971a}]
+  Suppose  $(M,g)$ and $(M',g')$ are isospectral. If $(M,g)$ is  a hyperbolic surface (i.e. has constant scalar curvature $-1$)  then so too is $(M',g')$.
+\end{proposition}
+\begin{proof}
+  In dimension $2$, one has $\Norm{\Ricci}^2 = \frac{\scalar^2}{2}$ and $\Norm{R}^2 = 2 \Norm{\Ricci}^2 = \scalar^2$. Thus, the universal expression for the second term in the heat kernel asymptotic expansion is
+  \begin{align}
+    \frac{1}{360}\left(2\Norm{R}^2 - \Norm{\Ricci}^2 + 5 \scalar^2\right) =\frac{1}{60} \scalar^2.
+  \end{align}
+  and
+  \begin{align}
+    \frac{1}{60} \int_M \scalar_{g}^2 v_g = \frac{1}{60} \int_{M'} \scalar_{g'}^2 \dop v_{g'}.
+  \end{align}
+  By Cauchy-Schwarz,
+  \begin{align}\label{eq:cauchySchwarz}
+    \left( \int_{M'} \scalar_{g'} \dop v_{g'} \right)^2 \leq \left( \int_{M'} \scalar_{g'}^2 \dop v_{g'} \right)\left( \int_{M'} 1 \dop v_{g'} \right)
+  \end{align}
+  with equality if and only if $\scalar_{g'}$ and $1$ are linearly dependent as functions on $M'$, which is to say: if and only if $\scalar_{g'}$ is constant. Now note that, as
+  \begin{align}
+    \int_{M'}\scalar_{g'}\dop v_{g'}   & =\int_{M}\scalar_{g}\dop v_{g},  \\
+    \int_{M'}\scalar_{g'}^2\dop v_{g'} & =\int_{M}\scalar_{g}^2\dop v_{g} \\
+    \int_{M'}1\dop v_{g'}              & =\int_{M}1\dop v_{g},
+  \end{align}
+  and by our assumption that $\scalar_g$ is constant on $M$, the inequality in \ref{eq:cauchySchwarz} is an equality. Thus, the scalar curvature on $(M',g')$ is constant, and is readily seen to be equal to that on $(M,g)$.
+\end{proof}
+
+
+\newpage
+% unique function $K:\Rbb_{\geq 0} \times M \times M \to \Rbb$ satisfying the properties
+% \begin{enumerate}
+%   \item For each fixed $y\in M$, one has $\left(\frac{\partial}{\partial t} + \Delta \right)k_t(x,y) = 0$
+%   \item For each $u\in C^\infty(M)$, one has $ \int_M k_t(x,y) u(y)  \dop \Vol_g (x)(y) \to u(x)$  as $t \to 0^+$, uniformly in $x$
+%   \item $k_t(\cdot,\cdot)$ is $C^2$ in $(x,y)$ for each $t$
+%   \item $k_\cdot( x,y)$ is $C^1$  in $t$ for each $(x,y)$.
+% \end{enumerate}
+
+
+
+% \begin{proposition}\label{prop:asymptoticExpansion}
+%   Let $(M,g)$ be a compact $d$-dimensional Riemanniannian manifold without boundary, and let $K_t(x,y)$ be its heat kernel.  There exist a sequence of smooth functions $\abf_0,\abf_1, \abf_2,\cdots$ on $M$ such that
+%   \begin{align}\label{eq:asymptoticExpansion}
+%     K(t,x,x) \sim t^{-d/2}\left(\abf_0(x)+ \abf_1(x) t + \abf_2(x) t^2 +\cdots  \right)
+%   \end{align}
+%   as $t \to 0^+$. For each $n$, the function $\abf_n$ is a homogeneous polynonmial of degree $2n$ in the derivatives of the metric $g$.
+%   In particular,
+%   \begin{align}
+%     \abf_0 & = 1,                                                       \\
+%     \abf_1 & =\frac{1}{6} \tau,                                         \\
+%     \abf_2 & =\frac{1}{360}\left( 5\tau^2 - 2 |\rho|^2 +2 |R|^2 \right)
+%   \end{align}
+%   where $\tau \in C^\infty(M)$ is the scalar curvature,j
+% \end{proposition}
+
+
+
+
+% \begin{remark}\label{remark:metricInvariants}
+%   Both the Laplace spectrum $\spec_{M,g}$ and the length spectrum $\Lspec_{M,g}$ are invariants of the Riemannian structure on $M$.
+% \end{remark}
+
+% \paragraph{pre trace formulae}
+% Let $D$ be an unbounded, self-adjoint operator acting on a hilbert space $\Hcal$ and suppose that the spectrum of $D$ is a discrete set of nonnegative real numbers, each occuring with finite multiplicity. We write $\spec D$ for the sequence $\lambda_0 \leq \lambda_1 \leq \dots$ of eigenvalues, repeated according to their multiplicity. Then there exists an orthonormal basis $\phi_k$ of $\Hcal$ satisfying $D \phi_k = \lambda_k \phi_k$. Say that a function $f: \Rbb_{\geq 0} \to \Cbb$ is \textbf{admissible} for $D$ if the sum $\sum_{k\geq 0}f(\lambda_k)$ converges.  If $f$ is admissible for $D$, may define an operator $f(D)$ on $\Hcal$ by the rule
+% \begin{align} \label{eq:spectrum}
+%   f(D) \phi = \sum_{k\geq 0} f(\lambda_k) \ip {\phi}{\phi_k} \phi_k
+% \end{align}
+% for any $\phi\in \Hcal$.
+
+% Suppose furthermore that $\Hcal = L^2(X,\dop \mu)$ for some measure space $(X,\dop \mu)$. Then the operator $f(D)$ admits an integral kernel $K_f : X\times X \to \Cbb$, so that
+% \begin{align}\label{eq:kernel}
+%   f(D) \phi(x) = \int_M K_f(x,y)\phi(x) \dop \mu(y).
+% \end{align}
+
+% Then the operator $f(D)$ is of trace-class, and one can compute its trace in two ways:
+% \begin{description}
+%   \item[via its spectrum:] $ \Tr(f(D)) = \sum_{k\geq 0} f(\lambda_k)$, or
+%   \item[via its kernel:] $\Tr(f(D)) = \int_{M} K_f(x,x) \dop \mu(x).$
+% \end{description}
+% and the family of equations (depending on the choice of admissible function $f$ for $D$)
+% \begin{align}
+%   \sum_{k\geq 0} f(\lambda_k) = \Tr(f(D)) = \int_{M} K_f(x,x) \dop \mu(x),
+% \end{align}
+% is the \textbf{pre-trace formula} for $D$.
+
+% \paragraph{Trace formulae}
+% Now suppose that $X = \Gamma \lmod G$,  where $\Gamma$ is a cocompact lattice in a semisimple Lie group $G$. Pick a Haar measure $\dop \mu$ on $G$, and define a $G$-invariant measure $\dop \mu_*(x)$ on $X$ by requiring that, for any $f\in C_c^\infty(G)$.
+% \begin{align}
+%   \int_G f(x) \dop \mu =  \int_{\Gamma \lmod G} \left( \sum_{\gamma \in \Gamma} f(\gamma x) \dop \mu_*(x) \right).
+% \end{align}
+% Then $L^2(\Gamma \lmod G , \dop \mu_*)$ may be identified with the Hilbert space $\Hcal$ of  left-$\Gamma$ invariant functions $\phi$ on $G$ for which $||\phi||^2:=\int_\Gamma \lmod G |\phi|^2 \dop \mu_* <\infty$. For $\phi \in L^2(X)$ and $y \in G$, set $(U_\Gamma(y)\phi) (x) = \phi(xy)$.
+
+% The unitary representation $U_\Gamma:G \to \Aut(\Hcal)$ is completely reducible: writing $\Irr(G)$ for the set of equivalence classes of unitary representations of $G$, and letting $m_\Gamma : \Irr G \to \Zbb_{\geq 0}$ be the function giving the multiplicity $m_\Gamma(\pi)  = \dim \Hom_G (\pi , U_\Gamma)$  of an irreducible representation $\pi$  in $U_\Gamma$, then one has an isomorphism of unitary $G$-representations
+% \begin{align}
+%   U_\Gamma \approx \sum_{\pi \in \Irr G} \pi^{\oplus m_\Gamma(\pi)}
+% \end{align}
+% We extend the group representation $U_\Gamma : G \to \Aut(L^2(X))$ to an algebra representation $U_\Gamma: L^1(G)\to \End(L^2(X))$ by the rule $(U_\Gamma(f)) \phi(x) = \int_G f(y)\phi(g) \dop \mu (x)$. Say that $f \in L^1(G)$ is $\Gamma$-admissible $U_\Gamma(f)$ is of trace class,  and the series $\sum_{\gamma \in \Gamma}f(y^\inv \gamma x)$ converges for $(x,y)$, uniformly on compacta, to a continuous function $K_f(x,y)$ on $G\times G$.
+
+% For $\Gamma$-admissible $f$, the pre-trace formula for $U_\Gamma(f)$ takes the form
+% \begin{align}\label{eq:pretrace}
+%   \sum_{\pi \in \Irr(G)} m_\Gamma(\pi) \Tr U_\Gamma^\pi(f) = \Tr U_\Gamma =\int_{\Gamma \lmod G} K_f(x,x) \dop \mu_* (x)
+% \end{align}
+% where $U_\Gamma^\pi(f)$ any subrepresentation of $U_\Gamma$ isomorphic to $\pi$.
+
+% To upgrade the pre-trace formula to the genuine trace formula, in the right hand side of \ref{eq:pretrace} we pick a set of representatives $C_\Gamma$ for the conjugacy classes of $\Gamma$, and write
+% \begin{align}\label{eq:conjclass}
+%   \Gamma = \bigsqcup_{\gamma\in C_\Gamma} \{\gamma'^\inv \gamma \gamma' : \gamma' \in \Gamma\}.
+% \end{align}
+% Letting $\Gamma_\gamma$ denote the centralizer of $\gamma$ in $\Gamma$,  we then identify each conjugacy class on the RHS of \ref{eq:conjclass} with the quotient $\Gamma \rmod \Gamma_\gamma$.  Then
+
+% \begin{align}
+%   \int_{\Gamma \lmod G} K_f(x,x) \dop \mu_* (x) & = \sum_{\gamma \in C_\Gamma}\int_{\Gamma \lmod G} \sum_{\lambda \in \Gamma / \Gamma_\gamma}  f(x^\inv \lambda^\inv  \gamma \lambda x) \dop \mu^*(x)      \\
+%   %   & = \int _{\Gamma \lmod G}\sum_{c \subset \Gamma} \sum_{\gamma \in c } f(x^\inv \gamma x ) \dop \mu_*(x) \\
+%                                                 & =\sum_{\gamma \in C_\Gamma} \int_{\Gamma_\gamma \lmod G_\gamma}\int_{G_\gamma \lmod G} f(x^\inv y^\inv  \gamma y x) \dop\mu^*_\gamma(y)\dop\mu_\gamma(x) \\
+%                                                 & = \sum_{\gamma \in C_\Gamma} v_\gamma I_\gamma(f).
+% \end{align}
+% where $G_\gamma$ is the centralizer of $\gamma$ in $G$, and $I_\gamma(f)$ is the \textbf{orbital integral} $I_\gamma(f) = \int_{G_\gamma \lmod G} f(x^\inv \gamma x) \dop\nu_\gamma(x)$.
+% "
+% The \textbf{trace formula} for $\Gamma$-admissible $f \in L^1(G)$ is thus
+% \begin{align}
+%   \sum_{\pi \in \Irr(G)} m_\Gamma(\pi) \Tr U_\Gamma^\pi(f) = \Tr U_\Gamma(f) =   \sum_{\gamma \in C_\Gamma} v_\gamma I_\gamma(f).
+% \end{align}
+
+% \newpage
+
+% Let $\Omega \in U(\gfrak)$ be the Casimir element for $G$, viewed as an symmetric, semi-bounded, unbounded, $G$-bi-invariant operator on $\Hcal$, and let $D$ be its unique maximal self-adjoint extension. If $f : \Rbb \to \Cbb$ is any $D$-admissible function, then the
+
+
+% %Suppose now that $G$ is a semisimple Lie group, $K$ is a maximal compact subgroup of $G$, and that $\Gamma$ is a  cocompact lattice in $G$. The killing form on $\gfrak$ induces a Riemannian metric on $G/K$, which pushes forward to a metric on $\Gamma \lmod G \rmod K$. Let $\Delta$ be the unique extension of the Laplace operator on $\Gamma \lmod G \rmod K$ to a self-adjoint, unbounded operator on $L^2(\Gamma \lmod G \rmod K)$. If $f$ is an admissible function for $\Delta$, then the operator $f(\Delta)$ admits 
+
+
+
+
+% Let $(M,g)$ be a compact Riemannian manifold, $\tilde{M}$ its universal cover, and $\Gamma =\pi_1(M)$ its fundamental group. There is a unique metric $g^*$ such that the covering map $(\Mti, g^*) \to (M,g)$ is a local isometry.  The fundamental group $\Gamma$ acts on $(\Mti,g^*)$ by isometries and induces an isometric identification of $\Gamma lmod \Mti$ with $M$.
+
+% We identify functions on $M$ with $\Gamma$ invariant functions on $\Mti$.  For a smooth compactly supported function $f \in C_c^\infty(\Mti)$, the function $P_\Gamma(f) : x \mapsto \sum_{\gamma \in \Gamma}f(\gamma x)$ descends to a smooth function on the quotient $\Gamma \lmod \Mti \approx M$. The operator $P_\Gamma:C_c^\infty(\Mti)\to C^\infty(M)$ is surjective, and satisfies the relation
+% \begin{align}\label{eq:average}
+%   \int_{\Mti} f \dop \Vol_{g^*}  = \int_{\Gamma \lmod \Mti} P_\Gamma (f) \dop \Vol_{g}.
+% \end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \paragraph{Hyperbolic $2$- and $3$-manifolds}
+
+% \subparagraph{Surfaces}
+% We take the upper half plane
+% \begin{align*}
+%   \Hfrak = \{ x+iy \in \Cbb : y >0\}
+% \end{align*}
+% equipped with the Riemannian metric
+% \begin{align*}
+%   g_\hyp = \frac{\dop x^2 +\dop y^2}{y^2}
+% \end{align*}
+% is a model for the hyperbolic plane. The invariant volume element for this metric is given by
+% \begin{align*}
+%   \dop \vol_{g_\hyp} = \frac{\dop x \dop y}{y^2},
+% \end{align*}
+% and the Laplace operator is
+% \begin{align*}
+%   \Delta_{g_\hyp} = \frac{1}{y^2}\left( \frac{\partial^2 }{\partial x^2}+ \frac{\partial^2 }{\partial y^2} \right)
+% \end{align*}
+
+% The group
+% \begin{align*}
+%   \SL(2,\Rbb) = \left\{ \Tbt{a}{b}{c}{d}: ad-bc =1 \right\}
+% \end{align*}
+% acts isometrically and transitively on $(\Hfrak,\dop s^2)$ by linear fractional transformations
+% \begin{align*}
+%   \Tbt{a}{b}{c}{d} z = \frac{az+b}{cz+d} %= \frac{ac |z|^2 +(ad+bc)\re z  +bd}{|cz+d|^2} + i \frac{\im z}{|cz+d|^2}
+% \end{align*}
+% where $\tbt{a}{b}{c}{d} \in \SL(2,\Rbb)$ and $|\cdot|$ is the usual absolute value on $\Cbb$. This action factors through $\PSL(2,\Rbb)$ which can be identified with the full group of orientation preserving isometries of $(\Hfrak,\dop s^2)$. The stabilizer of $i$ in $\SL(2,\Rbb)$ is
+% \begin{align*}
+%   \SO(2) = \{\Tbt{c}{s}{-s}{c}: c^2 + s^2 =1\}
+% \end{align*}
+% so that the map $g \mapsto g i$ establishes an identification $\SL(2,|Rbb) / \SO(2) \approx \Hfrak$.
+% % Under this identification,the tangent space $T_i \Hfrak$ is identified with the quotient $\sl(2,\Rbb) / \so(2)$ where
+% % \begin{align*}
+% %     \sl(2,\Rbb) = \{ X \in M(2,\Rbb) : \tr X =0 \}
+% % \end{align*}
+% % and
+% % \begin{align*}
+% %     \so(2) = \{ X \in \sl(2,\Rbb) : X + ^t X = 0\}
+% % \end{align*}
+
+% % [OVEREXPOSITING?]
+
+% If $(M,g)$ is a compact Riemannian manifold let
+% \begin{align}\label{eq:universalCover}
+%   \tilde{M} \to M
+% \end{align}
+% be its universal cover, and let $g^*$ be the metric on $\Mti$ pulled back along \ref{eq:universalCover}. Then $\pi_1(M)$ acts freely and properly discontinuously on $(\Mti,g^*)$ by isometries, transitively on the fibers of \ref{eq:universalCover}. Consequently, one has an isometric identification
+% \begin{align}
+%   \pi_1(M) \lmod \tilde{M} \approx M.
+% \end{align}
+
+% If $M$ is a surface, and $g$ has constant scalar curvature $-1$, then there exists an isometry
+% \begin{align}\label{eq:uniformization}
+%   (\tilde{M},g^*) \to (\Hfrak , g_\hyp)
+% \end{align}
+% Pushing forward the action of $\pi_1(M)$ on $\Mti$ through the isometry \ref{eq:uniformization}, one obtains a homomorphism $\rho: \pi_1(M) \to \PSL(2,\Rbb) =\Isom(\Hfrak,g_\hyp)$ which induces an isometry of $(M,g)$ with $(\rho(\pi_1(M))\lmod \Hfrak,g_\hyp)$. The Riemannian structure  $(M,g)$ is uniquely determined by the $\PSL(2,\Rbb)$-conjugacy class of the homomorphism $\rho$. We refer to $\rho$ as a \textbf{Fuchsian}-representation of $\pi_1(M)$, and the map $\Hfrak \to \rho(\pi_1(M)) \lmod \Hfrak$ as a \textbf{uniformization} of $(M,g)$.
+
+
+
+
+% \paragraph{3-manifolds}
+% [TODO]
+% % Note that at each place $\nu \in V_k \setminus \Ram(A)$ one has isomorphisms
+% % \begin{align*}
+% %     \tilde{\Gbf}(k_\nu)\approx \GL(2,k_\nu),\quad \Gbf(k_\nu) \approx \SL(2,k_\nu), \bar{\Gbf}(k_\nu) \approx \PGL(2,k_\nu).
+% % \end{align*}
+% \section{Length spectrum, trace formulae}
+
+% Let $(M,g)$ be a compact Riemannian manifold with negative scalar curvature. The set of lengths of closed geodesics on $M$ is a discrete subset of $\Rbb_{>0}$ and for each length $\ell$, the number $\Lspec_{M,g}(\ell)$ of geodesics on $M$ with length $\ell$ is finite. We refer to the function $\Lspec_{M,g}$ on $\Rbb_{>0}$ as the \textbf{length spectrum} of $(M,g)$.  We say that two negatively curved closed Riemannian manifolds $(M,g)$ and $(M',g')$  are \textbf{length-isospectral} provided $\Lspec_{M,g} = \Lspec_{M',g'}$.
+
+
+% Let $\Kbb = \Rbb$ or $\Cbb$, and let $G=\SL(2,\Kbb)$, $K$ be a maximal compact subgroup of $G$, and write $X = G/K$ for the associated symmetric space, equipped with its metric of constant curvature $-1$.
+
+% $A$ be the copy of $\Kbb^\times$ embeded in $G$ via the $a(\lambda) = \tbt{\lambda}{0}{0}{\lambda^\inv}$.
+
+
+
+
+
+% \newpage
+% Let $(M,g)$ be a $d$-dimensional closed Riemannian manifold without boundary.  Letting $\dop \Vol_g$ denote the measure on $M$ associated to the volume form of $(M,g)$, we equip the space $C^\infty(M)$ of smooth complex valued functions on $M$ with the inner product
+% \begin{align}\label{eq:ip}
+%   \ip{f}{g} = \int_M f(x) \overline{g}(x) \dop \Vol_g(x)
+% \end{align}
+% and let $L^2(M,g)$ denote the completion of $C^\infty(M)$ with respect to the resulting norm.
+
+% The \textbf{Laplace-Beltrami operator} $\Delta$ acts on $C^\infty(M)$, in local coordinates $(x_1,\dots,x_d)$, by the formula
+% \begin{align}
+%   \Delta(f) = -\frac{1}{\sqrt{g}} \sum_{i,j=1}^d \frac{\partial \sqrt{g} g^{ij} (\partial f / \partial x_i)}{\partial x^j}
+% \end{align}
+% where $g = \det(g_{ij})$ and $(g^{ij})$ denotes the inverse of the matrix $(g_{ij})$. With respect to the inner product in \ref{eq:ip}, $\Delta$ is symmetric:
+% \begin{align*}
+%   \ip{\Delta f}{g} =\ip{ f}{\Delta g}, \quad \text{ for all $f,g \in C^\infty(M)$,}
+% \end{align*}
+% negative:
+% \begin{align*}
+%   \ip{\Delta f }{f} \leq 0, \quad \text{ for all $f \in C^\infty(M)$.}
+% \end{align*}
+% and unbounded. As $M$ is compact and without boundary, $\Delta$ admits a unique maximal extension to a negative, self-adjoint, unbounded operator  $\tilde{\Delta}$ on $L^2(M,g)$ with compact resovent.
+
+% By the spectral theorem for the latter class of operators, it follows that the resolvent set
+% \begin{align*}
+%   \sigma(\tilde{\Delta}) = \{ \lambda \in \Cbb : \tilde{\Delta} - \lambda \id \text{ is not invertible on $L^2(M,g)$}\}
+% \end{align*}
+% is a discrete set of nonnegative real numbers, accumulating at $-\infty$, and consists of eigenvalues of $\tilde{\Delta}$ with finite multiplicites. By elliptic regularity, any eigenfunction of $\tilde{\Delta}$ is smooth, and thus lies in the original domain $C^\infty(M)$ of $\Delta$. Consequently, $\sigma(\tilde{\Delta})$ coincides with the set
+% \begin{align*}
+%   \sigma(\Delta) = \{\lambda \in \Cbb : \Delta f  = \lambda f \text{ admits a nonzero  solution  $f \in C^\infty(M)$}.
+% \end{align*}
+% Set $E(\lambda) = \ker \Delta - \lambda \id$ and set $m(\lambda) = \dim E(\lambda)$. [TODO:finish rambling]
+
+\begin{proposition}\cite[prop. E.IV.18 of]{Berger.Gauduchon.Mazet-[SpectreVarieteRiemannienne]1971a}
+  Let $(M,g)$ be a closed Riemannian manifold of dimension $3$ with constant sectional curvature $\sigma$, and suppose $(M',g')$ is isospectral to $(M,g)$. Then $\dim M' =3$ and $(M',g')$ has constant sectional curvature $\sigma$.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+

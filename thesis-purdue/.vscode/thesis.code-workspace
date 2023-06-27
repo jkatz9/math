@@ -1,7 +1,11 @@
 {
 	"folders": [
 		{
-			"path": ".."
+			"path": "./.."
 		}
 	],
+	"settings": {
+		"latex-workshop.latex.outDir": "%DIR%/build/out",
+		"inline-bookmarks.view.showVisibleFilesOnly": false
+	}
 }

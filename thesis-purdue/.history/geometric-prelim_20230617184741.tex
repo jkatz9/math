@@ -1,0 +1,255 @@
+\section{Geometric Preliminaries}
+Let $(M,g)$ be a compact Riemannian manmifold.
+\paragraph{Laplace-spectrum}
+The eigenvalues of the Laplace operator of the Laplace operator $\Delta_{M,g}$ acting on $L^2(M,\dop v_g)$ form a discrete set $\spec_{M,g}$ of nonnegative real numbers, tending to $\infty$. For each $\lambda \in \spec_{M,g}$, the dimension $m_{\Delta_{M,g}}(\lambda)$ of the $\lambda$-eigenspace $E_{M,g}(\lambda)=\ker (\Delta_{M,g}- \lambda \id)$ in $L^2(M, \dop v_g)$ is finite. We encode the this data in the \textbf{Laplace-spectral counting function}, defined for $x\in \Rbb_{\geq 0}$ by
+\begin{align}
+  \pi_{\Delta_{M,g}}(x) = \sum_{\lambda \in \spec(\Delta_{M,g}) \cap [0,x]} \dim \ker (\Delta_{M,g} - \lambda \id )
+\end{align}
+
+% We say that two Riemannian manifolds $(M,g)$ and $(M',g')$ are Laplace-\textbf{isospectral} if $\spec_{M,g} = \spec_{M,g'}$. We say that $(M,g)$ is \textbf{Laplace-spectrally rigid} in the absolute sense, if any Riemannian manifold which isospectral to $(M,g)$ is in fact isometric to $(M,g)$.
+
+\paragraph{Length spectrum}
+Within each free homotopy class $\gamma$ of closed curves on $M$ there is a geodesic representative of minimal length; we write $\ell_g(\gamma)$ for that length. For a positive real number $l$, we write $\Lspec_{M,g}(\ell)$ for the number of free homotopy classes $\gamma$ of closed curves in $M$ for which $\ell_g(\gamma) = l$.
+
+
+Two compact Riemannian manifolds $(M,g)$, $(M',g')$  are said to be \textbf{Laplace-isospectral} (resp. \textbf{length-isospectral})  if $\spec_{M,g} = \spec_{M',g'}$ (resp.  if $\Lspec_{M,g}=\Lspec_{M',g'}$). We say that $(M,g)$ is Laplace- (resp. length-) spectrally rigid if any $(M',g')$ to which it is Laplace- (resp. length-)isospectral, is in fact isometric to $(M,g)$.
+
+\paragraph{Curvature}
+Let $(M,g)$ be a Riemannian manifold of dimension $d$, and write $\nabla$ Levi-Civita connection for the metric $g$. The Riemannian curvature tensor is then
+\begin{align}
+  \Riem :     & \Gamma(TM)\times \Gamma(TM)  \to  \Gamma(\End TM)                                                              \\
+  \Riem(X,Y): & \left( Z                          \mapsto  \nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z -\nabla_{[X,Y]}Z \right).
+\end{align}
+% For each point $p \in M$, the curvature tensor induces the quadrilinear form
+% \begin{align}
+%   Q_p(x,y,z,w) = g_p(\Riem_p(x,y)z, w)
+% \end{align}
+% where $x,y,z,w \in T_p M$.
+
+
+Let $P$ be a plane in $T_p M$ and $u,v \in P$ be a pair of linearly independent vectors, so that $P =\Rbb u + \Rbb v$. Then the ratio
+\begin{align}
+  K_p(u,v) = \frac{g_p(\Riem_p(u,v)u,v)}{g_p(u,u),g_p(v,v)-g_p(u,v)^2}
+\end{align}
+is independent of the choice of basis $u,v$ of $P$. Thus $K_p$ defines a function on the Grassmanian $G^2_p M$  of $2$-planes in $T_p^M$, called the \textbf{sectional curvature} of $(M,g)$ at $p$.
+
+For each $p \in M$ and $x,y\in T_p M$, the \textbf{Ricci curvature} $\Ricci_p(x,y)$ is the trace of the endomorphism $\Riem_p(x,y) \in \End(T_p M)$. If $(e^1,\dots, e^d)$ is an orthonormal basis of $T_p M$ with respect to $g_p$, then one has
+\begin{align}
+  \Ricci_p(x,y) = \sum_{j=1}^d g_p (\Riem_p(x,e^j)y,e^j).
+\end{align}
+
+The \textbf{scalar curvature} is the function $\scalar: M \to \Rbb$ whose value at a point $p\in M$ is given by the trace of the Ricci curvature:
+\begin{align}
+  \scalar_p = \sum_{i\neq j} g_p (\Riem(e^i,e^j)e^i,e^j).
+\end{align}
+
+If $x^1,...,x^d$ is a coordinate system about $p$, one has
+\begin{align}
+  \Riem_q (\frac{\partial}{\partial x^h}, \frac{\partial}{\partial x^i})\frac{\partial}{\partial x^j} = \sum_l \Riem^l_{jhi}(q) \frac{\partial}{\partial x_l}.
+\end{align}
+for a collection of real valued smooth function $\Riem^l_{jhi}$ of $x^1,...,x^d$. Then one has the following expressions for the Ricci curvature
+\begin{align}
+  \Ricci_{ij} := \Ricci(\frac{\partial}{\partial x^i},\frac{\partial}{\partial x^j}) =\sum_{m}\Riem^m_{ijm},
+\end{align}
+and scalar curvature
+\begin{align}
+  \scalar = \sum_{i,j} g^{ij} \Ricci_{ij}
+\end{align}
+where $g^{ij}$ is the inverse matrix to $g_{ij} = g (\frac{\partial}{\partial x^i},\frac{\partial}{\partial x^j})$.
+
+We define smooth real valued functions on $M$ locally by the formulae,
+\begin{align}
+  |\Riem|^2(q)  & = \sum_{i,j,k,l} (\Riem_{ijk}^l(q))^2 \\
+  |\Ricci|^2(q) & = \sum_{i,j} (\Ricci_{ij}(q))^2.
+\end{align}
+
+\begin{proposition}
+  Let $(M,g)$ be a Riemannian manifold of dimension $d$.
+  \begin{enumerate}
+    \item For all $p \in M$, one has
+          \begin{align}
+            |\Ricci|^2_p \geq \frac{|\scalar_p|^2}{d}
+          \end{align}
+          with equality (for all $p \in M$) if and only if $\Ricci = \frac{\scalar}{n}\cdot g$.
+    \item For all $p \in M$, one has
+          \begin{align}
+            |\Riem|^2_p \geq 2 \frac{|\Ricci|_p^2}{d-1}
+          \end{align}
+          with equality (for all $p \in M$) if and only if $(M,g)$ has constant sectional curvature.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  At each $p \in M$ the Ricci curvature is a symmetric operator on $T_p M$ relative to the bilinear form $g_p$. Consequently, at each $p$, one can pick a basis $e^1,\dots,e^d$ of $T_p M$ for which $\Ricci_p = \Ricci_{ii}(p)e^i e^i$ is diagonal. Then one has
+  \begin{align}
+    \scalar^2(p) = (\sum_i\Ricci_{ii}(p))^2
+  \end{align}
+  [TODO]
+\end{proof}
+\newpage
+
+\paragraph{Heat kernel}
+The heat \textbf{heat kernel} on $M$ is the fundamental solution to the \textbf{heat equation} on $M$. That is,  it is the unique smooth function $K_M:M\times M \times \Rbb_{>0} \to \Rbb$ such that:  Given any initial data $f: M \to \Rbb$, the solution $F:M\times \Rbb_{>0} \to \Rbb$ of the heat equation
+\begin{align}
+  \Delta F & = - \frac{\partial F}{\partial t} \\
+  F(x,0)   & = f(x)
+\end{align}
+is given by
+\begin{align}
+  F(x,t) = \int_M K_M(x,y,t)f(x) \dop v_{g}(x)
+\end{align}
+
+
+By a theorem of Minakshisundaram and Pleijel \cite{Minakshisundaram.Pleijel-[PropertiesEigenfunctionsLaplaceoperator]1949} there exist a sequence of functions $u_{M,g}^{(k)} : M \to \Rbb$ such that for each $x \in M$, the value $u_{M,g}^{(k)}(x)$ is given by universal formulae in terms of the curvature tensor of $M$ and its covariant derivatives at $x$ such that
+\begin{align}\label{eq:heatAsymptoticM}
+  K_M(x,x,t) \sim \frac{1}{(4\pi t)^{\dim M /2 }} \sum_{k=0}^\infty u_{M,g}^{(k)}(x)t^k t, \quad \text{ as $t\to 0^+$.}
+\end{align}
+In particular, \cite[page 398]{Berger-[PanoramicViewRiemannian]2003} one has
+\begin{align}
+  u_{M,g}^{(0)} (x) & = 1                            \label{eq:heatzero}                                             \\
+  u_{M,g}^{(1)}(x)  & = \frac{1}{6} \label{eq:heatone}\scalar(x)                                                     \\
+  u_{M,g}^{(2)}(x)  & = \frac{1}{360} \left( 2|\Riem|^2_x -2 |\Ricci|^2_x +5 \scalar^2(x) \right) \label{eq:heattwo}
+\end{align}
+where $\scalar$, $\Ricci$, and $\Riem$ are the scalar, Ricci, and Riemannian curvature tensors. As the heat kernel $K_{M,g}(x,y,t)$ itself depends only on the the Riemannian structure $(M,g)$, so too do the numbers
+\begin{align}
+  a_{M,g}^{(k)} := \int_M u_{M,g}^{(k)}(x) \dop v_g(x),
+\end{align}
+for each $k\geq 0$. We refer to $a_{M,g}^{(k)}$ as the $k$-th \textbf{heat invariant} of $(M,g)$.
+
+It turns out that the heat invariants actually depend only on the Laplace-spectrum of $(M,g)$, as the following arguments show.
+\begin{proposition}
+  Suppose $(M,g)$ and $(M',g')$ are isospectral closed Riemannian manifolds.  Then for all $t>0$, one has $\int_M K_M(x,x,t) \dop v_g(x) = \int_{M'} K_{M'}(x,x,t)\dop v_{g'}(x)$.
+\end{proposition}
+\begin{proof}
+  Let let $\{\lambda_k : k\geq 0\}$ be the common sequence $0 = \lambda_0 < \lambda_1 \leq \lambda_2 \leq \dots $ of Laplace eigenvalues for $(M,g)$ and $(M',g')$ and pick an orthonormal sequence of eigenfunctions $\phi_k$ on $M$ (resp. $\phi_k'$ on $M'$) with eigenvalues $\lambda_k$. Then one can express the heat kernels for $(M,g)$ and $(M',g')$ as
+  \begin{align}
+    K_{M,g}(x,y,t)   & = \sum_{k\geq 0}e^{-t \lambda_k}\phi_k(x) \phi_k(y)   \\
+    K_{M',g'}(x,y,t) & = \sum_{k\geq 0}e^{-t \lambda_k}\phi'_k(x) \phi'_k(y)
+  \end{align}
+  with rapid convergence, uniformly in $x,y \in M$ (resp. in $M'$). Integrating along the diagonal and passing the integral through the sum, and using the fact that each $\phi_k$ has unit $L^2(M,v_g)$ norm,  we find
+  \begin{align}
+    \int_M K_{M,g}(x,y,t) \dop v_g  = \sum{k\geq 0}e^{-t \lambda_k} \int \phi_k^2(x)\dop v_g = \sum_{k\geq 0}e^{-t \lambda_k}.
+  \end{align}
+  Carying out the same computation for $(M',g')$, we conclude
+  \begin{align}
+    \int_M K_{M,g} (x,x,t) \dop v_g = \sum_{k\geq 0}e^{-t \lambda_k} = \int_{M'} K_{M',g'} (x,x,t) \dop v_{g'}.
+  \end{align}
+\end{proof}
+\begin{corollary}\label{cor:dimVolTotScal}
+  If $(M,g)$ and $(M',g')$ are isospectral then for all $k\geq 0$, one has
+  \begin{align}
+    \int_M u_{M,k}(x) \dop v_g(x)  = \int_{M'} u_{M',k}(x) \dop v_{g'}(x).
+  \end{align}
+  In particular: the dimension, volume, and total scalar curvature for $(M,g)$ and $(M',g')$ coincide.
+\end{corollary}
+%If $\dim M = \dim M' = 2$, then by Gauss-Bonet, the Euler-characteristics of $M$ and $M'$ coincide.  Consequently, $M$ and $M'$ are homeomorphic.
+\begin{proposition}[prop. E.IV.15 in \cite{Berger.Gauduchon.Mazet-[SpectreVarieteRiemannienne]1971} ]\label{prop:curvatureTwoManifolds}
+  Suppose  $(M,g)$ and $(M',g')$ are isospectral closed Riemannian manifolds, and that $(M,g)$ is a surface with constant scalar curvature $\kappa$. Then $(M',g')$ is also a surface with constant scalar curvature $\kappa$. Furthermore, $M$ and $M'$ are homeomorphic.
+\end{proposition}
+\begin{proof}
+  For any Riemannian $2$-manifold $(M',g')$, one has $|\Ricci|^2 = \frac{\scalar^2}{2}$ and $|\Riem|^2 = 2 |\Ricci|^2 = \scalar^2$. Thus, the universal expression for the second term in the heat kernel asymptotic expansion is
+  \begin{align}
+    \frac{1}{360}\left(2| \Riem |^2 - |\Ricci|^2 + 5 \scalar^2\right) =\frac{1}{60} \scalar^2.
+  \end{align}
+  Furthermore, by Cauchy-Schwarz (in $L^2(M',v_{g'})$):
+  \begin{align}\label{eq:cauchySchwarz}
+    \left( \int_{M'} \scalar_{g'} \dop v_{g'} \right)^2 \leq \left( \int_{M'} \scalar_{g'}^2 \dop v_{g'} \right)\left( \int_{M'} 1 \dop v_{g'} \right)
+  \end{align}
+  with equality if and only if $\scalar_{g'}$ and $1$ are linearly dependent as functions on $M'$, which is to say: if and only if $\scalar_{g'}$ is constant.
+  % \begin{align}
+  %   \frac{1}{60} \int_M \scalar_{g}^2 v_g = \frac{1}{60} \int_{M'} \scalar_{g'}^2 \dop v_{g'}.
+  % \end{align}
+  Now note that, as
+  \begin{align}
+    \int_{M'}\scalar_{g'}\dop v_{g'}   & =\int_{M}\scalar_{g}\dop v_{g},  \\
+    \int_{M'}\scalar_{g'}^2\dop v_{g'} & =\int_{M}\scalar_{g}^2\dop v_{g} \\
+    \int_{M'}1\dop v_{g'}              & =\int_{M}1\dop v_{g},
+  \end{align}
+  and by our assumption that $\scalar_g$ is constant on $M$, the inequality in \ref{eq:cauchySchwarz} is an equality. Thus, the scalar curvature on $(M',g')$ is constant, and is readily seen to be equal to that on $(M,g)$.
+\end{proof}
+
+\begin{proposition}\cite[prop. E.IV.18 of]{Berger.Gauduchon.Mazet-[SpectreVarieteRiemannienne]1971} \label{prop:curvatureThreeManifolds}
+  Let $(M,g)$ be a closed Riemannian manifold of dimension $3$ with constant sectional curvature $\sigma$, and suppose $(M',g')$ is isospectral to $(M,g)$. Then $\dim M' =3$ and $(M',g')$ has constant sectional curvature $\sigma$.
+\end{proposition}
+\begin{proof}
+  [TODO]
+\end{proof}
+
+
+\subsection{some basic hyperbolic geometry}
+
+\subparagraph{Surfaces}
+We take the upper half plane
+\begin{align*}
+  \Hfrak = \{ x+iy \in \Cbb : y >0\}
+\end{align*}
+equipped with the Riemannian metric
+\begin{align*}
+  g_\hyp = \frac{\dop x^2 +\dop y^2}{y^2}
+\end{align*}
+is a model for the hyperbolic plane: the unique simply connected, complete Riemannian manifold with scalar curvature $-1$. The invariant volume element for this metric is given by
+\begin{align*}
+  \dop \vol_{g_\hyp} = \frac{\dop x \dop y}{y^2},
+\end{align*}
+and the Laplace operator is
+\begin{align*}
+  \Delta_{g_\hyp} = \frac{1}{y^2}\left( \frac{\partial^2 }{\partial x^2}+ \frac{\partial^2 }{\partial y^2} \right)
+\end{align*} The group
+\begin{align*}
+  \SL(2,\Rbb) = \left\{ \Tbt{a}{b}{c}{d}: ad-bc =1 \right\}
+\end{align*}
+acts isometrically on $(\Hfrak,\dop s^2)$  via linear fractional transformations
+\begin{align*}
+  \Tbt{a}{b}{c}{d} z = \frac{az+b}{cz+d} %= \frac{ac |z|^2 +(ad+bc)\re z  +bd}{|cz+d|^2} + i \frac{\im z}{|cz+d|^2}
+\end{align*}
+where $\tbt{a}{b}{c}{d} \in \SL(2,\Rbb)$.  This action factors through $\PSL(2,\Rbb)$ which can be identified with the full group of orientation preserving isometries of $(\Hfrak,\dop s^2)$.
+
+The \textbf{translation length} of an element $g\in \SL(2,\Rbb)$ is
+\begin{align}
+  \tau(g) = \inf \{ \dist(gx,x) : x\in \Hfrak.\}
+\end{align}
+We say a noncentral element $g\in \SL(2,\Rbb)$ is
+\begin{description}
+  \item[Hyperbolic] if $\tau(g) >0$
+  \item[Elliptic] if $\tau(g) = 0$ and there exists a point $x \in \Hfrak$ such that $gx =x$
+  \item[Parabolic] if $\tau(g) = 0$ but $\dist(gx,x)>0$ for all $x\in \Hfrak$.
+\end{description}
+
+\begin{proposition}
+  Let $g\in \SL(2,\Rbb)$ be a noncentral element. Then $g$ is:
+  \begin{description}
+    \item[hyperbolic] if and only if $g$ is conjugate into the subgroup
+      \[  A = \{\Tbt{a}{0}{0}{a^\inv}: a \in \Rbb \}\]
+      if and only if $g$ preserves complete geodesic $\gamma$ on which it restricts to an isometric translation by distance $\tau(g)$, if and only if $\tr(g)^2 -4 >0$ if and only if $g$ is regular semisimple and split over $\Rbb$
+    \item[elliptic] if and only if $g$ is conjugate into the subgroup
+      \[ K = \{\Tbt{c}{s}{-s}{c}: c^2 + s^2 =1, c,s \in \Rbb\} \]
+      if and only if $g$ fixes a unique 
+    \item[]
+  \end{description}
+\end{proposition}
+The action of $\SL(2,\Rbb)$ on $\Hfrak$ is transitive. Indeed, the element $\tbt{y^{1/2}}{xy^{-1/2}}{0}{y^{-1/2}}$ maps $i$ to $x+iy$. The stabilizer in $\SL(2,\Rbb)$ of $i$ is the maximal compact subgroup
+\begin{align*}
+  \SO(2) = \{\Tbt{c}{s}{-s}{c}: c^2 + s^2 =1\}.
+\end{align*}
+The orbits of $\SO(2)$ acting on $\Hfrak$ are the isometric circles about $i$:
+\begin{align*}
+  C(i,r)= \{z \in \Hfrak: \dist(i,z) = r\}
+\end{align*}
+for $r\geq 0$. It follows that $\SL(2,\Rbb)$ acts $2$-transitively on $\Hfrak$, and therby acts transitively on the set of complete geodesics in $\Hfrak$.
+
+
+If $g$ is hyperbolic then there exists a unique complete geodesic $\gamma_g$ in $\Hfrak$ such that, for all $x \in \gamma_g$, one has $\dist(x,gx) = \tau(g)$. We call $\gamma_g$ the \textbf{translation axis} of $g$.
+
+\begin{proposition}[Uniformization]
+
+\end{proposition}
+
+% The stabilizer of $i$ in $\SL(2,\Rbb)$ is
+% \begin{align*}
+%   \SO(2) = \{\Tbt{c}{s}{-s}{c}: c^2 + s^2 =1\}
+% \end{align*}
+% so that the map $g \mapsto g i$ establishes an identification $\SL(2,|Rbb) / \SO(2) \approx \Hfrak$.
+
+
+
+
+\subsection{Selberg Trace formula}

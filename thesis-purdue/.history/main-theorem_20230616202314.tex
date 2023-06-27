@@ -1,0 +1,267 @@
+
+
+% \begin{comment}
+% Throughout $k$ will denote a number field, and $R$ its ring of integers. We write $V_k$ for its set of places, and write $\nu \in V_k^\infty$ (resp. $\nu \in V_k^f$) if $\nu$ is archimedian (resp. nonarchimedian).
+% We identify nonarchimedian places $\nu \in V_k^f$ with discrete valuations $\nu : k \to \Zbb$ on $k$ and in turn, prime ideals $\pfrak = \{ x \in k: \nu(x) > 0\}$ in $R$.
+% For a place $\nu \in V_k$ we write $k_\nu$ for the corresponding local field, and if $\nu \in V_k^f$ corresponding to a prime ideal $\pfrak$ of $R$ we write $R_\nu$ or $R_\pfrak$ for the closure of $R$ in $k_\nu$. We denote by $\Abb_k$ the ring of adeles of $k$.
+% % If $A$ is an algebra over $k$, then we write $A_\nu$ for its completion as a $k_\nu$-algebra.  
+% If $A$ is an algebra over $k$, and $\nu \in V_k$ then we write $A_\nu$ for the $k_\nu$-algebra $A\otimes_k k_\nu$. If $S$ is a finite set of places, then we write $A_S = \prod_{\nu \in S} A_\nu$ and we write $A_{\Abb_k}= A \otimes_k \Abb_k$ for its adelic points.
+
+
+% We pick for each finite place $\pfrak$, once and for all, a uniformizer $\varpi \in R_\pfrak$ for its unique maximal ideal.
+
+% For an integral ideal $\afrak$ in $R$, we write $\pi_\afrak : R \to R/\afrak$ for the reduction map.
+
+% Let $k \leq \Rbb$ be a totally real number field, and $A$ a quaternion algebra over $k$ which is unramified over the identity embedding $k\to \Rbb$, and ramified over all other infinite places.
+% If $B$ is a subring of $A$, we write $B^1$ for the multiplicative subgroup of $A^\times$ consisting of elements of $B$ with reduced norm $1$.
+% \end{comment}
+
+
+% \begin{comment}
+% \begin{align*}
+%   \sout{\tilde{\Gbf}(E) = (A\otimes_k E)^\times,\quad \Gbf (E) = (A\otimes_k E)^1,\quad  \bar{\Gbf}(E) = E^\times \lmod (A\otimes_k E)^\times}
+% \end{align*}
+% \sout{for any commutative $k$-algebra $E$. Note that at each place $\nu \in V_k \setminus \Ram(A)$ one has isomorphisms}
+% \begin{align*}
+%   \sout{  \tilde{\Gbf}(k_\nu)\approx \GL(2,k_\nu),\quad \Gbf(k_\nu) \approx \SL(2,k_\nu), \bar{\Gbf}(k_\nu) \approx \PGL(2,k_\nu).}
+% \end{align*}
+% \sout{An isomorphism $\phi : A\otimes_k \Rbb \to M(2,\Rbb)$ of algebras, restricts to an isomorphism $(A\otimes_k \Rbb)^1 \to \SL(2,\Rbb)$ of groups. Composing $\phi$ with the canonical projection $\SL(2,\Rbb)  \to \PSL(2,\Rbb)$ we obtain a homomorphism $\psi : A^1 \to \PSL(2,\Rbb)$ which factors through $\pm 1 \lmod A^1$.}
+
+% \sout{For an order  $\Ocal \subset A$ in $A$, write $\Ocal^1 = A^1 \cap \Ocal$. We call the subgroup $\psi(\Ocal^1)\leq \PSL(2,\Rbb)$ the arithmetic Fuchsian group associated to the datum $k$,$A$,$\psi$,$\Ocal$.}
+
+% \sout{We write this group as $\Gamma_{k,A,\psi,\Ocal}$, or just by $\Gamma_\Ocal$ if $k,A,\psi$ are fixed. A fuchsian group is \textbf{arithmetic} provided it is commensurable to one of the form $\Gamma_{k,A,\psi,\Ocal}$, and say that it is \textbf{derived} from the quaternion algebra $A$ if is a subgroup of some $\Gamma_{k,A,\psi,\Ocal}$.}
+
+% % \begin{rem}
+% % 	Some comments about this definition:
+% % 	\begin{enumerate}
+% % 		\item Given any Fuchsian group $\Lambda$, there is at most one number field $k$, and quaternon algebra $A$ over $k$, such that $\Lambda$ is commensurable to $\psi(\Ocal^1)$ for some order $\Ocal$ in $A$. Thus, for arithmetic Fuchsian groups, the pair $(k,A)$ is a complete invariant of commensurability classes.
+% % 		\item If $\Lambda$ is an arithmetic lattice derived from the quaternion algebra $k,A$, then there are only finitely many orders $\Ocal$ in $A$ such that $\Lambda$ is contained in $\psi(\Ocal^1)$.
+% % 		\item For any order $\Ocal$ in a quaterion algebra $A$, the set of maximal orders containing $\Ocal$ is finite and nonempty.
+% % 	\end{enumerate}
+% % \end{rem}
+
+% \sout{For an integral ideal $\afrak$ in $R$, the map $\pi_\alpha: \Ocal \to \Ocal \otimes_R R/\afrak$ is a surjective ring homomorphism.
+%   the \textbf{principal congruence subgroup } of level $\afrak$ in an order $\Ocal$ is the subgroup of $\Ocal^1$ given by}
+% \begin{align*}
+%   \sout{  \Ocal^1(\afrak) = \{ x \in \Ocal^1 : x - 1 \in \afrak \Ocal^1\}.}
+% \end{align*}
+
+% \sout{We let $\pi_\afrak$ denote the projection $\Ocal^1 \to (\Ocal \otimes_R R/\afrak)^1$.}  % there is a short exact sequence  \begin{align*} 1 \to \Ocal^1(\afrak) \to \Ocal^1 \to (\Ocal \otimes_R R/\afrak)^1 \to 1 \end{align*}}
+
+% % \sout{If $\Lambda$ is any subgroup of $\PSL(2,\Rbb)$ which is commensurable to $\psi(\Ocal^1)$, we write $\Lambda(\afrak,\Ocal)$, or just $\Lambda(\afrak)$ if $\Ocal$ is understood, for}
+% % \[\sout{\ker \pi_\alpha \vert_\Lambda = \Lambda \cap \psi(\Ocal^1(\afrak)) =\{g \in \Lambda: g \equiv 1 \mod \alpha\}}\]
+% % and write $\Lambda[\afrak]$ for its image. Thus,
+% % \begin{align*}
+% %   \Lambda / \Lambda(\afrak) =	\Lambda[\afrak] \leq O^1[\afrak]= O^1/O^1(\afrak)
+% % \end{align*}
+
+
+% \end{comment}
+
+
+
+\begin{thm}
+  Let $A$ be a quaternion algebra over a number field $k$ of Fuchsian (resp. Kleinian) type. Let $\Ocal$ be a maximal order in $A$, and $\afrak$ be an integral ideal in $k$.  Let $\Gamma_O(\afrak)$ be the principal congruence arithmetic lattice in $\SL(2,\Rbb)$ (resp. $\SL(2,\Cbb)$) of level $\afrak$, and let $X(\Gamma_O(\afrak))$ be the associated hyperbolic $2$-orbifold $\Gamma_O(\afrak) \lmod \Hbb^2$ (resp. hyperbolic $3$-orbifold $\Gamma_O(\afrak) \lmod \Hbb^3$). Suppose that
+  \begin{enumerate}
+    \item A has type number $1$, and
+    \item $\afrak$ is not divisible by any prime over which  $A$ is ramified, nor any prime dividing $2$ or $3$.
+  \end{enumerate}
+  Then $X(\Gamma_O (\afrak))$ is absolutely spectrally rigid.
+  % \begin{comment}
+  % \sout{Let $\Gamma=\Gamma_{k,A,O}$ denote a maximal arithmetic lattice in $G=\PSL(2,\Rbb)$, arising from the arithmetic datum $(k,A,O)$ (as above) such that $A$ has type number $1$. Let $\afrak$ be a squarefree ideal in $R_k$ which are not divisible by any prime over which $A$ ramifies, nor any dividing $2$ or $3$, the hyperbolic surface $X(\afrak)=\Gamma(\afrak) \lmod G \rmod K$ is absolutely spectrally rigid.}
+  % \end{comment}
+\end{thm}
+
+\begin{proof}
+  Suppose $M$ is a closed Riemannian manifold which is isospectral to $X(\Gamma_O(\afrak))$.
+  Let $0 \leq \lambda_0 <\lambda_1 \leq \lambda_2 \leq \dots $ be the common set of eigenvalues, repeated according to their multiplicities, for the laplacian on $M$ and of $X(\Gamma_0(\afrak))$.
+  Let $\{\phi_k: k\geq \}0$ (resp. $\{\psi_k: k\geq 0\}$) be an orthonormal sequence of eigenfunctions on $M$ %(resp. on $X(\Gamma_0(\afrak))$).
+  Recall that the heat kernel
+  \begin{align}\label{eq:heatKernelM}
+    K_M (x,y,t) = \sum_{k\geq 0} e^{-t \lambda_k}\phi_k(x)\phi_k(y), %\quad K_M(x,y,t) = \sum_{k\geq 0 } e^{-t \lambda_k} \psi_k(x) \psi_k(y),
+  \end{align}
+  as a function on $\Rbb_{>0} \times M\times M$  %(resp. on $\Rbb_{>0}\times X(\Gamma_0(\afrak)) \times X(\Gamma_0(\afrak))$),
+  is independent of the choice of orthonormal bases of eigenfunctions, and is an  invariants of the Riemannian metric on $M$. By a theorem of Minakshisundaram and Pleijel \cite{Minakshisundaram.Pleijel-[PropertiesEigenfunctionsLaplaceoperator]1949} there exist a sequence of functions $u_{M,k} : M \to \Rbb$ such that for each $x \in M$, the value $u_{M,k}(x)$ is given by universal formulae in terms of the curvature tensor of $M$ and its covariant derivatives at $x$ such that
+  \begin{align}\label{eq:heatAsymptoticM}
+    K_M(x,x,t) \sim \frac{1}{(4\pi t)^{\dim M /2 }} \sum_{k=0}^\infty u_{M,k}(x)t^k t, \quad \text{ as $t\to 0^+$.}
+  \end{align}
+  In particular, \cite[page 398]{Berger-[PanoramicViewRiemannian]2003} one has
+  \begin{align}
+    u_{M,0} (x) & = 1                            \label{eq:heatzero}                                                     \\
+    u_{M,1}(x)  & = \frac{1}{6} \label{eq:heatone}\scalar(x)                                                             \\
+    u_{M,2}(x)  & = \frac{1}{360} \left( 2\Norm{R(x)}^2 -2 \Norm{\Ricci(x)}^2 +5 \scalar^2(x) \right) \label{eq:heattwo}
+  \end{align}
+  where $\scalar$, $\Ricci$, and $R$ are the scalar, Ricci, and Riemannian curvature tensors.
+
+  Computing the integral of \ref{eq:heatKernelM} along the diagonal, we find that
+  \begin{align}
+    \int K_M (x,x,t) \dop \Vol(x)  = \sum_{k\geq 0 }e^{-t \lambda_k}
+  \end{align}
+  depends only on the spectrum of $M$. Consequently, integrating over $M$ in \ref{eq:heatAsymptoticM}
+  \begin{align}
+    \sum_{k\geq 0 }e^{-t \lambda_k} \sim \frac{1}{(4\pi t)^{\dim M /2 }} \sum_{k=0}^\infty \left( \int_M u_{M,k}(x) \dop \vol_M(x) \right)t^k, \quad \text{ as $t\to 0^+$.}
+  \end{align}
+  we find that the quantities $\dim M$ and $\int_M u_{M,k}(x) \dop \vol_M(x)$ depend only on the spectrum of $M$. Carying out the same computations for $X(\Gamma_0(\afrak))$ we find that  
+  \begin{align}
+    \dim M = \dim X(\Gamma_0(\afrak)),
+  \end{align}, 
+  and by integrating over $M$ and $X(\Gamma_0(\afrak))$ we find 
+  \begin{align}
+    \vol M & = \vol X(\Gamma_0(\afrak)) \\
+    \int_M \scalar & = \int_X(\Gamma_0(\afrak)) \scalar \\
+    \int M 
+  \end{align}
+  % \begin{align}
+  %   \vol M = \int_{M}1  =  \int_{X(\Gamma_0(\afrak))} 1   = \vol  X(\Gamma_0(\afrak)).
+  % \end{align}
+  from \ref{eq:heatone}
+  \begin{align}
+
+  \end{align}
+
+  \begin{claim}\label{claim:heat}
+    The dimension, volume, and mean scalar curvature of $M$ and $X(I)$ coincide.
+  \end{claim}
+
+
+
+  \begin{lemma}
+    Let $X$ be a Riemannian manifold, with Laplace spectrum $0\geq \lambda_0 \geq \lambda_1 \geq \cdots$, and let $K_X(t)=\sum_{i=1}^\infty e^{\lambda_i t}$. Then $K_X(t)$ admits an asymptotic expansion as $t\to 0^+$ of the form
+    \[ K_X(t) \sim (4\pi t)^{-\dim(X)/2} \sum_{n=0}^\infty a_n(X) t^n \]
+    for constants $a_i(X)$ which are integrals over $X$ of polynomials in the entries of the curvature tensor of $X$ and its covariant derivatives. The first two are:
+    \[a_0(X) = \Vol(X),\quad a_1(X) = \frac{1}{6} \int_X \tr {\rm Ricc} (x) \dop \Vol(x).\]
+  \end{lemma}
+
+  Indeed, since $K_M(t) = K_{X(I)}(t)$ identically, we may read off the invariants in the claim from their common asymptotic expansions as $t\to 0^+$.
+  \begin{rem}
+    The total scalar curvature of a smooth, closed surface is its Euler characteristic by Gauss-Bonnet. As the euler characteristic is a complete invariant of the diffeomorphism type for closed surfaces, we may thus conclude that $M$ and $X(I)$ are in fact diffeomorphic.
+  \end{rem}
+
+  [TODO]: argue that $M$ must have constant negative curvature $=-1$. We'll do so either via one of the following routes:
+
+
+  As $M$ is a compact hyperbolic $2$-manifold, it admits a Fuchsian uniformization $M \approx \Lambda \lmod \Hbb^2$, where $\Lambda$ is a uniform lattice in $\PSL(2,\Rbb)$.
+  \begin{claim}
+    After conjugating by an element of $\PSL(2,\Rbb)$ we may take $\Lambda$ to be a finite index subgroup of $\Gamma = \rho(O^1) \leq  \PSL(2,\Rbb)$.
+  \end{claim}
+  \begin{proof}
+    This claim follows from two theorems.
+
+    First, we apply the following theorem to conclude that $\Lambda$ is arithmetic.
+    \begin{thm}[Takeuchi \cite{takeuchiCharacterizationArithmeticFuchsian1975}]\label{thm:takeuchi}
+      Let $\Gamma$ be a Fuchsian group of the first kind. Then $\Gamma$ is an arithmetic Fuchsian group derived from a quaternion algebra if and only if $\Gamma$ satisfies the following conditions
+      \begin{enumerate}
+        \item The subfield $k$ of $\Cbb$, generated over $\Qbb$ by the traces of elements of $\Gamma$, has finite degree over $\Qbb$
+        \item $\tr(\Gamma)$ is contained in the ring of integers $R_{k}$ of $k$
+        \item For any isomorphism $\phi: k \to \Cbb$ such that $\phi \neq \id$, the set $\phi(\tr(\Gamma))$ is bounded in $\Cbb$.
+      \end{enumerate}
+    \end{thm}
+
+    The second theorem demonstrates that this quaternion algebra is in fact $A$.
+    \begin{thm}[ \cite{Reid-[IsospectralityCommensurabilityArithmetic]1992}]
+
+      Let $M_1$ and $M_2$ be isospectral arithmetic hyperbolic $2$ or $3$ manifolds. Then $M_1$ and $M_2$ are commensurable.
+    \end{thm}
+    For arithmetic hyperbolic $2$- and $3$-manifolds, commsurability is tantamount to an isomorphism of invariant quaternion algebras.
+
+    From theorem \ref{thm:takeuchi}, $\Lambda$ is contained in $\rho(O'^1)$ for some maximal order $O'$ in $A$. Since $A$ has type number $1$, all maximal orders in $A$ are conjugate (by an element of $A^\times$). Consequently we may take $O'=O$, so that $\Lambda \leq \Gamma = \rho(O^1)$ as claimed.
+
+
+  \end{proof}
+  \begin{lemma}\label{lemma:MangosteenPicosdeEuropa}
+    Let $A$ be a quaternion algebra over a number field $k$ with ring of integers $R$, and let $O$ be a maximal order in $A$.
+    Let $\pfrak$ be a prime ideal of $R$ over which $A$ is unramified.
+    Suppose $\Lambda$ be a subgroup of $O^1$ satisfying
+    \begin{align}\label{eq:trace}
+      \tr g \equiv 2 \mod \pfrak^{2n}, \quad \text{for all $g \in \Lambda$}.
+    \end{align}
+    then there exists an $\alpha \in A^\times$ such that $\alpha \Lambda \alpha^\inv \subset O^1(\pfrak^n)$.
+  \end{lemma}
+  \begin{proof}
+
+
+    As $A$ is unramified over $\pfrak$, there is an isomorphism
+    \begin{align}\label{eq:split}
+      O^1 \otimes R_\pfrak \approx SL(2,R_\pfrak)
+    \end{align}, and $O^1[\pfrak^n] \approx \SL(2,R/\pfrak^n)$. Fixing an isomorphism in as \ref{eq:split}, we identify $O^1$ with a group of matrices $g = \tbt{a}{b}{c}{d}$ with entries $a,b,c,d \in \R_k$.
+    % Picking a uniformizer $\varpi \in R_\pfrak$ for $\pfrak$, each $g\in O^1$ admits a unique decomposition
+    % \begin{align}\label{eq:decomposition}
+    %     % g                & = g_0 + g_1 \varpi + g_2 \varpi^2 + \dots                                                                \\
+    %     \Tbt{a}{b}{c}{d} & =  \Tbt{a_0}{b_0}{c_0}{d_0} +\Tbt{a_1}{b_1}{c_1}{d_1} \varpi + \Tbt{a_2}{b_2}{c_2}{d_2} \varpi^2 + \dots
+    % \end{align}
+    % $O^1[\pfrak] \approx \SL(2,\kfrak_\pfrak)$
+    % for matrices $g_n \in M(2,R_\pfrak)$ at least one of each is not in $\pfrak$.
+
+    We will argue by induction. For the base case, suppose $n=1$ so that $\tr(g) \equiv 2 \mod \pfrak^2$ for all $g \in \Lambda$.
+
+
+    Write $\Lambda[\pfrak] = \pi_{\pfrak}(\Lambda)\leq \SL(2,\kfrak_\pfrak)$. Now, as $\tr g \equiv 2 \mod \pfrak$ for all $g \in \Lambda$, it follows that each $h \in \Lambda[\pfrak]$ is unipotent.
+    Indeed, by Cayley-Hamilton (in $M(2,\kfrak_\pfrak)$) each element $h$ satisfies its characteristic polynomial $p(x;h)=x^2 - \tr h x + 1= (x-1)^2$.
+    It follows that $\Lambda[\pfrak]$ is conjugate in $\SL(2,\kfrak_\pfrak)$ to a subgroup of the group $U(\kfrak_\pfrak)$ of upper triangular unipotent matrices. As $O^1 \to O^1[\pfrak]\approx \SL(2,\kfrak_\pfrak)$ is surjective, we may pull back any such conjugation to one in $O^1$.
+
+    Thus, without any loss of generality, we may assume that each $g$ in $\Lambda$ may be written as
+    \begin{align*}
+      g = \Tbt{1}{x}{0}{1} + \varpi \gamma
+    \end{align*}
+    for some $\gamma = \tbt{a}{b}{c}{d} \in M(2, R_\pfrak)$.
+
+    Since $\Lambda \leq O^1$, one has $\det g = 1 $ for all $g\in \Lambda$, thus
+    \begin{align*}
+      1 & = \det g                                     \\
+        & = 1 + (a+d - cx ) \varpi + (ad -bc) \varpi^2
+    \end{align*}
+    so that
+    \begin{align}\label{eq:MandarinLeyden}
+      (a+d - cx) \varpi + (ad-bc) \varpi^2 =0.
+    \end{align}
+    By hypothesis (\ref{eq:trace}), we have $(a+d)\varpi = \tr g -2 \equiv 0 \mod \pfrak^2$ so that $a+d \in \pfrak$. Consequently, $xc \in \pfrak$. As $\pfrak$ is prime, it follows that at least one of $x,c$ lies in $\pfrak$. If $x \in \pfrak$, then $g \in O^1(\pfrak)$. If this is so for all $g \in \Lambda$ then the claim is proven. Supposing otherwise, there exists a $ g = \Tbt{1}{x}{0}{1} + \varpi \tbt{a}{b}{c}{d}$ for which $x \in R_\pfrak^\times$. In this case one has $c \in \pfrak$. Let $\alpha_o = \Tbt{\varpi}{0}{0}{1}$. Then
+    \begin{align*}
+      \alpha_o g\alpha_o^\inv  = \Tbt{1}{\varpi x}{0}{1} + \varpi \tbt{a}{\varpi b}{\varpi^\inv c}{d}
+    \end{align*}
+    lies in $O^1(\pfrak)$.
+
+    To complete the proof of the base case, we must prove that there exists an element $\alpha \in A^\times $ such that $\alpha g \alpha^\inv =  \alpha_o g \alpha_o^\inv$. Note that multiplying $\alpha_o$ on the left by an element of $\GL(2,R_\pfrak)$ preserves the condition that $\alpha_o g \alpha_o^\inv \in O^1(\pfrak)$, so it suffices to prove that the intersection $\alpha_o \GL(2,R_\pfrak) \cap A^\times $ is nonempty. This, in turn, follows from the fact that $A^\times$ is dense in $\GL(2,k_\pfrak)$ and that the coset  $\alpha_o \GL(2,R_\pfrak)$ is open in $\GL(2,k_\pfrak)$.
+
+    Before we proceed, we need the following lemmata:
+    \begin{lemma}\label{lemma:iso}
+      Suppose $n\geq 2$. Then there is an isomorphism of $O^1(\pfrak^{n-1}) / O^1(\pfrak^{n})$ with the underlying additive group of $\sl(2,\kfrak_\pfrak)$ which intertwines the conjugation action of $O^1$ on the former with the adjoint action of $O^1$ on the latter.
+    \end{lemma}
+    \begin{proof}
+      The isomorphism is given by composing the map $g = 1 + \varpi^{n-1}\gamma \mapsto \gamma$  of $O^1(\pfrak^{n-1}) \to M(2,R_\pfrak)$ with reduction modulo $\pfrak$.
+    \end{proof}
+
+    \begin{lemma}\label{lemma:killingform}
+      Let $\Ncal$ be the quadric in $\Pbb(\sl(2,\kfrak_\pfrak))\approx \Pbb^2(\kfrak_\pfrak)$, cut out by the equation $det X =0$. Then $\Ncal$ is a rational normal curve of degree $2$ in $\Pbb^2(\kfrak_\pfrak)$. The action of $\Ad(\SL(2,\kfrak_\pfrak))$ on $\Ncal$ is transitive.
+
+      Consequently, any additive subgroup of $\sl(2,\kfrak_\pfrak)$ consisting of elements satisfying $\det X = 0$ is conjugate via $\SL(2,\kfrak_\pfrak)$ to a subgroup of the form $\Tbt{0}{\kfrak_\pfrak}{0}{0}$.
+    \end{lemma}
+    Now suppose that $\tr g \equiv 2 \mod \pfrak^{2n}$ for every $g\in \Lambda$. By inductive hypothesis, after conjugating by an element of $A^\times$ if necessary, we may assume $\Lambda \leq O^1(\pfrak^{n-1})$.
+
+    Thus, each element $g\in \Lambda$ can be written as
+    \begin{align}\label{eq:AppleWensleydale}
+      g = \id +\varpi^{n-1} \gamma
+    \end{align}
+    for some $\gamma \in M(2, R_\pfrak)$, and the assignment $g \mapsto \gamma \mod \pfrak$ identifies $\Lambda[n] = \Lambda /\Lambda \cap O^1(\pfrak^n)$ with an additive subgroup of $\sl(2,\kfrak_\pfrak)$.
+
+    Note that since $\tr g \equiv 2 \mod \pfrak^{2n}$, one has $\tr(\gamma) \equiv 0 \mod \pfrak^{n+1}$.
+    Computing determinants as in \ref{eq:AppleWensleydale},
+    \begin{align*}
+      1 & = \det g                                                  \\
+        & = 1 + \varpi^{n-1} \tr \gamma + \varpi^{2n-2}\det \gamma,
+    \end{align*}
+    and since $\det g =1$, we find $\tr \gamma +\varpi^{n-1}\det \gamma =0$. From $\tr \gamma  \equiv 0 \mod \pfrak^{n+1}$ we find $ \varpi^{n-1}\det \gamma \equiv 0 \mod \pfrak^{n+1}$, so that $\det \gamma \equiv 0 \mod \pfrak^2$.
+
+    Applying lemma \ref{lemma:killingform}, we may replace $\Lambda$ by an $O^1$-conjugate so that each $g \in \Lambda$ takes the form $g = 1 + \varpi^{n-1}\gamma$ where $\gamma = \tbt{0}{x}{0}{0} +\varpi\delta$ for some $\delta =\tbt{a}{b}{c}{d} \in M(2,\kfrak_\pfrak)$. From
+    \begin{align*}
+      \det \gamma & = \det (\tbt{0}{x}{0}{0} +\varpi\delta)                              \\
+                  & = \varpi^2 \det \delta - \varpi x c  \equiv \varpi xc \mod \pfrak^2,
+    \end{align*}
+    we find that $xc \equiv 0 \mod \pfrak$, so that either $x$ or $c$ is in $\pfrak$. If $x\in \pfrak$, then $g \in O^1(\pfrak^n)$ already. If this is so for all $g \in \Lambda$, then the claim is proven. Otherwise, suppose $g$ has $x \in R_\pfrak^\times$ so that $c \in \pfrak$. Then, with $\alpha_o = \Tbt{\varpi}{0}{0}{1}$, we find that $\alpha_o g \alpha_o^\inv \in O^1(\pfrak^n)$.
+
+    To complete the proof of the lemma we repeat the argument of the base case to replace $\alpha_o$ with an element $A^\times$.
+  \end{proof}
+
+
+
+
+\end{proof}
